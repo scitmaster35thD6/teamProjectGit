@@ -1,42 +1,42 @@
 
 CREATE TABLE c6_exbtinfo (
 --  exhibitionInfo
-    exhibitionTitleKor VARCHAR2(500 BYTE) NOT NULL,
-    exhibitionTitleEng VARCHAR2(500 BYTE) NOT NULL,
-    openingTerm VARCHAR2(19 BYTE) NOT NULL,
+    exhibitionTitleKor VARCHAR2(500 BYTE),
+    exhibitionTitleEng VARCHAR2(500 BYTE),
+    openingTerm VARCHAR2(1000 BYTE),
     openingCycle VARCHAR2(40 BYTE),
-    firstOpeningYear VARCHAR2(6 BYTE) NOT NULL,
+    firstOpeningYear VARCHAR2(6 BYTE),
     openingScale VARCHAR2(2000 BYTE),
-    openingCountry VARCHAR2(30 BYTE) NOT NULL,
+    openingCountry VARCHAR2(30 BYTE),
     openingCity VARCHAR2(30 BYTE),
-    exhibitionHall VARCHAR2(500 BYTE) NOT NULL,
+    exhibitionHall VARCHAR2(1000 BYTE),
 
 --  lastYearOpeningResult
-    participatingNationCount VARCHAR2(8 BYTE),
-    openingCountryCount VARCHAR2(8 BYTE),
-    overseasCount VARCHAR2(8 BYTE),
-    openingCountryVisitorsCount VARCHAR2(8 BYTE),
+    participatingNationCount VARCHAR2(20 BYTE),
+    openingCountryCount VARCHAR2(20 BYTE),
+    overseasCount VARCHAR2(20 BYTE),
+    openingCountryVisitorsCount VARCHAR2(20 BYTE),
     mainParticipatingNations VARCHAR2(1500 BYTE),
-    KOREACompanyWhether VARCHAR2(1 BYTE),
-    KOREACompanyParticipatingCount VARCHAR2(8 BYTE),
-    totalVisitorsCount VARCHAR2(8 BYTE),
-    overseasVisitorsCount VARCHAR2(8 BYTE),
+    KOREACompanyWhether VARCHAR2(10 BYTE),
+    KOREACompanyParticipatingCount VARCHAR2(20 BYTE),
+    totalVisitorsCount VARCHAR2(20 BYTE),
+    overseasVisitorsCount VARCHAR2(20 BYTE),
     exhibitionArea VARCHAR2(1500 BYTE),
 
 --  sponsorInfo
-    sponsor VARCHAR2(500 BYTE) NOT NULL,
-    personInCharge VARCHAR2(500 BYTE),
+    sponsor VARCHAR2(500 BYTE),
+    personInCharge VARCHAR2(1000 BYTE),
     address VARCHAR2(500 BYTE),
     telephone VARCHAR2(50 BYTE),
-    fax VARCHAR2(30 BYTE),
+    fax VARCHAR2(50 BYTE),
     homepage VARCHAR2(500 BYTE),
     email VARCHAR2(500 BYTE),
 
 --  reference
-    createdDate VARCHAR2(19 BYTE) NOT NULL,
-    lastUpdatedDate VARCHAR2(19 BYTE) NOT NULL,
+    createdDate VARCHAR2(30 BYTE),
+    lastUpdatedDate VARCHAR2(30 BYTE),
     source VARCHAR2(500 BYTE),
-    dataOffer VARCHAR2(241 BYTE) NOT NULL,
+    dataOffer VARCHAR2(500 BYTE),
     exhibitionItem VARCHAR2(2000 BYTE),
     remarks VARCHAR2(2000 BYTE)
 
@@ -45,3 +45,16 @@ CREATE TABLE c6_exbtinfo (
 --  totalPageCount
 --  numOfRows
 );
+
+
+--
+DROP TABLE c6_exbtinfo;
+
+
+--
+DELETE FROM c6_exbtinfo;
+COMMIT;
+
+
+--
+purge recyclebin;

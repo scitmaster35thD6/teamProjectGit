@@ -1,7 +1,5 @@
 package global.sesoc.seworld.rest;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,7 @@ public class XmlParsingTest {
 	private final int TOTAL_PAGE_COUNT = 13;
 	
 	public List<ExbtInfo> parse() throws Exception {
-		for (int pageNo = 1; pageNo <= 1; pageNo++) {
+		for (int pageNo = 1; pageNo <= 4; pageNo++) {
 			String addr = "http://www.gep.or.kr/rest/overseasExhibition?serviceKey=";
 			String serviceKey = "FsLyT%2F7neLBzi2BSryIlrXTpjg68D44fUqCcl2PO%2B3R%2B8%2FCnikXdveIici4eMl7YiBOm5Is1JnEWJteh9ux0BA%3D%3D";
 			String parameter = "";
