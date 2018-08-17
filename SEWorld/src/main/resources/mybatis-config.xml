@@ -2,11 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-
 	<typeAliases>
+		<typeAlias type="global.sesoc.seworld.dto.ExbtInfo" alias="ExbtInfo" />
 	</typeAliases>
-
 	<mappers>
+		<mapper resource="mappers/exbtInfoMapper.xml"></mapper>
 	</mappers>
-
 </configuration>
