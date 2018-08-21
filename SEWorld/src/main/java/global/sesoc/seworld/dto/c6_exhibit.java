@@ -2,22 +2,21 @@ package global.sesoc.seworld.dto;
 
 public class c6_exhibit {
 	private String exhibit_id;
-	private String title_kor;
-	private String title_eng;
-	private String day_opened;
-	private String day_closed;
-	private String category_name;
-	private String opening_region;
+	private String exhibition_title_kor;
+	private String exhibition_title_eng;
+	private String opening_term;
+	private int first_opening_year;
 	private String opening_country;
 	private String opening_city;
-	private String exhibit_hall;
+	private String exhibition_hall;
 	private String sponsor;
-	private String source;
 	private String created_date;
 	private String updated_date;
+	private String data_offer;
 
 	public c6_exhibit() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getExhibit_id() {
@@ -28,52 +27,36 @@ public class c6_exhibit {
 		this.exhibit_id = exhibit_id;
 	}
 
-	public String getTitle_kor() {
-		return title_kor;
+	public String getExhibition_title_kor() {
+		return exhibition_title_kor;
 	}
 
-	public void setTitle_kor(String title_kor) {
-		this.title_kor = title_kor;
+	public void setExhibition_title_kor(String exhibition_title_kor) {
+		this.exhibition_title_kor = exhibition_title_kor;
 	}
 
-	public String getTitle_eng() {
-		return title_eng;
+	public String getExhibition_title_eng() {
+		return exhibition_title_eng;
 	}
 
-	public void setTitle_eng(String title_eng) {
-		this.title_eng = title_eng;
+	public void setExhibition_title_eng(String exhibition_title_eng) {
+		this.exhibition_title_eng = exhibition_title_eng;
 	}
 
-	public String getDay_opened() {
-		return day_opened;
+	public String getOpening_term() {
+		return opening_term;
 	}
 
-	public void setDay_opened(String day_opened) {
-		this.day_opened = day_opened;
+	public void setOpening_term(String opening_term) {
+		this.opening_term = opening_term;
 	}
 
-	public String getDay_closed() {
-		return day_closed;
+	public int getFirst_opening_year() {
+		return first_opening_year;
 	}
 
-	public void setDay_closed(String day_closed) {
-		this.day_closed = day_closed;
-	}
-
-	public String getCategory_name() {
-		return category_name;
-	}
-
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
-	}
-
-	public String getOpening_region() {
-		return opening_region;
-	}
-
-	public void setOpening_region(String opening_region) {
-		this.opening_region = opening_region;
+	public void setFirst_opening_year(int first_opening_year) {
+		this.first_opening_year = first_opening_year;
 	}
 
 	public String getOpening_country() {
@@ -92,12 +75,12 @@ public class c6_exhibit {
 		this.opening_city = opening_city;
 	}
 
-	public String getExhibit_hall() {
-		return exhibit_hall;
+	public String getExhibition_hall() {
+		return exhibition_hall;
 	}
 
-	public void setExhibit_hall(String exhibit_hall) {
-		this.exhibit_hall = exhibit_hall;
+	public void setExhibition_hall(String exhibition_hall) {
+		this.exhibition_hall = exhibition_hall;
 	}
 
 	public String getSponsor() {
@@ -106,14 +89,6 @@ public class c6_exhibit {
 
 	public void setSponsor(String sponsor) {
 		this.sponsor = sponsor;
-	}
-
-	public String getSource() {
-		return source;
-	}
-
-	public void setSource(String source) {
-		this.source = source;
 	}
 
 	public String getCreated_date() {
@@ -132,13 +107,22 @@ public class c6_exhibit {
 		this.updated_date = updated_date;
 	}
 
+	public String getData_offer() {
+		return data_offer;
+	}
+
+	public void setData_offer(String data_offer) {
+		this.data_offer = data_offer;
+	}
+
 	@Override
 	public String toString() {
-		return "c6_exhibit [exhibit_id=" + exhibit_id + ", title_kor=" + title_kor + ", title_eng=" + title_eng
-				+ ", day_opened=" + day_opened + ", day_closed=" + day_closed + ", category_name=" + category_name
-				+ ", opening_region=" + opening_region + ", opening_country=" + opening_country + ", opening_city="
-				+ opening_city + ", exhibit_hall=" + exhibit_hall + ", sponsor=" + sponsor + ", source=" + source
-				+ ", created_date=" + created_date + ", updated_date=" + updated_date + "]";
+		return "c6_exhibit [exhibit_id=" + exhibit_id + ", exhibition_title_kor=" + exhibition_title_kor
+				+ ", exhibition_title_eng=" + exhibition_title_eng + ", opening_term=" + opening_term
+				+ ", first_opening_year=" + first_opening_year + ", opening_country=" + opening_country
+				+ ", opening_city=" + opening_city + ", exhibition_hall=" + exhibition_hall + ", sponsor=" + sponsor
+				+ ", created_date=" + created_date + ", updated_date=" + updated_date + ", data_offer=" + data_offer
+				+ "]";
 	}
 
 }
