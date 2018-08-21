@@ -1,45 +1,7 @@
--- c6_v2.sql
+-- 180821_c6_v3.sql
 
 
 -------------------- [CREATE TABLE] --------------------
--- 대륙
-CREATE TABLE c6_regions (
-	region_id NUMBER(1, 0) PRIMARY KEY,
-	region_name VARCHAR2(40 BYTE) UNIQUE NOT NULL
-);
-COMMENT ON TABLE c6_regions IS '대륙';
-COMMENT ON COLUMN c6_regions.region_id IS '대륙 ID';
-COMMENT ON COLUMN c6_regions.region_name IS '대륙 이름';
-
-
--- 국가
-CREATE TABLE c6_countries (
-	country_id CHAR(2 BYTE) PRIMARY KEY,
-	country_name VARCHAR2(40 BYTE) UNIQUE NOT NULL,
-	region_id NUMBER(1, 0) NOT NULL,
-	CONSTRAINT c6_countries_fk FOREIGN KEY(region_id)
-	REFERENCES c6_regions(region_id)
-);
-COMMENT ON TABLE c6_countries IS '국가';
-COMMENT ON COLUMN c6_countries.country_id IS '국가 ID';
-COMMENT ON COLUMN c6_countries.country_name IS '국가 이름';
-COMMENT ON COLUMN c6_countries.region_id IS '대륙 ID';
-
-
--- 도시
-CREATE TABLE c6_cities (
-	city_id NUMBER(4, 0) PRIMARY KEY,
-	city_name VARCHAR2(40 BYTE) UNIQUE NOT NULL,
-	country_id CHAR(2 BYTE) NOT NULL,
-	CONSTRAINT c6_cities_fk FOREIGN KEY(country_id)
-	REFERENCES c6_countries(country_id)
-);
-COMMENT ON TABLE c6_cities IS '도시';
-COMMENT ON COLUMN c6_cities.city_id IS '도시 ID';
-COMMENT ON COLUMN c6_cities.city_name IS '도시 이름';
-COMMENT ON COLUMN c6_cities.country_id IS '국가 ID';
-
-
 -- 전시범주
 CREATE TABLE c6_category (
 	category_id NUMBER(4, 0) PRIMARY KEY,
@@ -48,50 +10,6 @@ CREATE TABLE c6_category (
 COMMENT ON TABLE c6_category IS '전시범주';
 COMMENT ON COLUMN c6_category.category_id IS '전시범주 ID';
 COMMENT ON COLUMN c6_category.category_name IS '전시범주 이름';
-
-
--- 전시정보
-CREATE TABLE c6_exhibit (
-	exhibit_id CHAR(13 BYTE) PRIMARY KEY,
-	-- country_id(2 BYTE) + city_id(4 BYTE) + '-E'(2 BYTE) + c6_country_kr(5 BYTE)
-	-- (ex) 'KR1000-E00001'
-	exhibition_title_kor VARCHAR2(500 BYTE) NOT NULL,
-	exhibition_title_eng VARCHAR2(500 BYTE) NOT NULL,
-    opening_term VARCHAR2(19 BYTE) NOT NULL,
-	first_opening_year NUMBER(4, 0) NOT NULL,
-	opening_country VARCHAR2(30 BYTE) NOT NULL,
-	opening_city VARCHAR2(30 BYTE),
-	exhibition_hall VARCHAR2(500 BYTE) NOT NULL,
-	sponsor VARCHAR2(500 BYTE) NOT NULL,
-	created_date DATE NOT NULL,
-	updated_date DATE NOT NULL,
-	data_offer VARCHAR2(241 BYTE) NOT NULL,
-	CONSTRAINT c6_exhibit_fk1 FOREIGN KEY(opening_country)
-	REFERENCES c6_countries(country_name),
-	CONSTRAINT c6_exhibit_fk2 FOREIGN KEY(opening_city)
-	REFERENCES c6_cities(city_name)
-);
-COMMENT ON TABLE c6_exhibit IS '전시정보';
-COMMENT ON COLUMN c6_exhibit.exhibit_id IS '전시정보 ID';
-COMMENT ON COLUMN c6_exhibit.exhibition_title_kor IS '전시회명 한글';
-COMMENT ON COLUMN c6_exhibit.exhibition_title_eng IS '전시회명 영문';
-COMMENT ON COLUMN c6_exhibit.opening_term IS '개최기간';
-COMMENT ON COLUMN c6_exhibit.first_opening_year IS '최초개최연도';
-COMMENT ON COLUMN c6_exhibit.opening_country IS '개최국가';
-COMMENT ON COLUMN c6_exhibit.opening_city IS '개최도시';
-COMMENT ON COLUMN c6_exhibit.exhibition_hall IS '전시장';
-COMMENT ON COLUMN c6_exhibit.sponsor IS '주최기관';
-COMMENT ON COLUMN c6_exhibit.created_date IS '등록일';
-COMMENT ON COLUMN c6_exhibit.updated_date IS '수정일';
-COMMENT ON COLUMN c6_exhibit.data_offer IS '자료제공';
-
-
--- 전시정보 뷰
-CREATE VIEW c6_exhibit_view AS
-SELECT exhibitionTitleKor, exhibitionTitleEng, openingTerm, firstOpeningYear, openingCountry, openingCity, exhibitionHall,
-       sponsor, createdDate, lastUpdatedDate, dataOffer
-FROM c6_exbtinfo
-WITH READ ONLY;
 
 
 -- 회원
@@ -122,7 +40,7 @@ CREATE TABLE c6_wishing (
 	CONSTRAINT c6_wishing_fk1 FOREIGN KEY(member_id)
 	REFERENCES c6_member(member_id),
 	CONSTRAINT c6_wishing_fk2 FOREIGN KEY(exhibit_id)
-	REFERENCES c6_exhibit(exhibit_id),
+	REFERENCES c6_exhibition(exhibit_id),
 	CONSTRAINT c6_wishing_pk PRIMARY KEY(member_id, exhibit_id)
 );
 COMMENT ON TABLE c6_wishing IS '가고싶어요';
@@ -139,7 +57,7 @@ CREATE TABLE c6_participating (
 	CONSTRAINT c6_participating_fk1 FOREIGN KEY(member_id)
 	REFERENCES c6_member(member_id),
 	CONSTRAINT c6_participating_fk2 FOREIGN KEY(exhibit_id)
-	REFERENCES c6_exhibit(exhibit_id),
+	REFERENCES c6_exhibition(exhibit_id),
 	CONSTRAINT c6_participating_pk PRIMARY KEY(member_id, exhibit_id)
 );
 COMMENT ON TABLE c6_participating IS '참여하기';
@@ -159,7 +77,7 @@ CREATE TABLE c6_comment (
 	CONSTRAINT c6_comment_fk1 FOREIGN KEY(member_id)
 	REFERENCES c6_member(member_id),
 	CONSTRAINT c6_comment_fk2 FOREIGN KEY(exhibit_id)
-	REFERENCES c6_exhibit(exhibit_id),
+	REFERENCES c6_exhibition(exhibit_id),
 	CONSTRAINT c6_comment_pk PRIMARY KEY(member_id, exhibit_id)
 );
 COMMENT ON TABLE c6_comment IS '평가하기';
@@ -185,7 +103,7 @@ CREATE TABLE c6_ask (
 	CONSTRAINT c6_ask_fk1 FOREIGN KEY(member_id)
 	REFERENCES c6_member(member_id),
 	CONSTRAINT c6_ask_fk2 FOREIGN KEY(exhibit_id)
-	REFERENCES c6_exhibit(exhibit_id)
+	REFERENCES c6_exhibition(exhibit_id)
 );
 COMMENT ON TABLE c6_ask IS '문의하기';
 COMMENT ON COLUMN c6_ask.ask_id IS '문의하기 ID';
@@ -323,7 +241,6 @@ CREATE SEQUENCE c6_ask_reply_seq;
 CREATE SEQUENCE c6_board_seq;
 CREATE SEQUENCE c6_board_file_seq;
 CREATE SEQUENCE c6_board_reply_seq;
-CREATE SEQUENCE c6_country_kr_seq; -- 국가별 시퀀스 생성
 
 
 -- 팔로우 관계
@@ -337,7 +254,6 @@ CREATE TABLE c6_sharing (
 
 
 --------------------- [DROP TABLE] ---------------------
-DROP SEQUENCE c6_country_kr_seq;
 DROP SEQUENCE c6_board_reply_seq;
 DROP SEQUENCE c6_board_file_seq;
 DROP SEQUENCE c6_board_seq;
@@ -358,14 +274,10 @@ DROP TABLE c6_comment;
 DROP TABLE c6_participating;
 DROP TABLE c6_wishing;
 DROP TABLE c6_member;
-DROP TABLE c6_exhibit;
 DROP TABLE c6_category;
-DROP TABLE c6_cities;
-DROP TABLE c6_countries;
-DROP TABLE c6_regions;
 
 
-DROP VIEW c6_exhibit_view;
+PURGE RECYCLEBIN;
 
 
 ----------------------- [DELETE] -----------------------
@@ -379,25 +291,23 @@ DELETE c6_comment;
 DELETE c6_participating;
 DELETE c6_wishing;
 DELETE c6_member;
-DELETE c6_exhibit;
+DELETE c6_exhibition;
 DELETE c6_category;
 DELETE c6_cities;
 DELETE c6_countries;
 DELETE c6_regions;
 
 
------------------------ [INSERT] -----------------------
-
-
 ----------------------- [SELECT] -----------------------
+SELECT COUNT(*)
+FROM c6_exbtinfo;
+
+
 SELECT *
 FROM c6_exbtinfo
-WHERE exhibitionItem LIKE '%소프트웨어%' OR exhibitionItem LIKE '%software%';
+WHERE exhibitionItem LIKE '%소프트웨어%' OR exhibitionItem LIKE '%software%'
+ORDER BY openingTerm;
 
 
-SELECT DISTINCT openingcountry, openingcity
-FROM c6_exbtinfo
-ORDER BY 1;
-
-
-PURGE RECYCLEBIN;
+SELECT *
+FROM c6_exhibition;
