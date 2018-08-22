@@ -13,6 +13,6 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		logger.info("[/]");
-		return "home";
+		return "index";
 	}
 }
