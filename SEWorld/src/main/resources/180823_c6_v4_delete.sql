@@ -1,0 +1,21 @@
+-- 180823_c6_v4_delete.sql
+
+
+DELETE FROM c6_board_reply;
+DELETE FROM c6_board_file;
+DELETE FROM c6_board;
+DELETE FROM c6_ask_reply;
+DELETE FROM c6_ask_file;
+DELETE FROM c6_ask;
+DELETE FROM c6_comment;
+DELETE FROM c6_participating;
+DELETE FROM c6_wishing;
+DELETE FROM c6_member;
+DELETE FROM c6_exhibition;
+DELETE FROM c6_cities;
+DELETE FROM c6_countries;
+DELETE FROM c6_regions;
+DELETE FROM c6_exbtinfo;
+
+
+--COMMIT;
