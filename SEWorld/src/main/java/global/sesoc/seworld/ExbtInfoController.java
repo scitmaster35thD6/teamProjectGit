@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.sesoc.seworld.dao.ExbtInfoRepository;
 import global.sesoc.seworld.dto.ExbtInfo;
-import global.sesoc.seworld.rest.XmlParsingTest;
+import global.sesoc.seworld.rest.XmlParser;
 
 @Controller
 public class ExbtInfoController {
@@ -19,13 +19,18 @@ public class ExbtInfoController {
 	
 	@Autowired
 	ExbtInfoRepository exbtInfoRepository;
+
+	@RequestMapping(value = "/ExbtInfoTest", method = RequestMethod.GET)
+	public String exbtInfoTest() throws Exception {
+		logger.info("[/ExbtInfoTest]");
+		return "ExbtInfoTest";
+	}
 	
 	@RequestMapping(value = "/insertExbtInfo", method = RequestMethod.GET)
 	public String insertExbtInfo() throws Exception {
 		logger.info("[/insertExbtInfo]");
-		XmlParsingTest xmlParsingTest = new XmlParsingTest();
-		List<ExbtInfo> exbtInfoList = xmlParsingTest.parse();
-//		System.out.println(exbtInfoList.toString());
+		XmlParser xmlParser = new XmlParser();
+		List<ExbtInfo> exbtInfoList = xmlParser.parse();
 		System.out.println(exbtInfoRepository.insertExbtInfo(exbtInfoList));
 		return "redirect:/";
 	}
