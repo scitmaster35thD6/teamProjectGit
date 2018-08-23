@@ -20,21 +20,13 @@
   <link href="resources/volumn/css/animate.css" rel="stylesheet" />
   <link href="resources/volumn/css/style.css" rel="stylesheet">
   <link href="resources/volumn/color/default.css" rel="stylesheet">
-<<<<<<< HEAD
-  
   <link href="resources/Table_Responsive_v1/css/main.css" rel="stylesheet" type="text/css">
   <link href="resources/Table_Responsive_v1/css/util.css" rel="stylesheet" type="text/css">
-=======
->>>>>>> Controller
-
-
-	
 
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
 <style type="text/css">
 section{
 	width: 100%;
@@ -104,8 +96,6 @@ td{
 	padding: 10px;
 }
 </style>
-=======
->>>>>>> Controller
 </head>
 <body>
 <!-- Navigation -->
@@ -116,7 +106,7 @@ td{
           <div class="col-md-2 mob-logo">
             <div class="row">
               <div class="site-logo">
-                <a href="index.html"><img src="volumn/img/logo-dark.png" alt="" /></a>
+                <a href="../"><img src="volumn/img/logo-dark.png" alt="" /></a>
               </div>
             </div>
           </div>
@@ -160,30 +150,29 @@ td{
 	
 	<section>
 		<div id="wrapper">
-<<<<<<< HEAD
 			<div id="exTitle">
 				<ul style="list-style:none; padding: 10px;">
-					<li>전시회명_한글</li>
-					<li>전시회명_영어</li>
+					<li>${exhibitionDetail.exhibition_title_kor}</li>
+					<li>${exhibitionDetail.exhibition_title_eng}</li>
 				</ul>
 			</div>
 			<br/>
 			<table>
 				<tr>
 					<td style="color: #808080;">개최기간</td>
-					<td>aaaa</td>
+					<td>${exhibitionDetail.opening_term}</td>
 				</tr>
 				<tr>
 					<td>최초개최연도</td>
-					<td>bbbb</td>
+					<td>${exhibitionDetail.first_opening_year}</td>
 				</tr>
 				<tr>
 					<td>개최국가</td>
-					<td>cccc</td>
+					<td>${exhibitionDetail.opening_country}</td>
 				</tr>
 				<tr>
 					<td>개최도시</td>
-					<td>dddd</td>
+					<td>${exhibitionDetail.opening_city}</td>
 				</tr>
 			</table>
 			<br/>
@@ -192,7 +181,7 @@ td{
 			</div>
 			<br/>
 			<div id="host">주최기관
-			
+			${exhibitionDetail.sponsor}
 			</div>
 			<br/>
 			<div id="reply">
@@ -206,10 +195,8 @@ td{
 				</div>				
 			</div>
 		</div>
-=======
-			<h1>내용</h1><br />
+			
 	    </div>
->>>>>>> Controller
     	<!-- /#wrapper -->
 	</section>
 	

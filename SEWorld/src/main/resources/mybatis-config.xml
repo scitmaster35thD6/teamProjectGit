@@ -4,8 +4,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="global.sesoc.seworld.dto.ExbtInfo" alias="ExbtInfo" />
+		<typeAlias type="global.sesoc.seworld.dto.c6_exhibition" alias="exhibition"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/exbtInfoMapper.xml"></mapper>
+		<mapper resource="mappers/boardMapper.xml"/>
 	</mappers>
 </configuration>
