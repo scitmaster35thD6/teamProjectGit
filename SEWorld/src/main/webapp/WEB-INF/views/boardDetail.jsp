@@ -20,9 +20,12 @@
   <link href="resources/volumn/css/animate.css" rel="stylesheet" />
   <link href="resources/volumn/css/style.css" rel="stylesheet">
   <link href="resources/volumn/color/default.css" rel="stylesheet">
+<<<<<<< HEAD
   
   <link href="resources/Table_Responsive_v1/css/main.css" rel="stylesheet" type="text/css">
   <link href="resources/Table_Responsive_v1/css/util.css" rel="stylesheet" type="text/css">
+=======
+>>>>>>> Controller
 
 
 	
@@ -31,6 +34,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <style type="text/css">
 section{
 	width: 100%;
@@ -100,6 +104,8 @@ td{
 	padding: 10px;
 }
 </style>
+=======
+>>>>>>> Controller
 </head>
 <body>
 <!-- Navigation -->
@@ -154,6 +160,7 @@ td{
 	
 	<section>
 		<div id="wrapper">
+<<<<<<< HEAD
 			<div id="exTitle">
 				<ul style="list-style:none; padding: 10px;">
 					<li>전시회명_한글</li>
@@ -199,6 +206,10 @@ td{
 				</div>				
 			</div>
 		</div>
+=======
+			<h1>내용</h1><br />
+	    </div>
+>>>>>>> Controller
     	<!-- /#wrapper -->
 	</section>
 	

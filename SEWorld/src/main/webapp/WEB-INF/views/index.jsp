@@ -160,12 +160,7 @@
 
   <!-- Section: about -->
  <!--  <section id="about" class="home-section color-dark bg-white"> -->
- 
-  	<div class="animationmap">
-  	<div class="mapcontainer" style="">
-  	<img src="resources/volumn/img/mappic.png"/>
-  	</div>
-  	</div>
+  <section id="about" class="home-section color-dark bg-white">
   	
   	<div id="map"></div>
   <script>
@@ -242,7 +237,7 @@
   
   
   
-
+</section>
     <!-- <div class="text-center">
       <div class="container">
 
