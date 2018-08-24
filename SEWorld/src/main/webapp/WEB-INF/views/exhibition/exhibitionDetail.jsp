@@ -24,11 +24,7 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD:SEWorld/src/main/webapp/WEB-INF/views/exhibition/exhibitionDetail.jsp
 <title>전시회 상세 정보 - SE World</title>
-=======
-<title>Insert title here</title>
->>>>>>> master:SEWorld/src/main/webapp/WEB-INF/views/boardDetail.jsp
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf0YT_ifom64iJnlKsQ7XYfONTzQcNGvg&callback=initMap"></script>
     <script>
