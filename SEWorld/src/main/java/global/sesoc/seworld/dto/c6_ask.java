@@ -11,7 +11,6 @@ public class c6_ask {
 
 	public c6_ask() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getAsk_id() {

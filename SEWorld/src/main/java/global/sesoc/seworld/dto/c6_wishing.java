@@ -7,7 +7,6 @@ public class c6_wishing {
 
 	public c6_wishing() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getMember_id() {

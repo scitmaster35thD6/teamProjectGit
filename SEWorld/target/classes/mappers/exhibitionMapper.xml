@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.seworld.dao.ExhibitionMapper">
+
+	<select id="showExhibitionList" resultType="exhibition"
+		parameterType="String">
+		select
+		exhibit_id
+		,exhibition_title_kor
+		,exhibition_title_eng
+		,opening_term
+		,first_opening_year
+		,opening_country
+		,opening_city
+		,exhibition_hall
+		,sponsor
+		,created_date
+		,updated_date
+		,data_offer
+		from
+		c6_exhibition
+		where
+		opening_country like '%'
+		|| #{selectedCountry} || '%'
+		order by opening_term desc
+	</select>
+
+	<select id="getTotalList" resultType="int"
+		parameterType="String">
+		select count(*) from c6_exhibition
+		where
+		where
+		opening_country like '%'
+		|| #{selectedCountry} || '%'
+	</select>
+
+	<select id="showExhibitionDetail" resultType="exhibition"
+		parameterType="String">
+		select
+		exhibit_id
+		,exhibition_title_kor
+		,exhibition_title_eng
+		,opening_term
+		,first_opening_year
+		,opening_country
+		,opening_city
+		,exhibition_hall
+		,sponsor
+		,created_date
+		,updated_date
+		,data_offer
+		from c6_exhibition
+		where exhibition_id=#{exhibition_id}
+	</select>
+
+</mapper>

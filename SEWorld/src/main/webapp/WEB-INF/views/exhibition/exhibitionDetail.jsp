@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +20,95 @@
   <link href="resources/volumn/css/animate.css" rel="stylesheet" />
   <link href="resources/volumn/css/style.css" rel="stylesheet">
   <link href="resources/volumn/color/default.css" rel="stylesheet">
-  <link href="resources/Table_Responsive_v1/css/main.css" rel="stylesheet" type="text/css">
-  <link href="resources/Table_Responsive_v1/css/util.css" rel="stylesheet" type="text/css">
 
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>전시회 상세 정보 - SE World</title>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf0YT_ifom64iJnlKsQ7XYfONTzQcNGvg&callback=initMap"></script>
+    <script>
+    var map;
+        function initMap() {
+            
+                var options = {
+                    zoom: 15,			// 확대 비율!
+                    center: new google.maps.LatLng(37.5130509, 127.0584479), // centered KOEX
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,					// HYBRID, ROADMAP, SATELLITE, TERRAIN 4가지 종류가 있음
+                    mapTypeControl: false,
+                    fullscreenControl: false,
+                    scaleControl: false,
+                    rotateControl: true,
+                    streetViewControl: false,
+                    suppressInfoWindows: true,
+                    gestureHandling: 'greedy'		//지도 확대/축소 컨트롤 키 누르고 스크롤 기능 안하고 그냥 스크롤로 확대/축소
+                    
+                };
+
+                
+                
+                // init map
+                map = new google.maps.Map(document.getElementById('map'), options);		// 맵 생성!
+                
+ /*                var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                var markers = locations.map(function(location, i) {
+                    return new google.maps.Marker({
+                      position: location,
+                      label: labels[i % labels.length]
+                    });
+                  });
+                var markerCluster = new MarkerClusterer(map, markers,
+                        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}); */
+                  
+        
+        
+                // koex and bigsight sample Lat / Lng
+                var koex = new google.maps.LatLng(37.5130509, 127.0584479); // 서울 코엑스 좌표 37.5130509, 127.0584479
+                var bigsight = new google.maps.LatLng(35.6298556, 139.7945055); // 도쿄 빅사이트 좌표 35.6298556, 139.7945055
+                // 마커 지정
+                placeMarker(koex);
+                placeMarker(bigsight);
+  /*               var features = [
+                	{
+                		position:koex
+                	}, {
+                		position:bigsight
+                	}
+                ];
+                // 마커 아이콘 변경
+                var myIcon = new google.maps.MarkerImage("resources/image/icon/maps_icon7(50, 50).png", null, null, null, new google.maps.Size(50, 50)); // (가로, 세로)
+				// 마커생성
+		        features.forEach(function(feature) {
+		          var marker = new google.maps.Marker({
+		            position: feature.position,
+		            map: map,
+		            icon: myIcon
+		            // draggable: true, 마커 이동
+		            // animation: google.maps.Animation.DROP 지도 실행시 마커 표시가 위에서 떨어지는 효과
+		          });
+		          marker.addListener('click', toggleBounce);		// 바운스!
+	                 
+	                function toggleBounce() {
+	                    if (marker.getAnimation() !== null) {
+	                      marker.setAnimation(null);
+	                    } else {
+	                      marker.setAnimation(google.maps.Animation.BOUNCE);
+	                    }
+	              } 
+		        }); */
+              };
+            /* // 마커 아이콘 변경
+              var myIcon = "resources/image/icon/maps_icon7(50, 50).png"; */
+
+              function placeMarker(location) {
+            	   var marker = new google.maps.Marker({
+            	      position : location,
+            	      map : map,
+            	      
+            	   });
+            	   map.setCenter(location);
+              }
+</script>
 <style type="text/css">
 section{
 	width: 100%;
@@ -53,49 +135,39 @@ div#exTitle{
 	border-radius: 20px;
 	text-align: center;
 	background-color: white;
-}
-
-div#exLotation{
-	border: 1px solid #444444;
-	border-radius: 20px;
-	text-align: center;
-	background-color: white;
-}
-
-div#host{
-	border: 1px solid #444444;
-	border-radius: 20px;
-	text-align: center;
-	background-color: white;
-}
-
-div#reply{
-	width: 800px;
-	margin: 0 auto;
-	text-align: center;
+	width:600px;
 }
 
 div.input{
-	width: 800px;
+	width: 1000px;
+	border: 1px solid #444444;
+	border-radius: 20px;
+	text-align: center;
+	background-color: white;
 }
 
 table{
-	width: 800px;
+	width: 600px;
 	border-top: 1px solid #444444;
     border-collapse: collapse;
-    background-color: #f5f5f5;
+    background-color: white;
     
 }
 
 tr{
-	
+	padding: 10px;
 }
 
 td{
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 }
+
+#map{
+	border-radius: 20px;
+}
 </style>
+
 </head>
 <body>
 <!-- Navigation -->
@@ -149,7 +221,10 @@ td{
   <!-- /Navigation -->
 	
 	<section>
-		<div id="wrapper">
+		<div id="wrapper" style="float:left; width:1200px;">
+		
+			<div id="map" style="float:right; width:550px; height:340px; margin-left: auto; margin-right: auto; display: block;"></div>
+		
 			<div id="exTitle">
 				<ul style="list-style:none; padding: 10px;">
 					<li>${exhibitionDetail.exhibition_title_kor}</li>
@@ -174,29 +249,23 @@ td{
 					<td>개최도시</td>
 					<td>${exhibitionDetail.opening_city}</td>
 				</tr>
+				<tr>
+					<td>주최기관</td>
+					<td>${exhibitionDetail.sponsor}</td>
+				</tr>
 			</table>
-			<br/>
-			<div id="exLotation">전시장 위치
-			
-			</div>
-			<br/>
-			<div id="host">주최기관
-			${exhibitionDetail.sponsor}
-			</div>
-			<br/>
-			<div id="reply">
-				<div class="input">
+			<br/><br/>
+			<div class="input" style="margin: auto;"><br/>
 				<div id="result"></div>
 				<hr>
-					<input class="userid" type="text" placeholder="ID"> <input
-						class="replytext" type="text" placeholder="내용"
-						onkeypress="if(event.keyCode==13) {replyInsert(); return false;}">
-					<input id="replyInsert" type="button" value="추가">
-				</div>				
-			</div>
+				<input class="userid" type="text" placeholder="ID"> <input
+					class="replytext" type="text" placeholder="내용"
+					onkeypress="if(event.keyCode==13) {replyInsert(); return false;}">
+				<input id="replyInsert" type="button" value="추가">
+				<br/><br/>
+			</div><br/>
 		</div>
-			
-	    </div>
+		
     	<!-- /#wrapper -->
 	</section>
 	
@@ -207,7 +276,6 @@ td{
 <!-- Core JavaScript Files -->
   <script src="resources/volumn/js/jquery.min.js"></script>
   <script src="resources/volumn/js/bootstrap.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
   <script src="resources/volumn/js/jquery.sticky.js"></script>
   <script src="resources/volumn/js/slippry.min.js"></script>
   <script src="resources/volumn/js/jquery.flexslider-min.js"></script>

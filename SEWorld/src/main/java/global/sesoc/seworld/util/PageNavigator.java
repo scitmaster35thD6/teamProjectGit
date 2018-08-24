@@ -2,7 +2,7 @@ package global.sesoc.seworld.util;
 
 public class PageNavigator {
 	// 멤버
-	private final int countPerPage = 3;	// 한 페이지당 글개수
+	private final int countPerPage = 10;	// 한 페이지당 글개수
 	private final int pagePerGroup = 9; // 페이지 그룹
 	private int currentPage;		// 현재 페이지
 	private int totalRecordCount; 	// 전체 글 개수

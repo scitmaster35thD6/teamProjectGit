@@ -1,6 +1,7 @@
 package global.sesoc.seworld.dto;
 
 public class c6_comment {
+	
 	private String member_id;
 	private String exhibit_id;
 	private double rating;
@@ -10,7 +11,6 @@ public class c6_comment {
 
 	public c6_comment() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getMember_id() {

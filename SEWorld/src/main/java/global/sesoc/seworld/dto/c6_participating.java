@@ -7,7 +7,6 @@ public class c6_participating {
 
 	public c6_participating() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getMember_id() {

@@ -4,21 +4,69 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="global.sesoc.seworld.dao.BoardMapper">
-	<select id="showExhibitionDetail" resultType="exhibition" parameterType="String">
-	select 
-	exhibit_id
-	,exhibition_title_kor
-	,exhibition_title_eng
-	,opening_term
-	,first_opening_year
-	,opening_country
-	,opening_city
-	,exhibition_hall
-	,sponsor
-	,created_date
-	,updated_date
-	,data_offer
-	from c6_exhibition
-	where exhibition_id=#{exhibition_id}
+
+	<select id="viewAllBoard" resultType="board">
+		select
+		board_id
+		,member_id
+		,category
+		,title
+		,content
+		,create_date
+		,update_date
+		from c6_board
+		order by board_id desc
 	</select>
+
+	<select id="viewBoardDetail" resultType="board"
+		parameterType="String">
+		select
+		board_id
+		,member_id
+		,category
+		,title
+		,content
+		,create_date
+		,update_date
+		from c6_board
+		where board_id = #{board_id}
+	</select>
+
+	<insert id="insertBoard" parameterType="board">
+		insert into c6_board
+		(
+		board_id
+		,member_id
+		,category
+		,title
+		,content
+		,create_date
+		,update_date
+		)
+		values
+		(
+		c6_board_seq.nextval
+		,#{member_id}
+		,#{category}
+		,#{title}
+		,#{content}
+		,sysdate
+		,sysdate
+		)
+	</insert>
+	
+	<update id="updateBoard" parameterType="board">
+		update c6_board
+		category = #{category}
+		,title = #{title}
+		,content = #{content}
+		,update_date = sysdate
+		where board_id = #{board_id}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="String">
+	delete from c6_board
+	where board_id = #{board_id}
+	
+	</delete>
 </mapper>

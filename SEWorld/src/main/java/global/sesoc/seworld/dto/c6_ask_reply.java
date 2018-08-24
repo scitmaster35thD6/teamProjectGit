@@ -10,7 +10,6 @@ public class c6_ask_reply {
 
 	public c6_ask_reply() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getAsk_reply_id() {

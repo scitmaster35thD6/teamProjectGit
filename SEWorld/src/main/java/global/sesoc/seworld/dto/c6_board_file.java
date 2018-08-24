@@ -1,6 +1,7 @@
 package global.sesoc.seworld.dto;
 
 public class c6_board_file {
+	
 	private String board_file_id;
 	private String board_id;
 	private String og_filename;
@@ -11,7 +12,6 @@ public class c6_board_file {
 
 	public c6_board_file() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getBoard_file_id() {

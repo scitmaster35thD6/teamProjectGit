@@ -1,6 +1,7 @@
 package global.sesoc.seworld.dto;
 
 public class c6_countries {
+	
 	private String country_id;
 	private String country_name;
 	private int region_id;

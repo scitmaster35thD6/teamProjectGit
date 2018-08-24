@@ -11,7 +11,6 @@ public class c6_member {
 
 	public c6_member() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getMember_id() {

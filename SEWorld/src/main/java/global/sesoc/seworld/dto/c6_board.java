@@ -1,6 +1,7 @@
 package global.sesoc.seworld.dto;
 
 public class c6_board {
+	
 	private String board_id;
 	private String member_id;
 	private String category;
@@ -11,7 +12,6 @@ public class c6_board {
 
 	public c6_board() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getBoard_id() {

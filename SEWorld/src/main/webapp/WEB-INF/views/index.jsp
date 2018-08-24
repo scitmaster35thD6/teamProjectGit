@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>volumn bootstrap 3 one page template</title>
+  <title>Welcome - SE World</title>
 
   <!-- css -->
   <link href="resources/volumn/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -133,9 +133,10 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="menu" style="">
                 <ul class="nav navbar-nav navbar-right">
-                  <li class="active"><a href="#intro">Home</a></li>
+                  <li class="./"><a href="#intro">Home</a></li>
+                   <li><a href="exhibitionList">Exhibition List</a></li>
+                  <li><a href="exhibitionDetail">Exhibition Detail</a></li>
                   <li><a href="board">Board</a></li>
-                  <li><a href="#service">Services</a></li>
                   <li><a href="#works">Works</a></li>
 
                   <li><a href="#contact">Contact</a></li>

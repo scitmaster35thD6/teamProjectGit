@@ -1,6 +1,7 @@
 package global.sesoc.seworld.dto;
 
 public class c6_exhibition {
+	
 	private String exhibit_id;
 	private String exhibition_title_kor;
 	private String exhibition_title_eng;
@@ -16,7 +17,6 @@ public class c6_exhibition {
 
 	public c6_exhibition() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getExhibit_id() {

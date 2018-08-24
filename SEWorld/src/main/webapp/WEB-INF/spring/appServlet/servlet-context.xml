@@ -30,7 +30,9 @@
 	<!-- Interceptor 경로 설정 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="" />
+			<mapping path="insertBoard" />
+			<mapping path="updateBoard" />
+			<mapping path="deleteBoard" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 	</interceptors>

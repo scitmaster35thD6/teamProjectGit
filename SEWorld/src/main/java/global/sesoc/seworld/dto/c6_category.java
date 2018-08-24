@@ -1,6 +1,7 @@
 package global.sesoc.seworld.dto;
 
 public class c6_category {
+	
 	private int category_id;
 	private String category_name;
 
