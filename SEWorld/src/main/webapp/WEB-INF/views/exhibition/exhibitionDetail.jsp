@@ -108,11 +108,7 @@
             	   });
             	   map.setCenter(location);
               }
-<<<<<<< HEAD:SEWorld/src/main/webapp/WEB-INF/views/exhibition/exhibitionDetail.jsp
 </script>
-=======
-</script>
->>>>>>> master:SEWorld/src/main/webapp/WEB-INF/views/boardDetail.jsp
 <style type="text/css">
 section{
 	width: 100%;
@@ -171,11 +167,6 @@ td{
 	border-radius: 20px;
 }
 </style>
-<<<<<<< HEAD:SEWorld/src/main/webapp/WEB-INF/views/exhibition/exhibitionDetail.jsp
-
-=======
-
->>>>>>> master:SEWorld/src/main/webapp/WEB-INF/views/boardDetail.jsp
 </head>
 <body>
 <!-- Navigation -->
@@ -232,11 +223,6 @@ td{
 		<div id="wrapper" style="float:left; width:1200px;">
 		
 			<div id="map" style="float:right; width:550px; height:340px; margin-left: auto; margin-right: auto; display: block;"></div>
-<<<<<<< HEAD:SEWorld/src/main/webapp/WEB-INF/views/exhibition/exhibitionDetail.jsp
-		
-=======
-		
->>>>>>> master:SEWorld/src/main/webapp/WEB-INF/views/boardDetail.jsp
 			<div id="exTitle">
 				<ul style="list-style:none; padding: 10px;">
 					<li>${exhibitionDetail.exhibition_title_kor}</li>
@@ -277,11 +263,6 @@ td{
 				<br/><br/>
 			</div><br/>
 		</div>
-<<<<<<< HEAD:SEWorld/src/main/webapp/WEB-INF/views/exhibition/exhibitionDetail.jsp
-		
-=======
-		
->>>>>>> master:SEWorld/src/main/webapp/WEB-INF/views/boardDetail.jsp
     	<!-- /#wrapper -->
 	</section>
 	
