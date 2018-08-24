@@ -8,7 +8,7 @@
 	<select id="showExhibitionList" resultType="exhibition"
 		parameterType="String">
 		select
-		exhibit_id
+		exhibition_id
 		,exhibition_title_kor
 		,exhibition_title_eng
 		,opening_term
@@ -22,25 +22,28 @@
 		,data_offer
 		from
 		c6_exhibition
-		where
-		opening_country like '%'
-		|| #{selectedCountry} || '%'
+		<if test="_parameter != null and !_parameter.equals('')">
+			where
+			opening_country like '%'
+			|| #{selectedCountry} || '%'
+		</if>
 		order by opening_term desc
 	</select>
 
 	<select id="getTotalList" resultType="int"
 		parameterType="String">
 		select count(*) from c6_exhibition
-		where
-		where
-		opening_country like '%'
-		|| #{selectedCountry} || '%'
+		<if test="_parameter != null and !_parameter.equals('')">
+			where
+			opening_country like '%'
+			|| #{selectedCountry} || '%'
+		</if>
 	</select>
 
 	<select id="showExhibitionDetail" resultType="exhibition"
 		parameterType="String">
 		select
-		exhibit_id
+		exhibition_id
 		,exhibition_title_kor
 		,exhibition_title_eng
 		,opening_term

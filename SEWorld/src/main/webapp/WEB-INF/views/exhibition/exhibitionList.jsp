@@ -119,11 +119,14 @@
 
 			<div class="vertical">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="#">All
+					<li role="presentation" class="active"><a href="exhibitionList">All
 							Contents</a></li>
-					<li role="presentation"><a href="#">America</a></li>
-					<li role="presentation"><a href="#">Korea</a></li>
-					<li role="presentation"><a href="#">Japan</a></li>
+					<li role="presentation"><a href="exhibitionList?selectedCountry=미국">America</a></li>
+					<li role="presentation"><a href="exhibitionList?selectedCountry=한국">Korea</a></li>
+					<li role="presentation"><a href="exhibitionList?selectedCountry=일본">Japan</a></li>
+					<li role="presentation"><a href="exhibitionList?selectedCountry=중국">China</a></li>
+					<li role="presentation"><a href="exhibitionList?selectedCountry=인도">India</a></li>
+					<li role="presentation"><a href="exhibitionList?selectedCountry=독일">Germany</a></li>
 				</ul>
 			</div>
 			<!-- 벌티컬 -->
@@ -139,19 +142,11 @@
 					<br />
 					<h1></h1>
 					<div id="test"></div>
-
-
 					<div id="wrapper">
-
-
-
-
-
-
 
 						<div class="align-center color-white txt-shadow">
 
-							<strong id="counter-coffee" class="number">608</strong> <span
+							<strong id="counter-coffee" class="number">${totalRecordCount}</strong> <span
 								class="text">개의 결과를 찾았습니다.</span>
 						</div>
 

@@ -15,7 +15,8 @@
 		,create_date
 		,update_date
 		from c6_board
-		order by board_id desc
+		order by
+		board_id desc
 	</select>
 
 	<select id="viewBoardDetail" resultType="board"
@@ -54,19 +55,20 @@
 		,sysdate
 		)
 	</insert>
-	
+
 	<update id="updateBoard" parameterType="board">
 		update c6_board
-		category = #{category}
+		category =
+		#{category}
 		,title = #{title}
 		,content = #{content}
-		,update_date = sysdate
+		,update_date =
+		sysdate
 		where board_id = #{board_id}
 	</update>
-	
+
 	<delete id="deleteBoard" parameterType="String">
-	delete from c6_board
-	where board_id = #{board_id}
-	
+		delete from c6_board
+		where board_id = #{board_id}
 	</delete>
 </mapper>

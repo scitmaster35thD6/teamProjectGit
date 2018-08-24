@@ -6,7 +6,7 @@ public class c6_exhibition {
 	private String exhibition_title_kor;
 	private String exhibition_title_eng;
 	private String opening_term;
-	private int first_opening_year;
+	private String first_opening_year;
 	private String opening_country;
 	private String opening_city;
 	private String exhibition_hall;
@@ -51,11 +51,11 @@ public class c6_exhibition {
 		this.opening_term = opening_term;
 	}
 
-	public int getFirst_opening_year() {
+	public String getFirst_opening_year() {
 		return first_opening_year;
 	}
 
-	public void setFirst_opening_year(int first_opening_year) {
+	public void setFirst_opening_year(String first_opening_year) {
 		this.first_opening_year = first_opening_year;
 	}
 

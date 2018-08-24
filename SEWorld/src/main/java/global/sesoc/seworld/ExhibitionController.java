@@ -34,6 +34,7 @@ public class ExhibitionController {
 		int totalRecordCount = repository.getTotalList(selectedCountry);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
 		List<c6_exhibition> exhibitionList = repository.showExhibitionList(selectedCountry, navi.getStartRecord(), navi.getCountPerPage());
+		model.addAttribute("totalRecordCount", totalRecordCount);
 		model.addAttribute("exhibitionList", exhibitionList);
 		model.addAttribute("selectedCountry", selectedCountry);
 		model.addAttribute("navi", navi);
@@ -51,7 +52,7 @@ public class ExhibitionController {
 		exhibitionDetail.setExhibition_title_kor("테스트 제목");
 		exhibitionDetail.setExhibition_title_eng("Test Title");
 		exhibitionDetail.setOpening_term("20180822-20180901");
-		exhibitionDetail.setFirst_opening_year(1945);
+		exhibitionDetail.setFirst_opening_year("1945");
 		exhibitionDetail.setOpening_city("서울");
 		exhibitionDetail.setOpening_country("Republic of Korea");
 		exhibitionDetail.setSponsor("이남곤");
