@@ -5,58 +5,51 @@
 
 <mapper namespace="global.sesoc.seworld.dao.ExhibitionMapper">
 
-	<select id="showExhibitionList" resultType="exhibition"
-		parameterType="String">
-		select
-		exhibition_id
-		,exhibition_title_kor
-		,exhibition_title_eng
-		,opening_term
-		,first_opening_year
-		,opening_country
-		,opening_city
-		,exhibition_hall
+	<select id="showExhibitionList" resultType="exhibition" parameterType="String">
+		SELECT
+		exhibition_id exhibitionId
+		,exhibition_title_kor exhibitionTitleKor
+		,exhibition_title_eng exhibitionTitleEng
+		,opening_term openingTerm
+		,first_opening_year firstOpeningYear
+		,opening_country openingCountry
+		,opening_city openingCity
+		,exhibition_hall exhibitionHall
 		,sponsor
-		,created_date
-		,updated_date
-		,data_offer
-		from
-		c6_exhibition
+		,created_date createdDate
+		,updated_date updatedDate
+		,data_offer dataOffer
+		FROM c6_exhibition
 		<if test="_parameter != null and !_parameter.equals('')">
-			where
-			opening_country like '%'
-			|| #{selectedCountry} || '%'
+		WHERE opening_country LIKE '%' || #{selectedCountry} || '%'
 		</if>
-		order by opening_term desc
+		ORDER BY opening_term DESC
 	</select>
 
-	<select id="getTotalList" resultType="int"
-		parameterType="String">
-		select count(*) from c6_exhibition
+	<select id="getTotalList" resultType="int" parameterType="String">
+		SELECT COUNT(*)
+		FROM c6_exhibition
 		<if test="_parameter != null and !_parameter.equals('')">
-			where
-			opening_country like '%'
-			|| #{selectedCountry} || '%'
+		WHERE opening_country LIKE '%' || #{selectedCountry} || '%'
 		</if>
 	</select>
 
-	<select id="showExhibitionDetail" resultType="exhibition"
-		parameterType="String">
-		select
-		exhibition_id
-		,exhibition_title_kor
-		,exhibition_title_eng
-		,opening_term
-		,first_opening_year
-		,opening_country
-		,opening_city
-		,exhibition_hall
+	<select id="showExhibitionDetail" resultType="exhibition" parameterType="String">
+		SELECT
+		exhibition_id exhibitionId
+		,exhibition_title_kor exhibitionTitleKor
+		,exhibition_title_eng exhibitionTitleEng
+		,opening_term openingTerm
+		,first_opening_year firstOpeningYear
+		,opening_country openingCountry
+		,opening_city openingCity
+		,exhibition_hall exhibitionHall
 		,sponsor
-		,created_date
-		,updated_date
-		,data_offer
-		from c6_exhibition
-		where exhibition_id=#{exhibition_id}
+		,created_date createdDate
+		,updated_date updatedDate
+		,data_offer dataOffer
+		FROM c6_exhibition
+		WHERE exhibition_id = #{exhibitionId}
 	</select>
 
 </mapper>

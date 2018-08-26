@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import global.sesoc.seworld.dao.ExhibitionRepository;
-import global.sesoc.seworld.dto.c6_exhibition;
+import global.sesoc.seworld.dto.Exhibition;
 import global.sesoc.seworld.util.PageNavigator;
 
 @Controller
@@ -33,7 +33,7 @@ public class ExhibitionController {
 			@RequestParam(value = "selectedCountry", defaultValue = "") String selectedCountry, Model model) {
 		int totalRecordCount = repository.getTotalList(selectedCountry);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
-		List<c6_exhibition> exhibitionList = repository.showExhibitionList(selectedCountry, navi.getStartRecord(), navi.getCountPerPage());
+		List<Exhibition> exhibitionList = repository.showExhibitionList(selectedCountry, navi.getStartRecord(), navi.getCountPerPage());
 		model.addAttribute("totalRecordCount", totalRecordCount);
 		model.addAttribute("exhibitionList", exhibitionList);
 		model.addAttribute("selectedCountry", selectedCountry);
@@ -48,17 +48,16 @@ public class ExhibitionController {
 		// c6_exhibition exhibitionDetail =
 		// repository.showExhibitionDetail(exhibition_id);
 
-		c6_exhibition exhibitionDetail = new c6_exhibition();
-		exhibitionDetail.setExhibition_title_kor("테스트 제목");
-		exhibitionDetail.setExhibition_title_eng("Test Title");
-		exhibitionDetail.setOpening_term("20180822-20180901");
-		exhibitionDetail.setFirst_opening_year("1945");
-		exhibitionDetail.setOpening_city("서울");
-		exhibitionDetail.setOpening_country("Republic of Korea");
+		Exhibition exhibitionDetail = new Exhibition();
+		exhibitionDetail.setExhibitionTitleKor("테스트 제목");
+		exhibitionDetail.setExhibitionTitleEng("Test Title");
+		exhibitionDetail.setOpeningTerm("20180822-20180901");
+		exhibitionDetail.setFirstOpeningYear("1945");
+		exhibitionDetail.setOpeningCity("서울");
+		exhibitionDetail.setOpeningCountry("Republic of Korea");
 		exhibitionDetail.setSponsor("이남곤");
 
 		model.addAttribute("exhibitionDetail", exhibitionDetail);
 		return "exhibition/exhibitionDetail";
 	}
-
 }

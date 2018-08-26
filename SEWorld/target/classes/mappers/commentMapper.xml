@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.seworld.dao.CommentMapper">
+
+	<select id="viewAllCommentsFromMember" parameterType="String" resultType="Comment">
+		SELECT
+		member_id memberId
+		,exhibition_id exhibitionId
+		,rating
+		,content
+		,created_date createdDate
+		,updated_date updatedDate
+		FROM c6_comment
+		WHERE member_id = #{memberId}
+	</select>
+
+	<select id="viewAllCommentsFromExhibition" parameterType="String" resultType="Comment">
+		SELECT
+		member_id memberId
+		,exhibition_id exhibitionId
+		,rating
+		,content
+		,created_date createdDate
+		,updated_date updatedDate
+		FROM c6_comment
+		WHERE exhibition_id = #{exhibitionId}
+	</select>
+
+	<select id="viewCommentDetail" parameterType="String" resultType="Comment">
+		SELECT
+		member_id memberId
+		,exhibition_id exhibitionId
+		,rating
+		,content
+		,created_date createdDate
+		,updated_date updatedDate
+		FROM c6_comment
+		WHERE member_id = #{memberId}
+		  AND exhibition_id = #{exhibitionId}
+	</select>
+
+	<insert id="insertComment" parameterType="Comment">
+		INSERT INTO c6_comment
+		(
+		member_id
+		,exhibition_id
+		,rating
+		,content
+		,created_date
+		,updtaed_date
+		)
+		VALUES
+		(
+		#{memberId}
+		,#{exhibitionId}
+		,#{rating}
+		,#{content}
+		,SYSDATE
+		,SYDATE
+		)
+	</insert>
+
+	<delete id="deleteComment" parameterType="Comment">
+		DELETE FROM c6_comment
+		WHERE member_id = #{memberId}
+		  AND exhibition_id = #{exhibitionId}
+	</delete>
+
+	<update id="updateComment" parameterType="Comment">
+		UPDATE c6_comment
+		SET
+		rating = #{rating}
+		,content = #{content}
+		,updated_date = SYSDATE
+		WHERE member_id = #{memberId}
+		  AND exhibition_id = #{exhibitionId}
+	</update>
+
+</mapper>

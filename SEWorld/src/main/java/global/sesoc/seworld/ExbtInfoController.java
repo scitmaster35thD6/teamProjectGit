@@ -15,8 +15,18 @@ import global.sesoc.seworld.rest.XmlParser;
 
 @Controller
 public class ExbtInfoController {
-	private static final Logger logger = LoggerFactory.getLogger(ExbtInfoController.class);
 	
+	/**
+	 * SE World ExbtInfo Controller
+	 * 
+	 * API를 통해 해외전시정보를 수집하는 컨트롤러
+	 * 
+	 * @author JH Cho 
+	 * @version 0.1
+	 */
+	
+	private static final Logger logger = LoggerFactory.getLogger(ExbtInfoController.class);
+
 	@Autowired
 	ExbtInfoRepository exbtInfoRepository;
 
@@ -25,7 +35,7 @@ public class ExbtInfoController {
 		logger.info("[/ExbtInfoTest]");
 		return "ExbtInfoTest";
 	}
-	
+
 	@RequestMapping(value = "/insertExbtInfo", method = RequestMethod.GET)
 	public String insertExbtInfo() throws Exception {
 		logger.info("[/insertExbtInfo]");

@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import global.sesoc.seworld.dto.c6_exhibition;
+import global.sesoc.seworld.dto.Exhibition;
 
 @Repository
 public class ExhibitionRepository {
@@ -19,18 +19,17 @@ public class ExhibitionRepository {
 		int result = mapper.getTotalList(selectedCountry);
 		return result;
 	}
-	
-	public List<c6_exhibition> showExhibitionList(String selectedCountry, int startRecord, int countPerPage) {
+
+	public List<Exhibition> showExhibitionList(String selectedCountry, int startRecord, int countPerPage) {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
-		List<c6_exhibition> result = mapper.showExhibitionList(selectedCountry, rb);
+		List<Exhibition> result = mapper.showExhibitionList(selectedCountry, rb);
 		return result;
 	}
 
-	public c6_exhibition showExhibitionDetail(String exhibition_id) {
+	public Exhibition showExhibitionDetail(String exhibitionId) {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
-		c6_exhibition result = mapper.showExhibitionDetail(exhibition_id);
+		Exhibition result = mapper.showExhibitionDetail(exhibitionId);
 		return result;
 	}
-
 }

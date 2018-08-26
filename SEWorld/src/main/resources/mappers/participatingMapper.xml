@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.seworld.dao.ParticipatingMapper">
+
+	<insert id="insertParticipating" parameterType="Participating">
+		INSERT INTO c6_participating
+		(
+		member_id
+		,exhibition_id
+		,created_date
+		)
+		VALUES
+		(
+		#{memberId}
+		,#{exhibitionId}
+		,SYSDATE
+		)
+	</insert>
+
+	<delete id="deleteParticipating" parameterType="Participating">
+		DELETE FROM c6_participating
+		WHERE member_id = #{memberId}
+		  AND exhibition_id = #{exhibitionId}
+	</delete>
+
+</mapper>

@@ -142,7 +142,7 @@ COMMENT ON COLUMN c6_member.reg_date IS '회원 등록날짜';
 CREATE TABLE c6_wishing (
     member_id VARCHAR2(20 BYTE) NOT NULL,
     exhibition_id CHAR(13 BYTE) NOT NULL,
-    create_date DATE DEFAULT SYSDATE NOT NULL,
+    created_date DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_wishing_fk1 FOREIGN KEY(member_id)
     REFERENCES c6_member(member_id),
     CONSTRAINT c6_wishing_fk2 FOREIGN KEY(exhibition_id)
@@ -152,14 +152,14 @@ CREATE TABLE c6_wishing (
 COMMENT ON TABLE c6_wishing IS '가고싶어요';
 COMMENT ON COLUMN c6_wishing.member_id IS '회원 ID';
 COMMENT ON COLUMN c6_wishing.exhibition_id IS '전시정보 ID';
-COMMENT ON COLUMN c6_wishing.create_date IS '등록일';
+COMMENT ON COLUMN c6_wishing.created_date IS '등록일';
 
 
 -- 참여하기
 CREATE TABLE c6_participating (
     member_id VARCHAR2(20 BYTE) NOT NULL,
     exhibition_id CHAR(13 BYTE) NOT NULL,
-    create_date DATE DEFAULT SYSDATE NOT NULL,
+    created_date DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_participating_fk1 FOREIGN KEY(member_id)
     REFERENCES c6_member(member_id),
     CONSTRAINT c6_participating_fk2 FOREIGN KEY(exhibition_id)
@@ -169,7 +169,7 @@ CREATE TABLE c6_participating (
 COMMENT ON TABLE c6_participating IS '참여하기';
 COMMENT ON COLUMN c6_participating.member_id IS '회원 ID';
 COMMENT ON COLUMN c6_participating.exhibition_id IS '전시정보 ID';
-COMMENT ON COLUMN c6_participating.create_date IS '등록일';
+COMMENT ON COLUMN c6_participating.created_date IS '등록일';
 
 
 -- 평가하기
@@ -178,8 +178,8 @@ CREATE TABLE c6_comment (
     exhibition_id CHAR(13 BYTE) NOT NULL,
     rating NUMBER(2, 1) NOT NULL,
     content VARCHAR2(2000 BYTE),
-    create_date DATE DEFAULT SYSDATE NOT NULL,
-    update_date DATE DEFAULT SYSDATE NOT NULL,
+    created_date DATE DEFAULT SYSDATE NOT NULL,
+    updated_date DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_comment_fk1 FOREIGN KEY(member_id)
     REFERENCES c6_member(member_id),
     CONSTRAINT c6_comment_fk2 FOREIGN KEY(exhibition_id)
@@ -191,8 +191,8 @@ COMMENT ON COLUMN c6_comment.member_id IS '회원 ID';
 COMMENT ON COLUMN c6_comment.exhibition_id IS '전시정보 ID';
 COMMENT ON COLUMN c6_comment.rating IS '평점';
 COMMENT ON COLUMN c6_comment.content IS '코멘트';
-COMMENT ON COLUMN c6_comment.create_date IS '등록일';
-COMMENT ON COLUMN c6_comment.update_date IS '수정일';
+COMMENT ON COLUMN c6_comment.created_date IS '등록일';
+COMMENT ON COLUMN c6_comment.updated_date IS '수정일';
 
 
 -- 문의하기
@@ -204,8 +204,8 @@ CREATE TABLE c6_ask (
     exhibition_id CHAR(13 BYTE) NOT NULL,
     title VARCHAR2(1000 BYTE) NOT NULL,
     content VARCHAR2(4000 BYTE) NOT NULL,
-    create_date DATE DEFAULT SYSDATE NOT NULL,
-    update_date DATE DEFAULT SYSDATE NOT NULL,
+    created_date DATE DEFAULT SYSDATE NOT NULL,
+    updated_date DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_ask_fk1 FOREIGN KEY(member_id)
     REFERENCES c6_member(member_id),
     CONSTRAINT c6_ask_fk2 FOREIGN KEY(exhibition_id)
@@ -217,8 +217,8 @@ COMMENT ON COLUMN c6_ask.member_id IS '회원 ID';
 COMMENT ON COLUMN c6_ask.exhibition_id IS '전시정보 ID';
 COMMENT ON COLUMN c6_ask.title IS '제목';
 COMMENT ON COLUMN c6_ask.content IS '내용';
-COMMENT ON COLUMN c6_ask.create_date IS '등록일';
-COMMENT ON COLUMN c6_ask.update_date IS '수정일';
+COMMENT ON COLUMN c6_ask.created_date IS '등록일';
+COMMENT ON COLUMN c6_ask.updated_date IS '수정일';
 
 
 -- 문의하기 첨부파일
@@ -230,8 +230,8 @@ CREATE TABLE c6_ask_file (
     og_filename VARCHAR2(260 BYTE) NOT NULL,
     sv_filename VARCHAR2(40 BYTE) NOT NULL,
     file_size NUMBER,
-    create_date DATE DEFAULT SYSDATE NOT NULL,
-    update_Date DATE DEFAULT SYSDATE NOT NULL,
+    created_date DATE DEFAULT SYSDATE NOT NULL,
+    updated_date DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_ask_file_fk FOREIGN KEY(ask_id)
     REFERENCES c6_ask(ask_id)
 );
@@ -241,8 +241,8 @@ COMMENT ON COLUMN c6_ask_file.ask_id IS '문의하기 ID';
 COMMENT ON COLUMN c6_ask_file.og_filename IS '원본 파일이름';
 COMMENT ON COLUMN c6_ask_file.sv_filename IS '저장된 파일이름';
 COMMENT ON COLUMN c6_ask_file.file_size IS '파일 크기';
-COMMENT ON COLUMN c6_ask_file.create_date IS '등록일';
-COMMENT ON COLUMN c6_ask_file.update_date IS '수정일';
+COMMENT ON COLUMN c6_ask_file.created_date IS '등록일';
+COMMENT ON COLUMN c6_ask_file.updated_date IS '수정일';
 
 
 -- 문의하기 댓글
@@ -253,8 +253,8 @@ CREATE TABLE c6_ask_reply (
     ask_id CHAR(19 BYTE) NOT NULL,
     member_id VARCHAR2(20 BYTE) NOT NULL,
     content VARCHAR2(4000 BYTE) NOT NULL,
-    create_date DATE DEFAULT SYSDATE NOT NULL,
-    update_date DATE DEFAULT SYSDATE NOT NULL,
+    created_date DATE DEFAULT SYSDATE NOT NULL,
+    updated_date DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_ask_reply_fk1 FOREIGN KEY(ask_id)
     REFERENCES c6_ask(ask_id),
     CONSTRAINT c6_ask_reply_fk2 FOREIGN KEY(member_id)
@@ -265,8 +265,8 @@ COMMENT ON COLUMN c6_ask_reply.ask_reply_id IS '문의하기 댓글 ID';
 COMMENT ON COLUMN c6_ask_reply.ask_id IS '문의하기 ID';
 COMMENT ON COLUMN c6_ask_reply.member_id IS '회원 ID';
 COMMENT ON COLUMN c6_ask_reply.content IS '내용';
-COMMENT ON COLUMN c6_ask_reply.create_date IS '등록일';
-COMMENT ON COLUMN c6_ask_reply.update_date IS '수정일';
+COMMENT ON COLUMN c6_ask_reply.created_date IS '등록일';
+COMMENT ON COLUMN c6_ask_reply.updated_date IS '수정일';
 
 
 -- 게시판
@@ -278,8 +278,8 @@ CREATE TABLE c6_board (
     category VARCHAR2(40 BYTE),
     title VARCHAR2(1000 BYTE) NOT NULL,
     content VARCHAR2(4000 BYTE) NOT NULL,
-    create_date DATE DEFAULT SYSDATE NOT NULL,
-    update_date DATE DEFAULT SYSDATE NOT NULL,
+    created_date DATE DEFAULT SYSDATE NOT NULL,
+    updated_date DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_board_fk FOREIGN KEY(member_id)
     REFERENCES c6_member(member_id)
 );
@@ -289,8 +289,8 @@ COMMENT ON COLUMN c6_board.member_id IS '회원 ID';
 COMMENT ON COLUMN c6_board.category IS '게시판 범주';
 COMMENT ON COLUMN c6_board.title IS '제목';
 COMMENT ON COLUMN c6_board.content IS '내용';
-COMMENT ON COLUMN c6_board.create_date IS '등록일';
-COMMENT ON COLUMN c6_board.update_date IS '수정일';
+COMMENT ON COLUMN c6_board.created_date IS '등록일';
+COMMENT ON COLUMN c6_board.updated_date IS '수정일';
 
 
 -- 게시판 첨부파일
@@ -302,8 +302,8 @@ CREATE TABLE c6_board_file (
     og_filename VARCHAR2(260 BYTE) NOT NULL,
     sv_filename VARCHAR2(40 BYTE) NOT NULL,
     file_size NUMBER,
-    create_date DATE DEFAULT SYSDATE NOT NULL,
-    update_Date DATE DEFAULT SYSDATE NOT NULL,
+    created_date DATE DEFAULT SYSDATE NOT NULL,
+    updated_date DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_board_file_fk FOREIGN KEY(board_id)
     REFERENCES c6_board(board_id)
 );
@@ -313,8 +313,8 @@ COMMENT ON COLUMN c6_board_file.board_id IS '게시판 ID';
 COMMENT ON COLUMN c6_board_file.og_filename IS '원본 파일이름';
 COMMENT ON COLUMN c6_board_file.sv_filename IS '저장된 파일이름';
 COMMENT ON COLUMN c6_board_file.file_size IS '파일 크기';
-COMMENT ON COLUMN c6_board_file.create_date IS '등록일';
-COMMENT ON COLUMN c6_board_file.update_date IS '수정일';
+COMMENT ON COLUMN c6_board_file.created_date IS '등록일';
+COMMENT ON COLUMN c6_board_file.updated_date IS '수정일';
 
 
 -- 게시판 댓글
@@ -325,8 +325,8 @@ CREATE TABLE c6_board_reply (
     board_id CHAR(10 BYTE) NOT NULL,
     member_id VARCHAR2(20 BYTE) NOT NULL,
     content VARCHAR2(4000 BYTE) NOT NULL,
-    create_date DATE DEFAULT SYSDATE NOT NULL,
-    update_date DATE DEFAULT SYSDATE NOT NULL,
+    created_date DATE DEFAULT SYSDATE NOT NULL,
+    updated_date DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_board_reply_fk1 FOREIGN KEY(board_id)
     REFERENCES c6_board(board_id),
     CONSTRAINT c6_board_reply_fk2 FOREIGN KEY(member_id)
@@ -337,8 +337,8 @@ COMMENT ON COLUMN c6_board_reply.board_reply_id IS '게시판 댓글 ID';
 COMMENT ON COLUMN c6_board_reply.board_id IS '게시판 ID';
 COMMENT ON COLUMN c6_board_reply.member_id IS '회원 ID';
 COMMENT ON COLUMN c6_board_reply.content IS '내용';
-COMMENT ON COLUMN c6_board_reply.create_date IS '등록일';
-COMMENT ON COLUMN c6_board_reply.update_date IS '수정일';
+COMMENT ON COLUMN c6_board_reply.created_date IS '등록일';
+COMMENT ON COLUMN c6_board_reply.updated_date IS '수정일';
 
 
 --CREATE SEQUENCE c6_cities_seq START WITH 1360 INCREMENT BY 1 MAXVALUE 9999;

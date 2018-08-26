@@ -5,70 +5,69 @@
 
 <mapper namespace="global.sesoc.seworld.dao.BoardMapper">
 
-	<select id="viewAllBoard" resultType="board">
-		select
-		board_id
-		,member_id
+	<select id="viewAllBoards" resultType="board">
+		SELECT
+		board_id boardId
+		,member_id memberId
 		,category
 		,title
 		,content
-		,create_date
-		,update_date
-		from c6_board
-		order by
-		board_id desc
+		,created_date createdDate
+		,updated_date updatedDate
+		FROM c6_board
+		ORDER BY board_id DESC
 	</select>
 
-	<select id="viewBoardDetail" resultType="board"
-		parameterType="String">
-		select
-		board_id
-		,member_id
+	<select id="viewBoardDetail" resultType="board" parameterType="String">
+		SELECT
+		board_id boardId
+		,member_id memberId
 		,category
 		,title
 		,content
-		,create_date
-		,update_date
-		from c6_board
-		where board_id = #{board_id}
+		,created_date createdDate
+		,updated_date updatedDate
+		FROM c6_board
+		WHERE board_id = #{boardId}
 	</select>
 
 	<insert id="insertBoard" parameterType="board">
-		insert into c6_board
+		INSERT INTO c6_board
 		(
 		board_id
 		,member_id
 		,category
 		,title
 		,content
-		,create_date
-		,update_date
+		,created_date
+		,updated_date
 		)
-		values
+		VALUES
 		(
-		c6_board_seq.nextval
-		,#{member_id}
+		'B' || TO_CHAR(c6_board_seq.NEXTVAL, '000000000')
+		,#{memberId}
 		,#{category}
 		,#{title}
 		,#{content}
-		,sysdate
-		,sysdate
+		,SYSDATE
+		,SYSDATE
 		)
 	</insert>
 
 	<update id="updateBoard" parameterType="board">
-		update c6_board
-		category =
-		#{category}
+		UPDATE c6_board
+		SET
+		category = #{category}
 		,title = #{title}
 		,content = #{content}
-		,update_date =
-		sysdate
-		where board_id = #{board_id}
+		,updated_date = SYSDATE
+		WHERE board_id = #{boardId}
 	</update>
 
 	<delete id="deleteBoard" parameterType="String">
-		delete from c6_board
-		where board_id = #{board_id}
+		DELETE
+		FROM c6_board
+		WHERE board_id = #{boardId}
 	</delete>
+
 </mapper>

@@ -2,18 +2,16 @@ package global.sesoc.seworld.dao;
 
 import java.util.List;
 
-import global.sesoc.seworld.dto.c6_board;
+import global.sesoc.seworld.dto.Board;
 
 public interface BoardMapper {
+	public List<Board> viewAllBoards();
 
-	public List<c6_board> viewAllBoard();
+	public Board viewBoardDetail(String boardId);
 
-	public c6_board viewBoardDetail(String board_id);
+	public int insertBoard(Board board);
 
-	public int insertBoard(c6_board board);
+	public int updateBoard(Board board);
 
-	public int updateBoard(c6_board board);
-
-	public int deleteBoard(c6_board board);
-
+	public int deleteBoard(Board board);
 }

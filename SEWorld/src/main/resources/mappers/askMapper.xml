@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.seworld.dao.AskMapper">
+
+	<select id="viewAllAsksFromMember" parameterType="String" resultType="Ask">
+		SELECT
+		ask_id askId
+		,member_id memberId
+		,exhibition_id exhibitionId
+		,title
+		,content
+		,created_date createdDate
+		,updated_date updatedDate
+		FROM c6_ask
+		WHERE member_id = #{memberId}
+	</select>
+	
+	<select id="viewAllAsksFromExhibition" parameterType="String" resultType="Ask">
+		SELECT
+		ask_id askId
+		,member_id memberId
+		,exhibition_id exhibitionId
+		,title
+		,content
+		,created_date createdDate
+		,updated_date updatedDate
+		FROM c6_ask
+		WHERE exhibition_id = #{exhibitionId}
+	</select>
+
+	<select id="viewAskDetail" parameterType="String" resultType="Ask">
+		SELECT
+		ask_id askId
+		,member_id memberId
+		,exhibition_id exhibitionId
+		,title
+		,content
+		,created_date createdDate
+		,updated_date updatedDate
+		FROM c6_ask
+		WHERE ask_id = #{askId}
+	</select>
+
+	<insert id="insertAsk" parameterType="Ask">
+		INSERT INTO c6_ask
+		(
+		ask_id
+		,member_id
+		,exhibition_id
+		,title
+		,content
+		,created_date
+		,updated_date
+		)
+		VALUES
+		(
+		#{askId}
+		,#{memberId}
+		,#{exhibitionId}
+		,#{title}
+		,#{content}
+		,SYSDATE
+		,SYSDATE
+		)
+	</insert>
+	
+	<delete id="deleteAsk" parameterType="Ask">
+		DELETE
+		FROM c6_ask
+		WHERE ask_id = #{askId}
+	</delete>
+	
+	<update id="updateAsk" parameterType="Ask">
+		UPDATE c6_ask
+		SET
+		title = #{title}
+		,content = #{content}
+		,updated_date = SYSDATE
+		WHERE ask_id = #{askId}
+	</update>
+
+</mapper>
