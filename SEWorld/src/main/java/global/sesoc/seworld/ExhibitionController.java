@@ -44,9 +44,9 @@ public class ExhibitionController {
 
 	@RequestMapping(value = "/exhibitionDetail", method = RequestMethod.GET)
 	public String exhibitionDetail(Model model) {
-		// String exhibition_id = "";
+		// String exhibitionId = "";
 		// c6_exhibition exhibitionDetail =
-		// repository.showExhibitionDetail(exhibition_id);
+		// repository.showExhibitionDetail(exhibitionId);
 
 		Exhibition exhibitionDetail = new Exhibition();
 		exhibitionDetail.setExhibitionTitleKor("테스트 제목");

@@ -167,11 +167,11 @@
 											<tbody>
 												<c:forEach var="eList" items="${exhibitionList}">
 													<tr>
-														<td class="title">${eList.exhibition_title_eng}</td>
-														<td class="title">${eList.exhibition_title_kor}</td>
-														<td>${eList.opening_country}</td>
-														<td>${eList.opening_city}</td>
-														<td>${fn:substring(eList.opening_term, 0, 8)}</td>
+														<td class="title">${eList.exhibitionTitleEng}</td>
+														<td class="title">${eList.exhibitionTitleKor}</td>
+														<td>${eList.openingCountry}</td>
+														<td>${eList.openingCity}</td>
+														<td>${fn:substring(eList.openingTerm, 0, 8)}</td>
 													</tr>
 												</c:forEach>
 											</tbody>

@@ -7,49 +7,49 @@
 
 	<select id="showExhibitionList" resultType="exhibition" parameterType="String">
 		SELECT
-		exhibition_id exhibitionId
-		,exhibition_title_kor exhibitionTitleKor
-		,exhibition_title_eng exhibitionTitleEng
-		,opening_term openingTerm
-		,first_opening_year firstOpeningYear
-		,opening_country openingCountry
-		,opening_city openingCity
-		,exhibition_hall exhibitionHall
+		 exhibitionId
+		, exhibitionTitleKor
+		, exhibitionTitleEng
+		, openingTerm
+		, firstOpeningYear
+		, openingCountry
+		, openingCity
+		, exhibitionHall
 		,sponsor
-		,created_date createdDate
-		,updated_date updatedDate
-		,data_offer dataOffer
+		, createdDate
+		, updatedDate
+		, dataOffer
 		FROM c6_exhibition
 		<if test="_parameter != null and !_parameter.equals('')">
-		WHERE opening_country LIKE '%' || #{selectedCountry} || '%'
+		WHERE openingCountry LIKE '%' || #{selectedCountry} || '%'
 		</if>
-		ORDER BY opening_term DESC
+		ORDER BY openingTerm DESC
 	</select>
 
 	<select id="getTotalList" resultType="int" parameterType="String">
 		SELECT COUNT(*)
 		FROM c6_exhibition
 		<if test="_parameter != null and !_parameter.equals('')">
-		WHERE opening_country LIKE '%' || #{selectedCountry} || '%'
+		WHERE openingCountry LIKE '%' || #{selectedCountry} || '%'
 		</if>
 	</select>
 
 	<select id="showExhibitionDetail" resultType="exhibition" parameterType="String">
 		SELECT
-		exhibition_id exhibitionId
-		,exhibition_title_kor exhibitionTitleKor
-		,exhibition_title_eng exhibitionTitleEng
-		,opening_term openingTerm
-		,first_opening_year firstOpeningYear
-		,opening_country openingCountry
-		,opening_city openingCity
-		,exhibition_hall exhibitionHall
+		 exhibitionId
+		, exhibitionTitleKor
+		, exhibitionTitleEng
+		, openingTerm
+		, firstOpeningYear
+		, openingCountry
+		, openingCity
+		, exhibitionHall
 		,sponsor
-		,created_date createdDate
-		,updated_date updatedDate
-		,data_offer dataOffer
+		, createdDate
+		, updatedDate
+		, dataOffer
 		FROM c6_exhibition
-		WHERE exhibition_id = #{exhibitionId}
+		WHERE exhibitionId = #{exhibitionId}
 	</select>
 
 </mapper>
