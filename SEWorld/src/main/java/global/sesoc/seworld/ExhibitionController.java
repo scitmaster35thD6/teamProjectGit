@@ -1,6 +1,8 @@
 package global.sesoc.seworld;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.seworld.dao.ExhibitionRepository;
 import global.sesoc.seworld.dto.Exhibition;
@@ -22,6 +25,7 @@ public class ExhibitionController {
 	 * API를 통해 수집한 전시정보를 제공하는 컨트롤러
 	 * 
 	 * @author youngbinkim
+	 * 
 	 * @version 0.1
 	 */
 
@@ -29,17 +33,35 @@ public class ExhibitionController {
 	ExhibitionRepository repository;
 
 	@RequestMapping(value = "/exhibitionList", method = RequestMethod.GET)
-	public String exhibitionList(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
-			@RequestParam(value = "selectedCountry", defaultValue = "") String selectedCountry, Model model) {
+	public String exhibitionList() {
+		return "exhibition/exhibitionList";
+	}
+
+	@RequestMapping(value = "/exhibitionListShow", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	public @ResponseBody Map<String, Object> exhibitionListShow(
+			@RequestParam(value = "currentPage", defaultValue = "1") int currentPage, String selectedCountry) {
 		int totalRecordCount = repository.getTotalList(selectedCountry);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
-		List<Exhibition> exhibitionList = repository.showExhibitionList(selectedCountry, navi.getStartRecord(), navi.getCountPerPage());
-		model.addAttribute("totalRecordCount", totalRecordCount);
-		model.addAttribute("exhibitionList", exhibitionList);
-		model.addAttribute("selectedCountry", selectedCountry);
-		model.addAttribute("navi", navi);
-		model.addAttribute("currentPage", currentPage);
-		return "exhibition/exhibitionList";
+		List<Exhibition> exhibitionList = repository.showExhibitionList(selectedCountry, navi.getStartRecord(),
+				navi.getCountPerPage());
+
+		Map<String, Object> responseData = new HashMap<String, Object>();
+		String list = "";
+
+		for (int i = 0; i < exhibitionList.size(); i++) {
+			list += "<tr><td>" + exhibitionList.get(i).getExhibitionTitleEng() + "</td>";
+			list += "<td>" + exhibitionList.get(i).getExhibitionTitleKor() + "</td>";
+			list += "<td>" + exhibitionList.get(i).getOpeningCountry() + "</td>";
+			list += "<td>" + exhibitionList.get(i).getOpeningCity() + "</td>";
+			list += "<td>" + exhibitionList.get(i).getOpeningTerm().substring(0, 8) + "</td></tr>";
+		}
+
+		responseData.put("totalRecordCount", totalRecordCount);
+		responseData.put("list", list);
+		responseData.put("navi", navi);
+
+		return responseData;
+
 	}
 
 	@RequestMapping(value = "/exhibitionDetail", method = RequestMethod.GET)

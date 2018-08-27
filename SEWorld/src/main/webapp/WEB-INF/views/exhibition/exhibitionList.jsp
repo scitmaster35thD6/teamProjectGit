@@ -3,251 +3,708 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<html>
-<head>
+<html dir="ltr" lang="en">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-
-<title>volumn bootstrap 3 one page template</title>
-
-<!-- css -->
-<link href="resources/volumn/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
-<link href="resources/volumn/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="resources/volumn/css/nivo-lightbox.css" rel="stylesheet" />
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16"
+	href="resources/assets/images/logo-icon.png">
+<title>SE World - 전세계 기술 전시</title>
+<link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
+	rel="stylesheet">
+<link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
+	rel="stylesheet">
+<!-- Custom CSS -->
+<link href="resources/dist/css/style.min.css" rel="stylesheet">
+<!-- 벡터맵 css지도 -->
 <link
-	href="resources/volumn/css/nivo-lightbox-theme/default/default.css"
-	rel="stylesheet" type="text/css" />
-<link href="resources/volumn/css/owl.carousel.css" rel="stylesheet"
-	media="screen" />
-<link href="resources/volumn/css/owl.theme.css" rel="stylesheet"
-	media="screen" />
-<link href="resources/volumn/css/flexslider.css" rel="stylesheet" />
-<link href="resources/volumn/css/animate.css" rel="stylesheet" />
-<link href="resources/volumn/css/style.css" rel="stylesheet">
-<link href="resources/volumn/color/default.css" rel="stylesheet">
+	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
+	rel="stylesheet" />
+<!-- Custom CSS 새로 -->
+<link href="resources/dist/css/style.min.css" rel="stylesheet">
 
 
 
-
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>전시회 목록 -SE World</title>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 
 <style>
-#parallax4 {
-	background-image: url('resources/image/robo2.jpg');
-	background-size: cover;
-	width: 100%;
-	height: 100%;
+.dropdown.dropdown-lg .dropdown-menu {
+	margin-top: -1px;
+	padding: 6px 20px;
 }
 
-#test {
-	background-image: url('resources/image/robo2.jpg');
-	background-size: cover;
+.input-group-btn .btn-group {
+	display: flex !important;
 }
 
-.vertical {
-	margin-left: 20px;
+.btn-group .btn {
+	border-radius: 0;
+	margin-left: -1px;
+}
+
+.btn-group .btn:last-child {
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.btn-group .form-horizontal .btn[type="submit"] {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+.form-horizontal .form-group {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.form-group .form-control:last-child {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+	#adv-search {
+		width: 500px;
+		margin: 0 auto;
+	}
+	.dropdown.dropdown-lg {
+		position: static !important;
+	}
+	.dropdown.dropdown-lg .dropdown-menu {
+		min-width: 500px;
+	}
 }
 </style>
+<script type="text/javascript" src="resources/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="resources/exhibitionListShow.js"></script>
 </head>
+
 <body>
-	<!-- Navigation -->
-	<div id="navigation">
-		<nav class="navbar navbar-custom" role="navigation">
-			<div class="container">
+	<!-- ============================================================== -->
+	<!-- Preloader - style you can find in spinners.css -->
+	<!-- ============================================================== -->
+	<div class="preloader">
+		<div class="lds-ripple">
+			<div class="lds-pos"></div>
+			<div class="lds-pos"></div>
+		</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- Main wrapper - style you can find in pages.scss -->
+	<!-- ============================================================== -->
+	<div id="main-wrapper">
+		<!-- ============================================================== -->
+		<!-- Topbar header - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<header class="topbar">
+			<nav class="navbar top-navbar navbar-expand-md navbar-dark">
+				<div class="navbar-header">
+					<!-- This is for the sidebar toggle which is visible on mobile only -->
+					<a class="nav-toggler waves-effect waves-light d-block d-md-none"
+						href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+					<!-- ============================================================== -->
+					<!-- Logo -->
+					<!-- ============================================================== -->
+					<a class="navbar-brand" href="index.html"> <!-- Logo icon --> <b
+						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+							<!-- Dark Logo icon --> <img
+							src="resources/assets/images/logo-icon.png" alt="homepage"
+							class="dark-logo" /> <!-- Light Logo icon --> <img
+							src="resources/assets/images/logo-light-icon.png" alt="homepage"
+							class="light-logo" />
+					</b> <!--End Logo icon --> <!-- Logo text --> <span class="logo-text">
+							<!-- dark Logo text --> <img
+							src="resources/assets/images/logo-text.png" alt="homepage"
+							class="dark-logo" /> <!-- Light Logo text --> <img
+							src="resources/assets/images/logo-light-text.png"
+							class="light-logo" alt="homepage" />
+					</span>
+					</a>
+					<!-- ============================================================== -->
+					<!-- End Logo -->
+					<!-- ============================================================== -->
+					<!-- ============================================================== -->
+					<!-- Toggle which is visible on mobile only -->
+					<!-- ============================================================== -->
+					<a class="topbartoggler d-block d-md-none waves-effect waves-light"
+						href="javascript:void(0)" data-toggle="collapse"
+						data-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation"><i class="ti-more"></i></a>
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Logo -->
+				<!-- ============================================================== -->
+				<div class="navbar-collapse collapse" id="navbarSupportedContent">
+					<!-- ============================================================== -->
+					<!-- toggle and nav items -->
+					<!-- ============================================================== -->
+					<ul class="navbar-nav float-left mr-auto">
+						<li class="nav-item d-none d-md-block"><a
+							class="nav-link sidebartoggler waves-effect waves-light"
+							href="javascript:void(0)" data-sidebartype="mini-sidebar"><i
+								class="mdi mdi-menu font-24"></i></a></li>
+						<!-- ============================================================== -->
+						<!-- mega menu -->
+						<!-- ============================================================== -->
+						<li class="nav-item dropdown mega-dropdown"><a
+							class="nav-link dropdown-toggle waves-effect waves-dark" href=""
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="d-none d-md-block">Personal Update<i
+									class="fa fa-angle-down"></i></span> <span class="d-block d-md-none"><i
+									class="mdi mdi-dialpad font-24"></i></span>
+						</a>
+							<div class="dropdown-menu animated bounceInDown">
+								<div class="mega-dropdown-menu row">
+
+									<div class="col-lg-3 m-b-30">
+										<h4 class="m-b-20">최근 좋아요 한 전시회</h4>
+										<!-- Accordian -->
+										<div id="accordion">
+											<div class="card m-b-5">
+												<div class="card-header" id="headingOne">
+													<h5 class="mb-0">
+														<button class="btn btn-link" data-toggle="collapse"
+															data-target="#collapseOne" aria-expanded="true"
+															aria-controls="collapseOne">첫번째 전시회 제목</button>
+													</h5>
+												</div>
+												<div id="collapseOne" class="collapse show"
+													aria-labelledby="headingOne" data-parent="#accordion">
+													<div class="card-body">전시회 내용</div>
+												</div>
+											</div>
+											<div class="card m-b-5">
+												<div class="card-header" id="headingTwo">
+													<h5 class="mb-0">
+														<button class="btn btn-link collapsed"
+															data-toggle="collapse" data-target="#collapseTwo"
+															aria-expanded="false" aria-controls="collapseTwo">
+															두번째 전시회제목</button>
+													</h5>
+												</div>
+												<div id="collapseTwo" class="collapse"
+													aria-labelledby="headingTwo" data-parent="#accordion">
+													<div class="card-body">전시회 내용</div>
+												</div>
+											</div>
+											<div class="card m-b-5">
+												<div class="card-header" id="headingThree">
+													<h5 class="mb-0">
+														<button class="btn btn-link collapsed"
+															data-toggle="collapse" data-target="#collapseThree"
+															aria-expanded="false" aria-controls="collapseThree">
+															C세번째 전시회 내용</button>
+													</h5>
+												</div>
+												<div id="collapseThree" class="collapse"
+													aria-labelledby="headingThree" data-parent="#accordion">
+													<div class="card-body">세번째 전시회 내용</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-lg-3  m-b-30">
+										<h4 class="m-b-20">Recent Comments</h4>
+										<!-- Contact -->
+										<div class="d-flex flex-row comment-row m-t-0">
+											<div class="p-2">
+												<img src="resources/assets/images/users/people.png"
+													alt="user" width="50" class="rounded-circle">
+											</div>
+											<div class="comment-text w-100">
+												<h6 class="font-medium">James Anderson</h6>
+												<span class="m-b-15 d-block">좋은 후기 잘 읽었습니다^^ </span>
+												<div class="comment-footer">
+													<span class="text-muted float-right">April 14, 2016</span>
+
+												</div>
+											</div>
+										</div>
+
+
+
+										<!-- Contact -->
+									</div>
+									<div class="col-lg-3 col-xlg-4 m-b-30">
+										<h4 class="m-b-20">My Schedule</h4>
+										<!-- List style -->
+										<ul class="list-style-none">
+											<li><a href="javascript:void(0)"><i
+													class="fa fa-check text-success"></i> 스케쥴1</a></li>
+											<li><a href="javascript:void(0)"><i
+													class="fa fa-check text-success"></i> 스케쥴2</a></li>
+											<li><a href="javascript:void(0)"><i
+													class="fa fa-check text-success"></i> 스케쥴3</a></li>
+											<li><a href="javascript:void(0)"><i
+													class="fa fa-check text-success"></i> 스케쥴4</a></li>
+											<li><a href="javascript:void(0)"><i
+													class="fa fa-check text-success"></i> 스케쥴5</a></li>
+											<li><a href="#"
+												class="btn btn-sm btn-success btn-rounded">My Calendar</a></li>
+										</ul>
+									</div>
+								</div>
+							</div></li>
+						<!-- ============================================================== -->
+						<!-- End mega menu -->
+						<!-- ============================================================== -->
+						<!-- show map -->
+						<!-- ============================================================== -->
+
+
+					</ul>
+					<!-- ============================================================== -->
+					<!-- Right side toggle and nav items -->
+					<!-- ============================================================== -->
+					<ul class="navbar-nav float-right">
+						<!-- create new -->
+
+
+						<!-- ============================================================== -->
+						<!-- User profile and search -->
+						<!-- ============================================================== -->
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
+							href="" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <img
+								src="resources/assets/images/users/user.png" alt="user"
+								class="rounded-circle" width="31">
+
+						</a>
+							<div
+								class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown"
+								style="background-color: #f7d6b7;">
+								<span class="with-arrow"><span class="bg-primary"></span></span>
+								<div
+									class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
+									<div class="">
+										<img src="resources/assets/images/users/user.png" alt="user"
+											class="img-circle" width="60">
+									</div>
+									<div class="m-l-10">
+										<h4 class="m-b-0">유저네임</h4>
+										<p class=" m-b-0">유저 이메일</p>
+									</div>
+								</div>
+								<a class="dropdown-item" href="javascript:void(0)"><i
+									class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="javascript:void(0)"><i
+									class="ti-calendar m-r-5 m-l-5"></i> My Calendar </a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="javascript:void(0)"><i
+									class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="javascript:void(0)"><i
+									class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+
+							</div></li>
+						<!-- ============================================================== -->
+						<!-- User profile and search -->
+						<!-- ============================================================== -->
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<!-- ============================================================== -->
+		<!-- End Topbar header -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+		<aside class="left-sidebar">
+			<!-- Sidebar scroll-->
+			<div class="scroll-sidebar">
+				<!-- Sidebar navigation-->
+				<nav class="sidebar-nav">
+					<ul id="sidebarnav">
+						<!-- User Profile-->
+						<li>
+							<!-- User Profile-->
+							<div class="user-profile d-flex no-block dropdown m-t-20">
+								<div class="user-pic">
+									<img src="resources/assets/images/users/user.png" alt="users"
+										class="rounded-circle" width="40" />
+								</div>
+								<div class="user-content hide-menu m-l-10">
+									<a href="javascript:void(0)" class="" id="Userdd" role="button"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<h5 class="m-b-0 user-name font-medium">
+											유저네임 님 <i class="fa fa-angle-down"></i>
+										</h5> <span class="op-5 user-email">유저 이메일</span>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="Userdd">
+										<a class="dropdown-item" href="javascript:void(0)"><i
+											class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+										<div class="dropdown-divider"></div>
+
+										<a class="dropdown-item" href="javascript:void(0)"><i
+											class="ti-calendar m-r-5 m-l-5"></i> My Calendar</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="javascript:void(0)"><i
+											class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="javascript:void(0)"><i
+											class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+									</div>
+								</div>
+							</div> <!-- End User Profile-->
+						</li>
+						<!-- User Profile-->
+						<li class="sidebar-item"><a
+							class="sidebar-link has-arrow waves-effect waves-dark"
+							href="javascript:void(0)" aria-expanded="false"><i
+								class="mdi mdi-view-dashboard"></i><span class="hide-menu">Exhibition
+							</span></a>
+							<ul aria-expanded="false" class="collapse  first-level">
+								<li class="sidebar-item"><a href="boardList"
+									class="sidebar-link"><i class="mdi mdi-adjust"></i><span
+										class="hide-menu"> List </span></a></li>
+								<li class="sidebar-item"><a href="vector"
+									class="sidebar-link"><i class="mdi mdi-adjust"></i><span
+										class="hide-menu"> vectorMap </span></a></li>
+								<li class="sidebar-item"><a href="bestList"
+									class="sidebar-link"><i class="mdi mdi-adjust"></i><span
+										class="hide-menu"> Best Exhb </span></a></li>
+								<li class="sidebar-item"><a href="attendForm"
+									class="sidebar-link"><i class="mdi mdi-adjust"></i><span
+										class="hide-menu"> Attend </span></a></li>
+
+							</ul></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link has-arrow waves-effect waves-dark"
+							href="javascript:void(0)" aria-expanded="false"><i
+								class="mdi mdi-tune-vertical"></i><span class="hide-menu">Review,Q&A
+							</span></a>
+							<ul aria-expanded="false" class="collapse  first-level">
+								<li class="sidebar-item"><a
+									href="sidebar-type-minisidebar.html" class="sidebar-link"><i
+										class="mdi mdi-view-quilt"></i><span class="hide-menu">
+											User Review </span></a></li>
+								<li class="sidebar-item"><a
+									href="sidebar-type-iconsidebar.html" class="sidebar-link"><i
+										class="mdi mdi-view-parallel"></i><span class="hide-menu">
+											Question </span></a></li>
+							</ul></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link has-arrow waves-effect waves-dark"
+							href="javascript:void(0)" aria-expanded="false"><i
+								class="mdi mdi-content-copy"></i><span class="hide-menu">User
+									Board</span></a>
+							<ul aria-expanded="false" class="collapse  first-level">
+								<li class="sidebar-item"><a href="#" class="sidebar-link"><i
+										class="mdi mdi-format-align-left"></i><span class="hide-menu">
+											My Exhibition</span></a></li>
+								<li class="sidebar-item"><a href="#" class="sidebar-link"><i
+										class="mdi mdi-format-align-right"></i><span class="hide-menu">
+											Calendar </span></a></li>
+							</ul></li>
+
+					</ul>
+				</nav>
+				<!-- End Sidebar navigation -->
+			</div>
+			<!-- End Sidebar scroll-->
+		</aside>
+		<!-- ============================================================== -->
+		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Page wrapper  -->
+		<!-- ============================================================== -->
+		<div class="page-wrapper">
+			<!-- ============================================================== -->
+			<!-- Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<div class="page-breadcrumb">
 				<div class="row">
-					<div class="col-md-2 mob-logo">
-						<div class="row">
-							<div class="site-logo">
-								<a href="index.html"><img src="volumn/img/logo-dark.png"
-									alt="" /></a>
-							</div>
+					<div class="col-5 align-self-center">
+						<h4 class="page-title">Basic Table</h4>
+						<div class="d-flex align-items-center">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Board</li>
+								</ol>
+							</nav>
 						</div>
 					</div>
 
 
-					<div class="col-md-10 mob-menu">
-						<div class="row">
-							<!-- Brand and toggle get grouped for better mobile display -->
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle"
-									data-toggle="collapse" data-target="#menu">
-									<i class="fa fa-bars"></i>
-								</button>
-							</div>
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse" id="menu" style="">
-								<ul class="nav navbar-nav navbar-right">
-									<li class="active"><a href="#intro">Home</a></li>
-									<li><a href="#about">About Us</a></li>
-									<li><a href="#service">Services</a></li>
-									<li><a href="#works">Works</a></li>
 
-									<li><a href="#contact">Contact</a></li>
-									<li class="dropdown nav-toggle"><a href="#"
-										class="dropdown-toggle" data-toggle="dropdown">Dropwdown<b
-											class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a class="external" href="#">Sub menu</a></li>
-											<li><a class="external" href="#">Sub menu</a></li>
-										</ul></li>
+				</div>
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Container fluid  -->
+			<!-- ============================================================== -->
+			<div class="container-fluid">
+				<!-- ============================================================== -->
+				<!-- Start Page Content -->
+				<!-- ============================================================== -->
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">내용 시작</h4>
+								<h6 class="card-subtitle">table.</h6>
+
+								<!-- 지도 모달 창 -->
+								<ul class="navbar-nav float-left mr-auto">
+									<li>
+										<!-- 모달 버튼 -->
+										<div class="p-l-30 p-10">
+											<button type="button"
+												class="btn btn-sm btn-success btn-rounded"
+												data-toggle="modal" data-target=".bd-example-modal-lg">
+												Select Region</button>
+
+											<!-- Modal -->
+											<div class="modal fade bd-example-modal-lg" tabindex="-1"
+												role="dialog" aria-labelledby="myLargeModalLabel"
+												aria-hidden="true">
+												<div class="modal-dialog modal-lg">
+													<div class="modal-content">
+
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLongTitle">Modal
+																title</h5>
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<!-- 벡터지도 넣기 -->
+
+
+															<!-- 벡터지도 넣기 -->
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary"
+																data-dismiss="modal">Close</button>
+															<button type="button" class="btn btn-primary">Save
+																changes</button>
+														</div>
+
+
+													</div>
+												</div>
+											</div>
+											<!-- Modal -->
+
+
+
+										</div>
+									</li>
+
+
+
+
+
+									<!-- 지도 모달 창 -->
+
+
+									<li>선택 옵션 놓일 자리</li>
 								</ul>
+
+								<!-- 검색창 -->
+								<ul class="navbar-nav float-right">
+
+
+									<div class="container">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="input-group" id="adv-search">
+													<input type="text" class="form-control"
+														placeholder="Search for snippets" />
+													<div class="input-group-btn">
+														<div class="btn-group" role="group">
+															<div class="dropdown dropdown-lg">
+																<button type="button"
+																	class="btn btn-default dropdown-toggle"
+																	data-toggle="dropdown" aria-expanded="false">
+																	<span class="caret"></span>
+																</button>
+																<div class="dropdown-menu dropdown-menu-right"
+																	role="menu">
+																	<form class="form-horizontal" role="form">
+																		<div class="form-group">
+																			<label for="filter">Filter by</label> <select
+																				class="form-control">
+																				<option value="0" selected>All</option>
+																				<option value="1">Popular</option>
+																				<option value="2">Mostly Liked</option>
+																				<option value="3">Most commented</option>
+																			</select>
+																		</div>
+																		<div class="form-group">
+																			<label for="contain">Category</label> <input
+																				class="form-control" type="text" />
+																		</div>
+																		<div class="form-group">
+																			<label for="contain">Contains the words</label> <input
+																				class="form-control" type="text" />
+																		</div>
+																		<button type="submit" class="btn btn-primary">
+																			<span class="glyphicon glyphicon-search"
+																				aria-hidden="true"></span>
+																		</button>
+																	</form>
+																</div>
+															</div>
+															<button type="button"
+																class="btn waves-effect waves-light btn-success"
+																aria-hidden="true">go</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 							</div>
-							<!-- /.Navbar-collapse -->
+							<!-- 카드 한개 끝 내용 -->
+
+
+
+							</ul>
+
+
+
+
+							<div id="Ex_table" class="m-t-40">
+								<!-- 테이블 껍데기 -->
+								<strong id="counter-coffee" class="totalRecordCount"></strong>
+								<span class="text">개의 결과를 찾았습니다.</span>
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>제목 Eng</th>
+											<th>제목 Kor</th>
+											<th>국가</th>
+											<th>도시</th>
+											<th>시작일</th>
+										</tr>
+									</thead>
+									<tbody class="exhibitionContent">
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<!-- /.container -->
-		</nav>
-	</div>
-	<!-- /Navigation -->
+				<!-- 페이지 -->
+				<section class="pageNavi">
+				</section>
+
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">일반 유저에게 보이는 테이블</h4>
+							<h6 class="card-subtitle">Grid with filtering, editing,
+								inserting, deleting, sorting and paging. Data provided by
+								controller.</h6>
+
+							<!-- 벡터지도 넣기 -->
 
 
 
-	<div class="row">
-		<div class="col-md-2">
-			<!--  col-md-4-->
+
+							<!-- 벡터지도 넣기 -->
 
 
-
-			<div class="vertical">
-				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="exhibitionList">All
-							Contents</a></li>
-					<li role="presentation"><a href="exhibitionList?selectedCountry=미국">America</a></li>
-					<li role="presentation"><a href="exhibitionList?selectedCountry=한국">Korea</a></li>
-					<li role="presentation"><a href="exhibitionList?selectedCountry=일본">Japan</a></li>
-					<li role="presentation"><a href="exhibitionList?selectedCountry=중국">China</a></li>
-					<li role="presentation"><a href="exhibitionList?selectedCountry=인도">India</a></li>
-					<li role="presentation"><a href="exhibitionList?selectedCountry=독일">Germany</a></li>
-				</ul>
-			</div>
-			<!-- 벌티컬 -->
-		</div>
-
-
-
-		<div class="col-md-10">
-			.col-md-8
-			<section>
-				<div id="wrapper">
-					<h1>내용</h1>
-					<br />
-					<h1></h1>
-					<div id="test"></div>
-					<div id="wrapper">
-
-						<div class="align-center color-white txt-shadow">
-
-							<strong id="counter-coffee" class="number">${totalRecordCount}</strong> <span
-								class="text">개의 결과를 찾았습니다.</span>
 						</div>
-
-						<section>
-							<div id="wrapper">
-								<div class="row">
-									<div class="col-md-6">
-										<table class="table table-bordered">
-											<thead>
-												<tr>
-													<th>제목 Eng</th>
-													<th>제목 Kor</th>
-													<th>국가</th>
-													<th>도시</th>
-													<th>시작일</th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach var="eList" items="${exhibitionList}">
-													<tr>
-														<td class="title">${eList.exhibitionTitleEng}</td>
-														<td class="title">${eList.exhibitionTitleKor}</td>
-														<td>${eList.openingCountry}</td>
-														<td>${eList.openingCity}</td>
-														<td>${fn:substring(eList.openingTerm, 0, 8)}</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-									</div>
-								</div>
-
-							</div>
-							<!-- /#wrapper -->
-						</section>
-
-
-
-						<!-- 페이지 -->
-						<section>
-							<c:if test="${navi.currentPage != 1}">
-								<a
-									href="exhibitionList?currentPage=${navi.currentPage - navi.pagePerGroup}&selectedCountry=${selectedCountry}">◁◁</a>
-								<a
-									href="exhibitionList?currentPage=${navi.currentPage - 1}&selectedCountry=${selectedCountry}">◀</a>
-			&nbsp;&nbsp;
-			</c:if>
-							<c:forEach var="page" begin="${navi.startPageGroup}"
-								end="${navi.endPageGroup}">
-								<c:if test="${page == currentPage}">
-									<span style="color: red; font-weight: bolder">${page}</span> &nbsp;
-				</c:if>
-								<c:if test="${page != currentPage}">
-									<a
-										href="exhibitionList?currentPage=${page}&selectedCountry=${selectedCountry}"
-										title="${page}번째 페이지로">${page}</a> &nbsp;
-		</c:if>
-							</c:forEach>
-							<c:if test="${navi.currentPage < navi.totalPageCount}">
-			&nbsp;&nbsp; <a
-									href="exhibitionList?currentPage=${navi.currentPage + 1}&selectedCountry=${selectedCountry}">▶</a>
-								<a
-									href="exhibitionList?currentPage=${navi.currentPage + navi.pagePerGroup}&selectedCountry=${selectedCountry}">▷▷</a>
-							</c:if>
-						</section>
-
-
-
-
 					</div>
-					<!-- /#wrapper -->
-			</section>
+				</div>
 
+
+			</div>
+			<!-- ============================================================== -->
+			<!-- End PAge Content -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Right sidebar -->
+			<!-- ============================================================== -->
+			<!-- .right-sidebar -->
+			<!-- ============================================================== -->
+			<!-- End Right sidebar -->
+			<!-- ============================================================== -->
 		</div>
+		<!-- ============================================================== -->
+		<!-- End Container fluid  -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- footer -->
+		<!-- ============================================================== -->
+		<footer class="footer text-center"> SCIT Poject </footer>
+		<!-- ============================================================== -->
+		<!-- End footer -->
+		<!-- ============================================================== -->
 	</div>
+	<!-- ============================================================== -->
+	<!-- End Page wrapper  -->
+	<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Wrapper -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- customizer Panel -->
+	<!-- ============================================================== -->
+	<a class="nav-link dropdown-toggle waves-effect waves-dark" href=""
+		data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
+	</a>
+	</aside>
 
-	<!-- Core JavaScript Files -->
-	<script src="resources/volumn/js/jquery.min.js"></script>
-	<script src="resources/volumn/js/bootstrap.min.js"></script>
+	<div class="chat-windows"></div>
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
+	<script>
+		// Basic grid
+	</script>
+	<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap tether Core JavaScript -->
+	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- apps -->
+	<script src="resources/dist/js/app.min.js"></script>
+	<script src="resources/dist/js/app.init.light-sidebar.js"></script>
+	<script src="resources/dist/js/app-style-switcher.js"></script>
+	<!-- slimscrollbar scrollbar JavaScript -->
 	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
-	<script src="resources/volumn/js/jquery.sticky.js"></script>
-	<script src="resources/volumn/js/slippry.min.js"></script>
-	<script src="resources/volumn/js/jquery.flexslider-min.js"></script>
-	<script src="resources/volumn/js/morphext.min.js"></script>
-	<script src="resources/volumn/js/gmap.js"></script>
-	<script src="resources/volumn/js/jquery.mb.YTPlayer.js"></script>
-	<script src="resources/volumn/js/jquery.easing.min.js"></script>
-	<script src="resources/volumn/js/jquery.scrollTo.js"></script>
-	<script src="resources/volumn/js/jquery.appear.js"></script>
-	<script src="resources/volumn/js/stellar.js"></script>
-	<script src="resources/volumn/js/wow.min.js"></script>
-	<script src="resources/volumn/js/owl.carousel.min.js"></script>
-	<script src="resources/volumn/js/nivo-lightbox.min.js"></script>
-	<script src="resources/volumn/js/jquery.nicescroll.min.js"></script>
-	<script src="resources/volumn/js/custom.js"></script>
-	<script src="resources/volumn/contactform/contactform.js"></script>
+		src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+	<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
+	<!--Wave Effects -->
+	<script src="resources/dist/js/waves.js"></script>
+	<!--Menu sidebar -->
+	<script src="resources/dist/js/sidebarmenu.js"></script>
+	<!--Custom JavaScript -->
+	<script src="resources/dist/js/custom.min.js"></script>
+	<!--This page JavaScript -->
 
-
+	<!-- 벡터지도 -->
+	<!-- This Page JS -->
 
 
 </body>
+
 </html>
