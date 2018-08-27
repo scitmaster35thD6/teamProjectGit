@@ -70,17 +70,6 @@ jQuery('#world-map-markers').vectorMap(
         	
         }
         
-      {
-          latLng : [21.00, 78.00],
-          name : 'India : 600개의 전시회'
-        
-        },
-        {
-        latLng: [36.77, -119.41],
-        name: 'USA : 250개의 전시회'
-        }
-    
-    
     ],
     hoverOpacity: null,
     normalizeFunction: 'linear',
