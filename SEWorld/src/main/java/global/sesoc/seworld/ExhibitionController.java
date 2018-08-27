@@ -84,7 +84,6 @@ public class ExhibitionController {
 		return "exhibition/exhibitionDetail";
 	}
 	
-<<<<<<< HEAD
 	/**지도에 전시회 몇개인지 표시하기**/
 	@RequestMapping(value = "countcountry", method = RequestMethod.POST)
 	public @ResponseBody Integer countcountry(@RequestBody String openingCountry) throws Exception {
@@ -92,10 +91,10 @@ public class ExhibitionController {
 		int result = repository.countCountry(openingCountry);
 		System.out.println(result+"몇개");
 		return result;
-=======
+	}
+		
 	@RequestMapping(value="/vector", method=RequestMethod.GET)
 	public String vectorMap() {
 		return "exhibition/vector";
->>>>>>> master
 	}
 }

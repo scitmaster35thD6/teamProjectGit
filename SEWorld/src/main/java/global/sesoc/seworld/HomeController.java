@@ -35,11 +35,7 @@ public class HomeController {
 		return "boardList";
 	}
 	
-	@RequestMapping(value = "/vector", method = RequestMethod.GET)
-	public String vector() {
-
-		return "vector";
-	}
+	
 	
 	@RequestMapping(value = "/boardWrite", method = RequestMethod.GET)
 	public String write() {

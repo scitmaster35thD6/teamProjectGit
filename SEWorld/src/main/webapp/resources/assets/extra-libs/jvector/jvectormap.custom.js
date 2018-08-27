@@ -1,5 +1,4 @@
 $(function() {
-<<<<<<< HEAD
 	/**지도표시용ajax**/
 	var count = '';
 		$.ajax({
@@ -21,8 +20,6 @@ $(function() {
 	
 	
 	
-=======
->>>>>>> master
     "use strict";
 
 jQuery('#world-map-markers').vectorMap(
@@ -56,7 +53,6 @@ jQuery('#world-map-markers').vectorMap(
         name : 'India : 600개의 전시회'
       
       },
-<<<<<<< HEAD
       
         {
         latLng: [36.77, -119.41],
@@ -74,7 +70,6 @@ jQuery('#world-map-markers').vectorMap(
         	
         }
         
-=======
       {
           latLng : [21.00, 78.00],
           name : 'India : 600개의 전시회'
@@ -84,7 +79,6 @@ jQuery('#world-map-markers').vectorMap(
         latLng: [36.77, -119.41],
         name: 'USA : 250개의 전시회'
         }
->>>>>>> master
     
     
     ],
