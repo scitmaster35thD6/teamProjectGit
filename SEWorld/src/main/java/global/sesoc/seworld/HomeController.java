@@ -23,4 +23,35 @@ public class HomeController {
 		logger.info("[/]");
 		return "index";
 	}
+	
+	/**
+	 * 
+	 * 테스트용
+	 * 
+	 * **/
+	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
+	public String bList() {
+
+		return "boardList";
+	}
+	
+	@RequestMapping(value = "/vector", method = RequestMethod.GET)
+	public String vector() {
+
+		return "vector";
+	}
+	
+	@RequestMapping(value = "/boardWrite", method = RequestMethod.GET)
+	public String write() {
+
+		return "boardWrite";
+	}
+	
+	@RequestMapping(value = "/reviewBoard", method = RequestMethod.GET)
+	public String review() {
+
+		return "reviewBoard";
+	}
+	
+	
 }

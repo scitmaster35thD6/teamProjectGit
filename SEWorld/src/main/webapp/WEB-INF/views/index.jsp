@@ -270,6 +270,12 @@
   </section>
   
   <!-- /Section: about -->
+<a href="boardList">리스트</a><br />
+<a href="boardWrite">글쓰기</a><br />
+<a href="reviewBoard">리뷰</a><br />
+<a href="vector">벡터</a><br />
+
+
 
   <!-- Section: parallax 1 -->
   <section id="parallax1" class="home-section parallax text-light" data-stellar-background-ratio="0.5">
