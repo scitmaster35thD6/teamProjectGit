@@ -51,5 +51,9 @@
 		FROM c6_exhibition
 		WHERE exhibitionId = #{exhibitionId}
 	</select>
-
+	
+	<!-- 각국 전시회 수 세기 -->
+	<select id="countCountry" parameterType="String" resultType="int">
+	select count(*) from c6_exhibition where openingCountry = #{openingCountry}
+	</select>
 </mapper>

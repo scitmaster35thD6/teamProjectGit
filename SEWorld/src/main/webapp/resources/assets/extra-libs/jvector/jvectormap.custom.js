@@ -1,4 +1,25 @@
 $(function() {
+	/**지도표시용ajax**/
+	var count = '';
+		$.ajax({
+			method : 'post'
+			, url : 'countcountry'
+			, data : '미국'
+			, dataType : 'text' 
+			, contentType : 'application/json; charset=UTF'
+			, success : output
+		});
+	
+		function output (resp){
+			var count = JSON.stringify(resp);
+			alert(count);
+		}
+	/**지도표시용ajax**/
+	/**/
+	
+	
+	
+	
     "use strict";
 
 jQuery('#world-map-markers').vectorMap(
@@ -32,14 +53,10 @@ jQuery('#world-map-markers').vectorMap(
         name : 'India : 600개의 전시회'
       
       },
-      {
-          latLng : [21.00, 78.00],
-          name : 'India : 600개의 전시회'
-        
-        },
+      
         {
         latLng: [36.77, -119.41],
-        name: 'USA : 250개의 전시회'
+        name: count
         },
         
         {

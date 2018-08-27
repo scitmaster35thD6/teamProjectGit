@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.seworld.dao.ExhibitionRepository;
 import global.sesoc.seworld.dto.Exhibition;
@@ -59,5 +61,14 @@ public class ExhibitionController {
 
 		model.addAttribute("exhibitionDetail", exhibitionDetail);
 		return "exhibition/exhibitionDetail";
+	}
+	
+	/**지도에 전시회 몇개인지 표시하기**/
+	@RequestMapping(value = "countcountry", method = RequestMethod.POST)
+	public @ResponseBody Integer countcountry(@RequestBody String openingCountry) throws Exception {
+		System.out.println(openingCountry+"오프팅컨트리");
+		int result = repository.countCountry(openingCountry);
+		System.out.println(result+"몇개");
+		return result;
 	}
 }

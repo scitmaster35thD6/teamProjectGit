@@ -32,4 +32,10 @@ public class ExhibitionRepository {
 		Exhibition result = mapper.showExhibitionDetail(exhibitionId);
 		return result;
 	}
+	
+	public int countCountry (String openingCountry) {
+		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
+		int result = mapper.countCountry(openingCountry);
+		return result;
+	}
 }

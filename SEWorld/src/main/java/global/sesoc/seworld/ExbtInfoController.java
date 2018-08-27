@@ -44,4 +44,8 @@ public class ExbtInfoController {
 		System.out.println(exbtInfoRepository.insertExbtInfo(exbtInfoList));
 		return "redirect:/";
 	}
+	
+	
+	
+	
 }

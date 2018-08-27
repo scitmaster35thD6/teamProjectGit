@@ -274,6 +274,8 @@
 <a href="boardWrite">글쓰기</a><br />
 <a href="reviewBoard">리뷰</a><br />
 <a href="vector">벡터</a><br />
+<a href="exhibitionList">이그지비션리스트</a><br />
+<a href="exhibitionDetail">이그지비션디테일</a><br />
 
 
 

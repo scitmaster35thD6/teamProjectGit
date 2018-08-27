@@ -12,4 +12,6 @@ public interface ExhibitionMapper {
 	public int getTotalList(String selectedCountry);
 
 	public Exhibition showExhibitionDetail(String exhibitionId);
+	
+	public int countCountry (String openingCountry) ;
 }
