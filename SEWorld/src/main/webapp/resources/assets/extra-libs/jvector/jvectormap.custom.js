@@ -1,6 +1,7 @@
 $(function() {
 	/**지도표시용ajax**/
-	var count = '';
+	var numUS = '';
+	var sy='d';
 		$.ajax({
 			method : 'post'
 			, url : 'countcountry'
@@ -11,9 +12,10 @@ $(function() {
 		});
 	
 		function output (resp){
-			var count = JSON.stringify(resp);
-			alert(count);
+			var numUS = JSON.stringify(resp);
 		}
+		
+		var nums ={"us" :numUS }
 	/**지도표시용ajax**/
 	/**/
 	
@@ -50,13 +52,15 @@ jQuery('#world-map-markers').vectorMap(
     hoverColor: '#2962FF',
     markers : [{
         latLng : [21.00, 78.00],
-        name : 'India : 600개의 전시회'
-      
+        name : 'India : 600개의 전시회',
+       
+        
+        
       },
       
         {
         latLng: [36.77, -119.41],
-        name: count
+        name: numUS
         },
         
         {
@@ -71,6 +75,9 @@ jQuery('#world-map-markers').vectorMap(
         }
         
     ],
+    /**데이타 넣기**/
+   
+    /****/
     hoverOpacity: null,
     normalizeFunction: 'linear',
     scaleColors: ['#b6d6ff', '#005ace'],
