@@ -11,7 +11,7 @@ public interface AskMapper {
 	 * @param memberId
 	 * @return 회원ID로 조회한 모든 문의하기 리스트
 	 */
-	public List<Ask> viewAllAsksFromMember(String memberId);
+	public abstract List<Ask> viewAllAsksFromMember(String memberId);
 
 	/**
 	 * 한 전시정보에 대한 모든 문의를 조회한다.
@@ -19,7 +19,7 @@ public interface AskMapper {
 	 * @param exhibitionId
 	 * @return 전시정보ID로 조회한 모든 문의하기 리스트
 	 */
-	public List<Ask> viewAllAsksFromExhibition(String exhibitionId);
+	public abstract List<Ask> viewAllAsksFromExhibition(String exhibitionId);
 
 	/**
 	 * 사용자ID와 전시회명ID로 검색해서 본인 및 타인의 문의를 조회한다.
