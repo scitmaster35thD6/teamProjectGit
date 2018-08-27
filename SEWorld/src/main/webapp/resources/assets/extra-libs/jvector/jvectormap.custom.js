@@ -40,7 +40,19 @@ jQuery('#world-map-markers').vectorMap(
         {
         latLng: [36.77, -119.41],
         name: 'USA : 250개의 전시회'
+        },
+        
+        {
+        	latLng: [37.50,  127.00],
+        	 name: 'Korea : 250개의 전시회'
+        },
+        
+        {
+        	latLng: [35.6298556,  139.7945055],
+        	name : 'Japan : 345개의 전시회'
+        	
         }
+        
     
     
     ],
