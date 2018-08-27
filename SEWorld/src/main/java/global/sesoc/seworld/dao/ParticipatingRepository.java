@@ -11,13 +11,13 @@ public class ParticipatingRepository {
 	@Autowired
 	SqlSession sqlSession;
 
-	public int insertParticipating(Participating participating) {
+	public int insertOneParticipating(Participating participating) {
 		ParticipatingMapper participatingMapper = sqlSession.getMapper(ParticipatingMapper.class);
-		return participatingMapper.insertParticipating(participating);
+		return participatingMapper.insertOneParticipating(participating);
 	}
 
-	public int deleteParticipating(Participating participating) {
+	public int deleteOneParticipating(Participating participating) {
 		ParticipatingMapper participatingMapper = sqlSession.getMapper(ParticipatingMapper.class);
-		return participatingMapper.deleteParticipating(participating);
+		return participatingMapper.deleteOneParticipating(participating);
 	}
 }

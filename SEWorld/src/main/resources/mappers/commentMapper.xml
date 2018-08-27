@@ -5,52 +5,52 @@
 
 <mapper namespace="global.sesoc.seworld.dao.CommentMapper">
 
-	<select id="viewAllCommentsFromMember" parameterType="String" resultType="Comment">
+	<select id="selectAllCommentsFromMember" parameterType="String" resultType="Comment">
 		SELECT
-		member_id memberId
-		,exhibition_id exhibitionId
+		memberId
+		,exhibitionId
 		,rating
 		,content
-		,created_date createdDate
-		,updated_date updatedDate
+		,createdDate
+		,updatedDate
 		FROM c6_comment
-		WHERE member_id = #{memberId}
+		WHERE memberId = #{memberId}
 	</select>
 
-	<select id="viewAllCommentsFromExhibition" parameterType="String" resultType="Comment">
+	<select id="selectAllCommentsFromExhibition" parameterType="String" resultType="Comment">
 		SELECT
-		member_id memberId
-		,exhibition_id exhibitionId
+		memberId
+		,exhibitionId
 		,rating
 		,content
-		,created_date createdDate
-		,updated_date updatedDate
+		,createdDate
+		,updatedDate
 		FROM c6_comment
-		WHERE exhibition_id = #{exhibitionId}
+		WHERE exhibitionId = #{exhibitionId}
 	</select>
 
-	<select id="viewCommentDetail" parameterType="String" resultType="Comment">
+	<select id="selectOneComment" parameterType="String" resultType="Comment">
 		SELECT
-		member_id memberId
-		,exhibition_id exhibitionId
+		memberId
+		,exhibitionId
 		,rating
 		,content
-		,created_date createdDate
-		,updated_date updatedDate
+		,createdDate
+		,updatedDate
 		FROM c6_comment
-		WHERE member_id = #{memberId}
-		  AND exhibition_id = #{exhibitionId}
+		WHERE memberId = #{memberId}
+		  AND exhibitionId = #{exhibitionId}
 	</select>
 
-	<insert id="insertComment" parameterType="Comment">
+	<insert id="insertOneComment" parameterType="Comment">
 		INSERT INTO c6_comment
 		(
-		member_id
-		,exhibition_id
+		memberId
+		,exhibitionId
 		,rating
 		,content
-		,created_date
-		,updtaed_date
+		,createdDate
+		,updtaedDate
 		)
 		VALUES
 		(
@@ -59,24 +59,25 @@
 		,#{rating}
 		,#{content}
 		,SYSDATE
-		,SYDATE
+		,SYSDATE
 		)
 	</insert>
 
-	<delete id="deleteComment" parameterType="Comment">
-		DELETE FROM c6_comment
-		WHERE member_id = #{memberId}
-		  AND exhibition_id = #{exhibitionId}
+	<delete id="deleteOneComment" parameterType="Comment">
+		DELETE
+		FROM c6_comment
+		WHERE memberId = #{memberId}
+		  AND exhibitionId = #{exhibitionId}
 	</delete>
 
-	<update id="updateComment" parameterType="Comment">
+	<update id="updateOneComment" parameterType="Comment">
 		UPDATE c6_comment
 		SET
 		rating = #{rating}
 		,content = #{content}
-		,updated_date = SYSDATE
-		WHERE member_id = #{memberId}
-		  AND exhibition_id = #{exhibitionId}
+		,updatedDate = SYSDATE
+		WHERE memberId = #{memberId}
+		  AND exhibitionId = #{exhibitionId}
 	</update>
 
 </mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.seworld.dao.">
+
+	<select id="selectAllBoardReplies" parameterType="String" resultType="BoardReply">
+		SELECT
+		boardReplyId
+		,boardId
+		,memberId
+		,content
+		,createdDate
+		,updatedDate
+		FROM c6_board_reply
+		WHERE boardId = #{boardId}
+		ORDER BY boardReplyId
+	</select>
+
+	<select id="selectOneBoardReply" parameterType="String" resultType="BoardReply">
+		SELECT
+		boardReplyId
+		,boardId
+		,memberId
+		,content
+		,createdDate
+		,updatedDate
+		FROM c6_board_reply
+		WHERE boardReplyId = #{boardReplyId}
+	</select>
+
+	<insert id="insertOneBoardReply" parameterType="BoardReply">
+		INSERT INTO c6_board_reply
+		(
+		boardReplyId
+		,boardId
+		,memberId
+		,content
+		,createdDate
+		,updatedDate
+		)
+		VALUES
+		(
+		#{boardId} || '-R' || TO_CHAR(c6_board_reply_seq.NEXTVAL, '0000')
+		,#{boardId}
+		,#{memberId}
+		,#{content}
+		,SYSDATE
+		,SYSDATE
+		)
+	</insert>
+
+	<delete id="deleteOneBoardReply" parameterType="BoardReply">
+		DELETE
+		FROM c6_board_reply
+		WHERE boardReplyId = #{boardReplyId}
+		  AND memberId = #{memberId}
+	</delete>
+
+	<update id="updateOneBoardReply" parameterType="BoardReply">
+		UPDATE c6_board_reply
+		SET
+		content = #{content}
+		,updatedDate = SYSDATE
+		WHERE boardReplyId = #{boardReplyId}
+		  AND memberId = #{memerId}
+	</update>
+
+</mapper>

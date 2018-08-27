@@ -5,59 +5,61 @@
 
 <mapper namespace="global.sesoc.seworld.dao.AskMapper">
 
-	<select id="viewAllAsksFromMember" parameterType="String" resultType="Ask">
+	<select id="selectAllAsksFromMember" parameterType="String" resultType="Ask">
 		SELECT
-		ask_id askId
-		,member_id memberId
-		,exhibition_id exhibitionId
+		askId
+		,memberId
+		,exhibitionId
 		,title
 		,content
-		,created_date createdDate
-		,updated_date updatedDate
+		,createdDate
+		,updatedDate
 		FROM c6_ask
-		WHERE member_id = #{memberId}
+		WHERE memberId = #{memberId}
+		ORDER BY askId DESC
 	</select>
 	
-	<select id="viewAllAsksFromExhibition" parameterType="String" resultType="Ask">
+	<select id="selectAllAsksFromExhibition" parameterType="String" resultType="Ask">
 		SELECT
-		ask_id askId
-		,member_id memberId
-		,exhibition_id exhibitionId
+		askId
+		,memberId
+		,exhibitionId
 		,title
 		,content
-		,created_date createdDate
-		,updated_date updatedDate
+		,createdDate
+		,updatedDate
 		FROM c6_ask
-		WHERE exhibition_id = #{exhibitionId}
+		WHERE exhibitionId = #{exhibitionId}
+		ORDER BY askId DESC
 	</select>
 
-	<select id="viewAskDetail" parameterType="String" resultType="Ask">
+	<select id="selectOneAsk" parameterType="String" resultType="Ask">
 		SELECT
-		ask_id askId
-		,member_id memberId
-		,exhibition_id exhibitionId
+		askId
+		,memberId
+		,exhibitionId
 		,title
 		,content
-		,created_date createdDate
-		,updated_date updatedDate
+		,createdDate
+		,updatedDate
 		FROM c6_ask
-		WHERE ask_id = #{askId}
+		WHERE askId = #{askId}
 	</select>
 
-	<insert id="insertAsk" parameterType="Ask">
+	<insert id="insertOneAsk" parameterType="Ask">
 		INSERT INTO c6_ask
 		(
-		ask_id
-		,member_id
-		,exhibition_id
+		askId
+		,memberId
+		,exhibitionId
 		,title
 		,content
-		,created_date
-		,updated_date
+		,createdDate
+		,updatedDate
 		)
 		VALUES
 		(
-		#{askId}
+		#{exhibitionId} || '-A' || TO_CHAR(c6_ask_seq.NEXTVAL, '0000')
 		,#{memberId}
 		,#{exhibitionId}
 		,#{title}
@@ -67,19 +69,21 @@
 		)
 	</insert>
 	
-	<delete id="deleteAsk" parameterType="Ask">
+	<delete id="deleteOneAsk" parameterType="Ask">
 		DELETE
 		FROM c6_ask
-		WHERE ask_id = #{askId}
+		WHERE askId = #{askId}
+		  AND memberId = #{memberId}
 	</delete>
 	
-	<update id="updateAsk" parameterType="Ask">
+	<update id="updateOneAsk" parameterType="Ask">
 		UPDATE c6_ask
 		SET
 		title = #{title}
 		,content = #{content}
-		,updated_date = SYSDATE
-		WHERE ask_id = #{askId}
+		,updatedDate = SYSDATE
+		WHERE askId = #{askId}
+		  AND memberId = #{memberId}
 	</update>
 
 </mapper>
