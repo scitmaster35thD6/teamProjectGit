@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="global.sesoc.seworld.dao.AskReplyMapper">
+
+	<select id="selectAllAskReplies" parameterType="String" resultType="AskReply">
+		SELECT
+		askReplyId
+		,askId
+		,memberId
+		,content
+		,createdDate
+		,updatedDate
+		FROM c6_ask_reply
+		WHERE askId = #{askId}
+		ORDER BY askReplyId
+	</select>
+
+	<select id="selectOneAskReply" parameterType="String" resultType="AskReply">
+		SELECT
+		askReplyId
+		,askId
+		,memberId
+		,content
+		,createdDate
+		,updatedDate
+		FROM c6_ask_reply
+		WHERE askReplyId = #{askReplyId}
+	</select>
+
+	<insert id="insertOneAskReply" parameterType="AskReply">
+		INSERT INTO c6_ask_reply
+		(
+		askReplyId
+		,askId
+		,memberId
+		,content
+		,createdDate
+		,updatedDate
+		)
+		VALUES
+		(
+		#{askId} || '-R' || TO_CHAR(c6_ask_reply_seq.NEXTVAL, '0000')
+		,#{askId}
+		,#{memberId}
+		,#{content}
+		,SYSDATE
+		,SYSDATE
+		)
+	</insert>
+
+	<delete id="deleteOneAskReply" parameterType="AskReply">
+		DELETE
+		FROM c6_ask_reply
+		WHERE askReplyId = #{askReplyId}
+		  AND memberId = #{memberId}
+	</delete>
+
+	<update id="updateOneAskReply" parameterType="AskReply">
+		UPDATE c6_ask_reply
+		SET
+		content = #{content}
+		,updatedDate = SYSDATE
+		WHERE askReplyId = #{askReplyId}
+		  AND memberId = #{memberId}
+	</update>
+	
+</mapper>

@@ -5,12 +5,12 @@
 
 <mapper namespace="global.sesoc.seworld.dao.ParticipatingMapper">
 
-	<insert id="insertParticipating" parameterType="Participating">
+	<insert id="insertOneParticipating" parameterType="Participating">
 		INSERT INTO c6_participating
 		(
-		member_id
-		,exhibition_id
-		,created_date
+		memberId
+		,exhibitionId
+		,createdDate
 		)
 		VALUES
 		(
@@ -20,10 +20,10 @@
 		)
 	</insert>
 
-	<delete id="deleteParticipating" parameterType="Participating">
+	<delete id="deleteOneParticipating" parameterType="Participating">
 		DELETE FROM c6_participating
-		WHERE member_id = #{memberId}
-		  AND exhibition_id = #{exhibitionId}
+		WHERE memberId = #{memberId}
+		  AND exhibitionId = #{exhibitionId}
 	</delete>
 
 </mapper>

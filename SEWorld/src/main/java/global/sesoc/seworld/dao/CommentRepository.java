@@ -13,33 +13,33 @@ public class CommentRepository {
 	@Autowired
 	SqlSession sqlSession;
 
-	public List<Comment> viewAllCommentsFromMember(String memberId) {
+	public List<Comment> selectAllCommentsFromMember(String memberId) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.viewAllCommentsFromMember(memberId);
+		return commentMapper.selectAllCommentsFromMember(memberId);
 	}
 
-	public List<Comment> viewAllCommentsFromExhibition(String exhibitionId) {
+	public List<Comment> selectAllCommentsFromExhibition(String exhibitionId) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.viewAllCommentsFromExhibition(exhibitionId);
+		return commentMapper.selectAllCommentsFromExhibition(exhibitionId);
 	}
 
-	public Comment viewCommentDetail(Comment comment) {
+	public Comment selectOneComment(Comment comment) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.viewCommentDetail(comment);
+		return commentMapper.selectOneComment(comment);
 	}
 
 	public int insertOneComment(Comment comment) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.insertComment(comment);
+		return commentMapper.insertOneComment(comment);
 	}
 
 	public int deleteOneComment(Comment comment) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.deleteComment(comment);
+		return commentMapper.deleteOneComment(comment);
 	}
 
 	public int updateOneComment(Comment comment) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.updateComment(comment);
+		return commentMapper.updateOneComment(comment);
 	}
 }

@@ -1,7 +1,5 @@
 package global.sesoc.seworld.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,11 +13,11 @@ public class WishingRepository {
 
 	public int insertOneWishing(Wishing wishing) {
 		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
-		return wishingMapper.insertWishing(wishing);
+		return wishingMapper.insertOneWishing(wishing);
 	}
 
 	public int deleteOneWishing(Wishing wishing) {
 		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
-		return wishingMapper.deleteWishing(wishing);
+		return wishingMapper.deleteOneWishing(wishing);
 	}
 }

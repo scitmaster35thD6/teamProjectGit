@@ -9,7 +9,7 @@ public interface ParticipatingMapper {
 	 * @param participating
 	 * @return 0:입력실패, 1:입력성공
 	 */
-	public abstract int insertParticipating(Participating participating);
+	public abstract int insertOneParticipating(Participating participating);
 
 	/**
 	 * 사용자의 전시회 참여정보를 삭제한다.
@@ -17,5 +17,5 @@ public interface ParticipatingMapper {
 	 * @param participating
 	 * @return 0:삭제실패, 1:삭제성공
 	 */
-	public abstract int deleteParticipating(Participating participating);
+	public abstract int deleteOneParticipating(Participating participating);
 }

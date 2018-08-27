@@ -5,12 +5,12 @@
 
 <mapper namespace="global.sesoc.seworld.dao.WishingMapper">
 
-	<insert id="insertWishing" parameterType="Wishing">
+	<insert id="insertOneWishing" parameterType="Wishing">
 		INSERT INTO c6_wishing
 		(
-		member_id
-		,exhibition_id
-		,created_date
+		memberId
+		,exhibitionId
+		,createdDate
 		)
 		VALUES
 		(
@@ -20,10 +20,10 @@
 		)
 	</insert>
 
-	<delete id="deleteWishing" parameterType="Wishing">
+	<delete id="deleteOneWishing" parameterType="Wishing">
 		DELETE FROM c6_wishing
-		WHERE member_id = #{memberId}
-		  AND exhibition_id = #{exhibitionId}
+		WHERE memberId = #{memberId}
+		  AND exhibitionId = #{exhibitionId}
 	</delete>
 
 </mapper>

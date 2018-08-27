@@ -13,33 +13,33 @@ public class AskRepository {
 	@Autowired
 	SqlSession sqlSession;
 
-	public List<Ask> viewAllAsksFromMember(String memberId) {
+	public List<Ask> selectAllAsksFromMember(String memberId) {
 		AskMapper askMapper = sqlSession.getMapper(AskMapper.class);
-		return askMapper.viewAllAsksFromMember(memberId);
+		return askMapper.selectAllAsksFromMember(memberId);
 	}
 
-	public List<Ask> viewAllAsksFromExhibition(String exhibitionId) {
+	public List<Ask> selectAllAsksFromExhibition(String exhibitionId) {
 		AskMapper askMapper = sqlSession.getMapper(AskMapper.class);
-		return askMapper.viewAllAsksFromExhibition(exhibitionId);
+		return askMapper.selectAllAsksFromExhibition(exhibitionId);
 	}
 
-	public Ask viewAskDetail(String askId) {
+	public Ask selectOneAsk(String askId) {
 		AskMapper askMapper = sqlSession.getMapper(AskMapper.class);
-		return askMapper.viewAskDetail(askId);
+		return askMapper.selectOneAsk(askId);
 	}
 
-	public int insertAsk(Ask ask) {
+	public int insertOneAsk(Ask ask) {
 		AskMapper askMapper = sqlSession.getMapper(AskMapper.class);
-		return askMapper.insertAsk(ask);
+		return askMapper.insertOneAsk(ask);
 	}
 
-	public int deleteAsk(Ask ask) {
+	public int deleteOneAsk(Ask ask) {
 		AskMapper askMapper = sqlSession.getMapper(AskMapper.class);
-		return askMapper.deleteAsk(ask);
+		return askMapper.deleteOneAsk(ask);
 	}
 
-	public int updateAsk(Ask ask) {
+	public int updateOneAsk(Ask ask) {
 		AskMapper askMapper = sqlSession.getMapper(AskMapper.class);
-		return askMapper.updateAsk(ask);
+		return askMapper.updateOneAsk(ask);
 	}
 }
