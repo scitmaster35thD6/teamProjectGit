@@ -319,7 +319,7 @@
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Exhibition </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="boardList" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> List </span></a></li>
+                                <li class="sidebar-item"><a href="exhibitionList" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> List </span></a></li>
                                 <li class="sidebar-item"><a href="vector" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> vectorMap </span></a></li>
                                 <li class="sidebar-item"><a href="bestList" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Best Exhb </span></a></li>
                                 <li class="sidebar-item"><a href="attendForm" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Attend </span></a></li>

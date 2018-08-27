@@ -82,4 +82,9 @@ public class ExhibitionController {
 		model.addAttribute("exhibitionDetail", exhibitionDetail);
 		return "exhibition/exhibitionDetail";
 	}
+	
+	@RequestMapping(value="/vector", method=RequestMethod.GET)
+	public String vectorMap() {
+		return "exhibition/vector";
+	}
 }

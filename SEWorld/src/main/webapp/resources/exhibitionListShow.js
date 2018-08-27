@@ -17,7 +17,6 @@ function init() {
 		url : 'exhibitionListShow',
 		data : 'currentPage=' + currentPage + '&selectedCountry='
 				+ selectedCountry,
-		contentType : 'application/json; charset=UTF-8',
 		success : output
 	})
 }
@@ -27,13 +26,24 @@ function selectPage(pageNum) {
 	init();
 }
 
+function previousPageGroup() {
+	currentPage -= 1;
+	init();
+}
+
+function nextPageGroup() {
+	currentPage += 1;
+	init();
+}
+
 function output(response) {
-	var pageNavigator = '';
+	var pageNavigator = '<a href="javascript:previousPageGroup()">◀</a>';
 
 	$('.totalRecordCount').html(response.totalRecordCount);
 	$('.exhibitionContent').html(response.list);
 
-	for (var i = response.navi.startPageGroup; i < response.navi.endPageGroup; i++) {
+	for (var i = response.navi.startPageGroup; i <= response.navi.endPageGroup; i++) {
+
 		if (i == response.navi.currentPage) {
 			pageNavigator += '<span style="color: red; font-weight: bolder">'
 					+ i + '</span> &nbsp;';
@@ -42,8 +52,9 @@ function output(response) {
 					+ ')" title="' + i + '번째 페이지로" class="pageSeletor">' + i
 					+ '</a> &nbsp;'
 		}
-
-		$(".pageNavi").html(pageNavigator);
 	}
+	pageNavigator += '<a href="javascript:nextPageGroup()">▶</a>';
+	
+	$(".pageNavi").html(pageNavigator);
 
 }

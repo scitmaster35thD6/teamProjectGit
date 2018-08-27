@@ -372,7 +372,7 @@
 								class="mdi mdi-view-dashboard"></i><span class="hide-menu">Exhibition
 							</span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
-								<li class="sidebar-item"><a href="boardList"
+								<li class="sidebar-item"><a href="exhibitionList"
 									class="sidebar-link"><i class="mdi mdi-adjust"></i><span
 										class="hide-menu"> List </span></a></li>
 								<li class="sidebar-item"><a href="vector"
