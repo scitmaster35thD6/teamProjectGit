@@ -276,7 +276,7 @@
 <a href="vector">벡터</a><br />
 <a href="exhibitionList">이그지비션리스트</a><br />
 <a href="exhibitionDetail">이그지비션디테일</a><br />
-
+<a href="login">로긴</a><br />
 
 
   <!-- Section: parallax 1 -->
