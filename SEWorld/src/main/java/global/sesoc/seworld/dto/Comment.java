@@ -7,11 +7,12 @@ public class Comment {
 	private String content;
 	private String createdDate;
 	private String updatedDate;
+	private int likes;
 	public Comment() {
 		super();
 	}
 	public Comment(String memberId, String exhibitionId, double rating, String content, String createdDate,
-			String updatedDate) {
+			String updatedDate, int likes) {
 		super();
 		this.memberId = memberId;
 		this.exhibitionId = exhibitionId;
@@ -19,6 +20,7 @@ public class Comment {
 		this.content = content;
 		this.createdDate = createdDate;
 		this.updatedDate = updatedDate;
+		this.likes = likes;
 	}
 	public String getMemberId() {
 		return memberId;
@@ -56,9 +58,15 @@ public class Comment {
 	public void setUpdatedDate(String updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
 	@Override
 	public String toString() {
 		return "Comment [memberId=" + memberId + ", exhibitionId=" + exhibitionId + ", rating=" + rating + ", content="
-				+ content + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + "]";
+				+ content + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", likes=" + likes + "]";
 	}
 }
