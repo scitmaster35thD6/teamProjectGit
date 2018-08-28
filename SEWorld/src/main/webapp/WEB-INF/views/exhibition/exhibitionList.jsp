@@ -271,7 +271,50 @@
 					<!-- ============================================================== -->
 					<ul class="navbar-nav float-right">
 						<!-- create new -->
-
+					
+					
+					<!-- ============================================================== -->
+                        <!-- Messages -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="font-24 mdi mdi-comment-processing"></i>
+                                
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
+                                <span class="with-arrow"><span class="bg-white"></span></span>
+                                <ul class="list-style-none">
+                                    <li>
+                                        <div class="drop-title text-black bg-#f7b2c5">
+                                            <h4 class="m-b-0 m-t-5">2 New</h4>
+                                            <span class="font-light">Messages</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center message-body" style="height :100%;">
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item">
+                                                <span class="user-img"><i class="fas fa-user"></i>  </span>
+                                                <div class="mail-contnet">
+                                                    <h5 class="message-title">heemin</h5> <span class="mail-desc">안녕하세요 전시회 정보 문으드립니다.</span> <span class="time">9:30 AM</span> </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" class="message-item">
+                                                <span class="user-img"><i class="fas fa-user"></i>  </span>
+                                                <div class="mail-contnet">
+                                                    <h5 class="message-title">happy</h5> <span class="mail-desc">what sup </span><span class="time">9:10 AM</span> </div>
+                                            </a>
+                                            
+                                            
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center link" href="javascript:void(0);"> <b>모든 메세지 보기</b> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        
+                        <!-- end+++++================== -->
 
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
@@ -291,8 +334,11 @@
 								<div
 									class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
 									<div class="">
-										<img src="resources/assets/images/users/user.png" alt="user"
-											class="img-circle" width="60">
+									
+										<!-- 아이콘 유저 -->
+										<i class="fas fa-user" width="60"></i>
+									
+										
 									</div>
 									<div class="m-l-10">
 										<h4 class="m-b-0">유저네임</h4>
@@ -526,60 +572,38 @@
 									<li>선택 옵션 놓일 자리</li>
 								</ul>
 
-								<!-- 검색창 -->
 								<ul class="navbar-nav float-right">
+								<!-- 검색창 -->
 
-
-									<div class="container">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="input-group" id="adv-search">
-													<input type="text" class="form-control"
-														placeholder="Search for snippets" />
-													<div class="input-group-btn">
-														<div class="btn-group" role="group">
-															<div class="dropdown dropdown-lg">
-																<button type="button"
-																	class="btn btn-default dropdown-toggle"
-																	data-toggle="dropdown" aria-expanded="false">
-																	<span class="caret"></span>
-																</button>
-																<div class="dropdown-menu dropdown-menu-right"
-																	role="menu">
-																	<form class="form-horizontal" role="form">
-																		<div class="form-group">
-																			<label for="filter">Filter by</label> <select
-																				class="form-control">
-																				<option value="0" selected>All</option>
-																				<option value="1">Popular</option>
-																				<option value="2">Mostly Liked</option>
-																				<option value="3">Most commented</option>
-																			</select>
-																		</div>
-																		<div class="form-group">
-																			<label for="contain">Category</label> <input
-																				class="form-control" type="text" />
-																		</div>
-																		<div class="form-group">
-																			<label for="contain">Contains the words</label> <input
-																				class="form-control" type="text" />
-																		</div>
-																		<button type="submit" class="btn btn-primary">
-																			<span class="glyphicon glyphicon-search"
-																				aria-hidden="true"></span>
-																		</button>
-																	</form>
-																</div>
-															</div>
-															<button type="button"
-																class="btn waves-effect waves-light btn-success"
-																aria-hidden="true">go</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+			<div class="row">
+  <div class="col-lg-4">
+    <div class="input-group">					
+		<select class="custom-select" required>
+      <option value="">select menu</option>
+      <option value="1">제목</option>
+      <option value="2">내용</option>
+      <option value="3">도시</option>
+    </select>
+    </div>
+    </div>
+    <div class="col-lg-5">
+    <div class="input-group">	
+			<input type="text" class="form-control" aria-label="Text input with dropdown button">
+								</div>
+								</div>
+							
+							 <div class="col-lg-3">
+    <div class="input-group">	
+    		<!--   서치 아이콘 -->
+    	<a href="" class="search">
+        <span class="btn btn-danger btn-circle"><i class="fas fa-search"></i></span>
+    	</a>
+    </div>
+    </div>
+							
+								
+								</div>
+								<!-- 검색창 -->
 							</div>
 							<!-- 카드 한개 끝 내용 -->
 
