@@ -669,7 +669,7 @@
 	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- apps -->
 	<script src="resources/dist/js/app.min.js"></script>
-	<script src="resources/dist/js/app.init.light-sidebar.js"></script>
+	<script src="resources/dist/js/app.init.iconbar.js"></script>
 	<script src="resources/dist/js/app-style-switcher.js"></script>
 	<!-- slimscrollbar scrollbar JavaScript -->
 	<script
