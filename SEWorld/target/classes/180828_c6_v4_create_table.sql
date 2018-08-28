@@ -1,4 +1,4 @@
--- 180827_c6_v4_create_table.sql
+-- 180828_c6_v4_create_table.sql
 
 
 CREATE TABLE c6_exbtinfo (
@@ -180,6 +180,7 @@ CREATE TABLE c6_comment (
     content VARCHAR2(2000 BYTE),
     createdDate DATE DEFAULT SYSDATE NOT NULL,
     updatedDate DATE DEFAULT SYSDATE NOT NULL,
+    likes NUMBER DEFAULT 0 NOT NULL,
     CONSTRAINT c6_comment_fk1 FOREIGN KEY(memberId)
     REFERENCES c6_member(memberId),
     CONSTRAINT c6_comment_fk2 FOREIGN KEY(exhibitionId)
@@ -193,80 +194,143 @@ COMMENT ON COLUMN c6_comment.rating IS '평점';
 COMMENT ON COLUMN c6_comment.content IS '코멘트';
 COMMENT ON COLUMN c6_comment.createdDate IS '등록일';
 COMMENT ON COLUMN c6_comment.updatedDate IS '수정일';
+COMMENT ON COLUMN c6_comment.likes IS '좋아요 수';
+
+
+-- 평가하기 좋아요
+CREATE TABLE c6_comment_likes (
+    memberId VARCHAR2(20 BYTE) NOT NULL,
+    exhibitionId CHAR(13 BYTE) NOT NULL,
+    createdDate DATE DEFAULT SYSDATE NOT NULL,
+    CONSTRAINT c6_comment_likes_fk1 FOREIGN KEY(memberId)
+    REFERENCES c6_member(memberId),
+    CONSTRAINT c6_comment_likes_fk2 FOREIGN KEY(exhibitionId)
+    REFERENCES c6_exhibition(exhibitionId),
+    CONSTRAINT c6_comment_likes_pk PRIMARY KEY(memberId, exhibitionId)
+);
+COMMENT ON TABLE c6_comment_likes IS '평가하기 좋아요';
+COMMENT ON COLUMN c6_comment_likes.memberId IS '회원 ID';
+COMMENT ON COLUMN c6_comment_likes.exhibitionId IS '전시정보 ID';
+COMMENT ON COLUMN c6_comment_likes.createdDate IS '등록일';
+
+
+-- 평가하기 댓글
+CREATE TABLE c6_comment_reply (
+    commentReplyId CHAR(8 BYTE) PRIMARY KEY,
+    -- 'CR' + c6_comment_reply_seq(6 BYTE)
+    -- (ex) 'CR100001'
+    writerId VARCHAR2(20 BYTE) NOT NULL,
+    memberId VARCHAR2(20 BYTE) NOT NULL,
+    exhibitionId CHAR(13 BYTE) NOT NULL,
+    content VARCHAR2(2000 BYTE) NOT NULL,
+    createdDate DATE DEFAULT SYSDATE NOT NULL,
+    updatedDate DATE DEFAULT SYSDATE NOT NULL,
+    likes NUMBER DEFAULT 0 NOT NULL,
+    CONSTRAINT c6_comment_reply_fk1 FOREIGN KEY(writerId)
+    REFERENCES c6_member(memberId),
+    CONSTRAINT c6_comment_reply_fk2 FOREIGN KEY(memberId, exhibitionId)
+    REFERENCES c6_comment(memberId, exhibitionId)
+);
+COMMENT ON TABLE c6_comment_reply IS '평가하기 댓글';
+COMMENT ON COLUMN c6_comment_reply.commentReplyId IS '평가하기 댓글 ID';
+COMMENT ON COLUMN c6_comment_reply.writerId IS '댓글회원 ID';
+COMMENT ON COLUMN c6_comment_reply.memberId IS '코멘트 회원 ID';
+COMMENT ON COLUMN c6_comment_reply.exhibitionId IS '코멘트 전시정보 ID';
+COMMENT ON COLUMN c6_comment_reply.content IS '댓글 내용';
+COMMENT ON COLUMN c6_comment_reply.createdDate IS '등록일';
+COMMENT ON COLUMN c6_comment_reply.updatedDate IS '수정일';
+COMMENT ON COLUMN c6_comment_reply.likes IS '좋아요 수';
+
+
+-- 평가하기 댓글 좋아요
+CREATE TABLE c6_comment_reply_likes (
+    memberId VARCHAR2(20 BYTE) NOT NULL,
+    exhibitionId CHAR(13 BYTE) NOT NULL,
+    createdDate DATE DEFAULT SYSDATE NOT NULL,
+    CONSTRAINT c6_comment_reply_likes_fk1 FOREIGN KEY(memberId)
+    REFERENCES c6_member(memberId),
+    CONSTRAINT c6_comment_reply_likes_fk2 FOREIGN KEY(exhibitionId)
+    REFERENCES c6_exhibition(exhibitionId),
+    CONSTRAINT c6_comment_reply_likes_pk PRIMARY KEY(memberId, exhibitionId)
+);
+COMMENT ON TABLE c6_comment_reply_likes IS '평가하기 댓글 좋아요';
+COMMENT ON COLUMN c6_comment_reply_likes.memberId IS '회원 ID';
+COMMENT ON COLUMN c6_comment_reply_likes.exhibitionId IS '전시정보 ID';
+COMMENT ON COLUMN c6_comment_reply_likes.createdDate IS '등록일';
 
 
 -- 문의하기
-CREATE TABLE c6_ask (
-    askId CHAR(19 BYTE) PRIMARY KEY,
-    -- exhibitionId(13 BYTE) + '-A'(2 BYTE) + c6_ask_seq(4 BYTE)
-    -- (ex) 'KR1000-E00001-A0001'
-    memberId VARCHAR2(20 BYTE) NOT NULL,
-    exhibitionId CHAR(13 BYTE) NOT NULL,
-    title VARCHAR2(1000 BYTE) NOT NULL,
-    content VARCHAR2(4000 BYTE) NOT NULL,
-    createdDate DATE DEFAULT SYSDATE NOT NULL,
-    updatedDate DATE DEFAULT SYSDATE NOT NULL,
-    CONSTRAINT c6_ask_fk1 FOREIGN KEY(memberId)
-    REFERENCES c6_member(memberId),
-    CONSTRAINT c6_ask_fk2 FOREIGN KEY(exhibitionId)
-    REFERENCES c6_exhibition(exhibitionId)
-);
-COMMENT ON TABLE c6_ask IS '문의하기';
-COMMENT ON COLUMN c6_ask.askId IS '문의하기 ID';
-COMMENT ON COLUMN c6_ask.memberId IS '회원 ID';
-COMMENT ON COLUMN c6_ask.exhibitionId IS '전시정보 ID';
-COMMENT ON COLUMN c6_ask.title IS '제목';
-COMMENT ON COLUMN c6_ask.content IS '내용';
-COMMENT ON COLUMN c6_ask.createdDate IS '등록일';
-COMMENT ON COLUMN c6_ask.updatedDate IS '수정일';
+-- CREATE TABLE c6_ask (
+--     askId CHAR(19 BYTE) PRIMARY KEY,
+--     -- exhibitionId(13 BYTE) + '-A'(2 BYTE) + c6_ask_seq(4 BYTE)
+--     -- (ex) 'KR1000-E00001-A0001'
+--     memberId VARCHAR2(20 BYTE) NOT NULL,
+--     exhibitionId CHAR(13 BYTE) NOT NULL,
+--     title VARCHAR2(1000 BYTE) NOT NULL,
+--     content VARCHAR2(4000 BYTE) NOT NULL,
+--     createdDate DATE DEFAULT SYSDATE NOT NULL,
+--     updatedDate DATE DEFAULT SYSDATE NOT NULL,
+--     CONSTRAINT c6_ask_fk1 FOREIGN KEY(memberId)
+--     REFERENCES c6_member(memberId),
+--     CONSTRAINT c6_ask_fk2 FOREIGN KEY(exhibitionId)
+--     REFERENCES c6_exhibition(exhibitionId)
+-- );
+-- COMMENT ON TABLE c6_ask IS '문의하기';
+-- COMMENT ON COLUMN c6_ask.askId IS '문의하기 ID';
+-- COMMENT ON COLUMN c6_ask.memberId IS '회원 ID';
+-- COMMENT ON COLUMN c6_ask.exhibitionId IS '전시정보 ID';
+-- COMMENT ON COLUMN c6_ask.title IS '제목';
+-- COMMENT ON COLUMN c6_ask.content IS '내용';
+-- COMMENT ON COLUMN c6_ask.createdDate IS '등록일';
+-- COMMENT ON COLUMN c6_ask.updatedDate IS '수정일';
 
 
 -- 문의하기 첨부파일
-CREATE TABLE c6_ask_file (
-    askFileId CHAR(25 BYTE) PRIMARY KEY,
-    -- askId(19 BYTE) + '-F'(2 BYTE) + c6_ask_file_seq(4 BYTE)
-    -- (ex) 'KR1000-E00001-A0001-F0001'
-    askId CHAR(19 BYTE) NOT NULL,
-    ogFilename VARCHAR2(260 BYTE) NOT NULL,
-    svFilename VARCHAR2(40 BYTE) NOT NULL,
-    fileSize NUMBER,
-    createdDate DATE DEFAULT SYSDATE NOT NULL,
-    updatedDate DATE DEFAULT SYSDATE NOT NULL,
-    CONSTRAINT c6_ask_file_fk FOREIGN KEY(askId)
-    REFERENCES c6_ask(askId)
-);
-COMMENT ON TABLE c6_ask_file IS '문의하기 첨부파일';
-COMMENT ON COLUMN c6_ask_file.askFileId IS '문의하기 첨부파일 ID';
-COMMENT ON COLUMN c6_ask_file.askId IS '문의하기 ID';
-COMMENT ON COLUMN c6_ask_file.ogFilename IS '원본 파일이름';
-COMMENT ON COLUMN c6_ask_file.svFilename IS '저장된 파일이름';
-COMMENT ON COLUMN c6_ask_file.fileSize IS '파일 크기';
-COMMENT ON COLUMN c6_ask_file.createdDate IS '등록일';
-COMMENT ON COLUMN c6_ask_file.updatedDate IS '수정일';
+-- CREATE TABLE c6_ask_file (
+--     askFileId CHAR(25 BYTE) PRIMARY KEY,
+--     -- askId(19 BYTE) + '-F'(2 BYTE) + c6_ask_file_seq(4 BYTE)
+--     -- (ex) 'KR1000-E00001-A0001-F0001'
+--     askId CHAR(19 BYTE) NOT NULL,
+--     ogFilename VARCHAR2(260 BYTE) NOT NULL,
+--     svFilename VARCHAR2(40 BYTE) NOT NULL,
+--     fileSize NUMBER,
+--     createdDate DATE DEFAULT SYSDATE NOT NULL,
+--     updatedDate DATE DEFAULT SYSDATE NOT NULL,
+--     CONSTRAINT c6_ask_file_fk FOREIGN KEY(askId)
+--     REFERENCES c6_ask(askId)
+-- );
+-- COMMENT ON TABLE c6_ask_file IS '문의하기 첨부파일';
+-- COMMENT ON COLUMN c6_ask_file.askFileId IS '문의하기 첨부파일 ID';
+-- COMMENT ON COLUMN c6_ask_file.askId IS '문의하기 ID';
+-- COMMENT ON COLUMN c6_ask_file.ogFilename IS '원본 파일이름';
+-- COMMENT ON COLUMN c6_ask_file.svFilename IS '저장된 파일이름';
+-- COMMENT ON COLUMN c6_ask_file.fileSize IS '파일 크기';
+-- COMMENT ON COLUMN c6_ask_file.createdDate IS '등록일';
+-- COMMENT ON COLUMN c6_ask_file.updatedDate IS '수정일';
 
 
 -- 문의하기 댓글
-CREATE TABLE c6_ask_reply (
-    askReplyId CHAR(25 BYTE) PRIMARY KEY,
-    -- askId(19 BYTE) + '-R'(2 BYTE) + c6_ask_reply_seq(4 BYTE)
-    -- (ex) 'KR1000-E00001-A0001-R0001'
-    askId CHAR(19 BYTE) NOT NULL,
-    memberId VARCHAR2(20 BYTE) NOT NULL,
-    content VARCHAR2(4000 BYTE) NOT NULL,
-    createdDate DATE DEFAULT SYSDATE NOT NULL,
-    updatedDate DATE DEFAULT SYSDATE NOT NULL,
-    CONSTRAINT c6_ask_reply_fk1 FOREIGN KEY(askId)
-    REFERENCES c6_ask(askId),
-    CONSTRAINT c6_ask_reply_fk2 FOREIGN KEY(memberId)
-    REFERENCES c6_member(memberId)
-);
-COMMENT ON TABLE c6_ask_reply IS '문의하기 댓글';
-COMMENT ON COLUMN c6_ask_reply.askReplyId IS '문의하기 댓글 ID';
-COMMENT ON COLUMN c6_ask_reply.askId IS '문의하기 ID';
-COMMENT ON COLUMN c6_ask_reply.memberId IS '회원 ID';
-COMMENT ON COLUMN c6_ask_reply.content IS '내용';
-COMMENT ON COLUMN c6_ask_reply.createdDate IS '등록일';
-COMMENT ON COLUMN c6_ask_reply.updatedDate IS '수정일';
+-- CREATE TABLE c6_ask_reply (
+--     askReplyId CHAR(25 BYTE) PRIMARY KEY,
+--     -- askId(19 BYTE) + '-R'(2 BYTE) + c6_ask_reply_seq(4 BYTE)
+--     -- (ex) 'KR1000-E00001-A0001-R0001'
+--     askId CHAR(19 BYTE) NOT NULL,
+--     memberId VARCHAR2(20 BYTE) NOT NULL,
+--     content VARCHAR2(4000 BYTE) NOT NULL,
+--     createdDate DATE DEFAULT SYSDATE NOT NULL,
+--     updatedDate DATE DEFAULT SYSDATE NOT NULL,
+--     CONSTRAINT c6_ask_reply_fk1 FOREIGN KEY(askId)
+--     REFERENCES c6_ask(askId),
+--     CONSTRAINT c6_ask_reply_fk2 FOREIGN KEY(memberId)
+--     REFERENCES c6_member(memberId)
+-- );
+-- COMMENT ON TABLE c6_ask_reply IS '문의하기 댓글';
+-- COMMENT ON COLUMN c6_ask_reply.askReplyId IS '문의하기 댓글 ID';
+-- COMMENT ON COLUMN c6_ask_reply.askId IS '문의하기 ID';
+-- COMMENT ON COLUMN c6_ask_reply.memberId IS '회원 ID';
+-- COMMENT ON COLUMN c6_ask_reply.content IS '내용';
+-- COMMENT ON COLUMN c6_ask_reply.createdDate IS '등록일';
+-- COMMENT ON COLUMN c6_ask_reply.updatedDate IS '수정일';
 
 
 -- 게시판
@@ -347,9 +411,10 @@ COMMENT ON COLUMN c6_board_reply.updatedDate IS '수정일';
 
 CREATE SEQUENCE c6_cities_seq START WITH 1360 INCREMENT BY 1 MAXVALUE 9999;
 CREATE SEQUENCE c6_exhibition_seq START WITH 15960 INCREMENT BY 1 MAXVALUE 99999;
-CREATE SEQUENCE c6_ask_seq;
-CREATE SEQUENCE c6_ask_file_seq;
-CREATE SEQUENCE c6_ask_reply_seq;
+-- CREATE SEQUENCE c6_ask_seq;
+-- CREATE SEQUENCE c6_ask_file_seq;
+-- CREATE SEQUENCE c6_ask_reply_seq;
 CREATE SEQUENCE c6_board_seq;
 CREATE SEQUENCE c6_board_file_seq;
 CREATE SEQUENCE c6_board_reply_seq;
+CREATE SEQUENCE c6_comment_reply_seq;

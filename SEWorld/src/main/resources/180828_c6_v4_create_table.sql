@@ -219,19 +219,23 @@ CREATE TABLE c6_comment_reply (
     commentReplyId CHAR(8 BYTE) PRIMARY KEY,
     -- 'CR' + c6_comment_reply_seq(6 BYTE)
     -- (ex) 'CR100001'
+    writerId VARCHAR2(20 BYTE) NOT NULL,
     memberId VARCHAR2(20 BYTE) NOT NULL,
     exhibitionId CHAR(13 BYTE) NOT NULL,
     content VARCHAR2(2000 BYTE) NOT NULL,
     createdDate DATE DEFAULT SYSDATE NOT NULL,
     updatedDate DATE DEFAULT SYSDATE NOT NULL,
     likes NUMBER DEFAULT 0 NOT NULL,
-    CONSTRAINT c6_comment_reply_fk FOREIGN KEY(memberId, exhibitionId)
+    CONSTRAINT c6_comment_reply_fk1 FOREIGN KEY(writerId)
+    REFERENCES c6_member(memberId),
+    CONSTRAINT c6_comment_reply_fk2 FOREIGN KEY(memberId, exhibitionId)
     REFERENCES c6_comment(memberId, exhibitionId)
 );
 COMMENT ON TABLE c6_comment_reply IS '평가하기 댓글';
 COMMENT ON COLUMN c6_comment_reply.commentReplyId IS '평가하기 댓글 ID';
-COMMENT ON COLUMN c6_comment_reply.memberId IS '회원 ID';
-COMMENT ON COLUMN c6_comment_reply.exhibitionId IS '전시정보 ID';
+COMMENT ON COLUMN c6_comment_reply.writerId IS '댓글회원 ID';
+COMMENT ON COLUMN c6_comment_reply.memberId IS '코멘트 회원 ID';
+COMMENT ON COLUMN c6_comment_reply.exhibitionId IS '코멘트 전시정보 ID';
 COMMENT ON COLUMN c6_comment_reply.content IS '댓글 내용';
 COMMENT ON COLUMN c6_comment_reply.createdDate IS '등록일';
 COMMENT ON COLUMN c6_comment_reply.updatedDate IS '수정일';
@@ -243,11 +247,11 @@ CREATE TABLE c6_comment_reply_likes (
     memberId VARCHAR2(20 BYTE) NOT NULL,
     exhibitionId CHAR(13 BYTE) NOT NULL,
     createdDate DATE DEFAULT SYSDATE NOT NULL,
-    CONSTRAINT c6_comment_likes_fk1 FOREIGN KEY(memberId)
+    CONSTRAINT c6_comment_reply_likes_fk1 FOREIGN KEY(memberId)
     REFERENCES c6_member(memberId),
-    CONSTRAINT c6_comment_likes_fk2 FOREIGN KEY(exhibitionId)
+    CONSTRAINT c6_comment_reply_likes_fk2 FOREIGN KEY(exhibitionId)
     REFERENCES c6_exhibition(exhibitionId),
-    CONSTRAINT c6_comment_likes_pk PRIMARY KEY(memberId, exhibitionId)
+    CONSTRAINT c6_comment_reply_likes_pk PRIMARY KEY(memberId, exhibitionId)
 );
 COMMENT ON TABLE c6_comment_reply_likes IS '평가하기 댓글 좋아요';
 COMMENT ON COLUMN c6_comment_reply_likes.memberId IS '회원 ID';
