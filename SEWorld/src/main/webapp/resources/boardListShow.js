@@ -1,8 +1,7 @@
 /**
- *Script file for view list of exhibitions 
+ * Script file for view list of user reviews
  */
 
-var selectedCountry = '';
 var currentPage = 1;
 
 $(document).ready(
@@ -14,9 +13,8 @@ function() {
 function init() {
 	$.ajax({
 		method : 'post',
-		url : 'exhibitionListShow',
-		data : 'currentPage=' + currentPage + '&selectedCountry='
-				+ selectedCountry,
+		url : 'reviewListShow',
+		data : 'currentPage=' + currentPage,
 		success : output
 	})
 }
@@ -40,7 +38,7 @@ function output(response) {
 	var pageNavigator = '<a href="javascript:previousPageGroup()">◀</a>';
 
 	$('.totalRecordCount').html(response.totalRecordCount);
-	$('.exhibitionContent').html(response.list);
+	$('.boardContent').html(response.list);
 
 	for (var i = response.navi.startPageGroup; i <= response.navi.endPageGroup; i++) {
 

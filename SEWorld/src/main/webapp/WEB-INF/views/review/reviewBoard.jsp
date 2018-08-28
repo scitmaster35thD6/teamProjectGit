@@ -407,22 +407,16 @@
         <tr>
             <th>board_id</th>
             <th>userID</th>
-            <th>Name</th>
             <th>title</th>
             <th>created date</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td><span class="label label-primary">furaha</span></td>
-            <td>이름</td>
-            <td>제목</td>
-            <td>날짜</td>
-        </tr>
+    <tbody class="boardContent">
         
     </tbody>
-</table>                            
+</table>                       
+
+<div class="pageNavi"></div>     
                                 
                                 <!-- 리뷰 테이블 -->
                                  </div>  

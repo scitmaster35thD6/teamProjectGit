@@ -5,6 +5,12 @@
 
 <mapper namespace="global.sesoc.seworld.dao.BoardMapper">
 
+	<select id="getTotalList" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		c6_board
+	</select>
+
 	<select id="viewAllBoards" resultType="board">
 		SELECT
 		board_id boardId
@@ -18,7 +24,8 @@
 		ORDER BY board_id DESC
 	</select>
 
-	<select id="viewBoardDetail" resultType="board" parameterType="String">
+	<select id="viewBoardDetail" resultType="board"
+		parameterType="String">
 		SELECT
 		board_id boardId
 		,member_id memberId
@@ -27,7 +34,8 @@
 		,content
 		,created_date createdDate
 		,updated_date updatedDate
-		FROM c6_board
+		FROM
+		c6_board
 		WHERE board_id = #{boardId}
 	</select>
 
@@ -67,7 +75,8 @@
 	<delete id="deleteBoard" parameterType="String">
 		DELETE
 		FROM c6_board
-		WHERE board_id = #{boardId}
+		WHERE
+		board_id = #{boardId}
 	</delete>
 
 </mapper>

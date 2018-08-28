@@ -2,6 +2,7 @@ package global.sesoc.seworld.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,9 +14,18 @@ public class BoardRepository {
 	@Autowired
 	SqlSession sqlSession;
 
-	public List<Board> viewAllBoards() {
+
+	public int getTotalList() {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-		return boardMapper.viewAllBoards();
+		int result = boardMapper.getTotalList();
+		return result;
+	}
+	
+	public List<Board> viewAllBoards(int startRecord, int countPerPage) {
+		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
+		RowBounds rb = new RowBounds(startRecord, countPerPage);
+		List<Board> result = boardMapper.viewAllBoards(rb);
+		return result;
 	}
 
 	public Board viewBoardDetail(String boardId) {
