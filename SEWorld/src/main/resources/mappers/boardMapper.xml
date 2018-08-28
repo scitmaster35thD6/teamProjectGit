@@ -11,7 +11,7 @@
 		c6_board
 	</select>
 
-	<select id="viewAllBoards" resultType="board">
+	<select id="viewAllBoards" resultType="board" parameterType="map">
 		SELECT
 		board_id boardId
 		,member_id memberId
@@ -21,6 +21,7 @@
 		,created_date createdDate
 		,updated_date updatedDate
 		FROM c6_board
+		where #{searchCategory} like '%' || #{searchKeyword} || '%'
 		ORDER BY board_id DESC
 	</select>
 

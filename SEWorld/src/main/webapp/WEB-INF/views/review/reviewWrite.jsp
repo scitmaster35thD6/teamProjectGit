@@ -396,18 +396,12 @@
                      <!--  글쓰기 폼 -->
 					
 					 <hr class="m-t-0">
-                            <form class="form-horizontal r-separator">
+                            <form class="form-horizontal r-separator" enctype="multipart/form-data" action="writeReview" method="post">
                                 <div class="card-body">
-                                    <div class="form-group row align-items-center m-b-0">
-                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">User ID</label>
-                                        <div class="col-9 border-left p-b-10 p-t-10">
-                                            <input type="text" class="form-control" id="inputEmail3" placeholder="id here">
-                                        </div>
-                                    </div>
                                     <div class="form-group row align-items-center m-b-0">
                                         <label for="inputEmail3" class="col-3 text-right control-label col-form-label">title</label>
                                         <div class="col-9 border-left p-b-10 p-t-10">
-                                            <input type="text" class="form-control" id="inputEmail3" placeholder="title">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="title" name="title">
                                         </div>
                                     </div>
                                     
@@ -415,7 +409,7 @@
                                         <label for="inputEmail3" class="col-3 text-right control-label col-form-label">category</label>
                                         <div class="col-9 border-left p-b-10 p-t-10">
                                         
-                                <select class="select2 form-control custom-select" style="width: 80%; height:36px;">
+                                <select class="select2 form-control custom-select" style="width: 80%; height:36px;" name="category">
                                     <option>Select</option>
                                         <option value="AK">Review</option>
                                         <option value="HI">Question</option>
@@ -441,13 +435,11 @@
                                     </div>
 
                                     <!-- 첨부파일 -->
-
-
                                   
                                     <div class="form-group row align-items-center m-b-0">
                                         <label for="inputEmail3" class="col-3 text-right control-label col-form-label">contents</label>
                                         <div class="col-9 border-left p-b-10 p-t-10">
-                                            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+                                            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10" name="content"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -455,7 +447,7 @@
                                 <div class="card-body">
                                     <div class="form-group m-b-0 text-right">
                                         <button type="submit" class="btn btn-info waves-effect waves-light">Save</button>
-                                        <button type="submit" class="btn btn-dark waves-effect waves-light">Cancel</button>
+                                        <button type="reset" class="btn btn-dark waves-effect waves-light">Cancel</button>
                                     </div>
                                 </div>
                             </form>

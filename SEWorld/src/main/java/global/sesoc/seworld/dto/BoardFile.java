@@ -5,13 +5,13 @@ public class BoardFile {
 	private String boardId;
 	private String ogFilename;
 	private String svFilename;
-	private int fileSize;
+	private long fileSize;
 	private String createdDate;
 	private String updatedDate;
 	public BoardFile() {
 		super();
 	}
-	public BoardFile(String boardFileId, String boardId, String ogFilename, String svFilename, int fileSize,
+	public BoardFile(String boardFileId, String boardId, String ogFilename, String svFilename, long fileSize,
 			String createdDate, String updatedDate) {
 		super();
 		this.boardFileId = boardFileId;
@@ -46,10 +46,10 @@ public class BoardFile {
 	public void setSvFilename(String svFilename) {
 		this.svFilename = svFilename;
 	}
-	public int getFileSize() {
+	public long getFileSize() {
 		return fileSize;
 	}
-	public void setFileSize(int fileSize) {
+	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
 	}
 	public String getCreatedDate() {

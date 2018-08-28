@@ -1,6 +1,8 @@
 package global.sesoc.seworld.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -21,10 +23,13 @@ public class BoardRepository {
 		return result;
 	}
 	
-	public List<Board> viewAllBoards(int startRecord, int countPerPage) {
+	public List<Board> viewAllBoards(String searchCategory, String searchKeyword, int startRecord, int countPerPage) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
-		List<Board> result = boardMapper.viewAllBoards(rb);
+		Map<String, String> searchItems = new HashMap<String, String>();
+		searchItems.put("searchCategory", searchCategory);
+		searchItems.put("searchKeyword", searchKeyword);
+		List<Board> result = boardMapper.viewAllBoards(searchItems, rb);
 		return result;
 	}
 

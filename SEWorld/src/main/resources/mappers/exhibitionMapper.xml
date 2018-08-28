@@ -5,7 +5,7 @@
 
 <mapper namespace="global.sesoc.seworld.dao.ExhibitionMapper">
 
-	<select id="showExhibitionList" resultType="exhibition" parameterType="String">
+	<select id="showExhibitionList" resultType="exhibition" parameterType="map">
 		SELECT
 		 exhibitionId
 		, exhibitionTitleKor
@@ -20,9 +20,7 @@
 		, updatedDate
 		, dataOffer
 		FROM c6_exhibition
-		<if test="_parameter != null and !_parameter.equals('')">
-		WHERE openingCountry LIKE '%' || #{selectedCountry} || '%'
-		</if>
+		WHERE openingCountry like '%' || #{selectedCountry} || '%' and #{searchCategory} like '%' || #{searchKeyword} || '%'
 		ORDER BY openingTerm DESC
 	</select>
 

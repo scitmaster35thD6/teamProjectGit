@@ -1,6 +1,9 @@
 package global.sesoc.seworld.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +23,14 @@ public class ExhibitionRepository {
 		return result;
 	}
 
-	public List<Exhibition> showExhibitionList(String selectedCountry, int startRecord, int countPerPage) {
+	public List<Exhibition> showExhibitionList(String selectedCountry, String searchCategory, String searchKeyword, int startRecord, int countPerPage) {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
 		RowBounds rb = new RowBounds(startRecord, countPerPage);
-		List<Exhibition> result = mapper.showExhibitionList(selectedCountry, rb);
+		Map<String, String> searchItems = new HashMap<String, String>();
+		searchItems.put("selectedCountry", selectedCountry);
+		searchItems.put("searchCategory", searchCategory);
+		searchItems.put("searchKeyword", searchKeyword);
+		List<Exhibition> result = mapper.showExhibitionList(searchItems, rb);
 		return result;
 	}
 

@@ -40,11 +40,14 @@ public class ExhibitionController {
 
 	@RequestMapping(value = "/exhibitionListShow", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	public @ResponseBody Map<String, Object> exhibitionListShow(
-			@RequestParam(value = "currentPage", defaultValue = "1") int currentPage, String selectedCountry) {
+			@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+			@RequestParam(value = "selectedCountry", defaultValue = "") String selectedCountry,
+			@RequestParam(value = "searchCategory", defaultValue = "exhibitionTitleKor") String searchCategory,
+			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword) {
 		int totalRecordCount = repository.getTotalList(selectedCountry);
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
-		List<Exhibition> exhibitionList = repository.showExhibitionList(selectedCountry, navi.getStartRecord(),
-				navi.getCountPerPage());
+		List<Exhibition> exhibitionList = repository.showExhibitionList(selectedCountry, searchCategory, searchKeyword,
+				navi.getStartRecord(), navi.getCountPerPage());
 
 		Map<String, Object> responseData = new HashMap<String, Object>();
 		String list = "";
@@ -83,17 +86,17 @@ public class ExhibitionController {
 		model.addAttribute("exhibitionDetail", exhibitionDetail);
 		return "exhibition/exhibitionDetail";
 	}
-	
-	/**지도에 전시회 몇개인지 표시하기**/
+
+	/** 지도에 전시회 몇개인지 표시하기 **/
 	@RequestMapping(value = "countcountry", method = RequestMethod.POST)
 	public @ResponseBody Integer countcountry(@RequestBody String openingCountry) throws Exception {
-		System.out.println(openingCountry+"오프팅컨트리");
+		System.out.println(openingCountry + "오프팅컨트리");
 		int result = repository.countCountry(openingCountry);
-		System.out.println(result+"몇개");
+		System.out.println(result + "몇개");
 		return result;
 	}
-		
-	@RequestMapping(value="/vector", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/vector", method = RequestMethod.GET)
 	public String vectorMap() {
 		return "exhibition/vector";
 	}

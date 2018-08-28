@@ -116,7 +116,7 @@
 					<!-- ============================================================== -->
 					<!-- Logo -->
 					<!-- ============================================================== -->
-					<a class="navbar-brand" href="index.html"> <!-- Logo icon --> <b
+					<a class="navbar-brand" href="./"> <!-- Logo icon --> <b
 						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 							<!-- Dark Logo icon --> <img
 							src="resources/assets/images/logo-icon.png" alt="homepage"

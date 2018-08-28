@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import global.sesoc.seworld.dao.BoardRepository;
 import global.sesoc.seworld.dto.Board;
+import global.sesoc.seworld.dto.BoardFile;
 import global.sesoc.seworld.util.PageNavigator;
+import global.sesoc.seworld.util.FileService;
 
 @Controller
 public class ReviewController {
@@ -28,28 +33,32 @@ public class ReviewController {
 	 * 
 	 * @version 0.1
 	 */
-	
+
 	@Autowired
 	BoardRepository repository;
+
+	final String uploadPath = "/boardfile/reviews";
 
 	@RequestMapping(value = "/reviews", method = RequestMethod.GET)
 	public String reviews() {
 		return "review/reviewBoard";
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/reviewListShow", method=RequestMethod.POST, produces = "application/json; charset=utf8")
-	public Map<String, Object> reviewListShow(	@RequestParam(value = "currentPage", defaultValue = "1") int currentPage) {
+	@RequestMapping(value = "/reviewListShow", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	public Map<String, Object> reviewListShow(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+			@RequestParam(value = "searchCategory", defaultValue = "memberId") String searchCategory,
+			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword) {
 		int totalRecordCount = repository.getTotalList();
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
-		List<Board> boardList = repository.viewAllBoards(navi.getStartRecord(),
+		List<Board> boardList = repository.viewAllBoards(searchCategory, searchKeyword, navi.getStartRecord(),
 				navi.getCountPerPage());
 
 		Map<String, Object> responseData = new HashMap<String, Object>();
 		String list = "";
 
 		for (int i = 0; i < boardList.size(); i++) {
-			list += "<tr><td>" + boardList.get(i).getBoardId() + "</td>";
+			list += "<tr><td>" + Integer.toString(navi.getTotalPageCount() - (i + navi.getStartRecord() + 1)) + "</td>";
 			list += "<td>" + boardList.get(i).getMemberId() + "</td>";
 			list += "<td>" + boardList.get(i).getTitle() + "</td>";
 			list += "<td>" + boardList.get(i).getCreatedDate() + "</td></tr>";
@@ -58,8 +67,15 @@ public class ReviewController {
 		responseData.put("totalRecordCount", totalRecordCount);
 		responseData.put("list", list);
 		responseData.put("navi", navi);
-		
+
 		return responseData;
+	}
+
+	@RequestMapping(value = "/readReview", method = RequestMethod.GET)
+	public String readReview(String boardId, Model model) {
+		Board detail = repository.viewBoardDetail(boardId);
+		model.addAttribute("detail", detail);
+		return "";
 	}
 
 	@RequestMapping(value = "/writeReview", method = RequestMethod.GET)
@@ -68,10 +84,29 @@ public class ReviewController {
 	}
 
 	@RequestMapping(value = "/writeReview", method = RequestMethod.POST)
-	public String writeReview(Board board) {
+	public String writeReview(Board board, MultipartFile uploadedFile, HttpSession session) {
+		String userid = (String) session.getAttribute("loginId");
+		board.setMemberId(userid);
+		repository.insertBoard(board);
+
+		String originalfile = uploadedFile.getOriginalFilename();
+		String savedfile = FileService.saveFile(uploadedFile, uploadPath);
+		BoardFile boardFile = new BoardFile();
+		boardFile.setOgFilename(originalfile);
+		boardFile.setSvFilename(savedfile);
+		boardFile.setFileSize(uploadedFile.getSize());
+
+		// private String boardFileId;
+		// private String boardId;
+		// private String ogFilename;
+		// private String svFilename;
+		// private int fileSize;
+		// private String createdDate;
+		// private String updatedDate;
+
 		return "redirect:/reviews";
 	}
-	
+
 	@RequestMapping(value = "/updateReview", method = RequestMethod.GET)
 	public String updateReview(Model model) {
 		return "review/reviewWrite";
