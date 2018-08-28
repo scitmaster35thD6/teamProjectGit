@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -22,7 +24,6 @@
     <!-- Custom CSS 새로 -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">
     
-    <!-- 탭 스타일 -->
     
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -197,7 +198,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3  m-b-30">
+                                    
+                         <div class="col-lg-3  m-b-30">
                                         <h4 class="m-b-20">Recent Comments</h4>
                                         <!-- Contact -->
                               <div class="d-flex flex-row comment-row m-t-0">
@@ -244,6 +246,10 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-right">
                         <!-- create new -->
+                    
+                       
+                       
+                       
                        
                         
                          <!-- ============================================================== -->
@@ -294,7 +300,7 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li>
-                            <!-- User Profile-->
+                            <!--로그인 햇을 경우 User Profile-->
                             <div class="user-profile d-flex no-block dropdown m-t-20">
                                 <div class="user-pic"><img src="resources/assets/images/users/user.png" alt="users" class="rounded-circle" width="40" /></div>
                                 <div class="user-content hide-menu m-l-10">
@@ -319,7 +325,7 @@
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Exhibition </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="boardList" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> List </span></a></li>
+                                <li class="sidebar-item"><a href="exhibitionList" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> List </span></a></li>
                                 <li class="sidebar-item"><a href="vector" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> vectorMap </span></a></li>
                                 <li class="sidebar-item"><a href="bestList" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Best Exhb </span></a></li>
                                 <li class="sidebar-item"><a href="attendForm" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Attend </span></a></li>
@@ -328,15 +334,15 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-tune-vertical"></i><span class="hide-menu">Review,Q&A </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="review" class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span class="hide-menu"> User Review </span></a></li>
+                                <li class="sidebar-item"><a href="reviews" class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span class="hide-menu"> User Review </span></a></li>
                                 <li class="sidebar-item"><a href="question" class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span class="hide-menu"> Question </span></a></li>
-                                <li class="sidebar-item"><a href="boardWrite" class="sidebar-link"><i class="mdi mdi-view-day"></i><span class="hide-menu"> WriteForm </span></a></li>
+                                <li class="sidebar-item"><a href="writeReview" class="sidebar-link"><i class="mdi mdi-view-day"></i><span class="hide-menu"> WriteForm </span></a></li>
                             </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-content-copy"></i><span class="hide-menu">User Board</span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> My Exhibition</span></a></li>
-                                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Calendar </span></a></li>
+                                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-format-align-left"></i><span class="hide-menu"> My Exhibition</span></a></li>
+                                <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="mdi mdi-format-align-right"></i><span class="hide-menu"> Calendar </span></a></li>
                             </ul>
                         </li>
                         
@@ -381,62 +387,55 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-   
-   
-   
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
-                            <div class="card">
+                        <div class="card">
                             <div class="card-body">
-                            <!-- 탭으로 구분하깅 -->
-                             
-		<!-- Nav tabs -->
-<ul class="nav nav-tabs customtab" role="tablist">
-    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home2" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Home</span></a> </li>
-    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile2" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Profile</span></a> </li>
-    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages2" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Messages</span></a> </li>
-</ul>
-<!-- Tab panes -->
-<div class="tab-content">
-    <div class="tab-pane active" id="home2" role="tabpanel">
-        <div class="p-20">
+                                <h4 class="card-title">내용 시작</h4>
+                                <h6 class="card-subtitle">table.</h6>
+                         </div><!-- card body -->
+                     <!--  글쓰기 폼 -->
+					
+					 <hr class="m-t-0">
+                                <div class="card-body">
+                                <!-- 리뷰 테이블 -->
+					    <table class="table">
+    <thead>
+        <tr>
+            <th>board_id</th>
+            <th>userID</th>
+            <th>Name</th>
+            <th>title</th>
+            <th>created date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><span class="label label-primary">furaha</span></td>
+            <td>이름</td>
+            <td>제목</td>
+            <td>날짜</td>
+        </tr>
         
-        <!-- 월드 맵 -->
-           		
-                                <h4 class="card-title">World Map</h4>
-                                <div id="world-map-markers" style="height: 700px;"></div>
-                           
-    </div>
-    
-    <div class="tab-pane  p-20" id="profile2" role="tabpanel">
-    <!-- 미국지도 -->
-                                <h4 class="card-title">USA</h4>
-                                <div id="usa" style="height: 700px;"></div>
-    <!-- 미국지도 -->
-    
-    
-    </div>
-    <div class="tab-pane p-20" id="messages2" role="tabpanel">
-    
-                                <h4 class="card-title">India</h4>
-                                <div id="india" style="height: 450px;"></div>
-    </div>     
-                        </div>
-                            <!-- 탭으로 구분하깅 -->
+    </tbody>
+</table>                            
+                                
+                                <!-- 리뷰 테이블 -->
+                                 </div>  
+						
+
                             
-            </div>            
-                            
-                     
-                      </div><!-- 카드 body -->
-                        
-        </div><!-- 카드 -->
-                     
+                        </div><!-- card -->
                     </div>
+                    
+                    
+                  
+                   
                 </div>
-                
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -455,7 +454,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-            SCIT 6조 Project
+       SCIT Poject
 </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -471,18 +470,28 @@
     <!-- ============================================================== -->
     <!-- customizer Panel -->
     <!-- ============================================================== -->
-    <!-- aside -->
+     <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    
+    </a>
+    </aside>
+    
     <div class="chat-windows"></div>
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+     <script>
+     // Basic grid
+           
+    
+    
+            </script>
     <script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- apps -->
     <script src="resources/dist/js/app.min.js"></script>
-     <script src="resources/dist/js/app.init.iconbar.js"></script>
+    <script src="resources/dist/js/app.init.iconbar.js"></script>
     <script src="resources/dist/js/app-style-switcher.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
@@ -493,14 +502,12 @@
     <script src="resources/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="resources/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    
+    <!-- 벡터지도 -->
     <!-- This Page JS -->
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-in-mill.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-us-aea-en.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-uk-mill-en.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-au-mill.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jvectormap.custom.js"></script>
+    
+    
 </body>
 
 </html>

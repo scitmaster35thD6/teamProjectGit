@@ -392,14 +392,15 @@
 								class="mdi mdi-tune-vertical"></i><span class="hide-menu">Review,Q&A
 							</span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
-								<li class="sidebar-item"><a
-									href="sidebar-type-minisidebar.html" class="sidebar-link"><i
-										class="mdi mdi-view-quilt"></i><span class="hide-menu">
-											User Review </span></a></li>
-								<li class="sidebar-item"><a
-									href="sidebar-type-iconsidebar.html" class="sidebar-link"><i
-										class="mdi mdi-view-parallel"></i><span class="hide-menu">
-											Question </span></a></li>
+								<li class="sidebar-item"><a href="reviews"
+									class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span
+										class="hide-menu"> User Review </span></a></li>
+								<li class="sidebar-item"><a href="question"
+									class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span
+										class="hide-menu"> Question </span></a></li>
+								<li class="sidebar-item"><a href="writeReview"
+									class="sidebar-link"><i class="mdi mdi-view-day"></i><span
+										class="hide-menu"> WriteForm </span></a></li>
 							</ul></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link has-arrow waves-effect waves-dark"
@@ -582,18 +583,15 @@
 							</div>
 							<!-- 카드 한개 끝 내용 -->
 
-
-
 							</ul>
 
+							<hr class="m-t-0">
+							<!-- 테이블 껍데기 -->
+							<strong id="counter-coffee" class="totalRecordCount"></strong>
+							<span class="text">개의 결과를 찾았습니다.</span>
+							<div class="card-body">
+								<table class="table">
 
-
-
-							<div id="Ex_table" class="m-t-40">
-								<!-- 테이블 껍데기 -->
-								<strong id="counter-coffee" class="totalRecordCount"></strong>
-								<span class="text">개의 결과를 찾았습니다.</span>
-								<table class="table table-bordered">
 									<thead>
 										<tr>
 											<th>제목 Eng</th>
@@ -607,56 +605,40 @@
 									</tbody>
 								</table>
 							</div>
-						</div>
-					</div>
-				</div>
-				<!-- 페이지 -->
-				<section class="pageNavi">
-				</section>
-
-				<div class="col-12">
-					<div class="card">
-						<div class="card-body">
-							<h4 class="card-title">일반 유저에게 보이는 테이블</h4>
-							<h6 class="card-subtitle">Grid with filtering, editing,
-								inserting, deleting, sorting and paging. Data provided by
-								controller.</h6>
-
-							<!-- 벡터지도 넣기 -->
-
-
-
-
-							<!-- 벡터지도 넣기 -->
-
+							<div class="pageNavi"></div>
+							<!-- 테이블 카드 -->
 
 						</div>
 					</div>
 				</div>
-
-
 			</div>
-			<!-- ============================================================== -->
-			<!-- End PAge Content -->
-			<!-- ============================================================== -->
-			<!-- ============================================================== -->
-			<!-- Right sidebar -->
-			<!-- ============================================================== -->
-			<!-- .right-sidebar -->
-			<!-- ============================================================== -->
-			<!-- End Right sidebar -->
-			<!-- ============================================================== -->
+
+
+
+
+
 		</div>
 		<!-- ============================================================== -->
-		<!-- End Container fluid  -->
+		<!-- End PAge Content -->
 		<!-- ============================================================== -->
 		<!-- ============================================================== -->
-		<!-- footer -->
+		<!-- Right sidebar -->
 		<!-- ============================================================== -->
-		<footer class="footer text-center"> SCIT Poject </footer>
+		<!-- .right-sidebar -->
 		<!-- ============================================================== -->
-		<!-- End footer -->
+		<!-- End Right sidebar -->
 		<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Container fluid  -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- footer -->
+	<!-- ============================================================== -->
+	<footer class="footer text-center"> SCIT Poject </footer>
+	<!-- ============================================================== -->
+	<!-- End footer -->
+	<!-- ============================================================== -->
 	</div>
 	<!-- ============================================================== -->
 	<!-- End Page wrapper  -->

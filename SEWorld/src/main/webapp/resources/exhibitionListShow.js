@@ -2,7 +2,7 @@
  * 
  */
 
-var selectedCountry = '미국';
+var selectedCountry = '';
 var currentPage = 1;
 
 $(document).ready(

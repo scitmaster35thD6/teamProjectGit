@@ -321,7 +321,7 @@
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Exhibition </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="boardList" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> List </span></a></li>
+                                <li class="sidebar-item"><a href="exhibitionList" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> List </span></a></li>
                                 <li class="sidebar-item"><a href="vector" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> vectorMap </span></a></li>
                                 <li class="sidebar-item"><a href="bestList" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Best Exhb </span></a></li>
                                 <li class="sidebar-item"><a href="attendForm" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Attend </span></a></li>
@@ -330,9 +330,9 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-tune-vertical"></i><span class="hide-menu">Review,Q&A </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="review" class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span class="hide-menu"> User Review </span></a></li>
+                                <li class="sidebar-item"><a href="reviews" class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span class="hide-menu"> User Review </span></a></li>
                                 <li class="sidebar-item"><a href="question" class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span class="hide-menu"> Question </span></a></li>
-                                <li class="sidebar-item"><a href="boardWrite" class="sidebar-link"><i class="mdi mdi-view-day"></i><span class="hide-menu"> WriteForm </span></a></li>
+                                <li class="sidebar-item"><a href="writeReview" class="sidebar-link"><i class="mdi mdi-view-day"></i><span class="hide-menu"> WriteForm </span></a></li>
                             </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-content-copy"></i><span class="hide-menu">User Board</span></a>
@@ -392,142 +392,78 @@
                             <div class="card-body">
                                 <h4 class="card-title">내용 시작</h4>
                                 <h6 class="card-subtitle">table.</h6>
-                                
-                      <!-- 지도 모달 창 -->          
-                       <ul class="navbar-nav float-left mr-auto"><li>
-                       <!-- 모달 버튼 -->
-          <div class="p-l-30 p-10">
-          <button type="button" class="btn btn-sm btn-success btn-rounded" data-toggle="modal" data-target=".bd-example-modal-lg">
- 		 Select Region
-  			</button>
-          
-          <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-     
-     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <!-- 벡터지도 넣기 -->
-      				
-      
-      <!-- 벡터지도 넣기 -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-     
-     
-    </div>
-  </div>
-</div>
-      <!-- Modal -->    
-          
-          
-          
-          </div>          
-                       </li>
-                       
-                       
-                       
-                       
-                       
-                    <!-- 지도 모달 창 -->     
-                       
-                       
-                       <li>선택 옵션 놓일 자리</li>
-                       </ul>
-                       
-                       <!-- 검색창 -->
-                        <ul class="navbar-nav float-right">
-                        
-                        
-                        <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-            <div class="input-group" id="adv-search">
-                <input type="text" class="form-control" placeholder="Search for snippets" />
-                <div class="input-group-btn">
-                    <div class="btn-group" role="group">
-                        <div class="dropdown dropdown-lg">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" role="form">
-                                  <div class="form-group">
-                                    <label for="filter">Filter by</label>
-                                    <select class="form-control">
-                                        <option value="0" selected>All</option>
-                                        <option value="1">Popular</option>
-                                        <option value="2">Mostly Liked</option>
-                                        <option value="3">Most commented</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="contain">Category</label>
-                                    <input class="form-control" type="text" />
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="contain">Contains the words</label>
-                                    <input class="form-control" type="text" />
-                                  </div>
-                                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                </form>
-                            </div>
-                        </div>
-                        <button type="button" class="btn waves-effect waves-light btn-success" aria-hidden="true">go</button>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-	</div>
-</div><!-- 카드 한개 끝 내용 -->
-                        
-                        
-                        
-                       </ul>         
+                         </div><!-- card body -->
+                     <!--  글쓰기 폼 -->
+					
+					 <hr class="m-t-0">
+                            <form class="form-horizontal r-separator">
+                                <div class="card-body">
+                                    <div class="form-group row align-items-center m-b-0">
+                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">User ID</label>
+                                        <div class="col-9 border-left p-b-10 p-t-10">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="id here">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center m-b-0">
+                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">title</label>
+                                        <div class="col-9 border-left p-b-10 p-t-10">
+                                            <input type="text" class="form-control" id="inputEmail3" placeholder="title">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row align-items-center m-b-0">
+                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">category</label>
+                                        <div class="col-9 border-left p-b-10 p-t-10">
+                                        
+                                <select class="select2 form-control custom-select" style="width: 80%; height:36px;">
+                                    <option>Select</option>
+                                        <option value="AK">Review</option>
+                                        <option value="HI">Question</option>
+                                </select>
+                                           
+                                           
+                                        </div>
+                                    </div>
+                                    <!-- 첨부파일 -->
+								<div class="form-group row align-items-center m-b-0">
+                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">Select File</label>
+                                        <div class="col-9 border-left p-b-10 p-t-10">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Upload</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 첨부파일 -->
 
 
-
-
-               <hr class="m-t-0"><!-- 테이블 껍데기 -->
-                    <strong id="counter-coffee" class="number">${totalRecordCount}</strong> <span
-								class="text">개의 결과를 찾았습니다.</span>
-                    <div class="card-body">
-                    <table class="table">
-                    	
-											<thead>
-												<tr>
-													<th>제목 Eng</th>
-													<th>제목 Kor</th>
-													<th>국가</th>
-													<th>도시</th>
-													<th>시작일</th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach var="eList" items="${exhibitionList}">
-													<tr>
-														<td class="title">${eList.exhibition_title_eng}</td>
-														<td class="title">${eList.exhibition_title_kor}</td>
-														<td>${eList.opening_country}</td>
-														<td>${eList.opening_city}</td>
-														<td>${fn:substring(eList.opening_term, 0, 8)}</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-                    	</div><!-- 테이블 카드 -->
-                                
+                                  
+                                    <div class="form-group row align-items-center m-b-0">
+                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">contents</label>
+                                        <div class="col-9 border-left p-b-10 p-t-10">
+                                            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                                <hr>
+                                <div class="card-body">
+                                    <div class="form-group m-b-0 text-right">
+                                        <button type="submit" class="btn btn-info waves-effect waves-light">Save</button>
+                                        <button type="submit" class="btn btn-dark waves-effect waves-light">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+						
+						
+
+                            
+                        </div><!-- card -->
                     </div>
                     
                     
