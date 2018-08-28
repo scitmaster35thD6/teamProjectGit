@@ -8,11 +8,12 @@ public class Board {
 	private String content;
 	private String createdDate;
 	private String updatedDate;
+	private String exhibitionId;
 	public Board() {
 		super();
 	}
 	public Board(String boardId, String memberId, String category, String title, String content, String createdDate,
-			String updatedDate) {
+			String updatedDate, String exhibitionId) {
 		super();
 		this.boardId = boardId;
 		this.memberId = memberId;
@@ -21,6 +22,7 @@ public class Board {
 		this.content = content;
 		this.createdDate = createdDate;
 		this.updatedDate = updatedDate;
+		this.exhibitionId = exhibitionId;
 	}
 	public String getBoardId() {
 		return boardId;
@@ -64,9 +66,16 @@ public class Board {
 	public void setUpdatedDate(String updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+	public String getExhibitionId() {
+		return exhibitionId;
+	}
+	public void setExhibitionId(String exhibitionId) {
+		this.exhibitionId = exhibitionId;
+	}
 	@Override
 	public String toString() {
 		return "Board [boardId=" + boardId + ", memberId=" + memberId + ", category=" + category + ", title=" + title
-				+ ", content=" + content + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + "]";
+				+ ", content=" + content + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate
+				+ ", exhibitionId=" + exhibitionId + "]";
 	}
 }

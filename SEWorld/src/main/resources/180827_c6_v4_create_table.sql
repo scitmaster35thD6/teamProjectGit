@@ -280,8 +280,11 @@ CREATE TABLE c6_board (
     content VARCHAR2(4000 BYTE) NOT NULL,
     createdDate DATE DEFAULT SYSDATE NOT NULL,
     updatedDate DATE DEFAULT SYSDATE NOT NULL,
-    CONSTRAINT c6_board_fk FOREIGN KEY(memberId)
-    REFERENCES c6_member(memberId)
+    exhibitionId CHAR(13 BYTE),
+    CONSTRAINT c6_board_fk1 FOREIGN KEY(memberId)
+    REFERENCES c6_member(memberId),
+    CONSTRAINT c6_board_fk2 FOREIGN KEY(exhibitionId)
+    REFERENCES c6_exhibition(exhibitionId),
 );
 COMMENT ON TABLE c6_board IS '게시판';
 COMMENT ON COLUMN c6_board.boardId IS '게시판 ID';
@@ -291,6 +294,7 @@ COMMENT ON COLUMN c6_board.title IS '제목';
 COMMENT ON COLUMN c6_board.content IS '내용';
 COMMENT ON COLUMN c6_board.createdDate IS '등록일';
 COMMENT ON COLUMN c6_board.updatedDate IS '수정일';
+COMMENT ON COLUMN c6_board.exhibitionId IS '전시회 ID';
 
 
 -- 게시판 첨부파일
@@ -341,11 +345,11 @@ COMMENT ON COLUMN c6_board_reply.createdDate IS '등록일';
 COMMENT ON COLUMN c6_board_reply.updatedDate IS '수정일';
 
 
---CREATE SEQUENCE c6_cities_seq START WITH 1360 INCREMENT BY 1 MAXVALUE 9999;
---CREATE SEQUENCE c6_exhibition_seq START WITH 159600000 INCREMENT BY 1 MAXVALUE 99999;
---CREATE SEQUENCE c6_ask_seq;
---CREATE SEQUENCE c6_ask_file_seq;
---CREATE SEQUENCE c6_ask_reply_seq;
---CREATE SEQUENCE c6_board_seq;
---CREATE SEQUENCE c6_board_file_seq;
---CREATE SEQUENCE c6_board_reply_seq;
+CREATE SEQUENCE c6_cities_seq START WITH 1360 INCREMENT BY 1 MAXVALUE 9999;
+CREATE SEQUENCE c6_exhibition_seq START WITH 15960 INCREMENT BY 1 MAXVALUE 99999;
+CREATE SEQUENCE c6_ask_seq;
+CREATE SEQUENCE c6_ask_file_seq;
+CREATE SEQUENCE c6_ask_reply_seq;
+CREATE SEQUENCE c6_board_seq;
+CREATE SEQUENCE c6_board_file_seq;
+CREATE SEQUENCE c6_board_reply_seq;
