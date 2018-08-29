@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html dir="ltr">
 
@@ -23,6 +24,12 @@
 <![endif]-->
 </head>
 
+<style type="text/css">
+	p#msg {
+		color : red;
+	}
+</style>
+	
 <body>
     <div class="main-wrapper">
         <!-- ============================================================== -->
@@ -50,23 +57,28 @@
                     <!-- Form -->
                     <div class="row">
                         <div class="col-12">
-                            <form class="form-horizontal m-t-20" id="loginform" action="index.html">
+                        	<%-- 쿠키 존재 여부 확인--%>
+							<c:if test="${cookie.containsKey('saveid')}">
+								<c:set var="checked" value="checked" />
+							</c:if>
+							<p id="msg">${message}</p>
+                            <form class="form-horizontal m-t-20" id="loginFormTag" action="login" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="memberId" value="${cookie['saveid'].value}" />
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" name="memberPwd" value="${cookie['savepw'].value}" />
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1" name="saveid" ${checked}>
                                             <label class="custom-control-label" for="customCheck1">Remember me</label>
                                             <a href="javascript:void(0)" id="to-recover" class="text-dark float-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a>
                                         </div>
@@ -74,7 +86,7 @@
                                 </div>
                                 <div class="form-group text-center">
                                     <div class="col-xs-12 p-b-20">
-                                        <button class="btn btn-block btn-lg btn-info" type="submit">Log In</button>
+                                        <button id="loginBtn" class="btn btn-block btn-lg btn-info" type="submit">Log In</button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -106,7 +118,7 @@
                             <!-- email -->
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <input class="form-control form-control-lg" type="email" required="" placeholder="Username">
+                                    <input class="form-control form-control-lg" type="email" placeholder="Username">
                                 </div>
                             </div>
                             <!-- pwd -->
@@ -146,15 +158,15 @@
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
-    <script>
+    <script type="text/javascript">
     $('[data-toggle="tooltip"]').tooltip();
-    $(".preloader").fadeOut();
+    $('.preloader').fadeOut();
     // ============================================================== 
     // Login and Recover Password 
     // ============================================================== 
-    $('#to-recover').on("click", function() {
-        $("#loginform").slideUp();
-        $("#recoverform").fadeIn();
+    $('#to-recover').on('click', function() {
+        $('#loginform').slideUp();
+        $('#recoverform').fadeIn();
     });
     </script>
 </body>

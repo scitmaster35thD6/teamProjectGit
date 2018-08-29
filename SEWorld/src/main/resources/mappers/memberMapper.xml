@@ -5,7 +5,7 @@
 
 <mapper namespace="global.sesoc.seworld.dao.MemberMapper">
 
-	<select id="selectOneMember" parameterType="String" resultType="Member">
+	<select id="selectOneMember" parameterType="Member" resultType="Member">
 		SELECT
 		memberId
 		,memberPwd
@@ -16,6 +16,7 @@
 		,regDate
 		FROM c6_member
 		WHERE memberId = #{memberId}
+		  AND memberPwd = #{memberPwd}
 	</select>
 
 	<insert id="insertOneMember" parameterType="Member">

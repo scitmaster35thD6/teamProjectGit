@@ -11,9 +11,9 @@ public class MemberRepository {
 	@Autowired
 	SqlSession sqlSession;
 
-	public Member selectOneMember(String memberId) {
+	public Member selectOneMember(Member member) {
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-		return memberMapper.selectOneMember(memberId);
+		return memberMapper.selectOneMember(member);
 	}
 
 	public int insertOneMember(Member member) {

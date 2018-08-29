@@ -4,12 +4,12 @@ import global.sesoc.seworld.dto.Member;
 
 public interface MemberMapper {
 	/**
-	 * 회원 ID로 검색해 회원정보를 조회한다.
+	 * 회원 ID와 비밀번호로 검색해 회원정보를 조회한다.
 	 * 
 	 * @param memberId
 	 * @return 하나의 Member 객체
 	 */
-	public abstract Member selectOneMember(String memberId);
+	public abstract Member selectOneMember(Member member);
 
 	/**
 	 * 회원가입
