@@ -15,6 +15,6 @@ public class MemberController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String home() {
-		return "login";
+		return "member/login";
 	}
 }
