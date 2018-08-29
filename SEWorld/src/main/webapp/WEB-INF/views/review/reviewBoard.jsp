@@ -77,7 +77,8 @@
 
 
 </style>
-
+<script type="text/javascript" src="resources/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="resources/boardListShow.js"></script>
 </head>
 
 <body>

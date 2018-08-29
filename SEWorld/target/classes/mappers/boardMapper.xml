@@ -13,43 +13,43 @@
 
 	<select id="viewAllBoards" resultType="board" parameterType="map">
 		SELECT
-		board_id boardId
-		,member_id memberId
+		 boardId
+		, memberId
 		,category
 		,title
 		,content
-		,created_date createdDate
-		,updated_date updatedDate
+		, createdDate
+		, updatedDate
 		FROM c6_board
 		where #{searchCategory} like '%' || #{searchKeyword} || '%'
-		ORDER BY board_id DESC
+		ORDER BY boardid DESC
 	</select>
 
 	<select id="viewBoardDetail" resultType="board"
 		parameterType="String">
 		SELECT
-		board_id boardId
-		,member_id memberId
+		 boardId
+		, memberId
 		,category
 		,title
 		,content
-		,created_date createdDate
-		,updated_date updatedDate
+		, createdDate
+		, updatedDate
 		FROM
 		c6_board
-		WHERE board_id = #{boardId}
+		WHERE boardid = #{boardId}
 	</select>
 
 	<insert id="insertBoard" parameterType="board">
 		INSERT INTO c6_board
 		(
-		board_id
-		,member_id
+		boardid
+		,memberid
 		,category
 		,title
 		,content
-		,created_date
-		,updated_date
+		,createddate
+		,updateddate
 		)
 		VALUES
 		(
@@ -69,15 +69,15 @@
 		category = #{category}
 		,title = #{title}
 		,content = #{content}
-		,updated_date = SYSDATE
-		WHERE board_id = #{boardId}
+		,updateddate = SYSDATE
+		WHERE boardid = #{boardId}
 	</update>
 
 	<delete id="deleteBoard" parameterType="String">
 		DELETE
 		FROM c6_board
 		WHERE
-		board_id = #{boardId}
+		boardid = #{boardId}
 	</delete>
 
 </mapper>

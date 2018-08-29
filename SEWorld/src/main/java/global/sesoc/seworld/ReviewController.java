@@ -58,7 +58,7 @@ public class ReviewController {
 		String list = "";
 
 		for (int i = 0; i < boardList.size(); i++) {
-			list += "<tr><td>" + Integer.toString(navi.getTotalPageCount() - (i + navi.getStartRecord() + 1)) + "</td>";
+			list += "<tr><td>" + Integer.toString(navi.getTotalPageCount() - (i + navi.getStartRecord())+1) + "</td>";
 			list += "<td>" + boardList.get(i).getMemberId() + "</td>";
 			list += "<td>" + boardList.get(i).getTitle() + "</td>";
 			list += "<td>" + boardList.get(i).getCreatedDate() + "</td></tr>";
