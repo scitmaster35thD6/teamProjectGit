@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import global.sesoc.seworld.dao.BoardFileRepository;
 import global.sesoc.seworld.dao.BoardRepository;
 import global.sesoc.seworld.dto.Board;
 import global.sesoc.seworld.dto.BoardFile;
@@ -35,7 +36,8 @@ public class ReviewController {
 	 */
 
 	@Autowired
-	BoardRepository repository;
+	BoardRepository boardRepository;
+	BoardFileRepository boardFileRepository;
 
 	final String uploadPath = "/boardfile/reviews";
 
@@ -49,16 +51,17 @@ public class ReviewController {
 	public Map<String, Object> reviewListShow(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
 			@RequestParam(value = "searchCategory", defaultValue = "memberId") String searchCategory,
 			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword) {
-		int totalRecordCount = repository.getTotalList();
+		int totalRecordCount = boardRepository.getTotalList();
 		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
-		List<Board> boardList = repository.viewAllBoards(searchCategory, searchKeyword, navi.getStartRecord(),
+		List<Board> boardList = boardRepository.viewAllBoards(searchCategory, searchKeyword, navi.getStartRecord(),
 				navi.getCountPerPage());
 
 		Map<String, Object> responseData = new HashMap<String, Object>();
 		String list = "";
 
 		for (int i = 0; i < boardList.size(); i++) {
-			list += "<tr><td>" + Integer.toString(navi.getTotalPageCount() - (i + navi.getStartRecord())+1) + "</td>";
+			list += "<tr onclick=\"location.href='readReview?boardId=" + boardList.get(i).getBoardId() + "'\"><td>"
+					+ Integer.toString(navi.getTotalPageCount() - (i + navi.getStartRecord()) + 1) + "</td>";
 			list += "<td>" + boardList.get(i).getMemberId() + "</td>";
 			list += "<td>" + boardList.get(i).getTitle() + "</td>";
 			list += "<td>" + boardList.get(i).getCreatedDate() + "</td></tr>";
@@ -73,9 +76,9 @@ public class ReviewController {
 
 	@RequestMapping(value = "/readReview", method = RequestMethod.GET)
 	public String readReview(String boardId, Model model) {
-		Board detail = repository.viewBoardDetail(boardId);
+		Board detail = boardRepository.viewBoardDetail(boardId);
 		model.addAttribute("detail", detail);
-		return "";
+		return "review/reviewDetail";
 	}
 
 	@RequestMapping(value = "/writeReview", method = RequestMethod.GET)
@@ -87,22 +90,16 @@ public class ReviewController {
 	public String writeReview(Board board, MultipartFile uploadedFile, HttpSession session) {
 		String userid = (String) session.getAttribute("loginId");
 		board.setMemberId(userid);
-		repository.insertBoard(board);
+		boardRepository.insertBoard(board);
 
 		String originalfile = uploadedFile.getOriginalFilename();
 		String savedfile = FileService.saveFile(uploadedFile, uploadPath);
 		BoardFile boardFile = new BoardFile();
+		boardFile.setBoardId(boardRepository.getBoardId(userid));
 		boardFile.setOgFilename(originalfile);
 		boardFile.setSvFilename(savedfile);
 		boardFile.setFileSize(uploadedFile.getSize());
-
-		// private String boardFileId;
-		// private String boardId;
-		// private String ogFilename;
-		// private String svFilename;
-		// private int fileSize;
-		// private String createdDate;
-		// private String updatedDate;
+		boardFileRepository.insertOneBoardFile(boardFile);
 
 		return "redirect:/reviews";
 	}
@@ -114,13 +111,13 @@ public class ReviewController {
 
 	@RequestMapping(value = "/updateReview", method = RequestMethod.POST)
 	public String updateReview(Board board) {
-		repository.updateBoard(board);
+		boardRepository.updateBoard(board);
 		return "redirect:/review";
 	}
 
 	@RequestMapping(value = "/deleteReview", method = RequestMethod.POST)
 	public String deleteReview(Board board) {
-		repository.deleteBoard(board);
+		boardRepository.deleteBoard(board);
 		return "redirect:/review";
 	}
 }

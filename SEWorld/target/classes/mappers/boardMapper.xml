@@ -11,33 +11,45 @@
 		c6_board
 	</select>
 
-	<select id="viewAllBoards" resultType="board" parameterType="map">
+	<select id="viewAllBoards" resultType="board"
+		parameterType="map">
 		SELECT
-		 boardId
+		boardId
 		, memberId
 		,category
 		,title
 		,content
-		, createdDate
+		,
+		createdDate
 		, updatedDate
-		FROM c6_board
-		where #{searchCategory} like '%' || #{searchKeyword} || '%'
+		FROM
+		c6_board
+		where #{searchCategory} like '%'
+		|| #{searchKeyword} || '%'
 		ORDER BY boardid DESC
 	</select>
 
 	<select id="viewBoardDetail" resultType="board"
 		parameterType="String">
 		SELECT
-		 boardId
+		boardId
 		, memberId
 		,category
 		,title
 		,content
-		, createdDate
+		,
+		createdDate
 		, updatedDate
 		FROM
 		c6_board
 		WHERE boardid = #{boardId}
+	</select>
+
+	<select id="getBoardId" resultType="String"
+		parameterType="String">
+		select boardid from
+		c6_board where memberid = #{memberId}
+		and rownum=1
 	</select>
 
 	<insert id="insertBoard" parameterType="board">

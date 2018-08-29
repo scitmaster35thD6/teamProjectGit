@@ -37,6 +37,12 @@ public class BoardRepository {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
 		return boardMapper.viewBoardDetail(boardId);
 	}
+	
+	public String getBoardId(String memberId) {
+		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
+		String result = boardMapper.getBoardId(memberId);
+		return result;
+	}
 
 	public int insertBoard(Board board) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);

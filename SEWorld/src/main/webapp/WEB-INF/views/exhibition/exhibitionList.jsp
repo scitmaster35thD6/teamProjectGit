@@ -625,7 +625,7 @@
 											<th>시작일</th>
 										</tr>
 									</thead>
-									<tbody class="boardContent">
+									<tbody class="exhibitionContent">
 									</tbody>
 								</table>
 							</div>

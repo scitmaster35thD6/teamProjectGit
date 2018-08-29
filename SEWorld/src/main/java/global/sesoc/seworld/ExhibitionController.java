@@ -53,11 +53,12 @@ public class ExhibitionController {
 		String list = "";
 
 		for (int i = 0; i < exhibitionList.size(); i++) {
-			list += "<tr><td>" + exhibitionList.get(i).getExhibitionTitleEng() + "</td>";
+			list += "<tr onclick=\"location.href='exhibitionDetail?exhibitionId=" + exhibitionList.get(i).getExhibitionId() + "'\"><td>"
+					+ exhibitionList.get(i).getExhibitionTitleEng() + "</td>";
 			list += "<td>" + exhibitionList.get(i).getExhibitionTitleKor() + "</td>";
 			list += "<td>" + exhibitionList.get(i).getOpeningCountry() + "</td>";
 			list += "<td>" + exhibitionList.get(i).getOpeningCity() + "</td>";
-			list += "<td>" + exhibitionList.get(i).getOpeningTerm().substring(0, 8) + "</td></tr>";
+			list += "<td>" + exhibitionList.get(i).getOpeningTerm().substring(0, 8) + "</td></tr></a>";
 		}
 
 		responseData.put("totalRecordCount", totalRecordCount);
@@ -69,20 +70,8 @@ public class ExhibitionController {
 	}
 
 	@RequestMapping(value = "/exhibitionDetail", method = RequestMethod.GET)
-	public String exhibitionDetail(Model model) {
-		// String exhibitionId = "";
-		// c6_exhibition exhibitionDetail =
-		// repository.showExhibitionDetail(exhibitionId);
-
-		Exhibition exhibitionDetail = new Exhibition();
-		exhibitionDetail.setExhibitionTitleKor("테스트 제목");
-		exhibitionDetail.setExhibitionTitleEng("Test Title");
-		exhibitionDetail.setOpeningTerm("20180822-20180901");
-		exhibitionDetail.setFirstOpeningYear("1945");
-		exhibitionDetail.setOpeningCity("서울");
-		exhibitionDetail.setOpeningCountry("Republic of Korea");
-		exhibitionDetail.setSponsor("이남곤");
-
+	public String exhibitionDetail(String exhibitionId, Model model) {
+		Exhibition exhibitionDetail = repository.showExhibitionDetail(exhibitionId);
 		model.addAttribute("exhibitionDetail", exhibitionDetail);
 		return "exhibition/exhibitionDetail";
 	}

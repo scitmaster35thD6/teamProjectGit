@@ -1,5 +1,5 @@
 /**
- *Script file for view list of exhibitions 
+ * Script file for view list of exhibitions
  */
 
 var selectedCountry = '';
@@ -54,7 +54,11 @@ function output(response) {
 		}
 	}
 	pageNavigator += '<a href="javascript:nextPageGroup()">▶</a>';
-	
+
 	$(".pageNavi").html(pageNavigator);
 
+}
+
+function moveTo(num) {
+	alert(num);
 }

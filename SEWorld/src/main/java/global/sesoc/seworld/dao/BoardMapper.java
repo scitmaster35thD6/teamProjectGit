@@ -14,6 +14,8 @@ public interface BoardMapper {
 	public List<Board> viewAllBoards(Map<String, String> searchItems, RowBounds rb);
 
 	public Board viewBoardDetail(String boardId);
+	
+	public String getBoardId(String memberId);
 
 	public int insertBoard(Board board);
 

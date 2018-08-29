@@ -225,27 +225,27 @@ td{
 			<div id="map" style="float:right; width:550px; height:340px; margin-left: auto; margin-right: auto; display: block;"></div>
 			<div id="exTitle">
 				<ul style="list-style:none; padding: 10px;">
-					<li>${exhibitionDetail.exhibition_title_kor}</li>
-					<li>${exhibitionDetail.exhibition_title_eng}</li>
+					<li>${exhibitionDetail.exhibitionTitleKor}</li>
+					<li>${exhibitionDetail.exhibitionTitleEng}</li>
 				</ul>
 			</div>
 			<br/>
 			<table>
 				<tr>
 					<td style="color: #808080;">개최기간</td>
-					<td>${exhibitionDetail.opening_term}</td>
+					<td>${exhibitionDetail.openingTerm}</td>
 				</tr>
 				<tr>
 					<td>최초개최연도</td>
-					<td>${exhibitionDetail.first_opening_year}</td>
+					<td>${exhibitionDetail.firstOpeningYear}</td>
 				</tr>
 				<tr>
 					<td>개최국가</td>
-					<td>${exhibitionDetail.opening_country}</td>
+					<td>${exhibitionDetail.openingCountry}</td>
 				</tr>
 				<tr>
 					<td>개최도시</td>
-					<td>${exhibitionDetail.opening_city}</td>
+					<td>${exhibitionDetail.openingCity}</td>
 				</tr>
 				<tr>
 					<td>주최기관</td>
