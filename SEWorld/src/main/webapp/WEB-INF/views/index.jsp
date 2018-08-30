@@ -12,7 +12,7 @@
   <title>Welcome - SE World</title>
 
   <!-- css -->
-  <link href="resources/volumn/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="resources/volumn/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <link href="resources/volumn/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link href="resources/volumn/css/nivo-lightbox.css" rel="stylesheet" />
   <link href="resources/volumn/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
@@ -20,8 +20,8 @@
   <link href="resources/volumn/css/owl.theme.css" rel="stylesheet" media="screen" />
   <link href="resources/volumn/css/flexslider.css" rel="stylesheet" />
   <link href="resources/volumn/css/animate.css" rel="stylesheet" />
-  <link href="resources/volumn/css/style.css" rel="stylesheet">
-  <link href="resources/volumn/color/default.css" rel="stylesheet">
+  <link href="resources/volumn/css/style.css" rel="stylesheet" />
+  <link href="resources/volumn/color/default.css" rel="stylesheet" />
 
   <!-- =======================================================
     Theme Name: volumn
@@ -116,7 +116,7 @@
           <div class="col-md-2 mob-logo">
             <div class="row">
               <div class="site-logo">
-                <a href="index.html"><img src="resources/volumn/img/logo-dark.png" alt="" /></a>
+                <a href="#intro"><img src="resources/assets/images/logo2.png" style="width: 60px; height: 50px;" alt="" /></a>
               </div>
             </div>
           </div>

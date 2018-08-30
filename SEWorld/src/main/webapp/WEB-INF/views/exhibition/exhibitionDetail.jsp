@@ -177,7 +177,7 @@ td{
           <div class="col-md-2 mob-logo">
             <div class="row">
               <div class="site-logo">
-                <a href="../"><img src="volumn/img/logo-dark.png" alt="" /></a>
+                <a href="./"><img src="resources/assets/images/logo2.png" style="width: 60px; height: 50px;" alt="" /></a>
               </div>
             </div>
           </div>
