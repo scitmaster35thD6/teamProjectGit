@@ -398,10 +398,10 @@
 					    <table class="table">
     <thead>
         <tr>
-            <th>board_id</th>
-            <th>userID</th>
-            <th>title</th>
-            <th>created date</th>
+            <th>Number</th>
+            <th>User</th>
+            <th>Title</th>
+            <th>Created date</th>
         </tr>
     </thead>
     <tbody class="boardContent">

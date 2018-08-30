@@ -572,26 +572,24 @@
 			<div class="row">
   <div class="col-lg-4">
     <div class="input-group">					
-		<select class="custom-select" required>
-      <option value="">select menu</option>
-      <option value="1">제목</option>
-      <option value="2">내용</option>
-      <option value="3">도시</option>
+		<select id="searchCategory" required>
+      <option value="">검색</option>
+      <option value="title">제목</option>
+      <option value="content">내용</option>
+      <option value="openingCity">도시</option>
     </select>
     </div>
     </div>
     <div class="col-lg-5">
     <div class="input-group">	
-			<input type="text" class="form-control" aria-label="Text input with dropdown button">
+			<input type="text" id="searchKeyword" aria-label="Text input with dropdown button">
 								</div>
 								</div>
 							
 							 <div class="col-lg-3">
     <div class="input-group">	
     		<!--   서치 아이콘 -->
-    	<a href="" class="search">
-        <span class="btn btn-danger btn-circle"><i class="fas fa-search"></i></span>
-    	</a>
+        <span class="btn btn-danger btn-circle"><i class="fas fa-search" ></i></span>
     </div>
     </div>
 							

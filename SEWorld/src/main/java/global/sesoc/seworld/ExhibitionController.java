@@ -33,11 +33,13 @@ public class ExhibitionController {
 	@Autowired
 	ExhibitionRepository repository;
 
+	// 전시회 목록 페이지로 이동
 	@RequestMapping(value = "/exhibitionList", method = RequestMethod.GET)
 	public String exhibitionList() {
 		return "exhibition/exhibitionList";
 	}
 
+	// 전시회 목록 띄우기(Ajax 처리)
 	@RequestMapping(value = "/exhibitionListShow", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	public @ResponseBody Map<String, Object> exhibitionListShow(
 			@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
@@ -69,6 +71,7 @@ public class ExhibitionController {
 
 	}
 
+	// 상세 전시회 보기 페이지
 	@RequestMapping(value = "/exhibitionDetail", method = RequestMethod.GET)
 	public String exhibitionDetail(String exhibitionId, Model model) {
 		Exhibition exhibitionDetail = repository.showExhibitionDetail(exhibitionId);
@@ -85,6 +88,7 @@ public class ExhibitionController {
 		return result;
 	}
 
+	// 벡터 지도로 이동
 	@RequestMapping(value = "/vector", method = RequestMethod.GET)
 	public String vectorMap() {
 		return "exhibition/vector";

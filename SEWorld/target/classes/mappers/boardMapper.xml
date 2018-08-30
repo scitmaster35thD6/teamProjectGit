@@ -45,6 +45,7 @@
 		WHERE boardid = #{boardId}
 	</select>
 
+	<!-- 게시물에 파일 저장시 외래키 받아오기 -->
 	<select id="getBoardId" resultType="String"
 		parameterType="String">
 		select boardid from

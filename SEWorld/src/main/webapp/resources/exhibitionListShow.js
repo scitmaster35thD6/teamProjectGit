@@ -5,9 +5,10 @@
 var selectedCountry = '';
 var currentPage = 1;
 
-$(document).ready(
-
-function() {
+$(document).ready(function() {
+	$("#searchBtn").on("click", function() {
+		alert("!")
+	});
 	init();
 });
 
@@ -15,8 +16,21 @@ function init() {
 	$.ajax({
 		method : 'post',
 		url : 'exhibitionListShow',
+		data : 'currentPage=' + currentPage + '&selectedCountry=',
+		success : output
+	})
+}
+
+function searchWithWord() {
+	var searchCategory = $('#searchCategory option:selected').val();
+	var searchKeyword = $('#searchKeyword').val();
+
+	$.ajax({
+		method : 'post',
+		url : 'exhibitionListShow',
 		data : 'currentPage=' + currentPage + '&selectedCountry='
-				+ selectedCountry,
+				+ selectedCountry + '&searchCategory=' + searchCategory
+				+ '&searchKeyword' + searchKeyword,
 		success : output
 	})
 }
@@ -58,7 +72,4 @@ function output(response) {
 	$(".pageNavi").html(pageNavigator);
 
 }
-
-function moveTo(num) {
-	alert(num);
-}
+s

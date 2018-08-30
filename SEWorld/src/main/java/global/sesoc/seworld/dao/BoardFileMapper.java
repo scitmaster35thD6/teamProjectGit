@@ -27,6 +27,9 @@ public interface BoardFileMapper {
 	 * @param boardFile
 	 * @return 0:입력실패, 1:입력성공
 	 */
+	
+	public String getBoardFileIdByBoardId(String boardId);
+	
 	public abstract int insertOneBoardFile(BoardFile boardFile);
 
 	/**

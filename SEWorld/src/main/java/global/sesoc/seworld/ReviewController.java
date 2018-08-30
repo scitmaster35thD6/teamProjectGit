@@ -1,14 +1,19 @@
 package global.sesoc.seworld;
 
+import java.io.FileInputStream;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,11 +46,13 @@ public class ReviewController {
 
 	final String uploadPath = "/boardfile/reviews";
 
+	// 리뷰 페이지로 이동
 	@RequestMapping(value = "/reviews", method = RequestMethod.GET)
 	public String reviews() {
 		return "review/reviewBoard";
 	}
 
+	// 리뷰 게시판 목록 띄우기(Ajax 처리)
 	@ResponseBody
 	@RequestMapping(value = "/reviewListShow", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	public Map<String, Object> reviewListShow(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
@@ -74,6 +81,7 @@ public class ReviewController {
 		return responseData;
 	}
 
+	// 리뷰 게시물 읽기 페이지 이동
 	@RequestMapping(value = "/readReview", method = RequestMethod.GET)
 	public String readReview(String boardId, Model model) {
 		Board detail = boardRepository.viewBoardDetail(boardId);
@@ -81,11 +89,13 @@ public class ReviewController {
 		return "review/reviewDetail";
 	}
 
+	// 리뷰 게시물 쓰기 페이지 이동
 	@RequestMapping(value = "/writeReview", method = RequestMethod.GET)
 	public String writeReview() {
 		return "review/reviewWrite";
 	}
 
+	// 리뷰 게시물 입력
 	@RequestMapping(value = "/writeReview", method = RequestMethod.POST)
 	public String writeReview(Board board, MultipartFile uploadedFile, HttpSession session) {
 		String userid = (String) session.getAttribute("loginId");
@@ -104,20 +114,83 @@ public class ReviewController {
 		return "redirect:/reviews";
 	}
 
+	// 리뷰 게시물 수정 페이지 이동
 	@RequestMapping(value = "/updateReview", method = RequestMethod.GET)
-	public String updateReview(Model model) {
+	public String updateReview(String boardId, Model model) {
+		Board original = boardRepository.viewBoardDetail(boardId);
+		String boardFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
+		BoardFile originalFile = boardFileRepository.selectOneBoardFile(boardFileId);
+		if (originalFile != null) {
+			model.addAttribute("originalFile", originalFile);
+		}
+		model.addAttribute("original", original);
 		return "review/reviewWrite";
 	}
 
+	// 리뷰 게시물 수정 입력
 	@RequestMapping(value = "/updateReview", method = RequestMethod.POST)
-	public String updateReview(Board board) {
+	public String updateReview(Board board, MultipartFile uploadedFile, HttpSession session, String deleteFile) {
+		String userid = (String) session.getAttribute("loginId");
+		String boardId = boardRepository.getBoardId(userid);
+		board.setMemberId(userid);
 		boardRepository.updateBoard(board);
+		String oldFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
+		BoardFile oldBoardFile = boardFileRepository.selectOneBoardFile(oldFileId);
+
+		if (deleteFile != null && deleteFile.equals("deletefile")) {
+			String savedfile = oldBoardFile.getSvFilename();
+			String fullpath = uploadPath + "/" + savedfile;
+			FileService.deleteFile(fullpath);
+			boardFileRepository.deleteOneBoardFile(boardId);
+		} else if (oldBoardFile != null && uploadedFile.getSize() != 0) {
+			String originalfile = uploadedFile.getOriginalFilename();
+			String savedfile = FileService.saveFile(uploadedFile, uploadPath);
+			BoardFile newBoardFile = new BoardFile();
+			newBoardFile.setBoardId(boardId);
+			newBoardFile.setOgFilename(originalfile);
+			newBoardFile.setSvFilename(savedfile);
+			newBoardFile.setFileSize(uploadedFile.getSize());
+			boardFileRepository.insertOneBoardFile(newBoardFile);
+		}
+
 		return "redirect:/review";
 	}
 
+	// 리뷰 게시물 삭제하기
 	@RequestMapping(value = "/deleteReview", method = RequestMethod.POST)
 	public String deleteReview(Board board) {
 		boardRepository.deleteBoard(board);
 		return "redirect:/review";
+	}
+
+	// 리뷰 게시물 첨부 파일 다운로드
+	@RequestMapping(value = "/downloadFile", method = RequestMethod.GET)
+	public String download(String boardId, HttpServletResponse response) {
+		String boardFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
+		BoardFile originalFile = boardFileRepository.selectOneBoardFile(boardFileId);
+		String originalfile = originalFile.getOgFilename();
+		String savedfile = originalFile.getSvFilename();
+		String fullpath = uploadPath + "/" + savedfile;
+
+		FileInputStream fis = null;
+		ServletOutputStream sos = null;
+
+		try {
+			response.setHeader("Content-Disposition",
+					" attachment;filename=" + URLEncoder.encode(originalfile, "UTF-8"));
+			fis = new FileInputStream(fullpath);
+			sos = response.getOutputStream();
+			FileCopyUtils.copy(fis, sos);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				fis.close();
+				sos.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return null;
 	}
 }

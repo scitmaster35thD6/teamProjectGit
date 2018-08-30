@@ -20,6 +20,11 @@ public class BoardFileRepository {
 		BoardFileMapper boardFileMapper = sqlSession.getMapper(BoardFileMapper.class);
 		return boardFileMapper.selectOneBoardFile(boardFileId);
 	}
+	
+	public String getBoardFileIdByBoardId(String boardId) {
+		BoardFileMapper boardFileMapper = sqlSession.getMapper(BoardFileMapper.class);
+		return boardFileMapper.getBoardFileIdByBoardId(boardId);
+	}
 
 	public int insertOneBoardFile(BoardFile boardFile) {
 		BoardFileMapper boardFileMapper = sqlSession.getMapper(BoardFileMapper.class);

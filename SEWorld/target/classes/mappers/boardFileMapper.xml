@@ -5,7 +5,8 @@
 
 <mapper namespace="global.sesoc.seworld.dao.BoardFileMapper">
 
-	<select id="selectAllBoardFiles" parameterType="String" resultType="BoardFile">
+	<select id="selectAllBoardFiles" parameterType="String"
+		resultType="BoardFile">
 		SELECT
 		boardFileId
 		,boardId
@@ -19,7 +20,8 @@
 		ORDER BY boardFileId
 	</select>
 
-	<select id="selectOneBoardFile" parameterType="String" resultType="BoardFile">
+	<select id="selectOneBoardFile" parameterType="String"
+		resultType="BoardFile">
 		SELECT
 		boardFileId
 		,boardId
@@ -29,11 +31,20 @@
 		,createdDate
 		,updatedDate
 		FROM c6_board_file
-		WHERE boardFileId = #{boardFileId}
+		WHERE boardFileId =
+		#{boardFileId}
+	</select>
+
+	<select id="getBoardFileIdByBoardId" parameterType="String"
+		resultType="String">
+		select boardFileId
+		from c6_board_file
+		where boardId=#{boardId}
 	</select>
 
 	<insert id="insertOneBoardFile" parameterType="BoardFile">
-		INSERT INTO c6_board_file
+		INSERT INTO
+		c6_board_file
 		(
 		boardFileId
 		,boardId
@@ -45,7 +56,8 @@
 		)
 		VALUES
 		(
-		#{boardId} || '-F' || TO_CHAR(c6_board_file_seq.NEXTVAL, '0000')
+		#{boardId} || '-F' ||
+		TO_CHAR(c6_board_file_seq.NEXTVAL, '0000')
 		,#{boardId}
 		,#{ogFilename}
 		,#{svFilename}
@@ -57,12 +69,14 @@
 
 	<delete id="deleteOneBoardFile" parameterType="String">
 		DELETE
-		FROM c6_board_file
+		FROM
+		c6_board_file
 		WHERE boardFileId = #{boardFileId}
 	</delete>
 
 	<update id="updateOneBoardFile" parameterType="BoardFile">
-		UPDATE c6_board_file
+		UPDATE
+		c6_board_file
 		SET
 		ogFilename = #{ogFilename}
 		,svFilename = #{svFilename}

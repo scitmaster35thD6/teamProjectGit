@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	/**
-	 * SE World Board Controller
+	 * SE World Home Controller
 	 * 
 	 * @author youngbinkim
 	 * @version 0.1
@@ -18,6 +18,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+	// 메인 페이지로 이동
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		logger.info("[/]");
