@@ -13,8 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="any"
-	href="resources/assets/images/logo2.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="resources/assets/images/logo-icon.png">
     <title>SE World 전세계 기술 전시</title>
     <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css" rel="stylesheet">
     <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css" rel="stylesheet">
@@ -25,6 +24,8 @@
     <!-- Custom CSS 새로 -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">
     
+    <!-- 프로필용  css -->
+    <link href="resources/assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
     
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -106,15 +107,24 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="./"> <!-- Logo icon --> <b
-						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-							<!-- Dark Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin-left: 50px;" alt="homepage"
-							class="dark-logo" /> <!-- Light Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin-left: 50px;" alt="homepage"
-							class="light-logo" />
-					</b>
-					</a>
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon -->
+                        <b class="logo-icon">
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="resources/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="resources/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                             <!-- dark Logo text -->
+                             <img src="resources/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                             <!-- Light Logo text -->    
+                             <img src="resources/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                        </span>
+                    </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
                     <!-- ============================================================== -->
@@ -376,86 +386,190 @@
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
-                <!-- Start Page Content -->
+                <!-- Start Page Content 페이지 내용보기-->
                 <!-- ============================================================== -->
-                <div class="row">
+           <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">내용 시작</h4>
-                                <h6 class="card-subtitle">table.</h6>
-                         </div><!-- card body -->
-                     <!--  글쓰기 폼 -->
-					
-					 <hr class="m-t-0">
-                            <form class="form-horizontal r-separator" enctype="multipart/form-data" action="writeReview" method="post">
-                                <div class="card-body">
-                                    <div class="form-group row align-items-center m-b-0">
-                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">title</label>
-                                        <div class="col-9 border-left p-b-10 p-t-10">
-                                            <input type="text" class="form-control" id="inputEmail3" placeholder="title" name="title">
-                                        </div>
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">다양한 정보를 얻을 수 있었습ㄴ니다. 다만 현장 동선이 복잡하네요</h4>
                                     </div>
-                                    
-                                    <div class="form-group row align-items-center m-b-0">
-                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">category</label>
-                                        <div class="col-9 border-left p-b-10 p-t-10">
+                                    <div class="ml-auto d-flex no-block align-items-center">
+                                        <ul class="list-inline font-12 dl m-r-15 m-b-0">
+                                            <li class="list-inline-item text-secondary"><i class="fas fa-star"></i> 리뷰자의 별점</li>
+                                            <li class="list-inline-item text-primary">4점 </li>
+                                        </ul>
                                         
-                                <select class="select2 form-control custom-select" style="width: 80%; height:36px;" name="category">
-                                    <option>Select</option>
-                                        <option value="AK">Review</option>
-                                        <option value="HI">Question</option>
-                                </select>
-                                           
-                                           
-                                        </div>
-                                    </div>
-                                    <!-- 첨부파일 -->
-								<div class="form-group row align-items-center m-b-0">
-                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">Select File</label>
-                                        <div class="col-9 border-left p-b-10 p-t-10">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">Upload</span>
-                                                </div>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 첨부파일 -->
-                                  
-                                    <div class="form-group row align-items-center m-b-0">
-                                        <label for="inputEmail3" class="col-3 text-right control-label col-form-label">contents</label>
-                                        <div class="col-9 border-left p-b-10 p-t-10">
-                                            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10" name="content"></textarea>
-                                        </div>
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="card-body">
-                                    <div class="form-group m-b-0 text-right">
-                                        <button type="submit" class="btn btn-info waves-effect waves-light">Save</button>
-                                        <button type="reset" class="btn btn-dark waves-effect waves-light">Cancel</button>
+                                   
+                                        <h6>유저 프로필</h6>
+            <div class="container-fluid">
+                    <div class="row el-element-overlay">
+                    
+                     <!-- column -->
+                                    <div class="col-lg-3 col-md-6" contextmenu="">
+                            <div class="card" contextmenu="">
+                                <div class="el-card-item">
+                                    <div class="el-card-avatar el-overlay-1"> <img src="resources/assets/images/users/1.jpg" alt="user"/>
+                                        <div class="el-overlay">
+                                            <ul class="list-style-none el-info">
+                                                <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" href="resources/assets/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                                                <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="el-card-content">
+                                        <h4 class="m-b-0">이름</h4> <span class="text-muted">직업</span>
                                     </div>
                                 </div>
-                            </form>
-						
-						
-
+                            </div>
+                                    </div>
+                                    <!-- column -->
+                                    <div class="col-lg-9">
+                                        <div class="content">글 내용쓰기</div>
+                                    </div>
+                                    <!-- column -->
+                                </div>
+                            </div>
                             
-                        </div><!-- card -->
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- Info Box -->
+                            <!-- ============================================================== -->
+                            <div class="card-body border-top">
+                                <div class="row m-b-0">
+                                    <!-- col -->
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- col -->
+                                    <!-- col -->
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- col -->
+                                    <!-- col -->
+                                    <div class="col-lg-3 col-md-6">
+                                    
+                                        <div class="d-flex align-items-center">
+                                        <ul>
+                                          <li> <h6 class="font-medium">URL</h6></li>
+                                         <li>  <h6 class="font-medium">전시회 이름</h6></li>
+                                        </ul>
+                                        </div>
+                                    </div>
+                                    <!-- col -->
+                                    <!-- col -->
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="d-flex align-items-center">
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- col -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    
-                  
+                </div>
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Email campaign chart -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="card card-hover">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <h3>연관 글 더보기</h3>
+                                </div>
+                                <!-- column -->
+                                <div class="row m-t-40">
+                                    <!-- column -->
+                                    <div class="col-lg-6">
+                                        <div id="visitor" style="height:290px; width:100%;" class="m-t-20"></div>
+                                    </div>
+                                    <!-- column -->
+                                    <div class="col-lg-6">
+                                        <h3>연관글 더보기?</h3>
+                                    </div>
+                                </div>
+                                <!-- column -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xl-6">
+                        <div class="card card-hover">
+                            <div class="card-body" style="background:url(resources/assets/images/background/active-bg.png) no-repeat top center;">
+                              
+                              
+                              <h1>여기 뭐넣지?</h1>
+                              
+                              
+                              
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- 글 더보기-->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- 뎃글s -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Recent Comments</h4>
+                            </div>
+                     <div class="container-fluid">       
+                            <div class="comment-widgets scrollable">
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="p-2"><img src="resources/assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="comment-text w-100">
+                                        <h6 class="font-medium">이름</h6> <h6>별점 들어갈 곳</h6>
+                                        <span class="m-b-15 d-block">좋은 리뷰 입니다 ^^ </span>
+                                        <div class="comment-footer">
+                                            <span class="text-muted float-right">April 14, 2016</span> <span class="label label-rounded label-primary">Pending</span> <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 댓글 열 -->
+                            </div>
+                            
+                        </div><!-- 플루이드는 여기까지입니다. -->    
+                        </div>
+                    </div>
                    
                 </div>
                 <!-- ============================================================== -->
-                <!-- End PAge Content -->
+                <!-- 댓글 -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->   
+              
+              
+              
+                <!-- ============================================================== -->
+                <!-- 페이지 끝 -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
                 <!-- Right sidebar -->
@@ -521,8 +635,8 @@
     <!--Custom JavaScript -->
     <script src="resources/dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
-    
-    
+    <script src="resources/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <script src="resources/assets/libs/magnific-popup/meg.init.js"></script>
     
 </body>
 
