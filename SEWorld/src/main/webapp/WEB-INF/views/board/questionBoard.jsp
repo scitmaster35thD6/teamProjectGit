@@ -25,6 +25,7 @@
     <!-- Custom CSS 새로 -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">
     
+    <link href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -79,7 +80,7 @@
 
 </style>
 <script type="text/javascript" src="resources/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="resources/questionListShow.js"></script>
+<script type="text/javascript" src="resources/reviewListShow.js"></script>
 </head>
 
 <body>
@@ -363,7 +364,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Board</li>
+                                    <li class="breadcrumb-item active" aria-current="page">User Question</li>
                                 </ol>
                             </nav>
                         </div>
@@ -376,67 +377,52 @@
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
+ 
+            <!-- 새로운 개시판 -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
+		<div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">내용 시작</h4>
-                                <h6 class="card-subtitle">table.</h6>
-                         </div><!-- card body -->
-                     <!--  글쓰기 폼 -->
-					
-					 <hr class="m-t-0">
-                                <div class="card-body">
-                                <!-- 리뷰 테이블 -->
-					    <table class="table">
-    <thead>
-        <tr>
-            <th>Number</th>
-            <th>User</th>
-            <th>Title</th>
-            <th>Created date</th>
-        </tr>
-    </thead>
-    <tbody class="boardContent">
-        
-    </tbody>
-</table>                       
-
-<div class="pageNavi"></div>     
-                                
-                                <!-- 리뷰 테이블 -->
-                                 </div>  
-						
-
-                            
-                        </div><!-- card -->
+                                <h4 class="card-title">질문 게시판</h4>
+                                <h6 class="card-subtitle">전시에 대한 정보를 질문하는 곳입니다.</h6>
+                                <div class="table-responsive">
+                                    <table id="alt_pagination" class="table table-striped table-bordered display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>number</th>
+                                                <th>title</th>
+                                                <th>user</th>
+                                                <th>date</th>
+                                            </tr>
+                                        </thead>
+                                        ${questionList}
+                                        <tbody>
+                                         
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>number</th>
+                                                <th>title</th>
+                                                <th>user</th>
+                                                <th>date</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    
-                  
-                   
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
+		
+		</div>
+		<!-- 다시 만든테이블 -->
+            
+            
+            <!-- 새로운 개시판 -->
+            
+            
+            
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
@@ -490,7 +476,9 @@
     <!--Custom JavaScript -->
     <script src="resources/dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
-    
+    <!--This page JavaScript -->
+     <script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
     <!-- 벡터지도 -->
     <!-- This Page JS -->
     

@@ -25,7 +25,9 @@
 	rel="stylesheet" />
 <!-- Custom CSS 새로 -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
-<link href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+<link
+	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
+	rel="stylesheet">
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -114,9 +116,11 @@
 					<a class="navbar-brand" href="./"> <!-- Logo icon --> <b
 						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 							<!-- Dark Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
+							src="resources/assets/images/logo2.png"
+							style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="dark-logo" /> <!-- Light Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
+							src="resources/assets/images/logo2.png"
+							style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="light-logo" />
 					</b>
 					</a>
@@ -260,50 +264,61 @@
 					<!-- ============================================================== -->
 					<ul class="navbar-nav float-right">
 						<!-- create new -->
-					
-					
-					<!-- ============================================================== -->
-                        <!-- Messages -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="font-24 mdi mdi-comment-processing"></i>
-                                
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
-                                <span class="with-arrow"><span class="bg-white"></span></span>
-                                <ul class="list-style-none">
-                                    <li>
-                                        <div class="drop-title text-black bg-#f7b2c5">
-                                            <h4 class="m-b-0 m-t-5">2 New</h4>
-                                            <span class="font-light">Messages</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="message-center message-body" style="height :100%;">
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)" class="message-item">
-                                                <span class="user-img"><i class="fas fa-user"></i>  </span>
-                                                <div class="mail-contnet">
-                                                    <h5 class="message-title">heemin</h5> <span class="mail-desc">안녕하세요 전시회 정보 문으드립니다.</span> <span class="time">9:30 AM</span> </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)" class="message-item">
-                                                <span class="user-img"><i class="fas fa-user"></i>  </span>
-                                                <div class="mail-contnet">
-                                                    <h5 class="message-title">happy</h5> <span class="mail-desc">what sup </span><span class="time">9:10 AM</span> </div>
-                                            </a>
-                                            
-                                            
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-center link" href="javascript:void(0);"> <b>모든 메세지 보기</b> <i class="fa fa-angle-right"></i> </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        
-                        <!-- end+++++================== -->
+
+
+						<!-- ============================================================== -->
+						<!-- Messages -->
+						<!-- ============================================================== -->
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle waves-effect waves-dark" href=""
+							id="2" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i
+								class="font-24 mdi mdi-comment-processing"></i>
+
+						</a>
+							<div
+								class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown"
+								aria-labelledby="2">
+								<span class="with-arrow"><span class="bg-white"></span></span>
+								<ul class="list-style-none">
+									<li>
+										<div class="drop-title text-black bg-#f7b2c5">
+											<h4 class="m-b-0 m-t-5">2 New</h4>
+											<span class="font-light">Messages</span>
+										</div>
+									</li>
+									<li>
+										<div class="message-center message-body" style="height: 100%;">
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item"> <span
+												class="user-img"><i class="fas fa-user"></i> </span>
+												<div class="mail-contnet">
+													<h5 class="message-title">heemin</h5>
+													<span class="mail-desc">안녕하세요 전시회 정보 문으드립니다.</span> <span
+														class="time">9:30 AM</span>
+												</div>
+											</a>
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item"> <span
+												class="user-img"><i class="fas fa-user"></i> </span>
+												<div class="mail-contnet">
+													<h5 class="message-title">happy</h5>
+													<span class="mail-desc">what sup </span><span class="time">9:10
+														AM</span>
+												</div>
+											</a>
+
+
+										</div>
+									</li>
+									<li><a class="nav-link text-center link"
+										href="javascript:void(0);"> <b>모든 메세지 보기</b> <i
+											class="fa fa-angle-right"></i>
+									</a></li>
+								</ul>
+							</div></li>
+
+						<!-- end+++++================== -->
 
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
@@ -323,11 +338,11 @@
 								<div
 									class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
 									<div class="">
-									
+
 										<!-- 아이콘 유저 -->
 										<i class="fas fa-user" width="60"></i>
-									
-										
+
+
 									</div>
 									<div class="m-l-10">
 										<h4 class="m-b-0">유저네임</h4>
@@ -563,123 +578,126 @@
 
 								<ul class="navbar-nav float-right">
 
-		
-		<!-- ============================================================== -->
-		<!-- End PAge Content -->
-		<!-- ============================================================== -->
-		<!-- 다시 만든테이블 -->
-		<div class="container-fluid">
-		<div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">페이지 들어간 테이블</h4>
-                                <h6 class="card-subtitle">서치</h6>
-                                <div class="table-responsive">
-                                    <table id="alt_pagination" class="table table-striped table-bordered display" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>영어이름</th>
-                                                <th>한국제목</th>
-                                                <th>국가</th>
-                                                <th>도시</th>
-                                                <th>시작일</th>
-                                                <th>종료일</th>
-                                            </tr>
-                                        </thead>
-                                        
-                                        <tbody>
-                                          ${ELlist}
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>영어이름</th>
-                                                <th>한국제목</th>
-                                                <th>국가</th>
-                                                <th>도시</th>
-                                                <th>Start date</th>
-                                                <th>End Date</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-		
-		</div>
-		<!-- 다시 만든테이블 -->
-		
-		</div><!-- page wrapper -->
-		
-		<!-- ============================================================== -->
-		<!-- Right sidebar -->
-		<!-- ============================================================== -->
-		<!-- .right-sidebar -->
-		<!-- ============================================================== -->
-		<!-- End Right sidebar -->
-		<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Container fluid  -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- footer -->
-	<!-- ============================================================== -->
-	<footer class="footer text-center"> SCIT Poject </footer>
-	<!-- ============================================================== -->
-	<!-- End footer -->
-	<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Page wrapper  -->
-	<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Wrapper -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- customizer Panel -->
-	<!-- ============================================================== -->
-	<a class="nav-link dropdown-toggle waves-effect waves-dark" href=""
-		data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-	</a>
-	</aside>
+									<!-- ============================================================== -->
+									<!-- End PAge Content -->
+									<!-- ============================================================== -->
+									<!-- 다시 만든테이블 -->
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col-12">
+												<div class="card">
+													<div class="card-body">
+														<h4 class="card-title">페이지 들어간 테이블</h4>
+														<h6 class="card-subtitle">서치</h6>
+														<div class="table-responsive">
+															<table id="alt_pagination"
+																class="table table-striped table-bordered display"
+																style="width: 100%">
+																<thead>
+																	<tr>
+																		<th>영어이름</th>
+																		<th>한국제목</th>
+																		<th>국가</th>
+																		<th>도시</th>
+																		<th>시작일</th>
+																		<th>종료일</th>
+																	</tr>
+																</thead>
 
-	<div class="chat-windows"></div>
-	<!-- ============================================================== -->
-	<!-- All Jquery -->
-	<!-- ============================================================== -->
-	<script>
-		// Basic grid
-	</script>
-	<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap tether Core JavaScript -->
-	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- apps -->
-	<script src="resources/dist/js/app.min.js"></script>
-	<script src="resources/dist/js/app.init.iconbar.js"></script>
-	<script src="resources/dist/js/app-style-switcher.js"></script>
-	<!-- slimscrollbar scrollbar JavaScript -->
-	<script
-		src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-	<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
-	<!--Wave Effects -->
-	<script src="resources/dist/js/waves.js"></script>
-	<!--Menu sidebar -->
-	<script src="resources/dist/js/sidebarmenu.js"></script>
-	<!--Custom JavaScript -->
-	<script src="resources/dist/js/custom.min.js"></script>
-	<!--This page JavaScript -->
-     <script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-    <script src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
-	<!-- 벡터지도 -->
-	<!-- This Page JS -->
+																<tbody>${ELlist}
+																</tbody>
+																<tfoot>
+																	<tr>
+																		<th>영어이름</th>
+																		<th>한국제목</th>
+																		<th>국가</th>
+																		<th>도시</th>
+																		<th>Start date</th>
+																		<th>End Date</th>
+																	</tr>
+																</tfoot>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+							</div>
+							<!-- 다시 만든테이블 -->
 
+						</div>
+						<!-- page wrapper -->
 
+						<!-- ============================================================== -->
+						<!-- Right sidebar -->
+						<!-- ============================================================== -->
+						<!-- .right-sidebar -->
+						<!-- ============================================================== -->
+						<!-- End Right sidebar -->
+						<!-- ============================================================== -->
+					</div>
+					<!-- ============================================================== -->
+					<!-- End Container fluid  -->
+					<!-- ============================================================== -->
+					<!-- ============================================================== -->
+					<!-- footer -->
+					<!-- ============================================================== -->
+					<footer class="footer text-center"> SCIT Poject </footer>
+					<!-- ============================================================== -->
+					<!-- End footer -->
+					<!-- ============================================================== -->
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Page wrapper  -->
+				<!-- ============================================================== -->
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Wrapper -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- customizer Panel -->
+			<!-- ============================================================== -->
+			<a class="nav-link dropdown-toggle waves-effect waves-dark" href=""
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+			</a>
+			</aside>
+
+			<div class="chat-windows"></div>
+			<!-- ============================================================== -->
+			<!-- All Jquery -->
+			<!-- ============================================================== -->
+			<script>
+				// Basic grid
+			</script>
+			<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
+			<!-- Bootstrap tether Core JavaScript -->
+			<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+			<script
+				src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+			<!-- apps -->
+			<script src="resources/dist/js/app.min.js"></script>
+			<script src="resources/dist/js/app.init.iconbar.js"></script>
+			<script src="resources/dist/js/app-style-switcher.js"></script>
+			<!-- slimscrollbar scrollbar JavaScript -->
+			<script
+				src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+			<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
+			<!--Wave Effects -->
+			<script src="resources/dist/js/waves.js"></script>
+			<!--Menu sidebar -->
+			<script src="resources/dist/js/sidebarmenu.js"></script>
+			<!--Custom JavaScript -->
+			<script src="resources/dist/js/custom.min.js"></script>
+			<!--This page JavaScript -->
+			<script
+				src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
+			<script
+				src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
+			<!-- 벡터지도 -->
+			<!-- This Page JS -->
 </body>
 
 </html>

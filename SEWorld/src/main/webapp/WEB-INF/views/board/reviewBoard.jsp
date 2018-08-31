@@ -89,6 +89,8 @@
 	}
 }
 </style>
+<script type="text/javascript" src="resources/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="resources/reviewListShow.js"></script>
 </head>
 
 <body>
@@ -441,7 +443,8 @@
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="#">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Board</li>
+									<li class="breadcrumb-item active" aria-current="page">User
+										Review</li>
 								</ol>
 							</nav>
 						</div>
@@ -454,54 +457,15 @@
 			<!-- ============================================================== -->
 			<!-- End Bread crumb and right sidebar toggle -->
 			<!-- ============================================================== -->
-			<!-- ============================================================== -->
-			<!-- Container fluid  -->
-			<!-- ============================================================== -->
-			<div class="container-fluid">
-				<!-- ============================================================== -->
-				<!-- Start Page Content -->
-				<!-- ============================================================== -->
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">내용 시작</h4>
-								<h6 class="card-subtitle">table.</h6>
-							</div>
-							<!-- card body -->
-							<!--  글쓰기 폼 -->
 
-							<hr class="m-t-0">
-							<div class="card-body"></div>
-
-
-
-						</div>
-						<!-- card -->
-					</div>
-
-
-
-
-				</div>
-				<!-- ============================================================== -->
-				<!-- End PAge Content -->
-				<!-- ============================================================== -->
-
-				<!-- End Right sidebar -->
-				<!-- ============================================================== -->
-			</div>
-			<!-- ============================================================== -->
-			<!-- End Container fluid  -->
-			<!-- ============================================================== -->
 			<!-- 새로운 개시판 -->
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">페이지 들어간 테이블</h4>
-								<h6 class="card-subtitle">서치</h6>
+								<h4 class="card-title">유저 리뷰 게시판</h4>
+								<h6 class="card-subtitle">전시에 대한 리뷰를 게시하는 곳입니다.</h6>
 								<div class="table-responsive">
 									<table id="alt_pagination"
 										class="table table-striped table-bordered display"
@@ -514,11 +478,9 @@
 												<th>date</th>
 											</tr>
 										</thead>
-
+										${reviewList}
 										<tbody>
-											<c:if test="${not empty reviewList}">
-                                        ${reviewList}
-                                        </c:if>
+
 										</tbody>
 										<tfoot>
 											<tr>

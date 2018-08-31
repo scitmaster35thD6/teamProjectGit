@@ -3,8 +3,6 @@ package global.sesoc.seworld.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.RowBounds;
-
 import global.sesoc.seworld.dto.Board;
 
 public interface BoardMapper {
@@ -13,7 +11,7 @@ public interface BoardMapper {
 	
 	public List<Board> viewAllReviews(Map<String, String> searchItems);
 	
-	public List<Board> viewAllQuestions(Map<String, String> searchItems, RowBounds rb);
+	public List<Board> viewAllQuestions(Map<String, String> searchItems);
 
 	public Board viewBoardDetail(String boardId);
 	
