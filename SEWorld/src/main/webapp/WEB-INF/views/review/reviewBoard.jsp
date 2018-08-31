@@ -110,9 +110,9 @@
                     <a class="navbar-brand" href="./"> <!-- Logo icon --> <b
 						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 							<!-- Dark Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin-left: 50px;" alt="homepage"
+							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="dark-logo" /> <!-- Light Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin-left: 50px;" alt="homepage"
+							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="light-logo" />
 					</b>
 					</a>

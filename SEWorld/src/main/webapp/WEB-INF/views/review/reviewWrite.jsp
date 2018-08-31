@@ -13,8 +13,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16"
-	href="resources/assets/images/logo-icon.png">
+<link rel="icon" type="image/png" sizes="any"
+	href="resources/assets/images/logo2.png">
 <title>SE World 전세계 기술 전시</title>
 <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
 	rel="stylesheet">
@@ -115,20 +115,14 @@
 					<!-- ============================================================== -->
 					<!-- Logo -->
 					<!-- ============================================================== -->
-					<a class="navbar-brand" href="index.html"> <!-- Logo icon --> <b
+					<a class="navbar-brand" href="./"> <!-- Logo icon --> <b
 						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 							<!-- Dark Logo icon --> <img
-							src="resources/assets/images/logo-icon.png" alt="homepage"
+							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="dark-logo" /> <!-- Light Logo icon --> <img
-							src="resources/assets/images/logo-light-icon.png" alt="homepage"
+							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="light-logo" />
-					</b> <!--End Logo icon --> <!-- Logo text --> <span class="logo-text">
-							<!-- dark Logo text --> <img
-							src="resources/assets/images/logo-text.png" alt="homepage"
-							class="dark-logo" /> <!-- Light Logo text --> <img
-							src="resources/assets/images/logo-light-text.png"
-							class="light-logo" alt="homepage" />
-					</span>
+					</b>
 					</a>
 					<!-- ============================================================== -->
 					<!-- End Logo -->

@@ -127,7 +127,9 @@ section{
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 33px 30px;
+    padding: 50px 30px 50px 30px; /* 높이 조절 */
+    text-align:"center";
+    position: relative;
 }
 
 div#exTitle{
@@ -139,11 +141,17 @@ div#exTitle{
 }
 
 div.input{
-	width: 1000px;
+	width: 100%;
 	border: 1px solid #444444;
 	border-radius: 20px;
 	text-align: center;
 	background-color: white;
+	margin: auto; 
+	position: relative;
+	left: 0;
+	right: 0;
+	top: 20px;
+	bottom: 0;
 }
 
 table{
@@ -165,7 +173,19 @@ td{
 
 #map{
 	border-radius: 20px;
+	display: block;
 }
+
+#like{
+	
+	margin-left:80%;
+}
+
+#wishlist{
+	
+	margin-right:0;
+}
+
 </style>
 </head>
 <body>
@@ -219,10 +239,14 @@ td{
   </div>
   <!-- /Navigation -->
 	
-	<section>
-		<div id="wrapper" style="float:left; width:1200px;">
+<section>
+	<div id="wrapper">
 		
-			<div id="map" style="float:right; width:550px; height:340px; margin-left: auto; margin-right: auto; display: block;"></div>
+		<a href="http://www.aimer-web.jp/"><img src="resources/image/icon/like1.png" id="like" style="width: 100px; height: 60px;"/></a>
+		<a href="http://www.naver.com/"><img src="resources/image/icon/wishlist.png" id="wishlist" style="width: 100px; height: 60px;"/></a>
+		<br/><br/>
+		<div class="col-md-6 tablerow">
+			
 			<div id="exTitle">
 				<ul style="list-style:none; padding: 10px;">
 					<li>${exhibitionDetail.exhibitionTitleKor}</li>
@@ -252,19 +276,28 @@ td{
 					<td>${exhibitionDetail.sponsor}</td>
 				</tr>
 			</table>
-			<br/><br/>
-			<div class="input" style="margin: auto;"><br/>
-				<div id="result"></div>
-				<hr>
-				<input class="userid" type="text" placeholder="ID"> <input
-					class="replytext" type="text" placeholder="내용"
-					onkeypress="if(event.keyCode==13) {replyInsert(); return false;}">
-				<input id="replyInsert" type="button" value="추가">
-				<br/><br/>
-			</div><br/>
+			<br/>
 		</div>
-    	<!-- /#wrapper -->
-	</section>
+		<div class="col-md-6 buttonrow">
+		
+	</div>
+		<div class="col-md-6 maprow">
+			<div id="map" style="float:right; width:550px; height:340px; margin-left: auto; margin-right: auto;"></div>
+		</div>
+	</div>
+    <!-- /#wrapper -->
+    <div class="col-md-6 commentrow">
+		<div class="input"><br/>
+			<div id="result"></div>
+			<hr>
+			<input class="userid" type="text" placeholder="ID"> <input
+			class="replytext" type="text" placeholder="내용"
+			onkeypress="if(event.keyCode==13) {replyInsert(); return false;}">
+			<input id="replyInsert" type="button" value="추가">
+			<br/><br/>
+		</div><br/>
+	</div>
+</section>
 	
 
 
