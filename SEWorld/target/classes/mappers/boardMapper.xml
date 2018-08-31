@@ -70,7 +70,8 @@
 		,exhibitionid
 		FROM
 		c6_board
-		WHERE boardid =${_parameter}
+		WHERE boardid =
+		${_parameter}
 	</select>
 
 	<!-- 게시물에 파일 저장시 외래키 받아오기 -->

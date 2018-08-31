@@ -15,7 +15,7 @@
 		,createdDate
 		,updatedDate
 		FROM c6_board_reply
-		WHERE boardId = #{boardId}
+		WHERE boardId = ${_parameter}
 		ORDER BY
 		boardReplyId
 	</select>
@@ -30,14 +30,14 @@
 		,createdDate
 		,updatedDate
 		FROM c6_board_reply
-		WHERE boardReplyId = #{boardReplyId}
+		WHERE boardReplyId = ${_parameter}
 	</select>
 
 	<select id="getBoardReplyId" parameterType="String"
 		resultType="String">
 		select boardReplyId
 		from c6_board_reply
-		where boardId=#{boardId}
+		where boardId=${_parameter}
 	</select>
 
 	<insert id="insertOneBoardReply" parameterType="BoardReply">

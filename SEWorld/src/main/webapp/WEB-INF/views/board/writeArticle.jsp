@@ -457,8 +457,8 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">내용 시작</h4>
-								<h6 class="card-subtitle">table.</h6>
+								<h4 class="card-title">Write Article</h4>
+								<h6 class="card-subtitle">do something.</h6>
 							</div>
 							<!-- card body -->
 							<!--  글쓰기 폼 -->
@@ -491,8 +491,8 @@
 											<select class="select2 form-control custom-select"
 												style="width: 80%; height: 36px;" name="category"
 												id="category">
-												<option value="Review" <c:if test="${original.category eq 'Review'}">selected</c:if>>Review</option>
-												<option value="Question" <c:if test="${original.category eq 'Question'}">selected</c:if>>Question</option>
+												<option value="review" <c:if test="${original.category eq 'review'}">selected</c:if>>Review</option>
+												<option value="question" <c:if test="${original.category eq 'question'}">selected</c:if>>Question</option>
 											</select>
 
 
