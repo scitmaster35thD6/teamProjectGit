@@ -498,6 +498,32 @@
 
 										</div>
 									</div>
+									
+									<!-- 테이블 넣을 모달 창 -->
+									 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myLargeModalLabel">게시판</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>테이블</h4>
+                                                <p></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
+									<!-- 테이블 모달 -->
+									
+									
+									
 									<!-- 보드유알엘 -->
 									<div class="form-group row align-items-center m-b-0">
 										<label for="inputEmail3"
@@ -508,6 +534,7 @@
 												<input type="text" class="form-control" id=""
 													placeholder="boardURL" name="">
 											</c:if>
+											
 											<c:if test="${not empty original}">
 											<i class="fas fa-external-link-alt" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
 												<input type="text" class="form-control" id=""
