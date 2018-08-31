@@ -44,4 +44,6 @@ public interface BoardReplyMapper {
 	 * @return 0:수정실패, 1:수정성공
 	 */
 	public abstract int updateOneBoardReply(BoardReply boardReply);
+
+	public abstract String getBoardReplyId(String boardId);
 }

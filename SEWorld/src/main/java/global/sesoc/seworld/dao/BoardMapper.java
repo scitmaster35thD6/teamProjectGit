@@ -11,7 +11,9 @@ public interface BoardMapper {
 
 	public int getTotalList();
 	
-	public List<Board> viewAllBoards(Map<String, String> searchItems, RowBounds rb);
+	public List<Board> viewAllReviews(Map<String, String> searchItems, RowBounds rb);
+	
+	public List<Board> viewAllQuestions(Map<String, String> searchItems, RowBounds rb);
 
 	public Board viewBoardDetail(String boardId);
 	

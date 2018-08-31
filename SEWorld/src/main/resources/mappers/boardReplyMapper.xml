@@ -3,9 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="global.sesoc.seworld.dao.">
+<mapper namespace="global.sesoc.seworld.dao.BoardReplyMapper">
 
-	<select id="selectAllBoardReplies" parameterType="String" resultType="BoardReply">
+	<select id="selectAllBoardReplies" parameterType="String"
+		resultType="BoardReply">
 		SELECT
 		boardReplyId
 		,boardId
@@ -15,10 +16,12 @@
 		,updatedDate
 		FROM c6_board_reply
 		WHERE boardId = #{boardId}
-		ORDER BY boardReplyId
+		ORDER BY
+		boardReplyId
 	</select>
 
-	<select id="selectOneBoardReply" parameterType="String" resultType="BoardReply">
+	<select id="selectOneBoardReply" parameterType="String"
+		resultType="BoardReply">
 		SELECT
 		boardReplyId
 		,boardId
@@ -30,8 +33,16 @@
 		WHERE boardReplyId = #{boardReplyId}
 	</select>
 
+	<select id="getBoardReplyId" parameterType="String"
+		resultType="String">
+		select boardReplyId
+		from c6_board_reply
+		where boardId=#{boardId}
+	</select>
+
 	<insert id="insertOneBoardReply" parameterType="BoardReply">
-		INSERT INTO c6_board_reply
+		INSERT INTO
+		c6_board_reply
 		(
 		boardReplyId
 		,boardId
@@ -42,7 +53,8 @@
 		)
 		VALUES
 		(
-		#{boardId} || '-R' || TO_CHAR(c6_board_reply_seq.NEXTVAL, '0000')
+		#{boardId} || '-R' ||
+		TO_CHAR(c6_board_reply_seq.NEXTVAL, '0000')
 		,#{boardId}
 		,#{memberId}
 		,#{content}
@@ -53,18 +65,21 @@
 
 	<delete id="deleteOneBoardReply" parameterType="BoardReply">
 		DELETE
-		FROM c6_board_reply
+		FROM
+		c6_board_reply
 		WHERE boardReplyId = #{boardReplyId}
-		  AND memberId = #{memberId}
+		AND memberId = #{memberId}
 	</delete>
 
 	<update id="updateOneBoardReply" parameterType="BoardReply">
-		UPDATE c6_board_reply
+		UPDATE
+		c6_board_reply
 		SET
 		content = #{content}
 		,updatedDate = SYSDATE
-		WHERE boardReplyId = #{boardReplyId}
-		  AND memberId = #{memerId}
+		WHERE
+		boardReplyId = #{boardReplyId}
+		AND memberId = #{memerId}
 	</update>
 
 </mapper>

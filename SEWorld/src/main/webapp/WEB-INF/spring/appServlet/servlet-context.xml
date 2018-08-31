@@ -36,9 +36,9 @@
 	<!-- Interceptor 경로 설정 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="insertBoard" />
-			<mapping path="updateBoard" />
-			<mapping path="deleteBoard" />
+			<mapping path="writeReview" />
+			<mapping path="updateReview" />
+			<mapping path="deleteReview" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 	</interceptors>

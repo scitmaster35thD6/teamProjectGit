@@ -388,10 +388,10 @@
 								<li class="sidebar-item"><a href="reviews"
 									class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span
 										class="hide-menu"> User Review </span></a></li>
-								<li class="sidebar-item"><a href="question"
+								<li class="sidebar-item"><a href="questions"
 									class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span
 										class="hide-menu"> Question </span></a></li>
-								<li class="sidebar-item"><a href="writeReview"
+								<li class="sidebar-item"><a href="writeArticle"
 									class="sidebar-link"><i class="mdi mdi-view-day"></i><span
 										class="hide-menu"> WriteForm </span></a></li>
 							</ul></li>
