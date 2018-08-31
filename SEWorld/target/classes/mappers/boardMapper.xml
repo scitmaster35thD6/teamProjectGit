@@ -70,15 +70,14 @@
 		,exhibitionid
 		FROM
 		c6_board
-		WHERE boardid =
-		#{boardId}
+		WHERE boardid =${_parameter}
 	</select>
 
 	<!-- 게시물에 파일 저장시 외래키 받아오기 -->
 	<select id="getBoardId" resultType="String"
 		parameterType="String">
 		select boardid from
-		c6_board where memberid = #{memberId}
+		c6_board where memberid = ${_parameter}
 		and rownum=1
 	</select>
 

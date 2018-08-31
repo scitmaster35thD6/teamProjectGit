@@ -469,7 +469,7 @@
 							<div class="card-body">
 								<div class="d-md-flex align-items-center">
 									<div>
-										<h4 class="card-title">${reviewDetail.title}</h4>
+										<h4 class="card-title">${articleDetail.title}</h4>
 									</div>
 									<div class="ml-auto d-flex no-block align-items-center">
 										<ul class="list-inline font-12 dl m-r-15 m-b-0">
@@ -481,7 +481,7 @@
 									</div>
 								</div>
 
-								<h6>${reviewDetail.memberId}</h6>
+								<h6>${articleDetail.memberId}</h6>
 								<div class="container-fluid">
 									<div class="row el-element-overlay">
 
@@ -512,7 +512,7 @@
 										</div>
 										<!-- column -->
 										<div class="col-lg-9">
-											<div class="content">${reviewDetail.content}</div>
+											<div class="content">${articleDetail.content}</div>
 										</div>
 										<!-- column -->
 									</div>
@@ -542,11 +542,11 @@
 												<li>
 													<h6 class="font-medium">
 														<a
-															href="exhibitionDetail?exhibitionId='${reviewDetail.exhibitionId}'">URL</a>
+															href="exhibitionDetail?exhibitionId='${articleDetail.exhibitionId}'">URL</a>
 													</h6>
 												</li>
 												<li>
-													<h6 class="font-medium">전시회 이름</h6>
+													<h6 class="font-medium">${exbhibitionForArticle.exhibitionTitleKor}</h6>
 												</li>
 											</ul>
 										</div>
@@ -619,10 +619,10 @@
 							<div class="card-body">
 								<h4 class="card-title">Recent Comments</h4>
 							</div>
-							<c:if test="${empty reviewReply}">
+							<c:if test="${empty articleReply}">
 								<div>댓글이 없습니다.</div>
 							</c:if>
-							<c:if test="${not empty reviewReply}">
+							<c:if test="${not empty articleReply}">
 								<div class="container-fluid">
 									<div class="comment-widgets scrollable">
 										<!-- Comment Row -->
@@ -632,11 +632,11 @@
 													width="50" class="rounded-circle">
 											</div>
 											<div class="comment-text w-100">
-												<h6 class="font-medium">${reviewReply.memberId}</h6>
+												<h6 class="font-medium">${articleReply.memberId}</h6>
 												<h6>별점 들어갈 곳</h6>
-												<span class="m-b-15 d-block">${reviewReply.content}</span>
+												<span class="m-b-15 d-block">${articleReply.content}</span>
 												<div class="comment-footer">
-													<span class="text-muted float-right">${reviewReply.updatedDate}</span>
+													<span class="text-muted float-right">${articleReply.updatedDate}</span>
 													<span class="label label-rounded label-primary">Pending</span>
 													<span class="action-icons"> <a
 														href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>

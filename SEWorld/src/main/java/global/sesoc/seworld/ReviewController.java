@@ -60,7 +60,19 @@ public class ReviewController {
 
 	// 리뷰 게시판 페이지로 이동
 	@RequestMapping(value = "/reviews", method = RequestMethod.GET)
-	public String reviews() {
+	public String reviews(@RequestParam(value = "searchCategory", defaultValue = "memberId") String searchCategory,
+			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword, Model model) {
+		List<Board> reviewList = boardRepository.viewAllReviews(searchCategory, searchKeyword);
+		String list = "";
+
+		for (int i = 0; i < reviewList.size(); i++) {
+			list += "<tr onclick=\"location.href='readArticle?boardId=" + reviewList.get(i).getBoardId() + "'\">";
+			list += "<td>" + (i + 1) + "</td>";
+			list += "<td>" + reviewList.get(i).getMemberId() + "</td>";
+			list += "<td>" + reviewList.get(i).getTitle() + "</td>";
+			list += "<td>" + reviewList.get(i).getCreatedDate() + "</td></tr>";
+		}
+		model.addAttribute("reviewList", list);
 		return "board/reviewBoard";
 	}
 
@@ -68,35 +80,6 @@ public class ReviewController {
 	@RequestMapping(value = "/questions", method = RequestMethod.GET)
 	public String questions() {
 		return "board/questionBoard";
-	}
-
-	// 리뷰 게시판 목록 띄우기(Ajax 처리)
-	@ResponseBody
-	@RequestMapping(value = "/reviewListShow", method = RequestMethod.POST, produces = "application/json; charset=utf8")
-	public Map<String, Object> reviewListShow(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
-			@RequestParam(value = "searchCategory", defaultValue = "memberId") String searchCategory,
-			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword) {
-		int totalRecordCount = boardRepository.getTotalList();
-		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
-		List<Board> boardList = boardRepository.viewAllReviews(searchCategory, searchKeyword, navi.getStartRecord(),
-				navi.getCountPerPage());
-
-		Map<String, Object> responseData = new HashMap<String, Object>();
-		String list = "";
-
-		for (int i = 0; i < boardList.size(); i++) {
-			list += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId() + "'\"><td>"
-					+ Integer.toString(navi.getTotalPageCount() - (i + navi.getStartRecord()) + 1) + "</td>";
-			list += "<td>" + boardList.get(i).getMemberId() + "</td>";
-			list += "<td>" + boardList.get(i).getTitle() + "</td>";
-			list += "<td>" + boardList.get(i).getCreatedDate() + "</td></tr>";
-		}
-
-		responseData.put("totalRecordCount", totalRecordCount);
-		responseData.put("list", list);
-		responseData.put("navi", navi);
-
-		return responseData;
 	}
 
 	// 질문 게시판 목록 띄우기(Ajax 처리)
@@ -132,14 +115,15 @@ public class ReviewController {
 	// 게시물 읽기 페이지 이동
 	@RequestMapping(value = "/readArticle", method = RequestMethod.GET)
 	public String readArticle(String boardId, Model model) {
-		// Board reviewDetail = boardRepository.viewBoardDetail(boardId);
-		// Exhibition exbhibitionForReview =
-		// exhibitionRepository.showExhibitionDetail(reviewDetail.getExhibitionId());
-		// BoardReply reviewReply =
-		// boardReplyRepository.selectOneBoardReply(boardReplyRepository.getBoardReplyId(boardId));
-		// model.addAttribute("reviewDetail", reviewDetail);
-		// model.addAttribute("reviewReply", reviewReply);
-		// model.addAttribute("exhibitionForReview", exbhibitionForReview);
+		Board articleDetail = boardRepository.viewBoardDetail(boardId);
+		Exhibition exbhibitionForArticle = exhibitionRepository.showExhibitionDetail(articleDetail.getExhibitionId());
+		String articleReplyId = boardReplyRepository.getBoardReplyId(boardId);
+		if (articleReplyId != null) {
+			BoardReply articleReply = boardReplyRepository.selectOneBoardReply(articleReplyId);
+			model.addAttribute("articleReply", articleReply);
+		}
+		model.addAttribute("articleDetail", articleDetail);
+		model.addAttribute("exbhibitionForArticle", exbhibitionForArticle);
 		return "board/readArticle";
 	}
 
