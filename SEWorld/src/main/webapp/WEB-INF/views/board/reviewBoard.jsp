@@ -25,6 +25,7 @@
     <!-- Custom CSS 새로 -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">
     
+    <link href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -426,17 +427,167 @@
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
+               
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
+            <!-- 새로운 개시판 -->
+            <div class="container-fluid">
+		<div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">페이지 들어간 테이블</h4>
+                                <h6 class="card-subtitle">서치</h6>
+                                <div class="table-responsive">
+                                    <table id="alt_pagination" class="table table-striped table-bordered display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>number</th>
+                                                <th>title</th>
+                                                <th>user</th>
+                                                <th>rates</th>
+                                                <th>date</th>
+                                            </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                            </tr>
+                                         
+                                         <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>그룹전시</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Garrett Winters</td>
+                                                <td>장품</td>
+                                                <td>Tokyo</td>
+                                                <td>63</td>
+                                                <td>2011/07/25</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ashton Cox</td>
+                                                <td>Junior Technical Author</td>
+                                                <td>San Francisco</td>
+                                                <td>66</td>
+                                                <td>2009/01/12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cedric Kelly</td>
+                                                <td>Senior Javascript Developer</td>
+                                                <td>Edinburgh</td>
+                                                <td>22</td>
+                                                <td>2012/03/29</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Airi Satou</td>
+                                                <td>Accountant</td>
+                                                <td>Tokyo</td>
+                                                <td>33</td>
+                                                <td>2008/11/28</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Brielle Williamson</td>
+                                                <td>Integration Specialist</td>
+                                                <td>New York</td>
+                                                <td>61</td>
+                                                <td>2012/12/02</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Herrod Chandler</td>
+                                                <td>Sales Assistant</td>
+                                                <td>San Francisco</td>
+                                                <td>59</td>
+                                                <td>2012/08/06</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Rhona Davidson</td>
+                                                <td>Integration Specialist</td>
+                                                <td>Tokyo</td>
+                                                <td>55</td>
+                                                <td>2010/10/14</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Colleen Hurst</td>
+                                                <td>Javascript Developer</td>
+                                                <td>San Francisco</td>
+                                                <td>39</td>
+                                                <td>2009/09/15</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sonya Frost</td>
+                                                <td>Software Engineer</td>
+                                                <td>Edinburgh</td>
+                                                <td>23</td>
+                                                <td>2008/12/13</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jena Gaines</td>
+                                                <td>Office Manager</td>
+                                                <td>London</td>
+                                                <td>30</td>
+                                                <td>2008/12/19</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Quinn Flynn</td>
+                                                <td>Support Lead</td>
+                                                <td>Edinburgh</td>
+                                                <td>22</td>
+                                                <td>2013/03/03</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Charde Marshall</td>
+                                                <td>Regional Director</td>
+                                                <td>San Francisco</td>
+                                                <td>36</td>
+                                                <td>2008/10/16</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Haley Kennedy</td>
+                                                <td>Senior Marketing Designer</td>
+                                                <td>London</td>
+                                                <td>43</td>
+                                                <td>2012/12/18</td>
+                                            </tr>
+                                            
+                                         
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>number</th>
+                                                <th>title</th>
+                                                <th>user</th>
+                                                <th>rates</th>
+                                                <th>date</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		
+		</div>
+		<!-- 다시 만든테이블 -->
+            
+            
+            <!-- 새로운 개시판 -->
+            
+            
+            
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
@@ -490,7 +641,9 @@
     <!--Custom JavaScript -->
     <script src="resources/dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
-    
+    <!--This page JavaScript -->
+     <script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
     <!-- 벡터지도 -->
     <!-- This Page JS -->
     
