@@ -35,40 +35,26 @@ public class ExhibitionController {
 
 	// 전시회 목록 페이지로 이동
 	@RequestMapping(value = "/exhibitionList", method = RequestMethod.GET)
-	public String exhibitionList() {
-		return "exhibition/exhibitionList";
-	}
-
-	// 전시회 목록 띄우기(Ajax 처리)
-	@RequestMapping(value = "/exhibitionListShow", method = RequestMethod.POST, produces = "application/json; charset=utf8")
-	public @ResponseBody Map<String, Object> exhibitionListShow(
-			@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
-			@RequestParam(value = "selectedCountry", defaultValue = "") String selectedCountry,
+	public String exhibitionList(@RequestParam(value = "selectedCountry", defaultValue = "") String selectedCountry,
 			@RequestParam(value = "searchCategory", defaultValue = "exhibitionTitleKor") String searchCategory,
-			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword) {
-		int totalRecordCount = repository.getTotalList(selectedCountry);
-		PageNavigator navi = new PageNavigator(currentPage, totalRecordCount);
-		List<Exhibition> exhibitionList = repository.showExhibitionList(selectedCountry, searchCategory, searchKeyword,
-				navi.getStartRecord(), navi.getCountPerPage());
+			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword, Model model) {
+		List<Exhibition> exhibitionList = repository.showExhibitionListEL(selectedCountry, searchCategory,
+				searchKeyword);
 
-		Map<String, Object> responseData = new HashMap<String, Object>();
-		String list = "";
-
+		String ELlist = "";
 		for (int i = 0; i < exhibitionList.size(); i++) {
-			list += "<tr onclick=\"location.href='exhibitionDetail?exhibitionId=" + exhibitionList.get(i).getExhibitionId() + "'\"><td>"
+			ELlist += "<tr onclick=\"location.href='exhibitionDetail?exhibitionId="
+					+ exhibitionList.get(i).getExhibitionId() + "'\"><td>"
 					+ exhibitionList.get(i).getExhibitionTitleEng() + "</td>";
-			list += "<td>" + exhibitionList.get(i).getExhibitionTitleKor() + "</td>";
-			list += "<td>" + exhibitionList.get(i).getOpeningCountry() + "</td>";
-			list += "<td>" + exhibitionList.get(i).getOpeningCity() + "</td>";
-			list += "<td>" + exhibitionList.get(i).getOpeningTerm().substring(0, 8) + "</td></tr></a>";
+			ELlist += "<td>" + exhibitionList.get(i).getExhibitionTitleKor() + "</td>";
+			ELlist += "<td>" + exhibitionList.get(i).getOpeningCountry() + "</td>";
+			ELlist += "<td>" + exhibitionList.get(i).getOpeningCity() + "</td>";
+			ELlist += "<td>" + exhibitionList.get(i).getOpeningTerm().substring(0, 8) + "</td>";
+			ELlist += "<td>" + exhibitionList.get(i).getOpeningTerm().substring(9, 17) + "</tr></a>";
 		}
+		model.addAttribute("ELlist", ELlist);
 
-		responseData.put("totalRecordCount", totalRecordCount);
-		responseData.put("list", list);
-		responseData.put("navi", navi);
-
-		return responseData;
-
+		return "exhibition/exhibitionList";
 	}
 
 	// 상세 전시회 보기 페이지

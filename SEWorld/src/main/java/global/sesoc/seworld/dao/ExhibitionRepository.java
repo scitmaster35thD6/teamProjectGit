@@ -22,18 +22,7 @@ public class ExhibitionRepository {
 		int result = mapper.getTotalList(selectedCountry);
 		return result;
 	}
-
-	public List<Exhibition> showExhibitionList(String selectedCountry, String searchCategory, String searchKeyword, int startRecord, int countPerPage) {
-		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
-		RowBounds rb = new RowBounds(startRecord, countPerPage);
-		Map<String, String> searchItems = new HashMap<String, String>();
-		searchItems.put("selectedCountry", selectedCountry);
-		searchItems.put("searchCategory", searchCategory);
-		searchItems.put("searchKeyword", searchKeyword);
-		List<Exhibition> result = mapper.showExhibitionList(searchItems, rb);
-		return result;
-	}
-
+	
 	public Exhibition showExhibitionDetail(String exhibitionId) {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
 		Exhibition result = mapper.showExhibitionDetail(exhibitionId);
@@ -43,6 +32,16 @@ public class ExhibitionRepository {
 	public int countCountry (String openingCountry) {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
 		int result = mapper.countCountry(openingCountry);
+		return result;
+	}
+
+	public List<Exhibition> showExhibitionListEL(String selectedCountry, String searchCategory, String searchKeyword) {
+		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
+		Map<String, String> searchItems = new HashMap<String, String>();
+		searchItems.put("selectedCountry", selectedCountry);
+		searchItems.put("searchCategory", searchCategory);
+		searchItems.put("searchKeyword", searchKeyword);
+		List<Exhibition> result = mapper.showExhibitionListEL(searchItems);
 		return result;
 	}
 }

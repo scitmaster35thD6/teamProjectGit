@@ -5,13 +5,15 @@
 
 <mapper namespace="global.sesoc.seworld.dao.ExhibitionMapper">
 
-	<select id="showExhibitionList" resultType="exhibition" parameterType="map">
+	<select id="showExhibitionListEL" resultType="exhibition"
+		parameterType="map">
 		SELECT
-		 exhibitionId
+		exhibitionId
 		, exhibitionTitleKor
 		, exhibitionTitleEng
 		, openingTerm
-		, firstOpeningYear
+		,
+		firstOpeningYear
 		, openingCountry
 		, openingCity
 		, exhibitionHall
@@ -20,25 +22,31 @@
 		, updatedDate
 		, dataOffer
 		FROM c6_exhibition
-		WHERE openingCountry like '%' || #{selectedCountry} || '%' and #{searchCategory} like '%' || #{searchKeyword} || '%'
-		ORDER BY openingTerm DESC
+		WHERE
+		openingCountry like '%' || #{selectedCountry} || '%' and
+		#{searchCategory} like '%' || #{searchKeyword} || '%'
+		ORDER BY
+		openingTerm DESC
 	</select>
 
-	<select id="getTotalList" resultType="int" parameterType="String">
+	<select id="getTotalList" resultType="int"
+		parameterType="String">
 		SELECT COUNT(*)
 		FROM c6_exhibition
 		<if test="_parameter != null and !_parameter.equals('')">
-		WHERE openingCountry LIKE '%' || #{selectedCountry} || '%'
+			WHERE openingCountry LIKE '%' || #{selectedCountry} || '%'
 		</if>
 	</select>
 
-	<select id="showExhibitionDetail" resultType="exhibition" parameterType="String">
+	<select id="showExhibitionDetail" resultType="exhibition"
+		parameterType="String">
 		SELECT
-		 exhibitionId
+		exhibitionId
 		, exhibitionTitleKor
 		, exhibitionTitleEng
 		, openingTerm
-		, firstOpeningYear
+		,
+		firstOpeningYear
 		, openingCountry
 		, openingCity
 		, exhibitionHall
@@ -47,11 +55,13 @@
 		, updatedDate
 		, dataOffer
 		FROM c6_exhibition
-		WHERE exhibitionId = #{exhibitionId}
+		WHERE
+		exhibitionId = #{exhibitionId}
 	</select>
-	
+
 	<!-- 각국 전시회 수 세기 -->
-	<select id="countCountry" parameterType="String" resultType="int">
-	select count(*) from c6_exhibition where openingCountry = #{openingCountry}
+	<select id="countCountry" parameterType="String"
+		resultType="int">
+		select count(*) from c6_exhibition where openingCountry = #{openingCountry}
 	</select>
 </mapper>

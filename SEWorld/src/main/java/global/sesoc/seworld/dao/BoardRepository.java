@@ -22,13 +22,12 @@ public class BoardRepository {
 		return result;
 	}
 	
-	public List<Board> viewAllReviews(String searchCategory, String searchKeyword, int startRecord, int countPerPage) {
+	public List<Board> viewAllReviews(String searchCategory, String searchKeyword) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-		RowBounds rb = new RowBounds(startRecord, countPerPage);
 		Map<String, String> searchItems = new HashMap<String, String>();
 		searchItems.put("searchCategory", searchCategory);
 		searchItems.put("searchKeyword", searchKeyword);
-		List<Board> result = boardMapper.viewAllReviews(searchItems, rb);
+		List<Board> result = boardMapper.viewAllReviews(searchItems);
 		return result;
 	}
 	
