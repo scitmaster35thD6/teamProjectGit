@@ -13,8 +13,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="any"
-	href="resources/assets/images/logo2.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="resources/assets/images/logo-icon.png">
 <title>SE World 전세계 기술 전시</title>
 <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
 	rel="stylesheet">
@@ -29,6 +29,10 @@
 <!-- Custom CSS 새로 -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
 
+<!-- 프로필용  css -->
+<link
+	href="resources/assets/libs/magnific-popup/dist/magnific-popup.css"
+	rel="stylesheet">
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -86,7 +90,7 @@
 	}
 }
 </style>
-<script src="resources/reviewFormCheck.js"></script>
+
 </head>
 
 <body>
@@ -115,14 +119,20 @@
 					<!-- ============================================================== -->
 					<!-- Logo -->
 					<!-- ============================================================== -->
-					<a class="navbar-brand" href="./"> <!-- Logo icon --> <b
+					<a class="navbar-brand" href="index.html"> <!-- Logo icon --> <b
 						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 							<!-- Dark Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
+							src="resources/assets/images/logo-icon.png" alt="homepage"
 							class="dark-logo" /> <!-- Light Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
+							src="resources/assets/images/logo-light-icon.png" alt="homepage"
 							class="light-logo" />
-					</b>
+					</b> <!--End Logo icon --> <!-- Logo text --> <span class="logo-text">
+							<!-- dark Logo text --> <img
+							src="resources/assets/images/logo-text.png" alt="homepage"
+							class="dark-logo" /> <!-- Light Logo text --> <img
+							src="resources/assets/images/logo-light-text.png"
+							class="light-logo" alt="homepage" />
+					</span>
 					</a>
 					<!-- ============================================================== -->
 					<!-- End Logo -->
@@ -388,10 +398,10 @@
 								<li class="sidebar-item"><a href="reviews"
 									class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span
 										class="hide-menu"> User Review </span></a></li>
-								<li class="sidebar-item"><a href="question"
+								<li class="sidebar-item"><a href="questions"
 									class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span
 										class="hide-menu"> Question </span></a></li>
-								<li class="sidebar-item"><a href="writeReview"
+								<li class="sidebar-item"><a href="writeArticle"
 									class="sidebar-link"><i class="mdi mdi-view-day"></i><span
 										class="hide-menu"> WriteForm </span></a></li>
 							</ul></li>
@@ -451,187 +461,238 @@
 			<!-- ============================================================== -->
 			<div class="container-fluid">
 				<!-- ============================================================== -->
-				<!-- Start Page Content -->
+				<!-- Start Page Content 페이지 내용보기-->
 				<!-- ============================================================== -->
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">내용 시작</h4>
-								<h6 class="card-subtitle">table.</h6>
-							</div>
-							<!-- card body -->
-							<!--  글쓰기 폼 -->
-
-							<hr class="m-t-0">
-							<form class="form-horizontal r-separator"
-								enctype="multipart/form-data" action="writeReview" method="post"
-								onsubmit="return formCheck()">
-								<div class="card-body">
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">title</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-											<c:if test="${empty original}">
-												<input type="text" class="form-control" id="title"
-													placeholder="title" name="title">
-											</c:if>
-											<c:if test="${not empty original}">
-												<input type="text" class="form-control" id="title"
-													placeholder="title" name="title" value="${original.title}">
-											</c:if>
-										</div>
+								<div class="d-md-flex align-items-center">
+									<div>
+										<h4 class="card-title">${reviewDetail.title}</h4>
 									</div>
+									<div class="ml-auto d-flex no-block align-items-center">
+										<ul class="list-inline font-12 dl m-r-15 m-b-0">
+											<li class="list-inline-item text-secondary"><i
+												class="fas fa-star"></i> 리뷰자의 별점</li>
+											<li class="list-inline-item text-primary">4점</li>
+										</ul>
 
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">category</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-
-											<select class="select2 form-control custom-select"
-												style="width: 80%; height: 36px;" name="category"
-												id="category">
-												<option value="Review" <c:if test="${original.category eq 'Review'}">selected</c:if>>Review</option>
-												<option value="Question" <c:if test="${original.category eq 'Question'}">selected</c:if>>Question</option>
-											</select>
-
-
-										</div>
 									</div>
-									
-									<!-- 테이블 넣을 모달 창 -->
-									 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myLargeModalLabel">게시판</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h4>테이블</h4>
-                                                <p></p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                                <!-- /.modal -->
-									<!-- 테이블 모달 -->
-									
-									
-									
-									<!-- 보드유알엘 -->
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">choose from board</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-											<c:if test="${empty original}">
-											<i class="fas fa-external-link-alt" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-												<input type="text" class="form-control" id=""
-													placeholder="boardURL" name="">
-											</c:if>
-											
-											<c:if test="${not empty original}">
-											<i class="fas fa-external-link-alt" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-												<input type="text" class="form-control" id=""
-													placeholder="boardURL" name="" value="${original.title}">
-											</c:if>
-										</div>
-									</div>
-									
-									
-									<!-- 보드유알엘 -->
-									<!-- 첨부파일 -->
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">Select
-											File</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-											<div class="input-group">
-												<div class="input-group-prepend">
-													<span class="input-group-text">Upload</span>
+								</div>
+
+								<h6>${reviewDetail.memberId}</h6>
+								<div class="container-fluid">
+									<div class="row el-element-overlay">
+
+										<!-- column -->
+										<div class="col-lg-3 col-md-6" contextmenu="">
+											<div class="card" contextmenu="">
+												<div class="el-card-item">
+													<div class="el-card-avatar el-overlay-1">
+														<img src="resources/assets/images/users/1.jpg" alt="user" />
+														<div class="el-overlay">
+															<ul class="list-style-none el-info">
+																<li class="el-item"><a
+																	class="btn default btn-outline image-popup-vertical-fit el-link"
+																	href="resources/assets/images/users/1.jpg"><i
+																		class="icon-magnifier"></i></a></li>
+																<li class="el-item"><a
+																	class="btn default btn-outline el-link"
+																	href="javascript:void(0);"><i class="icon-link"></i></a></li>
+															</ul>
+														</div>
+													</div>
+													<div class="el-card-content">
+														<h4 class="m-b-0">이름</h4>
+														<span class="text-muted">직업</span>
+													</div>
 												</div>
-												<div class="custom-file">
-												<c:if test="${empty originalFile}">
-													<input type="file" class="custom-file-input"
-														id="uploadFile" name="uploadFile">
-														</c:if>
-														<c:if test="${not empty originalFile}">
-													    <a href="download?boardnum=${originalFile.boardId}">${originalFile.ogFilename}</a>
-														</c:if>
-														 <label
-														class="custom-file-label" for="inputGroupFile01">Choose
-														file</label>
+											</div>
+										</div>
+										<!-- column -->
+										<div class="col-lg-9">
+											<div class="content">${reviewDetail.content}</div>
+										</div>
+										<!-- column -->
+									</div>
+								</div>
+
+							</div>
+							<!-- ============================================================== -->
+							<!-- Info Box -->
+							<!-- ============================================================== -->
+							<div class="card-body border-top">
+								<div class="row m-b-0">
+									<!-- col -->
+									<div class="col-lg-3 col-md-6">
+										<div class="d-flex align-items-center"></div>
+									</div>
+									<!-- col -->
+									<!-- col -->
+									<div class="col-lg-3 col-md-6">
+										<div class="d-flex align-items-center"></div>
+									</div>
+									<!-- col -->
+									<!-- col -->
+									<div class="col-lg-3 col-md-6">
+
+										<div class="d-flex align-items-center">
+											<ul>
+												<li>
+													<h6 class="font-medium">
+														<a
+															href="exhibitionDetail?exhibitionId='${reviewDetail.exhibitionId}'">URL</a>
+													</h6>
+												</li>
+												<li>
+													<h6 class="font-medium">전시회 이름</h6>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<!-- col -->
+									<!-- col -->
+									<div class="col-lg-3 col-md-6">
+										<div class="d-flex align-items-center"></div>
+									</div>
+									<!-- col -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- Sales chart -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- Email campaign chart -->
+				<!-- ============================================================== -->
+				<div class="row">
+					<div class="col-lg-8 col-xl-6">
+						<div class="card card-hover">
+							<div class="card-body">
+								<div class="d-md-flex align-items-center">
+									<h3>연관 글 더보기</h3>
+								</div>
+								<!-- column -->
+								<div class="row m-t-40">
+									<!-- column -->
+									<div class="col-lg-6">
+										<div id="visitor" style="height: 290px; width: 100%;"
+											class="m-t-20"></div>
+									</div>
+									<!-- column -->
+									<div class="col-lg-6">
+										<h3>연관글 더보기?</h3>
+									</div>
+								</div>
+								<!-- column -->
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-xl-6">
+						<div class="card card-hover">
+							<div class="card-body"
+								style="background: url(resources/assets/images/background/active-bg.png) no-repeat top center;">
+
+
+								<h1>여기 뭐넣지?</h1>
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- 글 더보기-->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- 뎃글s -->
+				<!-- ============================================================== -->
+				<div class="row">
+					<!-- column -->
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">Recent Comments</h4>
+							</div>
+							<c:if test="${empty reviewReply}">
+								<div>댓글이 없습니다.</div>
+							</c:if>
+							<c:if test="${not empty reviewReply}">
+								<div class="container-fluid">
+									<div class="comment-widgets scrollable">
+										<!-- Comment Row -->
+										<div class="d-flex flex-row comment-row m-t-0">
+											<div class="p-2">
+												<img src="resources/assets/images/users/1.jpg" alt="user"
+													width="50" class="rounded-circle">
+											</div>
+											<div class="comment-text w-100">
+												<h6 class="font-medium">${reviewReply.memberId}</h6>
+												<h6>별점 들어갈 곳</h6>
+												<span class="m-b-15 d-block">${reviewReply.content}</span>
+												<div class="comment-footer">
+													<span class="text-muted float-right">${reviewReply.updatedDate}</span>
+													<span class="label label-rounded label-primary">Pending</span>
+													<span class="action-icons"> <a
+														href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+														<a href="javascript:void(0)"><i class="ti-check"></i></a>
+														<a href="javascript:void(0)"><i class="ti-heart"></i></a>
+													</span>
 												</div>
 											</div>
 										</div>
 									</div>
-
-									<!-- 첨부파일 -->
-
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">contents</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-											<textarea class="form-control rounded-0" id="content"
-												rows="10" name="content">	<c:if
-													test="${not empty original}">
-												<c:out value="${original.content}"></c:out>
-												</c:if></textarea>
-										</div>
-									</div>
 								</div>
-								<hr>
-								<div class="card-body">
-									<div class="form-group m-b-0 text-right">
-										<button type="submit"
-											class="btn btn-info waves-effect waves-light">Save</button>
-										<button type="reset"
-											class="btn btn-dark waves-effect waves-light">Cancel</button>
-									</div>
-								</div>
-							</form>
-
-
-
-
+							</c:if>
+							<!-- 댓글 열 -->
 						</div>
-						<!-- card -->
+
 					</div>
-
-
-
-
+					<!-- 플루이드는 여기까지입니다. -->
 				</div>
-				<!-- ============================================================== -->
-				<!-- End PAge Content -->
-				<!-- ============================================================== -->
-				<!-- ============================================================== -->
-				<!-- Right sidebar -->
-				<!-- ============================================================== -->
-				<!-- .right-sidebar -->
-				<!-- ============================================================== -->
-				<!-- End Right sidebar -->
-				<!-- ============================================================== -->
 			</div>
-			<!-- ============================================================== -->
-			<!-- End Container fluid  -->
-			<!-- ============================================================== -->
-			<!-- ============================================================== -->
-			<!-- footer -->
-			<!-- ============================================================== -->
-			<footer class="footer text-center"> SCIT Poject </footer>
-			<!-- ============================================================== -->
-			<!-- End footer -->
-			<!-- ============================================================== -->
+
 		</div>
 		<!-- ============================================================== -->
-		<!-- End Page wrapper  -->
+		<!-- 댓글 -->
 		<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Container fluid  -->
+	<!-- ============================================================== -->
+
+
+
+	<!-- ============================================================== -->
+	<!-- 페이지 끝 -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- Right sidebar -->
+	<!-- ============================================================== -->
+	<!-- .right-sidebar -->
+	<!-- ============================================================== -->
+	<!-- End Right sidebar -->
+	<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Container fluid  -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- footer -->
+	<!-- ============================================================== -->
+	<footer class="footer text-center"> SCIT Poject </footer>
+	<!-- ============================================================== -->
+	<!-- End footer -->
+	<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Page wrapper  -->
+	<!-- ============================================================== -->
 	</div>
 	<!-- ============================================================== -->
 	<!-- End Wrapper -->
@@ -671,10 +732,9 @@
 	<!--Custom JavaScript -->
 	<script src="resources/dist/js/custom.min.js"></script>
 	<!--This page JavaScript -->
-
-	<!-- 벡터지도 -->
-	<!-- This Page JS -->
-
+	<script
+		src="resources/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+	<script src="resources/assets/libs/magnific-popup/meg.init.js"></script>
 
 </body>
 

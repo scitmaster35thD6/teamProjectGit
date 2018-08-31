@@ -321,8 +321,8 @@
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-tune-vertical"></i><span class="hide-menu">Review,Q&A </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="reviews" class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span class="hide-menu"> User Review </span></a></li>
-                                <li class="sidebar-item"><a href="question" class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span class="hide-menu"> Question </span></a></li>
-                                <li class="sidebar-item"><a href="writeReview" class="sidebar-link"><i class="mdi mdi-view-day"></i><span class="hide-menu"> WriteForm </span></a></li>
+                                <li class="sidebar-item"><a href="questions" class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span class="hide-menu"> Question </span></a></li>
+                                <li class="sidebar-item"><a href="writeArticle" class="sidebar-link"><i class="mdi mdi-view-day"></i><span class="hide-menu"> WriteForm </span></a></li>
                             </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-content-copy"></i><span class="hide-menu">User Board</span></a>

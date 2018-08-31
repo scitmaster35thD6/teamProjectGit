@@ -15,7 +15,7 @@
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="any"
 	href="resources/assets/images/logo2.png">
-<title>SE World - 전세계 기술 전시</title>
+<title>SE World 전세계 기술 전시</title>
 <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
 	rel="stylesheet">
 <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
@@ -86,8 +86,7 @@
 	}
 }
 </style>
-<script type="text/javascript" src="resources/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="resources/exhibitionListShow.js"></script>
+<script src="resources/reviewFormCheck.js"></script>
 </head>
 
 <body>
@@ -265,50 +264,7 @@
 					<!-- ============================================================== -->
 					<ul class="navbar-nav float-right">
 						<!-- create new -->
-					
-					
-					<!-- ============================================================== -->
-                        <!-- Messages -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="font-24 mdi mdi-comment-processing"></i>
-                                
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
-                                <span class="with-arrow"><span class="bg-white"></span></span>
-                                <ul class="list-style-none">
-                                    <li>
-                                        <div class="drop-title text-black bg-#f7b2c5">
-                                            <h4 class="m-b-0 m-t-5">2 New</h4>
-                                            <span class="font-light">Messages</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="message-center message-body" style="height :100%;">
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)" class="message-item">
-                                                <span class="user-img"><i class="fas fa-user"></i>  </span>
-                                                <div class="mail-contnet">
-                                                    <h5 class="message-title">heemin</h5> <span class="mail-desc">안녕하세요 전시회 정보 문으드립니다.</span> <span class="time">9:30 AM</span> </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)" class="message-item">
-                                                <span class="user-img"><i class="fas fa-user"></i>  </span>
-                                                <div class="mail-contnet">
-                                                    <h5 class="message-title">happy</h5> <span class="mail-desc">what sup </span><span class="time">9:10 AM</span> </div>
-                                            </a>
-                                            
-                                            
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-center link" href="javascript:void(0);"> <b>모든 메세지 보기</b> <i class="fa fa-angle-right"></i> </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        
-                        <!-- end+++++================== -->
+
 
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
@@ -328,11 +284,8 @@
 								<div
 									class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
 									<div class="">
-									
-										<!-- 아이콘 유저 -->
-										<i class="fas fa-user" width="60"></i>
-									
-										
+										<img src="resources/assets/images/users/user.png" alt="user"
+											class="img-circle" width="60">
 									</div>
 									<div class="m-l-10">
 										<h4 class="m-b-0">유저네임</h4>
@@ -506,159 +459,179 @@
 							<div class="card-body">
 								<h4 class="card-title">내용 시작</h4>
 								<h6 class="card-subtitle">table.</h6>
+							</div>
+							<!-- card body -->
+							<!--  글쓰기 폼 -->
 
-								<!-- 지도 모달 창 -->
-								<ul class="navbar-nav float-left mr-auto">
-									<li>
-										<!-- 모달 버튼 -->
-										<div class="p-l-30 p-10">
-											<button type="button"
-												class="btn btn-sm btn-success btn-rounded"
-												data-toggle="modal" data-target=".bd-example-modal-lg">
-												Select Region</button>
+							<hr class="m-t-0">
+							<form class="form-horizontal r-separator"
+								enctype="multipart/form-data" action="writeReview" method="post"
+								onsubmit="return formCheck()">
+								<div class="card-body">
+									<div class="form-group row align-items-center m-b-0">
+										<label for="inputEmail3"
+											class="col-3 text-right control-label col-form-label">title</label>
+										<div class="col-9 border-left p-b-10 p-t-10">
+											<c:if test="${empty original}">
+												<input type="text" class="form-control" id="title"
+													placeholder="title" name="title">
+											</c:if>
+											<c:if test="${not empty original}">
+												<input type="text" class="form-control" id="title"
+													placeholder="title" name="title" value="${original.title}">
+											</c:if>
+										</div>
+									</div>
 
-											<!-- Modal -->
-											<div class="modal fade bd-example-modal-lg" tabindex="-1"
-												role="dialog" aria-labelledby="myLargeModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog modal-lg">
-													<div class="modal-content">
+									<div class="form-group row align-items-center m-b-0">
+										<label for="inputEmail3"
+											class="col-3 text-right control-label col-form-label">category</label>
+										<div class="col-9 border-left p-b-10 p-t-10">
 
-														<div class="modal-header">
-															<h5 class="modal-title" id="exampleModalLongTitle">Modal
-																title</h5>
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<div class="modal-body">
-															<!-- 벡터지도 넣기 -->
-
-
-															<!-- 벡터지도 넣기 -->
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary"
-																data-dismiss="modal">Close</button>
-															<button type="button" class="btn btn-primary">Save
-																changes</button>
-														</div>
-
-
-													</div>
-												</div>
-											</div>
-											<!-- Modal -->
-
+											<select class="select2 form-control custom-select"
+												style="width: 80%; height: 36px;" name="category"
+												id="category">
+												<option value="Review" <c:if test="${original.category eq 'Review'}">selected</c:if>>Review</option>
+												<option value="Question" <c:if test="${original.category eq 'Question'}">selected</c:if>>Question</option>
+											</select>
 
 
 										</div>
-									</li>
+									</div>
+									
+									<!-- 테이블 넣을 모달 창 -->
+									 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myLargeModalLabel">게시판</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>테이블</h4>
+                                                <p></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
+									<!-- 테이블 모달 -->
+									
+									
+									
+									<!-- 보드유알엘 -->
+									<div class="form-group row align-items-center m-b-0">
+										<label for="inputEmail3"
+											class="col-3 text-right control-label col-form-label">choose from board</label>
+										<div class="col-9 border-left p-b-10 p-t-10">
+											<c:if test="${empty original}">
+											<i class="fas fa-external-link-alt" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+												<input type="text" class="form-control" id=""
+													placeholder="boardURL" name="">
+											</c:if>
+											
+											<c:if test="${not empty original}">
+											<i class="fas fa-external-link-alt" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+												<input type="text" class="form-control" id=""
+													placeholder="boardURL" name="" value="${original.title}">
+											</c:if>
+										</div>
+									</div>
+									
+									
+									<!-- 보드유알엘 -->
+									<!-- 첨부파일 -->
+									<div class="form-group row align-items-center m-b-0">
+										<label for="inputEmail3"
+											class="col-3 text-right control-label col-form-label">Select
+											File</label>
+										<div class="col-9 border-left p-b-10 p-t-10">
+											<div class="input-group">
+												<div class="input-group-prepend">
+													<span class="input-group-text">Upload</span>
+												</div>
+												<div class="custom-file">
+												<c:if test="${empty originalFile}">
+													<input type="file" class="custom-file-input"
+														id="uploadFile" name="uploadFile">
+														</c:if>
+														<c:if test="${not empty originalFile}">
+													    <a href="download?boardnum=${originalFile.boardId}">${originalFile.ogFilename}</a>
+														</c:if>
+														 <label
+														class="custom-file-label" for="inputGroupFile01">Choose
+														file</label>
+												</div>
+											</div>
+										</div>
+									</div>
 
+									<!-- 첨부파일 -->
 
-
-
-
-									<!-- 지도 모달 창 -->
-
-
-									<li>선택 옵션 놓일 자리</li>
-								</ul>
-
-								<ul class="navbar-nav float-right">
-								<!-- 검색창 -->
-
-			<div class="row">
-  <div class="col-lg-4">
-    <div class="input-group">					
-		<select id="searchCategory" required>
-      <option value="">검색</option>
-      <option value="title">제목</option>
-      <option value="content">내용</option>
-      <option value="openingCity">도시</option>
-    </select>
-    </div>
-    </div>
-    <div class="col-lg-5">
-    <div class="input-group">	
-			<input type="text" id="searchKeyword" aria-label="Text input with dropdown button">
+									<div class="form-group row align-items-center m-b-0">
+										<label for="inputEmail3"
+											class="col-3 text-right control-label col-form-label">contents</label>
+										<div class="col-9 border-left p-b-10 p-t-10">
+											<textarea class="form-control rounded-0" id="content"
+												rows="10" name="content">	<c:if
+													test="${not empty original}">
+												<c:out value="${original.content}"></c:out>
+												</c:if></textarea>
+										</div>
+									</div>
 								</div>
+								<hr>
+								<div class="card-body">
+									<div class="form-group m-b-0 text-right">
+										<button type="submit"
+											class="btn btn-info waves-effect waves-light">Save</button>
+										<button type="reset"
+											class="btn btn-dark waves-effect waves-light">Cancel</button>
+									</div>
 								</div>
-							
-							 <div class="col-lg-3">
-    <div class="input-group">	
-    		<!--   서치 아이콘 -->
-        <span class="btn btn-danger btn-circle"><i class="fas fa-search" ></i></span>
-    </div>
-    </div>
-							
-								
-								</div>
-								<!-- 검색창 -->
-							</div>
-							<!-- 카드 한개 끝 내용 -->
+							</form>
 
-							</ul>
 
-							<hr class="m-t-0">
-							<!-- 테이블 껍데기 -->
-							<strong id="counter-coffee" class="totalRecordCount"></strong>
-							<span class="text">개의 결과를 찾았습니다.</span>
-							<div class="card-body">
-								<table class="table">
 
-									<thead>
-										<tr>
-											<th>제목 Eng</th>
-											<th>제목 Kor</th>
-											<th>국가</th>
-											<th>도시</th>
-											<th>시작일</th>
-										</tr>
-									</thead>
-									<tbody class="exhibitionContent">
-									</tbody>
-								</table>
-							</div>
-							<div class="pageNavi"></div>
-							<!-- 테이블 카드 -->
 
 						</div>
+						<!-- card -->
 					</div>
+
+
+
+
 				</div>
+				<!-- ============================================================== -->
+				<!-- End PAge Content -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- Right sidebar -->
+				<!-- ============================================================== -->
+				<!-- .right-sidebar -->
+				<!-- ============================================================== -->
+				<!-- End Right sidebar -->
+				<!-- ============================================================== -->
 			</div>
-
-
-
-
-
+			<!-- ============================================================== -->
+			<!-- End Container fluid  -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- footer -->
+			<!-- ============================================================== -->
+			<footer class="footer text-center"> SCIT Poject </footer>
+			<!-- ============================================================== -->
+			<!-- End footer -->
+			<!-- ============================================================== -->
 		</div>
 		<!-- ============================================================== -->
-		<!-- End PAge Content -->
+		<!-- End Page wrapper  -->
 		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- Right sidebar -->
-		<!-- ============================================================== -->
-		<!-- .right-sidebar -->
-		<!-- ============================================================== -->
-		<!-- End Right sidebar -->
-		<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Container fluid  -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- footer -->
-	<!-- ============================================================== -->
-	<footer class="footer text-center"> SCIT Poject </footer>
-	<!-- ============================================================== -->
-	<!-- End footer -->
-	<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Page wrapper  -->
-	<!-- ============================================================== -->
 	</div>
 	<!-- ============================================================== -->
 	<!-- End Wrapper -->

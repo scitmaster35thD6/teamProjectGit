@@ -11,38 +11,67 @@
 		c6_board
 	</select>
 
-	<select id="viewAllBoards" resultType="board"
+	<select id="viewAllReviews" resultType="Board"
 		parameterType="map">
 		SELECT
 		boardId
-		, memberId
+		,memberId
 		,category
 		,title
 		,content
-		,
-		createdDate
-		, updatedDate
+		,createdDate
+		,updatedDate
+		,exhibitionid
 		FROM
 		c6_board
-		where #{searchCategory} like '%'
+		where
+		category =
+		'review' and
+		#{searchCategory} like '%'
 		|| #{searchKeyword} || '%'
-		ORDER BY boardid DESC
+		ORDER BY
+		boardId
+		DESC
 	</select>
 
-	<select id="viewBoardDetail" resultType="board"
-		parameterType="String">
+	<select id="viewAllQuestions" resultType="Board"
+		parameterType="map">
 		SELECT
 		boardId
-		, memberId
+		,memberId
 		,category
 		,title
 		,content
-		,
-		createdDate
-		, updatedDate
+		,createdDate
+		,updatedDate
+		,exhibitionid
 		FROM
 		c6_board
-		WHERE boardid = #{boardId}
+		where
+		category =
+		'question' and
+		#{searchCategory} like '%'
+		|| #{searchKeyword} || '%'
+		ORDER
+		BY boardId
+		DESC
+	</select>
+
+	<select id="viewBoardDetail" resultType="Board"
+		parameterType="String">
+		select
+		boardId
+		,memberId
+		,category
+		,title
+		,content
+		,createdDate
+		,updatedDate
+		,exhibitionid
+		FROM
+		c6_board
+		WHERE boardid =
+		#{boardId}
 	</select>
 
 	<!-- 게시물에 파일 저장시 외래키 받아오기 -->
@@ -53,7 +82,7 @@
 		and rownum=1
 	</select>
 
-	<insert id="insertBoard" parameterType="board">
+	<insert id="insertBoard" parameterType="Board">
 		INSERT INTO c6_board
 		(
 		boardid
@@ -63,6 +92,7 @@
 		,content
 		,createddate
 		,updateddate
+		,exhibitionid
 		)
 		VALUES
 		(
@@ -73,10 +103,11 @@
 		,#{content}
 		,SYSDATE
 		,SYSDATE
+		,#{exhibitionId}
 		)
 	</insert>
 
-	<update id="updateBoard" parameterType="board">
+	<update id="updateBoard" parameterType="Board">
 		UPDATE c6_board
 		SET
 		category = #{category}
