@@ -498,6 +498,26 @@
 
 										</div>
 									</div>
+									<!-- 보드유알엘 -->
+									<div class="form-group row align-items-center m-b-0">
+										<label for="inputEmail3"
+											class="col-3 text-right control-label col-form-label">choose from board</label>
+										<div class="col-9 border-left p-b-10 p-t-10">
+											<c:if test="${empty original}">
+											<i class="fas fa-external-link-alt" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+												<input type="text" class="form-control" id=""
+													placeholder="boardURL" name="">
+											</c:if>
+											<c:if test="${not empty original}">
+											<i class="fas fa-external-link-alt" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+												<input type="text" class="form-control" id=""
+													placeholder="boardURL" name="" value="${original.title}">
+											</c:if>
+										</div>
+									</div>
+									
+									
+									<!-- 보드유알엘 -->
 									<!-- 첨부파일 -->
 									<div class="form-group row align-items-center m-b-0">
 										<label for="inputEmail3"
