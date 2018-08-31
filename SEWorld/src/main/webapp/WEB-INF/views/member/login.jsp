@@ -47,12 +47,12 @@
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(resources/assets/images/big/auth-bg.jpg) no-repeat center center;">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(resources/assets/images/big/rabbit_grass_flowers_1920x1080.jpg) no-repeat center center;">
             <div class="auth-box">
                 <div id="loginform">
                     <div class="logo">
                         <span class="db"><img src="resources/assets/images/logo-icon.png" alt="logo" /></span>
-                        <h5 class="font-medium m-b-20">Sign In to Admin</h5>
+                        <h5 class="font-medium m-b-20">Sign In</h5>
                     </div>
                     <!-- Form -->
                     <div class="row">
@@ -99,13 +99,14 @@
                                 </div>
                                 <div class="form-group m-b-0 m-t-10">
                                     <div class="col-sm-12 text-center">
-                                        Don't have an account? <a href="authentication-register1.html" class="text-info m-l-5"><b>Sign Up</b></a>
+                                        Don't have an account? <a href="signup" class="text-info m-l-5"><b>Sign Up</b></a>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+                
                 <div id="recoverform">
                     <div class="logo">
                         <span class="db"><img src="resources/assets/images/logo-icon.png" alt="logo" /></span>

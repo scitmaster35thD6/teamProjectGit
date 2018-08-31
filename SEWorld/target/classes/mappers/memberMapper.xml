@@ -25,9 +25,9 @@
 		memberId
 		,memberPwd
 		,memberName
-		,memberBirth
+		<!-- ,memberBirth
 		,memberEmail
-		,memberPhone
+		,memberPhone -->
 		,regDate
 		)
 		VALUES
@@ -35,9 +35,9 @@
 		#{memberId}
 		,#{memberPwd}
 		,#{memberName}
-		,#{memberBirth}
+		<!-- ,#{memberBirth}
 		,#{memberEmail}
-		,#{memberPhone}
+		,#{memberPhone} -->
 		,SYSDATE
 		)
 	</insert>
