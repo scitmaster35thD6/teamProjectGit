@@ -24,6 +24,14 @@ public class HomeController {
 		logger.info("[/]");
 		return "index";
 	}
+	/*새로운 메인 페이지.. 아직 만드는 중*/
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String newMainPage() {
+		logger.info("[/]");
+		return "main";
+	}
+	
+	
 	
 	/**
 	 * 
