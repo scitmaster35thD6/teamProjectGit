@@ -5,7 +5,7 @@ $(function() {
         Layout: 'vertical',
         LogoBg: 'skin6', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6 
         LogoBg: 'skin1', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6 
-        NavbarBg: 'skin6', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
+        NavbarBg: 'skin5', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
         SidebarType: 'iconbar', // You can change it full / mini-sidebar / iconbar / overlay
         SidebarColor: 'skin1', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
         SidebarPosition: true, // it can be true / false ( true means Fixed and false means absolute )
