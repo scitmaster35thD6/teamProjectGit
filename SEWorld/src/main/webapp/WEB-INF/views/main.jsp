@@ -227,9 +227,11 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: right;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
+  float:right;
+  margin-left : 50px;
 }
 
 #hero h1 {
@@ -448,6 +450,116 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Mobile Nav Toggle */
+#mobile-nav-toggle {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  margin: 20px 20px 0 0;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  display: none;
+  transition: all 0.4s;
+  outline: none;
+  cursor: pointer;
+}
+
+#mobile-nav-toggle i {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  #mobile-nav-toggle {
+    display: inline;
+  }
+}
+
+/* Mobile Nav Styling */
+#mobile-nav {
+  position: fixed;
+  top: 0;
+  padding-top: 18px;
+  bottom: 0;
+  z-index: 998;
+  background: rgba(52, 59, 64, 0.9);
+  left: -260px;
+  width: 260px;
+  overflow-y: auto;
+  transition: 0.4s;
+}
+
+#mobile-nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#mobile-nav ul li {
+  position: relative;
+}
+
+#mobile-nav ul li a {
+  color: #fff;
+  font-size: 16px;
+  overflow: hidden;
+  padding: 10px 22px 10px 15px;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  outline: none;
+}
+
+#mobile-nav ul li a:hover {
+  color: #fff;
+}
+
+#mobile-nav ul li li {
+  padding-left: 30px;
+}
+
+#mobile-nav ul .menu-has-children i {
+  position: absolute;
+  right: 0;
+  z-index: 99;
+  padding: 15px;
+  cursor: pointer;
+  color: #fff;
+}
+
+#mobile-nav ul .menu-has-children i.fa-chevron-up {
+  color: #2dc997;
+}
+
+#mobile-nav ul .menu-item-active {
+  color: #2dc997;
+}
+
+#mobile-body-overly {
+  width: 100%;
+  height: 100%;
+  z-index: 997;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(52, 59, 64, 0.9);
+  display: none;
+}
+
+/* Mobile Nav body classes */
+body.mobile-nav-active {
+  overflow: hidden;
+}
+
+body.mobile-nav-active #mobile-nav {
+  left: 0;
+}
+
+body.mobile-nav-active #mobile-nav-toggle {
+  color: #fff;
+}
 
 /*--------------------------------------------------------------
 # Sections
@@ -490,7 +602,7 @@ h1, h2, h3, h4, h5, h6 {
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#hero"><img src="resouces/regna/img/logo.png" alt="" title="" /></img></a>
+        <a href="#hero"><img src="" alt="" title="" /></img></a>
         <!-- Uncomment below if you prefer to use a text logo -->
         <!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
       </div>
@@ -498,10 +610,10 @@ h1, h2, h3, h4, h5, h6 {
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="resources/regna/#hero">Home</a></li>
-          <li><a href="resources/regna/#about">About Us</a></li>
-          <li><a href="resources/regna/#services">Services</a></li>
-          <li><a href="resources/regna/#portfolio">Portfolio</a></li>
-          <li><a href="resources/regna/#team">Team</a></li>
+          <li><a href="resources/regna/#about">Exhibition</a></li>
+          <li><a href="resources/regna/#services">Review</a></li>
+          <li><a href="resources/regna/#portfolio">Question</a></li>
+          <li><a href="resources/regna/#team">Calendar</a></li>
           <li class="menu-has-children"><a href="resources/regna/">Drop Down</a>
             <ul>
               <li><a href="resources/regna/#">Drop Down 1</a></li>
@@ -529,18 +641,16 @@ h1, h2, h3, h4, h5, h6 {
     Hero Section
   ============================-->
   <section id="hero">
-    <div class="hero-container float-right">
-      <h2>I'm <span class="typed"></span></h2>
+    <div class="hero-container">
+      <h2>WE &nbsp;<span class="typed"></span></h2>
         <p>Welcome to SEWorld</p>
 
-        <ul class="list-unstyled list-social">
-          <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-          <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-          <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-          <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-          <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
-          <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
-        </ul>
+        <div class="list-unstyled list-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-google-plus"></i></a>
+        </div>
     </div>
   </section><!-- #hero -->
      
@@ -563,7 +673,7 @@ h1, h2, h3, h4, h5, h6 {
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="newpage" style="background-color : ">
+        <div class="newpage" style="background-color : #eac0c0">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -732,13 +842,85 @@ h1, h2, h3, h4, h5, h6 {
     	    $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
     	    return false;
     	  });
+    	
     	  
+    	// Mobile Navigation
+    	  if( $('#nav-menu-container').length ) {
+    	    var $mobile_nav = $('#nav-menu-container').clone().prop({ id: 'mobile-nav'});
+    	    $mobile_nav.find('> ul').attr({ 'class' : '', 'id' : '' });
+    	    $('body').append( $mobile_nav );
+    	    $('body').prepend( '<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>' );
+    	    $('body').append( '<div id="mobile-body-overly"></div>' );
+    	    $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
+
+    	    $(document).on('click', '.menu-has-children i', function(e){
+    	      $(this).next().toggleClass('menu-item-active');
+    	      $(this).nextAll('ul').eq(0).slideToggle();
+    	      $(this).toggleClass("fa-chevron-up fa-chevron-down");
+    	    });
+
+    	    $(document).on('click', '#mobile-nav-toggle', function(e){
+    	      $('body').toggleClass('mobile-nav-active');
+    	      $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+    	      $('#mobile-body-overly').toggle();
+    	    });
+
+    	    $(document).click(function (e) {
+    	      var container = $("#mobile-nav, #mobile-nav-toggle");
+    	      if (!container.is(e.target) && container.has(e.target).length === 0) {
+    	       if ( $('body').hasClass('mobile-nav-active') ) {
+    	          $('body').removeClass('mobile-nav-active');
+    	          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+    	          $('#mobile-body-overly').fadeOut();
+    	        }
+    	      }
+    	    });
+    	  } else if ( $("#mobile-nav, #mobile-nav-toggle").length ) {
+    	    $("#mobile-nav, #mobile-nav-toggle").hide();
+    	  }
+    	  // Smoth scroll on page hash links
+    	  $('a[href*="#"]:not([href="#"])').on('click', function() {
+    	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+    	      var target = $(this.hash);
+    	      if (target.length) {
+    	        var top_space = 0;
+
+    	        if( $('#header').length ) {
+    	          top_space = $('#header').outerHeight();
+
+    	          if( ! $('#header').hasClass('header-fixed') ) {
+    	            top_space = top_space - 20;
+    	          }
+    	        }
+
+    	        $('html, body').animate({
+    	          scrollTop: target.offset().top - top_space
+    	        }, 1500, 'easeInOutExpo');
+
+    	        if ( $(this).parents('.nav-menu').length ) {
+    	          $('.nav-menu .menu-active').removeClass('menu-active');
+    	          $(this).closest('li').addClass('menu-active');
+    	        }
+
+    	        if ( $('body').hasClass('mobile-nav-active') ) {
+    	          $('body').removeClass('mobile-nav-active');
+    	          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+    	          $('#mobile-body-overly').fadeOut();
+    	        }
+    	        return false;
+    	      }
+    	    }
+    	  });
+	  
+    	  
+    
     	 /*타자 쳐지는 효과 만들기 */
     	  var typed = $(".typed");
 
     	  $(function() {
     	    typed.typed({
-    	      strings: ["We provides a variety of exhibitions", "Our service is globally unlimited.", "Meet our lively updated services"],
+    	      strings: [" ARE GLOBALLY UNLIMITED.", "SHOW YOU TONS OF EXHIBITIONS.", "PROVIDE USER-FRIENDLY MAPS."],
     	      typeSpeed: 100,
     	      loop: true,
     	    });
