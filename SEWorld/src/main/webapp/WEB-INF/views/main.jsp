@@ -713,42 +713,25 @@ body.mobile-nav-active #mobile-nav-toggle {
                             <div class="card">
                             <div class="card-body">
                             <!-- 탭으로 구분하깅 -->
-                             
-		<!-- Nav tabs -->
-<ul class="nav nav-tabs customtab" role="tablist">
-    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home2" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Home</span></a> </li>
-    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile2" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Profile</span></a> </li>
-    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages2" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Messages</span></a> </li>
-</ul>
-<!-- Tab panes -->
-<div class="tab-content">
-    <div class="tab-pane active" id="home2" role="tabpanel">
-        <div class="p-20">
+      
         
         <!-- 월드 맵 -->
            		
                                 <h4 class="card-title">World Map</h4>
                                 <div id="world-map-markers" style="height: 700px;"></div>
                            
-    </div>
     
-    <div class="tab-pane  p-20" id="profile2" role="tabpanel">
     <!-- 미국지도 -->
                                 <h4 class="card-title">USA</h4>
                                 <div id="usa" style="height: 700px;"></div>
     <!-- 미국지도 -->
     
     
-    </div>
-    <div class="tab-pane p-20" id="messages2" role="tabpanel">
     
                                 <h4 class="card-title">India</h4>
                                 <div id="india" style="height: 450px;"></div>
-    </div>     
-                        </div>
                             <!-- 탭으로 구분하깅 -->
                             
-            </div>            
                             
                      
                       </div><!-- 카드 body -->
