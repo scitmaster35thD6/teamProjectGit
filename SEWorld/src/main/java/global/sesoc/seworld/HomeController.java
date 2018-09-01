@@ -31,7 +31,11 @@ public class HomeController {
 		return "main";
 	}
 	
-	
+	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+	public String calendar() {
+		logger.info("[/]");
+		return "member/calendar";
+	}
 	
 	/**
 	 * 
