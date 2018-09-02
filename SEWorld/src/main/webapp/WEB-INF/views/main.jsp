@@ -23,8 +23,19 @@
     <!-- Custom CSS 새로 -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">
     
-    <!-- 탭 스타일 -->
-    
+    <!-- 메인 스타일 -->
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="resources/regna/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="resources/regna/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="resources/regna/lib/animate/animate.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="resources/regna/css/style.css" rel="stylesheet">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -198,7 +209,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url(resources/assets/images/lion.jpg) top center;
+  background: url(resources/assets/images/owl.jpg) top center;
   background-size: cover;
   position: relative;
 }
@@ -229,7 +240,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: right;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
   float:right;
   margin-left : 50px;
 }
@@ -755,17 +766,29 @@ body.mobile-nav-active #mobile-nav-toggle {
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
+        </div>
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>SE WROLD</strong>.
+      </div>
+     
+    </div>
+  </footer><!-- #footer -->
+
      <a href="#" class="back-to-top"><i class="fas fa-angle-double-up"></i></a>
-            <footer class="footer text-center">
-            SCIT 6조 Project
-</footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
-        </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
@@ -806,8 +829,18 @@ body.mobile-nav-active #mobile-nav-toggle {
     <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-uk-mill-en.js"></script>
     <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-au-mill.js"></script>
     <script src="resources/assets/extra-libs/jvector/jvectormap.custom.js"></script>
+    <!-- 메인용 javascript -->
+    <script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/regna/lib/easing/easing.min.js"></script>
+  <script src="resources/regna/lib/wow/wow.min.js"></script>
+
+  <script src="resources/regna/lib/waypoints/waypoints.min.js"></script>
+  <script src="resources/regna/lib/counterup/counterup.min.js"></script>
+  <script src="resources/regna/lib/superfish/hoverIntent.js"></script>
+  <script src="resources/regna/lib/superfish/superfish.min.js"></script>
      <script src="resources/dist/typed.js"></script>
-    
+    <script src="resources/regna/js/main.js"></script>
     <script>
     jQuery(document).ready(function( $ ) {
 
