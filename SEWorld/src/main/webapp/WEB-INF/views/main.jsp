@@ -621,11 +621,11 @@ body.mobile-nav-active #mobile-nav-toggle {
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="resources/regna/#hero">Home</a></li>
-          <li><a href="resources/regna/#about">Exhibition</a></li>
-          <li><a href="resources/regna/#services">Review</a></li>
-          <li><a href="resources/regna/#portfolio">Question</a></li>
-          <li><a href="resources/regna/#team">Calendar</a></li>
-          <li class="menu-has-children"><a href="resources/regna/">Drop Down</a>
+          <li><a href="/exhibitionList">Exhibition</a></li>
+          <li><a href="/reviews">Review</a></li>
+          <li><a href="#">Question</a></li>
+          <li><a href="calendar">Calendar</a></li>
+          <li class="menu-has-children"><a href="#">Drop Down</a>
             <ul>
               <li><a href="resources/regna/#">Drop Down 1</a></li>
               <li class="menu-has-children"><a href="resources/regna/#">Drop Down 2</a>
@@ -681,31 +681,363 @@ body.mobile-nav-active #mobile-nav-toggle {
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
+        <section id="about">
+      <div class="container">
+        <div class="row about-container">
+
+          <div class="col-lg-6 content order-lg-1 order-2">
+            <h2 class="title">Few Words About Us</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+
+            <div class="icon-box wow fadeInUp">
+              <div class="icon"><i class="fa fa-shopping-bag"></i></div>
+              <h4 class="title"><a href="resources/regna/">Eiusmod Tempor</a></h4>
+              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+              <div class="icon"><i class="fa fa-photo"></i></div>
+              <h4 class="title"><a href="resources/regna/">Magni Dolores</a></h4>
+              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <h4 class="title"><a href="resources/regna/">Dolor Sitema</a></h4>
+              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight">
+          <video autoplay loop muted playsinline src="https://youtu.be/Db7M5tTv9b8"></video></div>
+        </div>
+
+      </div>
+    </section><!-- #about -->
+    
+    
+    
+      <section id="facts">
+      <div class="container wow fadeIn">
+      
+     <span data-toggle="counter-up">6000</span> Exhibitions are available
+        <div class="section-header">
+          <h3 class="section-title" style="float:left;">Google Map</h3>
+        </div>
+
+       
+
+      </div>
+    </section><!-- #facts -->
+        
+     <!-- 전시회목록 -->   
+      <section id="services">
+      <div class="container wow fadeIn">
+        <div class="section-header">
+          <h3 class="section-title">Lively Updated Exhibitions</h3>
+          <p class="section-description">최근 전시회들</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+           <div class="card">
+                 <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">First title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">Second title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">Third title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+              </div><!-- card -->
+          </div>
+          <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+           <div class="card">
+                    <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">First title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">Second title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">Third title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+                                </div>
+          </div>
+       	  
+
+          <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+           <div class="card">
+                <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">First title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">Second title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">Third title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+                                </div>
+          </div>
+          <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+           <div class="card">
+                      <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">First title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">Second title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="text-white">Third title goes here</h3>
+                <p>this is the subcontent you can use this</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+                                </div>
+          </div>
+       	   
+       </div><!-- row -->
+
+      </div>
+    </section><!-- #services -->   
+     
+     
+     <!-- 전시회목록 end-->   
+        
+        
+     <section id="services">
+      <div class="container wow fadeIn">
+        <div class="section-header">
+          <h3 class="section-title">Recent reviews</h3>
+          <p class="section-description">생생한 후기</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+           <div class="card">
+                  <img class="card-img-top img-responsive" src="resources/assets/images/big/img4.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 20 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 3 Comments</a>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                    </div>
+                                </div>
+          </div>
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+           <div class="card">
+                                    <img class="card-img-top img-responsive" src="resources/assets/images/big/img5.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 19 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 5 Comments</a>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                    </div>
+                                </div>
+          </div>
+       	   <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+          		  <div class="card">
+                                    <img class="card-img-top img-responsive" src="resources/assets/images/big/img6.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 29 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 6 Comments</a>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                    </div>
+                                </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+           <div class="card">
+                  <img class="card-img-top img-responsive" src="resources/assets/images/big/img4.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 20 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 3 Comments</a>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                    </div>
+                                </div>
+          </div>
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+           <div class="card">
+                                    <img class="card-img-top img-responsive" src="resources/assets/images/big/img5.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 19 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 5 Comments</a>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                    </div>
+                                </div>
+          </div>
+       	   <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+          		  <div class="card">
+                                    <img class="card-img-top img-responsive" src="resources/assets/images/big/img6.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 29 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 6 Comments</a>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                    </div>
+                                </div>
+          </div>
+       </div><!-- row -->
+
+      </div>
+    </section><!-- #services -->   
+    
+         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="newpage" style="background-color : #eac0c0">
+        
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-5 align-self-center">
-                        <h4 class="page-title">Basic Table</h4>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Board</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                </div>
-            </div>
+           
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -719,6 +1051,11 @@ body.mobile-nav-active #mobile-nav-toggle {
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+            
+                
+                
+                
+                
                 <div class="row">
                     <div class="col-12">
                             <div class="card">
@@ -728,7 +1065,7 @@ body.mobile-nav-active #mobile-nav-toggle {
         
         <!-- 월드 맵 -->
            		
-                                <h4 class="card-title">World Map</h4>
+                                 <div class="section-header">World Map</div>
                                 <div id="world-map-markers" style="height: 700px;"></div>
                            
     
@@ -766,7 +1103,7 @@ body.mobile-nav-active #mobile-nav-toggle {
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
-        </div>
+       <!-- 페이지 레퍼 div있던 자리 -->
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
