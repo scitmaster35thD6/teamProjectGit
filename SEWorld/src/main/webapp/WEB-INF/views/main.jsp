@@ -753,8 +753,8 @@ body.mobile-nav-active #mobile-nav-toggle {
         <div class="carousel-item active">
             <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">First title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">한국기술과학 연구원 전시회</h3>
+                <p>한국기술과학 연구원 20주년을 맞아...</p>
             </div>
         </div>
         <div class="carousel-item">
@@ -772,24 +772,17 @@ body.mobile-nav-active #mobile-nav-toggle {
             </div>
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    
 </div>
               </div><!-- card -->
           </div>
           <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
            <div class="card">
-                    <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
@@ -814,14 +807,7 @@ body.mobile-nav-active #mobile-nav-toggle {
             </div>
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    
 </div>
                                 </div>
           </div>
@@ -829,11 +815,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 
           <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
            <div class="card">
-                <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
@@ -858,24 +844,17 @@ body.mobile-nav-active #mobile-nav-toggle {
             </div>
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+   
 </div>
                                 </div>
           </div>
           <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
            <div class="card">
-                      <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                      <div id="carouselExampleIndicators4" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators4" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators4" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators4" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
@@ -900,14 +879,7 @@ body.mobile-nav-active #mobile-nav-toggle {
             </div>
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+   
 </div>
                                 </div>
           </div>
@@ -1029,6 +1001,24 @@ body.mobile-nav-active #mobile-nav-toggle {
 
       </div>
     </section><!-- #services -->   
+    
+    <!--==========================
+    Call To Action Section
+    ============================-->
+    <section id="call-to-action">
+      <div class="container wow fadeIn">
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-left">
+            <h3 class="cta-title">Free Register</h3>
+            <p class="cta-text"> 무료 회원가입.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="resources/regna/#">Go</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- #call-to-action -->
     
          <!-- ============================================================== -->
         <!-- Page wrapper  -->
@@ -1182,19 +1172,6 @@ body.mobile-nav-active #mobile-nav-toggle {
     jQuery(document).ready(function( $ ) {
 
     	  // Header fixed and Back to top button
-    	  $(window).scroll(function() {
-    	    if ($(this).scrollTop() > 100) {
-    	      $('.back-to-top').fadeIn('slow');
-    	      $('#header').addClass('header-fixed');
-    	    } else {
-    	      $('.back-to-top').fadeOut('slow');
-    	      $('#header').removeClass('header-fixed');
-    	    }
-    	  });
-    	  $('.back-to-top').click(function(){
-    	    $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
-    	    return false;
-    	  });
     	
     	  
     	// Mobile Navigation
@@ -1232,40 +1209,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     	    $("#mobile-nav, #mobile-nav-toggle").hide();
     	  }
     	  // Smoth scroll on page hash links
-    	  $('a[href*="#"]:not([href="#"])').on('click', function() {
-    	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-
-    	      var target = $(this.hash);
-    	      if (target.length) {
-    	        var top_space = 0;
-
-    	        if( $('#header').length ) {
-    	          top_space = $('#header').outerHeight();
-
-    	          if( ! $('#header').hasClass('header-fixed') ) {
-    	            top_space = top_space - 20;
-    	          }
-    	        }
-
-    	        $('html, body').animate({
-    	          scrollTop: target.offset().top - top_space
-    	        }, 1500, 'easeInOutExpo');
-
-    	        if ( $(this).parents('.nav-menu').length ) {
-    	          $('.nav-menu .menu-active').removeClass('menu-active');
-    	          $(this).closest('li').addClass('menu-active');
-    	        }
-
-    	        if ( $('body').hasClass('mobile-nav-active') ) {
-    	          $('body').removeClass('mobile-nav-active');
-    	          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-    	          $('#mobile-body-overly').fadeOut();
-    	        }
-    	        return false;
-    	      }
-    	    }
-    	  });
-	  
+    	  
     	  
     
     	 /*타자 쳐지는 효과 만들기 */

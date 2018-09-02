@@ -22,13 +22,13 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		logger.info("[/]");
-		return "index";
+		return "main";
 	}
-	/*새로운 메인 페이지.. 아직 만드는 중*/
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	/*예전 메인*/
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String newMainPage() {
 		logger.info("[/]");
-		return "main";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
