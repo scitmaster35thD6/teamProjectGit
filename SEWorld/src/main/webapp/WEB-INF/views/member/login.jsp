@@ -22,15 +22,86 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script>
+		function init() {
+			console.log('init');
+			gapi.load('auth2', function() {
+				console.log('auth2');
+				window.gauth = gapi.auth2.init({
+					client_id : '191865489598-44tq15e1tabu76pvqkunla4a8r90m984.apps.googleusercontent.com'
+				})
+				gauth.then(function() {
+					console.log('googleAuth success');
+					checkLoginStatus();
+				}, function() {
+					console.log('googleAuth fail');
+				});
+				console.log(Promise);
+			});
+	    }
+	    function checkLoginStatus() {
+	    	var loginBtn = document.querySelector('#loginBtn');
+			var nameTxt = document.querySelector('#name');
+			if (gauth.isSignedIn.get()) {
+				console.log('logined');
+				loginBtn.value = 'Logout';
+				var profile = gauth.currentUser.get().getBasicProfile();				
+				var member = {
+					"memberId" : profile.getEmail(),
+					"memberName" : profile.getName()
+				};
+				$.ajax({
+					method : 'POST',
+					url : 'googleSignin',
+					data : JSON.stringify(member),
+					contentType : 'application/json; charset=UTF-8',
+					dataType : 'JSON',
+					success : function(resp) {
+						
+					}
+				});
+				nameTxt.innerHTML = 'Welcome <strong>'+profile.getName()+'</strong> ';
+			} else {
+				console.log('logouted');
+				loginBtn.value = 'Login';
+				nameTxt.innerHTML = '';
+	        }
+		}
+	    function gauthSignIn() {
+	    	gauth.signIn({
+				scope : 'https://www.googleapis.com/auth/calendar'
+			}).then(function(){
+				console.log('gauth.signIn()');
+				checkLoginStatus();
+			});
+	    }
+	</script>
+	<style type="text/css">
+		p#msg {
+			color : red;
+		}
+</style>
 </head>
 
-<style type="text/css">
-	p#msg {
-		color : red;
-	}
-</style>
-	
 <body>
+	<span id="name"></span>
+	<input type="button" id="loginBtn" value="checking..." onclick="
+		if(this.value === 'Login'){
+			gauth.signIn({
+				scope : 'https://www.googleapis.com/auth/calendar'
+			}).then(function(){
+				console.log('gauth.signIn()');
+				checkLoginStatus();
+			});
+		} else {
+			gauth.signOut().then(function(){
+				console.log('gauth.signOut()');
+				checkLoginStatus();
+			});
+		}
+	">
     <div class="main-wrapper">
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
@@ -51,7 +122,7 @@
             <div class="auth-box">
                 <div id="loginform">
                     <div class="logo">
-                        <span class="db"><img src="resources/assets/images/logo-icon.png" alt="logo" /></span>
+                        <span class="db"><img src="resources/assets/images/logo-icon.png" alt="logo" width="50" height="41" /></span>
                         <h5 class="font-medium m-b-20">Sign In</h5>
                     </div>
                     <!-- Form -->
@@ -92,8 +163,8 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
                                         <div class="social">
-                                            <a href="javascript:void(0)" class="btn  btn-facebook" data-toggle="tooltip" title="" data-original-title="Login with Facebook"> <i aria-hidden="true" class="fab  fa-facebook"></i> </a>
-                                            <a href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip" title="" data-original-title="Login with Google"> <i aria-hidden="true" class="fab  fa-google-plus"></i> </a>
+                                            <a href="javascript:void(0)" class="btn btn-facebook" data-toggle="tooltip" title="" data-original-title="Login with Facebook"> <i aria-hidden="true" class="fab  fa-facebook"></i></a>
+                                            <a href="javascript:gauthSignIn()" class="btn btn-googleplus" data-toggle="tooltip" title="" data-original-title="Login with Google"> <i aria-hidden="true" class="fab  fa-google-plus"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -152,7 +223,7 @@
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
-    <script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="resources/assets/libs/jquery/dist/jquery.min.js"></script> -->
     <!-- Bootstrap tether Core JavaScript -->
     <script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -170,6 +241,7 @@
         $('#recoverform').fadeIn();
     });
     </script>
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 </body>
 
 </html>

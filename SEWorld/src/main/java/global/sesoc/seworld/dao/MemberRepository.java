@@ -11,9 +11,9 @@ public class MemberRepository {
 	@Autowired
 	SqlSession sqlSession;
 
-	public Member selectOneMember(Member member) {
+	public Member selectOneMember(String memberId) {
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-		return memberMapper.selectOneMember(member);
+		return memberMapper.selectOneMember(memberId);
 	}
 
 	public int insertOneMember(Member member) {
@@ -21,13 +21,13 @@ public class MemberRepository {
 		return memberMapper.insertOneMember(member);
 	}
 
-	public int deleteOneMember(Member member) {
+	public int verifyMember(String memberId) {
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-		return memberMapper.deleteOneMember(member);
+		return memberMapper.verifyMember(memberId);
 	}
 
-	public int updateOneMember(Member member) {
+	public int registerGoogleMember(Member member) {
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-		return memberMapper.updateOneMember(member);
+		return memberMapper.registerGoogleMember(member);
 	}
 }

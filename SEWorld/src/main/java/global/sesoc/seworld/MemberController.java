@@ -1,5 +1,8 @@
 package global.sesoc.seworld;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,15 +10,18 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.seworld.dao.MemberRepository;
 import global.sesoc.seworld.dto.Member;
+import global.sesoc.seworld.util.MailHandler;
 
 @Controller
 public class MemberController {
@@ -26,6 +32,9 @@ public class MemberController {
 	 * @author youngbinkim
 	 * @version 0.1
 	 */
+
+	@Autowired
+	JavaMailSender mailSender;
 
 	@Autowired
 	MemberRepository memberRepository;
@@ -42,7 +51,7 @@ public class MemberController {
 			Model model) {
 		logger.info("[/login]");
 		// logger.info(searchMember.toString());
-		Member loginMember = memberRepository.selectOneMember(searchMember);
+		Member loginMember = memberRepository.selectOneMember(searchMember.getMemberId());
 		if (loginMember != null) {
 			session.setAttribute("loginId", loginMember.getMemberId());
 			session.setAttribute("loginName", loginMember.getMemberName());
@@ -77,17 +86,62 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String signUp() {
+	public String signup() {
 		return "member/signup";
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public @ResponseBody Integer signUp(@RequestBody Member insertMember) {
+	public @ResponseBody Integer signup(@RequestBody Member signupMember)
+			throws MessagingException, UnsupportedEncodingException {
 		logger.info("[/signup]");
-		logger.info(insertMember.toString());
-		return memberRepository.insertOneMember(insertMember);
+		logger.info(signupMember.toString());
+		int result = memberRepository.insertOneMember(signupMember);
+		if (result == 1) {
+			MailHandler sendMail = new MailHandler(mailSender);
+			sendMail.setSubject("[SE World] 이메일을 인증해주세요.");
+			sendMail.setText(new StringBuffer().append("<h1>SE World</h1>")
+					.append(signupMember.getMemberName() + "님의 이메일 주소를 인증해 주세요.")
+					.append("<hr/>")
+					.append("SE World의 모든 기능을 사용하시기 위해 이메일 인증이 필요합니다.<br/>")
+					.append("아래 링크를 눌러 이메일 인증을 완료해주세요.<br/><br/>")
+					.append("<a href='http://localhost:8888/seworld/verify.do?email=" + signupMember.getMemberId())
+					.append("' target='_blenk'>이메일 인증 확인</a><br/>")
+					.append("Copyright © 2018 SE World, Inc. All rights reserved.<br/>").toString());
+			sendMail.setFrom("do-not-reply@seworld.com", "SE WORLD");
+			sendMail.setTo(signupMember.getMemberId());
+			sendMail.send();
+		}
+		return result;
 	}
-	
+
+	@RequestMapping(value = "/verifyBefore", method = RequestMethod.GET)
+	public String verifyBefore() {
+		return "member/verifyBefore";
+	}
+
+	@RequestMapping(value = "/verify.do", method = RequestMethod.GET)
+	public String verify(@RequestParam String email) {
+		logger.info("[/verify]");
+		int result = memberRepository.verifyMember(email);
+		if (result == 0) {
+			return "member/verifyError";
+		}
+		return "member/verifyAfter";
+	}
+
+	@RequestMapping(value = "/googleSignin", method = RequestMethod.POST)
+	public @ResponseBody Integer googleSignin(@RequestBody Member signinMember, HttpSession session) {
+		logger.info("[/googleSignin]");
+		logger.info(signinMember.toString());
+		Member m = memberRepository.selectOneMember(signinMember.getMemberId());
+		if (m != null) {
+			return 0;
+		}
+		session.setAttribute("loginId", signinMember.getMemberId());
+		session.setAttribute("loginName", signinMember.getMemberName());
+		return memberRepository.registerGoogleMember(signinMember);
+	}
+
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String userprofile() {
 		return "member/profile";

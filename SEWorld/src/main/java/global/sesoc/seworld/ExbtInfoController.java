@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.sesoc.seworld.dao.ExbtInfoRepository;
 import global.sesoc.seworld.dto.ExbtInfo;
-import global.sesoc.seworld.rest.XmlParser;
+import global.sesoc.seworld.util.XmlParser;
 
 @Controller
 public class ExbtInfoController {

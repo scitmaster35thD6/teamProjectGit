@@ -4,22 +4,20 @@ public class Member {
 	private String memberId;
 	private String memberPwd;
 	private String memberName;
-	private String memberBirth;
-	private String memberEmail;
-	private String memberPhone;
+	private String memberType;
+	private String verified;
 	private String regDate;
 	public Member() {
 		super();
 	}
-	public Member(String memberId, String memberPwd, String memberName, String memberBirth, String memberEmail,
-			String memberPhone, String regDate) {
+	public Member(String memberId, String memberPwd, String memberName, String memberType, String verified,
+			String regDate) {
 		super();
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
 		this.memberName = memberName;
-		this.memberBirth = memberBirth;
-		this.memberEmail = memberEmail;
-		this.memberPhone = memberPhone;
+		this.memberType = memberType;
+		this.verified = verified;
 		this.regDate = regDate;
 	}
 	public String getMemberId() {
@@ -40,23 +38,17 @@ public class Member {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getMemberBirth() {
-		return memberBirth;
+	public String getMemberType() {
+		return memberType;
 	}
-	public void setMemberBirth(String memberBirth) {
-		this.memberBirth = memberBirth;
+	public void setMemberType(String memberType) {
+		this.memberType = memberType;
 	}
-	public String getMemberEmail() {
-		return memberEmail;
+	public String getVerified() {
+		return verified;
 	}
-	public void setMemberEmail(String memberEmail) {
-		this.memberEmail = memberEmail;
-	}
-	public String getMemberPhone() {
-		return memberPhone;
-	}
-	public void setMemberPhone(String memberPhone) {
-		this.memberPhone = memberPhone;
+	public void setVerified(String verified) {
+		this.verified = verified;
 	}
 	public String getRegDate() {
 		return regDate;
@@ -67,7 +59,6 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName=" + memberName
-				+ ", memberBirth=" + memberBirth + ", memberEmail=" + memberEmail + ", memberPhone=" + memberPhone
-				+ ", regDate=" + regDate + "]";
+				+ ", memberType=" + memberType + ", verified=" + verified + ", regDate=" + regDate + "]";
 	}
 }

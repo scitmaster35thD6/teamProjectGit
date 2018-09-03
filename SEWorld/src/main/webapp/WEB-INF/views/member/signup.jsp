@@ -44,19 +44,26 @@
             <div class="auth-box">
                 <div id="signupform">
                     <div class="logo">
-                        <span class="db"><img src="resources/assets/images/logo-icon.png" alt="logo" /></span>
+                        <span class="db"><img src="resources/assets/images/logo-icon.png" alt="logo" width="50" height="41"/></span>
                         <h5 class="font-medium m-b-20">Sign Up</h5>
                     </div>
                     <!-- Form -->
                     <div class="row">
                         <div class="col-12">
                             <form class="form-horizontal m-t-20" id="loginFormTag" action="login" method="POST">
+                            	<!-- 이름 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon4"><i class="ti-face-smile"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-lg" placeholder="이름" aria-label="Name" aria-describedby="basic-addon4" id="memberName" />
+                                </div>
                             	<!-- 아이디 -->
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="ID" aria-label="ID" aria-describedby="basic-addon1" id="memberId" />
+                                    <input type="text" class="form-control form-control-lg" placeholder="이메일" aria-label="ID" aria-describedby="basic-addon1" id="memberId" />
                                     <p id="memberIdMsg"></p>
                                 </div>
                                 <!-- 비밀번호 확인1 -->
@@ -64,23 +71,15 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" id="memberPwd" />
+                                    <input type="password" class="form-control form-control-lg" placeholder="비밀번호" aria-label="Password" aria-describedby="basic-addon2" id="memberPwd" />
                                 </div>
 								<!-- 비밀번호 확인2 -->
 								<div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon3"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password Confirm" aria-label="Password" aria-describedby="basic-addon3" id="memberPwd2" />
+                                    <input type="password" class="form-control form-control-lg" placeholder="비밀번호 확인" aria-label="Password" aria-describedby="basic-addon3" id="memberPwd2" />
                                 </div>
-                                <!-- 이름 -->
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon4"><i class="ti-face-smile"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Name" aria-label="Name" aria-describedby="basic-addon4" id="memberName" />
-                                </div>
-                                
                                 <!--
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">

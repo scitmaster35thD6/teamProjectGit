@@ -5,18 +5,16 @@
 
 <mapper namespace="global.sesoc.seworld.dao.MemberMapper">
 
-	<select id="selectOneMember" parameterType="Member" resultType="Member">
+	<select id="selectOneMember" parameterType="String" resultType="Member">
 		SELECT
 		memberId
 		,memberPwd
 		,memberName
-		,memberBirth
-		,memberEmail
-		,memberPhone
+		,memberType
+		,verified
 		,regDate
 		FROM c6_member
 		WHERE memberId = #{memberId}
-		  AND memberPwd = #{memberPwd}
 	</select>
 
 	<insert id="insertOneMember" parameterType="Member">
@@ -25,40 +23,40 @@
 		memberId
 		,memberPwd
 		,memberName
-		<!-- ,memberBirth
-		,memberEmail
-		,memberPhone -->
-		,regDate
+		,memberType
 		)
 		VALUES
 		(
 		#{memberId}
 		,#{memberPwd}
 		,#{memberName}
-		<!-- ,#{memberBirth}
-		,#{memberEmail}
-		,#{memberPhone} -->
-		,SYSDATE
+		,'Email'
 		)
 	</insert>
 
-	<delete id="deleteOneMember" parameterType="Member">
-		DELETE
-		FROM c6_member
-		WHERE memberId = #{memberId}
-		  AND memberPwd = #{memberPwd}
-	</delete>
-
-	<update id="updateOneMember" parameterType="Member">
+	<update id="verifyMember" parameterType="String">
 		UPDATE c6_member
 		SET
-		memberPwd = #{memberPwd}
-		,memberName = #{memberName}
-		,memberBirth = #{memberBirth}
-		,memberEmail = #{memberEmail}
-		,memberPhone = #{memberPhone}
-		,regDate = SYSDATE
+		verified = 'Y'
 		WHERE memberId = #{memberId}
 	</update>
+
+	<insert id="registerGoogleMember" parameterType="Member">
+		INSERT INTO
+		c6_member
+		(
+		memberId
+		,memberName
+		,memberType
+		,verified
+		)
+		VALUES
+		(
+		#{memberId}
+		,#{memberName}
+		,'Google'
+		,'Y'
+		)
+	</insert>
 
 </mapper>
