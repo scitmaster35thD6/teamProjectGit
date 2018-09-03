@@ -644,9 +644,9 @@ body.mobile-nav-active #mobile-nav-toggle {
     Hero Section
   ============================-->
 <section id="hero">
-    <div class="hero-container" style="height:92px; color :black; padding: 30px;">
+    <div class="hero-container" style="height:92px; color :#c9b680; padding: 30px;">
     </div>
-  </section><!-- #hero -
+  </section><!-- #hero -->
      
         <!-- ============================================================== -->
         <!-- End Topbar header -->
