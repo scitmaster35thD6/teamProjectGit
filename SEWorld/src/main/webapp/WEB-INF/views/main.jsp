@@ -621,9 +621,9 @@ body.mobile-nav-active #mobile-nav-toggle {
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="resources/regna/#hero">Home</a></li>
-          <li><a href="/exhibitionList">Exhibition</a></li>
-          <li><a href="/reviews">Review</a></li>
-          <li><a href="#">Question</a></li>
+          <li><a href="exhibitionList">Exhibition</a></li>
+          <li><a href="reviews">Review</a></li>
+          <li><a href="questions">Question</a></li>
           <li><a href="calendar">Calendar</a></li>
           <li class="menu-has-children"><a href="#">Drop Down</a>
             <ul>

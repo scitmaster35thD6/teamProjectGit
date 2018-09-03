@@ -1,9 +1,6 @@
 package global.sesoc.seworld;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.seworld.dao.ExhibitionRepository;
 import global.sesoc.seworld.dto.Exhibition;
-import global.sesoc.seworld.util.PageNavigator;
 
 @Controller
 public class ExhibitionController {
@@ -41,18 +37,7 @@ public class ExhibitionController {
 		List<Exhibition> exhibitionList = repository.showExhibitionListEL(selectedCountry, searchCategory,
 				searchKeyword);
 
-		String ELlist = "";
-		for (int i = 0; i < exhibitionList.size(); i++) {
-			ELlist += "<tr onclick=\"location.href='exhibitionDetail?exhibitionId="
-					+ exhibitionList.get(i).getExhibitionId() + "'\"><td>"
-					+ exhibitionList.get(i).getExhibitionTitleEng() + "</td>";
-			ELlist += "<td>" + exhibitionList.get(i).getExhibitionTitleKor() + "</td>";
-			ELlist += "<td>" + exhibitionList.get(i).getOpeningCountry() + "</td>";
-			ELlist += "<td>" + exhibitionList.get(i).getOpeningCity() + "</td>";
-			ELlist += "<td>" + exhibitionList.get(i).getOpeningTerm().substring(0, 8) + "</td>";
-			ELlist += "<td>" + exhibitionList.get(i).getOpeningTerm().substring(9, 17) + "</tr></a>";
-		}
-		model.addAttribute("ELlist", ELlist);
+		model.addAttribute("exhibitionList", exhibitionList);
 
 		return "exhibition/exhibitionList";
 	}

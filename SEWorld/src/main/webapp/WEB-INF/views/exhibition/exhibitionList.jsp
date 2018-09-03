@@ -605,7 +605,19 @@
 																	</tr>
 																</thead>
 
-																<tbody>${ELlist}
+																<tbody>
+																<c:if test="${not empty exhibitionList}">
+																<c:forEach var="thelist" items="${exhibitionList}">
+																<tr>
+																<td>${thelist.exhibitionTitleEng}</td>
+																<td>${thelist.exhibitionTitleKor}</td>
+																<td>${thelist.openingCountry}</td>
+																<td>${thelist.openingCity}</td>
+																<td>${thelist.exhibitionTitleKor}</td>
+																<td>${thelist.exhibitionTitleKor}</td>
+																</tr>
+																</c:forEach>
+																</c:if>
 																</tbody>
 																<tfoot>
 																	<tr>
