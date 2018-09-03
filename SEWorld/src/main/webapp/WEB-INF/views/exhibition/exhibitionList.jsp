@@ -28,7 +28,8 @@
 <link
 	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
 	rel="stylesheet">
-
+ <!-- This Page CSS -->
+    <link rel="stylesheet" type="text/css" href="resources/assets/libs/select2/dist/css/select2.min.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -588,6 +589,22 @@
 											<div class="col-12">
 												<div class="card">
 													<div class="card-body">
+											<!-- select option -->
+											
+                                <select class="select2-with-border border-warning form-control" id="border-with-select2" data-border-color="success" data-border-variation="darken-2" data-text-color="warning" data-text-variation="darken-3" style="width: 100%;height: 36px;">
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                   
+                                        <option value="CA">California</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="WA">Washington</option>
+                                 
+                                </select>
+											
+											
+											
+											<!-- select option -->
 														<h4 class="card-title">페이지 들어간 테이블</h4>
 														<h6 class="card-subtitle">서치</h6>
 														<div class="table-responsive">
@@ -708,8 +725,11 @@
 				src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
 			<script
 				src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
-			<!-- 벡터지도 -->
 			<!-- This Page JS -->
+			<!-- This Page JS -->
+    <script src="resources/assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="resources/assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="resources/dist/js/pages/forms/select2/select2.init.js"></script>
 </body>
 
 </html>
