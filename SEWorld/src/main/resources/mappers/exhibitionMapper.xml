@@ -5,28 +5,36 @@
 
 <mapper namespace="global.sesoc.seworld.dao.ExhibitionMapper">
 
-	<select id="showExhibitionListEL" resultType="exhibition"
-		parameterType="map">
+	<select id="showExhibitionList" resultType="exhibition"
+		parameterType="String">
 		SELECT
 		exhibitionId
 		, exhibitionTitleKor
-		, exhibitionTitleEng
+		,
+		exhibitionTitleEng
 		, openingTerm
 		,
 		firstOpeningYear
 		, openingCountry
-		, openingCity
+		,
+		openingCity
 		, exhibitionHall
 		,sponsor
 		, createdDate
 		, updatedDate
-		, dataOffer
+		,
+		dataOffer
 		FROM c6_exhibition
 		WHERE
-		openingCountry like '%' || #{selectedCountry} || '%' and
-		#{searchCategory} like '%' || #{searchKeyword} || '%'
+		openingCountry like '%' ||
+		#{selectedCountry}|| '%'
 		ORDER BY
 		openingTerm DESC
+	</select>
+
+	<select id="getTotalCountry" resultType="String">
+		select countryname from
+		c6_countries
 	</select>
 
 	<select id="getTotalList" resultType="int"
@@ -43,25 +51,29 @@
 		SELECT
 		exhibitionId
 		, exhibitionTitleKor
-		, exhibitionTitleEng
+		,
+		exhibitionTitleEng
 		, openingTerm
 		,
 		firstOpeningYear
 		, openingCountry
-		, openingCity
+		,
+		openingCity
 		, exhibitionHall
 		,sponsor
 		, createdDate
 		, updatedDate
-		, dataOffer
+		,
+		dataOffer
 		FROM c6_exhibition
 		WHERE
-		exhibitionId = #{exhibitionId}
+		exhibitionId = #{selectedCountry}
 	</select>
 
 	<!-- 각국 전시회 수 세기 -->
 	<select id="countCountry" parameterType="String"
 		resultType="int">
-		select count(*) from c6_exhibition where openingCountry = #{openingCountry}
+		select count(*) from c6_exhibition where openingCountry =
+		#{selectedCountry}
 	</select>
 </mapper>

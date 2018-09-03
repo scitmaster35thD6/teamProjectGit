@@ -1,12 +1,14 @@
 package global.sesoc.seworld;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +19,6 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import global.sesoc.seworld.dao.BoardFileRepository;
@@ -28,7 +29,6 @@ import global.sesoc.seworld.dto.Board;
 import global.sesoc.seworld.dto.BoardFile;
 import global.sesoc.seworld.dto.BoardReply;
 import global.sesoc.seworld.dto.Exhibition;
-import global.sesoc.seworld.util.PageNavigator;
 import global.sesoc.seworld.util.FileService;
 
 @Controller
@@ -67,13 +67,13 @@ public class BoardController {
 
 		for (int i = 0; i < boardList.size(); i++) {
 			reviewList += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId() + "'\">";
-			reviewList += "<td>" + (i+1) + "</td>";
+			reviewList += "<td>" + (i + 1) + "</td>";
 			reviewList += "<td>" + boardList.get(i).getMemberId() + "</td>";
 			reviewList += "<td>" + boardList.get(i).getTitle() + "</td>";
 			reviewList += "<td>" + boardList.get(i).getCreatedDate() + "</td></tr>";
 		}
 		model.addAttribute("reviewList", reviewList);
-		
+
 		return "board/reviewBoard";
 	}
 
@@ -85,8 +85,9 @@ public class BoardController {
 		String questionList = "";
 
 		for (int i = 0; i < boardList.size(); i++) {
-			questionList += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId() + "'\">";
-			questionList += "<td>" + (i+1) + "</td>";
+			questionList += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId()
+					+ "'\">";
+			questionList += "<td>" + (i + 1) + "</td>";
 			questionList += "<td>" + boardList.get(i).getMemberId() + "</td>";
 			questionList += "<td>" + boardList.get(i).getTitle() + "</td>";
 			questionList += "<td>" + boardList.get(i).getCreatedDate() + "</td></tr>";
@@ -225,5 +226,50 @@ public class BoardController {
 			}
 		}
 		return null;
+	}
+
+	@RequestMapping(value = "/ckeditorFileUpload", method = RequestMethod.POST)
+	public void ckeditorFileUpload(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam MultipartFile upload) {
+
+		OutputStream out = null;
+		PrintWriter printWriter = null;
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+
+		try {
+
+			String fileName = upload.getOriginalFilename();
+			byte[] bytes = upload.getBytes();
+			String uploadPath = "userFile/" + fileName;// 저장경로
+
+			out = new FileOutputStream(new File(uploadPath));
+			out.write(bytes);
+			String callback = request.getParameter("CKEditorFuncNum");
+
+			printWriter = response.getWriter();
+			String fileUrl = "userFile/" + fileName;// url경로
+
+			printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" + callback
+					+ ",'" + fileUrl + "','이미지를 업로드 완료'" + ")</script>");
+			printWriter.flush();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+				if (printWriter != null) {
+					printWriter.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return;
+
 	}
 }

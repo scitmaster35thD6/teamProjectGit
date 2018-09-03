@@ -86,6 +86,7 @@
 	}
 }
 </style>
+<script type="text/javascript" src="resources/exhibitionCountrySelect.js"></script>
 </head>
 
 <body>
@@ -446,10 +447,10 @@
 								<li class="sidebar-item"><a href="reviews"
 									class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span
 										class="hide-menu"> User Review </span></a></li>
-								<li class="sidebar-item"><a href="question"
+								<li class="sidebar-item"><a href="questions"
 									class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span
 										class="hide-menu"> Question </span></a></li>
-								<li class="sidebar-item"><a href="writeReview"
+								<li class="sidebar-item"><a href="writeArticle"
 									class="sidebar-link"><i class="mdi mdi-view-day"></i><span
 										class="hide-menu"> WriteForm </span></a></li>
 							</ul></li>
@@ -486,12 +487,12 @@
 			<div class="page-breadcrumb">
 				<div class="row">
 					<div class="col-5 align-self-center">
-						<h4 class="page-title">Basic Table</h4>
+						<h4 class="page-title">Exhibitions</h4>
 						<div class="d-flex align-items-center">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="#">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Board</li>
+									<li class="breadcrumb-item active" aria-current="page">Exhibitions</li>
 								</ol>
 							</nav>
 						</div>
@@ -507,77 +508,6 @@
 			<!-- ============================================================== -->
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
-			<div class="container-fluid">
-				<!-- ============================================================== -->
-				<!-- Start Page Content -->
-				<!-- ============================================================== -->
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">내용 시작</h4>
-								<h6 class="card-subtitle">table.</h6>
-
-								<!-- 지도 모달 창 -->
-								<ul class="navbar-nav float-left mr-auto">
-									<li>
-										<!-- 모달 버튼 -->
-										<div class="p-l-30 p-10">
-											<button type="button"
-												class="btn btn-sm btn-success btn-rounded"
-												data-toggle="modal" data-target=".bd-example-modal-lg">
-												Select Region</button>
-
-											<!-- Modal -->
-											<div class="modal fade bd-example-modal-lg" tabindex="-1"
-												role="dialog" aria-labelledby="myLargeModalLabel"
-												aria-hidden="true">
-												<div class="modal-dialog modal-lg">
-													<div class="modal-content">
-
-														<div class="modal-header">
-															<h5 class="modal-title" id="exampleModalLongTitle">Modal
-																title</h5>
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<div class="modal-body">
-															<!-- 벡터지도 넣기 -->
-
-
-															<!-- 벡터지도 넣기 -->
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary"
-																data-dismiss="modal">Close</button>
-															<button type="button" class="btn btn-primary">Save
-																changes</button>
-														</div>
-
-
-													</div>
-												</div>
-											</div>
-											<!-- Modal -->
-
-
-
-										</div>
-									</li>
-
-
-
-
-
-									<!-- 지도 모달 창 -->
-
-
-									<li>선택 옵션 놓일 자리</li>
-								</ul>
-
-								<ul class="navbar-nav float-right">
 
 
 									<!-- ============================================================== -->
@@ -592,21 +522,13 @@
 											<!-- select option -->
 											
                                 <select class="select2-with-border border-warning form-control" id="border-with-select2" data-border-color="success" data-border-variation="darken-2" data-text-color="warning" data-text-variation="darken-3" style="width: 100%;height: 36px;">
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                   
-                                        <option value="CA">California</option>
-                                        <option value="NV">Nevada</option>
-                                        <option value="OR">Oregon</option>
-                                        <option value="WA">Washington</option>
-                                 
+                                        <c:forEach var="theCountrys" items="${countryList}">
+                                        <option value="${theCountrys}">${theCountrys}</option>
+                                 </c:forEach>
                                 </select>
-											
-											
-											
+
 											<!-- select option -->
-														<h4 class="card-title">페이지 들어간 테이블</h4>
-														<h6 class="card-subtitle">서치</h6>
+											<p>
 														<div class="table-responsive">
 															<table id="alt_pagination"
 																class="table table-striped table-bordered display"
@@ -615,7 +537,6 @@
 																	<tr>
 																		<th>영어이름</th>
 																		<th>한국제목</th>
-																		<th>국가</th>
 																		<th>도시</th>
 																		<th>시작일</th>
 																		<th>종료일</th>
@@ -626,12 +547,11 @@
 																<c:if test="${not empty exhibitionList}">
 																<c:forEach var="thelist" items="${exhibitionList}">
 																<tr>
-																<td>${thelist.exhibitionTitleEng}</td>
-																<td>${thelist.exhibitionTitleKor}</td>
-																<td>${thelist.openingCountry}</td>
-																<td>${thelist.openingCity}</td>
-																<td>${thelist.exhibitionTitleKor}</td>
-																<td>${thelist.exhibitionTitleKor}</td>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleEng}</a></td>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.openingCity}</a></td>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
 																</tr>
 																</c:forEach>
 																</c:if>
@@ -640,7 +560,6 @@
 																	<tr>
 																		<th>영어이름</th>
 																		<th>한국제목</th>
-																		<th>국가</th>
 																		<th>도시</th>
 																		<th>Start date</th>
 																		<th>End Date</th>

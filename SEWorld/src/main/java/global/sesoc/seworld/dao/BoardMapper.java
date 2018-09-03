@@ -9,6 +9,8 @@ public interface BoardMapper {
 
 	public int getTotalList();
 	
+	public List<String> getTotalCountry();
+	
 	public List<Board> viewAllReviews(Map<String, String> searchItems);
 	
 	public List<Board> viewAllQuestions(Map<String, String> searchItems);

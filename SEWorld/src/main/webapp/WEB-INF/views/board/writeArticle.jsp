@@ -87,6 +87,7 @@
 }
 </style>
 <script src="resources/reviewFormCheck.js"></script>
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
 </head>
 
 <body>
@@ -118,9 +119,11 @@
 					<a class="navbar-brand" href="./"> <!-- Logo icon --> <b
 						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 							<!-- Dark Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
+							src="resources/assets/images/logo2.png"
+							style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="dark-logo" /> <!-- Light Logo icon --> <img
-							src="resources/assets/images/logo2.png" style="width: 60px; height: 50px; margin: auto;" alt="homepage"
+							src="resources/assets/images/logo2.png"
+							style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="light-logo" />
 					</b>
 					</a>
@@ -491,59 +494,69 @@
 											<select class="select2 form-control custom-select"
 												style="width: 80%; height: 36px;" name="category"
 												id="category">
-												<option value="review" <c:if test="${original.category eq 'review'}">selected</c:if>>Review</option>
-												<option value="question" <c:if test="${original.category eq 'question'}">selected</c:if>>Question</option>
+												<option value="review"
+													<c:if test="${original.category eq 'review'}">selected</c:if>>Review</option>
+												<option value="question"
+													<c:if test="${original.category eq 'question'}">selected</c:if>>Question</option>
 											</select>
 
 
 										</div>
 									</div>
-									
+
 									<!-- 테이블 넣을 모달 창 -->
-									 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myLargeModalLabel">게시판</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h4>테이블</h4>
-                                                <p></p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                                <!-- /.modal -->
+									<div class="modal fade bs-example-modal-lg" tabindex="-1"
+										role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" style="display: none;">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title" id="myLargeModalLabel">게시판</h4>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-hidden="true">×</button>
+												</div>
+												<div class="modal-body">
+													<h4>테이블</h4>
+													<p></p>
+												</div>
+												<div class="modal-footer">
+													<button type="button"
+														class="btn btn-danger waves-effect text-left"
+														data-dismiss="modal">Close</button>
+												</div>
+											</div>
+											<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+									</div>
+									<!-- /.modal -->
 									<!-- 테이블 모달 -->
-									
-									
-									
+
+
+
 									<!-- 보드유알엘 -->
 									<div class="form-group row align-items-center m-b-0">
 										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">choose from board</label>
+											class="col-3 text-right control-label col-form-label">choose
+											from board</label>
 										<div class="col-9 border-left p-b-10 p-t-10">
 											<c:if test="${empty original}">
-											<i class="fas fa-external-link-alt" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+												<i class="fas fa-external-link-alt" alt="default"
+													data-toggle="modal" data-target=".bs-example-modal-lg"></i>
 												<input type="text" class="form-control" id=""
 													placeholder="boardURL" name="">
 											</c:if>
-											
+
 											<c:if test="${not empty original}">
-											<i class="fas fa-external-link-alt" alt="default" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+												<i class="fas fa-external-link-alt" alt="default"
+													data-toggle="modal" data-target=".bs-example-modal-lg"></i>
 												<input type="text" class="form-control" id=""
 													placeholder="boardURL" name="" value="${original.title}">
 											</c:if>
 										</div>
 									</div>
-									
-									
+
+
 									<!-- 보드유알엘 -->
 									<!-- 첨부파일 -->
 									<div class="form-group row align-items-center m-b-0">
@@ -556,15 +569,14 @@
 													<span class="input-group-text">Upload</span>
 												</div>
 												<div class="custom-file">
-												<c:if test="${empty originalFile}">
-													<input type="file" class="custom-file-input"
-														id="uploadFile" name="uploadFile">
-														</c:if>
-														<c:if test="${not empty originalFile}">
-													    <a href="download?boardnum=${originalFile.boardId}">${originalFile.ogFilename}</a>
-														</c:if>
-														 <label
-														class="custom-file-label" for="inputGroupFile01">Choose
+													<c:if test="${empty originalFile}">
+														<input type="file" class="custom-file-input"
+															id="uploadFile" name="uploadFile">
+													</c:if>
+													<c:if test="${not empty originalFile}">
+														<a href="download?boardnum=${originalFile.boardId}">${originalFile.ogFilename}</a>
+													</c:if>
+													<label class="custom-file-label" for="inputGroupFile01">Choose
 														file</label>
 												</div>
 											</div>
@@ -582,6 +594,28 @@
 													test="${not empty original}">
 												<c:out value="${original.content}"></c:out>
 												</c:if></textarea>
+											<script>
+												CKEDITOR
+														.replace(
+																'content',
+																{
+																	filebrowserImageUploadUrl: '/ckeditorFileUpload' //여기 경로로 파일을 전달하여 업로드 시킨다.
+														        });
+														         
+														         
+														        CKEDITOR.on('dialogDefinition', function( ev ){
+														            var dialogName = ev.data.name;
+														            var dialogDefinition = ev.data.definition;
+														          
+														            switch (dialogName) {
+														                case 'image': //Image Properties dialog
+														                    //dialogDefinition.removeContents('info');
+														                    dialogDefinition.removeContents('Link');
+														                    dialogDefinition.removeContents('advanced');
+														                    break;
+														            }
+														        });
+											</script>
 										</div>
 									</div>
 								</div>

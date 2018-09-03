@@ -1,10 +1,6 @@
 package global.sesoc.seworld.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,26 +18,27 @@ public class ExhibitionRepository {
 		int result = mapper.getTotalList(selectedCountry);
 		return result;
 	}
-	
+
+	public List<String> getTotalCountry() {
+		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
+		return mapper.getTotalCountry();
+	}
+
 	public Exhibition showExhibitionDetail(String exhibitionId) {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
 		Exhibition result = mapper.showExhibitionDetail(exhibitionId);
 		return result;
 	}
-	
-	public int countCountry (String openingCountry) {
+
+	public int countCountry(String openingCountry) {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
 		int result = mapper.countCountry(openingCountry);
 		return result;
 	}
 
-	public List<Exhibition> showExhibitionListEL(String selectedCountry, String searchCategory, String searchKeyword) {
+	public List<Exhibition> showExhibitionList(String selectedCountry) {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
-		Map<String, String> searchItems = new HashMap<String, String>();
-		searchItems.put("selectedCountry", selectedCountry);
-		searchItems.put("searchCategory", searchCategory);
-		searchItems.put("searchKeyword", searchKeyword);
-		List<Exhibition> result = mapper.showExhibitionListEL(searchItems);
+		List<Exhibition> result = mapper.showExhibitionList(selectedCountry);
 		return result;
 	}
 }

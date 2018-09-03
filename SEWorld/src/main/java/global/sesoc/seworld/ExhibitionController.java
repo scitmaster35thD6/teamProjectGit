@@ -1,6 +1,8 @@
 package global.sesoc.seworld;
 
+import java.util.Collections;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,11 +34,12 @@ public class ExhibitionController {
 	// 전시회 목록 페이지로 이동
 	@RequestMapping(value = "/exhibitionList", method = RequestMethod.GET)
 	public String exhibitionList(@RequestParam(value = "selectedCountry", defaultValue = "") String selectedCountry,
-			@RequestParam(value = "searchCategory", defaultValue = "exhibitionTitleKor") String searchCategory,
-			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword, Model model) {
-		List<Exhibition> exhibitionList = repository.showExhibitionListEL(selectedCountry, searchCategory,
-				searchKeyword);
+			Model model) {
+		List<Exhibition> exhibitionList = repository.showExhibitionList(selectedCountry);
+		List<String> countryList = repository.getTotalCountry();
+		Collections.sort(countryList);
 
+		model.addAttribute("countryList", countryList);
 		model.addAttribute("exhibitionList", exhibitionList);
 
 		return "exhibition/exhibitionList";
