@@ -87,4 +87,9 @@ public class MemberController {
 		logger.info(insertMember.toString());
 		return memberRepository.insertOneMember(insertMember);
 	}
+	
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public String userprofile() {
+		return "member/profile";
+	}
 }

@@ -661,7 +661,7 @@ body.mobile-nav-active #mobile-nav-toggle {
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="newpage" style="background-color : #eac0c0">
+        <div class="newpage" style="background-color : #f7edd4">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->

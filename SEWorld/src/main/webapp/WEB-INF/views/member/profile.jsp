@@ -669,14 +669,14 @@ body.mobile-nav-active #mobile-nav-toggle {
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-      <div class="newpage" style="background-color : #c4e5c3">
+      <div class="newpage" style="background-color : #f7edd4">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">Calendar</h4>
+                        <h4 class="page-title">Profile</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -691,7 +691,127 @@ body.mobile-nav-active #mobile-nav-toggle {
                     
                 </div>
             </div>
+            <!-- 컨테이너 플루이드 -->
+           <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30"> <img src="resources/assets/images/users/5.jpg" class="rounded-circle" width="150" />
+                                    <h4 class="card-title m-t-10">Youngbin Kim</h4>
+                                    <h6 class="card-subtitle">Developer</h6>
+                                    <div class="row text-center justify-content-md-center">
+                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">254</font></a></div>
+                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-pencil"></i> <font class="font-medium">54</font></a></div>
+                                    </div>
+                                </center>
+                            </div>
+                            <div>
+                                <hr> </div>
+                            <div class="card-body"> <small class="text-muted">Email address </small>
+                                <h6>scit@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
+                                <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
+                                <h6>서울시 삼성동 coex</h6>
+                                <small class="text-muted p-t-30 db">Social Profile</small>
+                                <br/>
+                                <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>
+                                <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
+                                <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <!-- Tabs -->
+                            <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#current-month" role="tab" aria-controls="pills-timeline" aria-selected="true">Timeline</a>
+                                </li>
+                               
+                            </ul>
+                            <!-- Tabs -->
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="current-month" role="tabpanel" aria-labelledby="pills-timeline-tab">
+                                    <div class="card-body">
+                                        <div class="profiletimeline m-t-0">
+                                            <div class="sl-item">
+                                                <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
+                                                <div class="sl-right">
+                                                    <div><a href="javascript:void(0)" class="link">리뷰게시판</a> <span class="sl-date">2018/09/02</span>
+                                                        <p>new activity : <a href="javascript:void(0)"> Uploaded new article</a></p>
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-6 m-b-20"><img src="resources/assets/images/big/img1.jpg" class="img-fluid rounded" /></div>
+                                                            <div class="col-md-9 col-xs-12">
+                                                                <p> 글 내용 글내용 </p> </div>
+                                                        </div>
+                                                        <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 4 likes</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="sl-item">
+                                                <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
+                                                <div class="sl-right">
+                                                    <div><a href="javascript:void(0)" class="link">ExhibitionList</a> <span class="sl-date">2018/09/01</span>
+                                                        <p>new activity : <a href="javascript:void(0)"> added Calendar </a></p>
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-6 m-b-20"><img src="resources/assets/images/big/img1.jpg" class="img-fluid rounded" /></div>
+                                                            <div class="col-md-9 col-xs-12">
+                                                                <p> 글 내용 글내용 </p> </div>
+                                                        </div>
+                                                        <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 4 likes</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="sl-item">
+                                                <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
+                                                <div class="sl-right">
+                                                    <div><a href="javascript:void(0)" class="link">리뷰게시판</a> <span class="sl-date">2018/09/02</span>
+                                                        <p>new activity : <a href="javascript:void(0)"> Uploaded new article</a></p>
+                                                        <p class="m-t-10"> 글내용 글내용</p>
+                                                        <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 4 likes</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                           
+                                            <hr>
+                                            <div class="sl-item">
+                                                <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
+                                                <div class="sl-right">
+                                                    <div><a href="javascript:void(0)" class="link">ExhibitionList</a> <span class="sl-date">2018/09/02</span>
+                                                        <p>new activity : <a href="javascript:void(0)">added to Calendar</a></p>
+                                                        <p class="m-t-10"> 글내용 글내용</p>
+                                                        <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 4 likes</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+            </div>
             
+            
+            
+            <!-- 컨테이너 플루이드 -->
             
             
             
