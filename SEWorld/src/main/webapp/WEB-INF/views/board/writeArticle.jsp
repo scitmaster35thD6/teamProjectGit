@@ -93,7 +93,7 @@
 </style>
 <script type="text/javascript" src="resources/exhibitionCountrySelect.js"></script>
 <script src="resources/reviewFormCheck.js"></script>
-<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+<script src="resources/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -474,7 +474,7 @@
 
 							<hr class="m-t-0">
 							<form class="form-horizontal r-separator"
-								enctype="multipart/form-data" action="writeReview" method="post"
+								enctype="multipart/form-data" action="writeArticle" method="post"
 								onsubmit="return formCheck()">
 								<div class="card-body">
 									<div class="form-group row align-items-center m-b-0">
@@ -662,26 +662,7 @@
 												<c:out value="${original.content}"></c:out>
 												</c:if></textarea>
 											<script>
-												CKEDITOR
-														.replace(
-																'content',
-																{
-																	filebrowserImageUploadUrl: '/ckeditorFileUpload' //여기 경로로 파일을 전달하여 업로드 시킨다.
-														        });
-														         
-														         
-														        CKEDITOR.on('dialogDefinition', function( ev ){
-														            var dialogName = ev.data.name;
-														            var dialogDefinition = ev.data.definition;
-														          
-														            switch (dialogName) {
-														                case 'image': //Image Properties dialog
-														                    //dialogDefinition.removeContents('info');
-														                    dialogDefinition.removeContents('Link');
-														                    dialogDefinition.removeContents('advanced');
-														                    break;
-														            }
-														        });
+												CKEDITOR.replace('content');
 											</script>
 										</div>
 									</div>

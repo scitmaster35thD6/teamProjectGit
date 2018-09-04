@@ -36,13 +36,15 @@
 	<!-- Interceptor 경로 설정 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="writeReview" />
-			<mapping path="updateReview" />
-			<mapping path="deleteReview" />
+			<mapping path="writeArticle" />
+			<mapping path="updateArticle" />
+			<mapping path="deleteArticle" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 	</interceptors>
-	
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+	<!-- CKEditor 파일 첨부 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 </beans:beans>

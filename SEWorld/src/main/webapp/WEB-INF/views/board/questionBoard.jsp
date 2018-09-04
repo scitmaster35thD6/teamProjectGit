@@ -249,30 +249,48 @@
                          <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="resources/assets/images/users/user.png" alt="user" class="rounded-circle" width="31">
-                            
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown" style="background-color: #f7d6b7;">
-                                <span class="with-arrow" ><span class="bg-primary" ></span></span>
-                                <div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10" >
-                                    <div class=""><img src="resources/assets/images/users/user.png" alt="user" class="img-circle" width="60"></div>
-                                    <div class="m-l-10" >
-                                        <h4 class="m-b-0">유저네임</h4>
-                                        <p class=" m-b-0">유저 이메일</p>
-                                    </div>
-                                </div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                               <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-calendar m-r-5 m-l-5"></i> My Calendar </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-                                
-                            </div>
-                        </li>
+                     
+						<c:if test="${not empty sessionScope.loginId}">
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
+								href="" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"> <img
+									src="resources/assets/images/users/user.png" alt="user"
+									class="rounded-circle" width="31">
+
+							</a>
+								<div
+									class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown"
+									style="background-color: #f7d6b7;">
+									<span class="with-arrow"><span class="bg-primary"></span></span>
+									<div
+										class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
+										<div class="">
+											<!-- 아이콘 유저 -->
+											<i class="fas fa-user" width="60"></i>
+
+
+										</div>
+
+										<div class="m-l-10">
+											<h4 class="m-b-0">${sessionScope.loginId}</h4>
+											<p class=" m-b-0">${sessionScope.loginName}</p>
+										</div>
+									</div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="ti-calendar m-r-5 m-l-5"></i> My Calendar </a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+
+								</div></li>
+						</c:if>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -295,25 +313,38 @@
                         <!-- User Profile-->
                         <li>
                             <!--로그인 햇을 경우 User Profile-->
-                            <div class="user-profile d-flex no-block dropdown m-t-20">
-                                <div class="user-pic"><img src="resources/assets/images/users/user.png" alt="users" class="rounded-circle" width="40" /></div>
-                                <div class="user-content hide-menu m-l-10">
-                                    <a href="javascript:void(0)" class="" id="Userdd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <h5 class="m-b-0 user-name font-medium">유저네임 님 <i class="fa fa-angle-down"></i></h5>
-                                        <span class="op-5 user-email">유저 이메일</span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
-                                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                                        <div class="dropdown-divider"></div>
-                                        
-                                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-calendar m-r-5 m-l-5"></i> My Calendar</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-                                    </div>
-                                </div>
-                            </div>
+                           			<c:if test="${not empty sessionScope.loginId}">
+							<div class="user-profile d-flex no-block dropdown m-t-20">
+								<div class="user-pic">
+									<img src="resources/assets/images/users/user.png" alt="users"
+										class="rounded-circle" width="40" />
+								</div>
+								<div class="user-content hide-menu m-l-10">
+									<a href="javascript:void(0)" class="" id="Userdd" role="button"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										<h5 class="m-b-0 user-name font-medium">
+											${sessionScope.loginId} 님 <i class="fa fa-angle-down"></i>
+										</h5> <span class="op-5 user-email">${sessionScope.loginName} </span>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right"
+										aria-labelledby="Userdd">
+										<a class="dropdown-item" href="javascript:void(0)"><i
+											class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+										<div class="dropdown-divider"></div>
+
+										<a class="dropdown-item" href="javascript:void(0)"><i
+											class="ti-calendar m-r-5 m-l-5"></i> My Calendar</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="javascript:void(0)"><i
+											class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="javascript:void(0)"><i
+											class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+									</div>
+								</div>
+							</div>
+							</c:if>
                             <!-- End User Profile-->
                         </li>
                         <!-- User Profile-->

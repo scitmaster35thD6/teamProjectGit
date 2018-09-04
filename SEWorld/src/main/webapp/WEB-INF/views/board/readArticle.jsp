@@ -119,20 +119,16 @@
 					<!-- ============================================================== -->
 					<!-- Logo -->
 					<!-- ============================================================== -->
-					<a class="navbar-brand" href="index.html"> <!-- Logo icon --> <b
+					<a class="navbar-brand" href="./"> <!-- Logo icon --> <b
 						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 							<!-- Dark Logo icon --> <img
-							src="resources/assets/images/logo-icon.png" alt="homepage"
+							src="resources/assets/images/logo2.png"
+							style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="dark-logo" /> <!-- Light Logo icon --> <img
-							src="resources/assets/images/logo-light-icon.png" alt="homepage"
+							src="resources/assets/images/logo2.png"
+							style="width: 60px; height: 50px; margin: auto;" alt="homepage"
 							class="light-logo" />
-					</b> <!--End Logo icon --> <!-- Logo text --> <span class="logo-text">
-							<!-- dark Logo text --> <img
-							src="resources/assets/images/logo-text.png" alt="homepage"
-							class="dark-logo" /> <!-- Light Logo text --> <img
-							src="resources/assets/images/logo-light-text.png"
-							class="light-logo" alt="homepage" />
-					</span>
+					</b>
 					</a>
 					<!-- ============================================================== -->
 					<!-- End Logo -->
@@ -277,44 +273,104 @@
 
 
 						<!-- ============================================================== -->
-						<!-- User profile and search -->
+						<!-- Messages -->
 						<!-- ============================================================== -->
 						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
-							href="" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <img
-								src="resources/assets/images/users/user.png" alt="user"
-								class="rounded-circle" width="31">
+							class="nav-link dropdown-toggle waves-effect waves-dark" href=""
+							id="2" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i
+								class="font-24 mdi mdi-comment-processing"></i>
 
 						</a>
 							<div
-								class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown"
-								style="background-color: #f7d6b7;">
-								<span class="with-arrow"><span class="bg-primary"></span></span>
-								<div
-									class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
-									<div class="">
-										<img src="resources/assets/images/users/user.png" alt="user"
-											class="img-circle" width="60">
-									</div>
-									<div class="m-l-10">
-										<h4 class="m-b-0">유저네임</h4>
-										<p class=" m-b-0">유저 이메일</p>
-									</div>
-								</div>
-								<a class="dropdown-item" href="javascript:void(0)"><i
-									class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="javascript:void(0)"><i
-									class="ti-calendar m-r-5 m-l-5"></i> My Calendar </a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="javascript:void(0)"><i
-									class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="javascript:void(0)"><i
-									class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+								class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown"
+								aria-labelledby="2">
+								<span class="with-arrow"><span class="bg-white"></span></span>
+								<ul class="list-style-none">
+									<li>
+										<div class="drop-title text-black bg-#f7b2c5">
+											<h4 class="m-b-0 m-t-5">2 New</h4>
+											<span class="font-light">Messages</span>
+										</div>
+									</li>
+									<li>
+										<div class="message-center message-body" style="height: 100%;">
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item"> <span
+												class="user-img"><i class="fas fa-user"></i> </span>
+												<div class="mail-contnet">
+													<h5 class="message-title">heemin</h5>
+													<span class="mail-desc">안녕하세요 전시회 정보 문으드립니다.</span> <span
+														class="time">9:30 AM</span>
+												</div>
+											</a>
+											<!-- Message -->
+											<a href="javascript:void(0)" class="message-item"> <span
+												class="user-img"><i class="fas fa-user"></i> </span>
+												<div class="mail-contnet">
+													<h5 class="message-title">happy</h5>
+													<span class="mail-desc">what sup </span><span class="time">9:10
+														AM</span>
+												</div>
+											</a>
 
+
+										</div>
+									</li>
+									<li><a class="nav-link text-center link"
+										href="javascript:void(0);"> <b>모든 메세지 보기</b> <i
+											class="fa fa-angle-right"></i>
+									</a></li>
+								</ul>
 							</div></li>
+
+						<!-- end+++++================== -->
+
+						<!-- ============================================================== -->
+						<!-- User profile and search -->
+						<!-- ============================================================== -->
+
+						<c:if test="${not empty sessionScope.loginId}">
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
+								href="" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"> <img
+									src="resources/assets/images/users/user.png" alt="user"
+									class="rounded-circle" width="31">
+
+							</a>
+								<div
+									class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown"
+									style="background-color: #f7d6b7;">
+									<span class="with-arrow"><span class="bg-primary"></span></span>
+									<div
+										class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
+										<div class="">
+											<!-- 아이콘 유저 -->
+											<i class="fas fa-user" width="60"></i>
+
+
+										</div>
+
+										<div class="m-l-10">
+											<h4 class="m-b-0">${sessionScope.loginId}</h4>
+											<p class=" m-b-0">${sessionScope.loginName}</p>
+										</div>
+									</div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="ti-calendar m-r-5 m-l-5"></i> My Calendar </a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+
+								</div></li>
+						</c:if>
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
@@ -328,7 +384,7 @@
 		<!-- ============================================================== -->
 		<!-- Left Sidebar - style you can find in sidebar.scss  -->
 		<!-- ============================================================== -->
-		<aside class="left-sidebar">
+<aside class="left-sidebar">
 			<!-- Sidebar scroll-->
 			<div class="scroll-sidebar">
 				<!-- Sidebar navigation-->
@@ -337,6 +393,7 @@
 						<!-- User Profile-->
 						<li>
 							<!-- User Profile-->
+							<c:if test="${not empty sessionScope.loginId}">
 							<div class="user-profile d-flex no-block dropdown m-t-20">
 								<div class="user-pic">
 									<img src="resources/assets/images/users/user.png" alt="users"
@@ -347,8 +404,8 @@
 										data-toggle="dropdown" aria-haspopup="true"
 										aria-expanded="false">
 										<h5 class="m-b-0 user-name font-medium">
-											유저네임 님 <i class="fa fa-angle-down"></i>
-										</h5> <span class="op-5 user-email">유저 이메일</span>
+											${sessionScope.loginId} 님 <i class="fa fa-angle-down"></i>
+										</h5> <span class="op-5 user-email">${sessionScope.loginName} </span>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right"
 										aria-labelledby="Userdd">
@@ -366,7 +423,8 @@
 											class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
 									</div>
 								</div>
-							</div> <!-- End User Profile-->
+							</div>
+							</c:if> <!-- End User Profile-->
 						</li>
 						<!-- User Profile-->
 						<li class="sidebar-item"><a
@@ -481,7 +539,6 @@
 									</div>
 								</div>
 
-								<h6>${articleDetail.memberId}</h6>
 								<div class="container-fluid">
 									<div class="row el-element-overlay">
 
@@ -504,8 +561,8 @@
 														</div>
 													</div>
 													<div class="el-card-content">
-														<h4 class="m-b-0">이름</h4>
-														<span class="text-muted">직업</span>
+														<h4 class="m-b-0">${articleAuthor.memberId}</h4>
+														<span class="text-muted">${articleAuthor.memberName}</span>
 													</div>
 												</div>
 											</div>

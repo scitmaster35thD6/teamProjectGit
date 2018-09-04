@@ -86,7 +86,8 @@
 	}
 }
 </style>
-<script type="text/javascript" src="resources/exhibitionCountrySelect.js"></script>
+<script type="text/javascript"
+	src="resources/exhibitionCountrySelect.js"></script>
 </head>
 
 <body>
@@ -325,45 +326,48 @@
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
-							href="" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <img
-								src="resources/assets/images/users/user.png" alt="user"
-								class="rounded-circle" width="31">
 
-						</a>
-							<div
-								class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown"
-								style="background-color: #f7d6b7;">
-								<span class="with-arrow"><span class="bg-primary"></span></span>
+						<c:if test="${not empty sessionScope.loginId}">
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
+								href="" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"> <img
+									src="resources/assets/images/users/user.png" alt="user"
+									class="rounded-circle" width="31">
+
+							</a>
 								<div
-									class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
-									<div class="">
+									class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown"
+									style="background-color: #f7d6b7;">
+									<span class="with-arrow"><span class="bg-primary"></span></span>
+									<div
+										class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
+										<div class="">
+											<!-- 아이콘 유저 -->
+											<i class="fas fa-user" width="60"></i>
 
-										<!-- 아이콘 유저 -->
-										<i class="fas fa-user" width="60"></i>
 
+										</div>
 
+										<div class="m-l-10">
+											<h4 class="m-b-0">${sessionScope.loginId}</h4>
+											<p class=" m-b-0">${sessionScope.loginName}</p>
+										</div>
 									</div>
-									<div class="m-l-10">
-										<h4 class="m-b-0">유저네임</h4>
-										<p class=" m-b-0">유저 이메일</p>
-									</div>
-								</div>
-								<a class="dropdown-item" href="javascript:void(0)"><i
-									class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="javascript:void(0)"><i
-									class="ti-calendar m-r-5 m-l-5"></i> My Calendar </a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="javascript:void(0)"><i
-									class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="javascript:void(0)"><i
-									class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="ti-calendar m-r-5 m-l-5"></i> My Calendar </a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)"><i
+										class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
 
-							</div></li>
+								</div></li>
+						</c:if>
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
@@ -386,6 +390,7 @@
 						<!-- User Profile-->
 						<li>
 							<!-- User Profile-->
+							<c:if test="${not empty sessionScope.loginId}">
 							<div class="user-profile d-flex no-block dropdown m-t-20">
 								<div class="user-pic">
 									<img src="resources/assets/images/users/user.png" alt="users"
@@ -396,8 +401,8 @@
 										data-toggle="dropdown" aria-haspopup="true"
 										aria-expanded="false">
 										<h5 class="m-b-0 user-name font-medium">
-											유저네임 님 <i class="fa fa-angle-down"></i>
-										</h5> <span class="op-5 user-email">유저 이메일</span>
+											${sessionScope.loginId} 님 <i class="fa fa-angle-down"></i>
+										</h5> <span class="op-5 user-email">${sessionScope.loginName} </span>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right"
 										aria-labelledby="Userdd">
@@ -415,7 +420,8 @@
 											class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
 									</div>
 								</div>
-							</div> <!-- End User Profile-->
+							</div>
+							</c:if> <!-- End User Profile-->
 						</li>
 						<!-- User Profile-->
 						<li class="sidebar-item"><a
@@ -497,9 +503,6 @@
 							</nav>
 						</div>
 					</div>
-
-
-
 				</div>
 			</div>
 			<!-- ============================================================== -->
@@ -510,145 +513,151 @@
 			<!-- ============================================================== -->
 
 
-									<!-- ============================================================== -->
-									<!-- End PAge Content -->
-									<!-- ============================================================== -->
-									<!-- 다시 만든테이블 -->
-									<div class="container-fluid">
-										<div class="row">
-											<div class="col-12">
-												<div class="card">
-													<div class="card-body">
-											<!-- select option -->
-											
-                                <select class="select2-with-border border-warning form-control" id="border-with-select2" data-border-color="success" data-border-variation="darken-2" data-text-color="warning" data-text-variation="darken-3" style="width: 100%;height: 36px;">
-                                        <c:forEach var="theCountrys" items="${countryList}">
-                                        <option value="${theCountrys}">${theCountrys}</option>
-                                 </c:forEach>
-                                </select>
+			<!-- ============================================================== -->
+			<!-- End PAge Content -->
+			<!-- ============================================================== -->
+			<!-- 다시 만든테이블 -->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<!-- select option -->
 
-											<!-- select option -->
-											<p>
-														<div class="table-responsive">
-															<table id="alt_pagination"
-																class="table table-striped table-bordered display"
-																style="width: 100%">
-																<thead>
-																	<tr>
-																		<th>영어이름</th>
-																		<th>한국제목</th>
-																		<th>도시</th>
-																		<th>시작일</th>
-																		<th>종료일</th>
-																	</tr>
-																</thead>
+								<select class="select2-with-border border-warning form-control"
+									id="border-with-select2" data-border-color="success"
+									data-border-variation="darken-2" data-text-color="warning"
+									data-text-variation="darken-3"
+									style="width: 100%; height: 36px;">
+									<c:forEach var="theCountrys" items="${countryList}">
+										<option value="${theCountrys}">${theCountrys}</option>
+									</c:forEach>
+								</select>
 
-																<tbody>
-																<c:if test="${not empty exhibitionList}">
-																<c:forEach var="thelist" items="${exhibitionList}">
-																<tr>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleEng}</a></td>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.openingCity}</a></td>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
-																</tr>
-																</c:forEach>
-																</c:if>
-																</tbody>
-																<tfoot>
-																	<tr>
-																		<th>영어이름</th>
-																		<th>한국제목</th>
-																		<th>도시</th>
-																		<th>Start date</th>
-																		<th>End Date</th>
-																	</tr>
-																</tfoot>
-															</table>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+								<!-- select option -->
+								<p>
+								<div class="table-responsive">
+									<table id="alt_pagination"
+										class="table table-striped table-bordered display"
+										style="width: 100%">
+										<thead>
+											<tr>
+												<th>영어이름</th>
+												<th>한국제목</th>
+												<th>도시</th>
+												<th>시작일</th>
+												<th>종료일</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<c:if test="${not empty exhibitionList}">
+												<c:forEach var="thelist" items="${exhibitionList}">
+													<tr>
+														<td><a
+															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleEng}</a></td>
+														<td><a
+															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
+														<td><a
+															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.openingCity}</a></td>
+														<td><a
+															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
+														<td><a
+															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
+													</tr>
+												</c:forEach>
+											</c:if>
+										</tbody>
+										<tfoot>
+											<tr>
+												<th>영어이름</th>
+												<th>한국제목</th>
+												<th>도시</th>
+												<th>Start date</th>
+												<th>End Date</th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
 							</div>
-							<!-- 다시 만든테이블 -->
-
 						</div>
-						<!-- page wrapper -->
-
-						<!-- ============================================================== -->
-						<!-- Right sidebar -->
-						<!-- ============================================================== -->
-						<!-- .right-sidebar -->
-						<!-- ============================================================== -->
-						<!-- End Right sidebar -->
-						<!-- ============================================================== -->
 					</div>
-					<!-- ============================================================== -->
-					<!-- End Container fluid  -->
-					<!-- ============================================================== -->
-					<!-- ============================================================== -->
-					<!-- footer -->
-					<!-- ============================================================== -->
-					<footer class="footer text-center"> SCIT Poject </footer>
-					<!-- ============================================================== -->
-					<!-- End footer -->
-					<!-- ============================================================== -->
 				</div>
-				<!-- ============================================================== -->
-				<!-- End Page wrapper  -->
-				<!-- ============================================================== -->
 			</div>
-			<!-- ============================================================== -->
-			<!-- End Wrapper -->
-			<!-- ============================================================== -->
-			<!-- ============================================================== -->
-			<!-- customizer Panel -->
-			<!-- ============================================================== -->
-			<a class="nav-link dropdown-toggle waves-effect waves-dark" href=""
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		</div>
+		<!-- 다시 만든테이블 -->
 
-			</a>
-			</aside>
+	</div>
+	<!-- page wrapper -->
 
-			<div class="chat-windows"></div>
-			<!-- ============================================================== -->
-			<!-- All Jquery -->
-			<!-- ============================================================== -->
-			<script>
-				// Basic grid
-			</script>
-			<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
-			<!-- Bootstrap tether Core JavaScript -->
-			<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-			<script
-				src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-			<!-- apps -->
-			<script src="resources/dist/js/app.min.js"></script>
-			<script src="resources/dist/js/app.init.iconbar.js"></script>
-			<script src="resources/dist/js/app-style-switcher.js"></script>
-			<!-- slimscrollbar scrollbar JavaScript -->
-			<script
-				src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-			<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
-			<!--Wave Effects -->
-			<script src="resources/dist/js/waves.js"></script>
-			<!--Menu sidebar -->
-			<script src="resources/dist/js/sidebarmenu.js"></script>
-			<!--Custom JavaScript -->
-			<script src="resources/dist/js/custom.min.js"></script>
-			<!--This page JavaScript -->
-			<script
-				src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-			<script
-				src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
-			<!-- This Page JS -->
-			<!-- This Page JS -->
-    <script src="resources/assets/libs/select2/dist/js/select2.full.min.js"></script>
-    <script src="resources/assets/libs/select2/dist/js/select2.min.js"></script>
-    <script src="resources/dist/js/pages/forms/select2/select2.init.js"></script>
+	<!-- ============================================================== -->
+	<!-- Right sidebar -->
+	<!-- ============================================================== -->
+	<!-- .right-sidebar -->
+	<!-- ============================================================== -->
+	<!-- End Right sidebar -->
+	<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Container fluid  -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- footer -->
+	<!-- ============================================================== -->
+	<footer class="footer text-center"> SCIT Poject </footer>
+	<!-- ============================================================== -->
+	<!-- End footer -->
+	<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Page wrapper  -->
+	<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Wrapper -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- customizer Panel -->
+	<!-- ============================================================== -->
+	<a class="nav-link dropdown-toggle waves-effect waves-dark" href=""
+		data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+	</a>
+	</aside>
+
+	<div class="chat-windows"></div>
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
+	<script>
+		// Basic grid
+	</script>
+	<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap tether Core JavaScript -->
+	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- apps -->
+	<script src="resources/dist/js/app.min.js"></script>
+	<script src="resources/dist/js/app.init.iconbar.js"></script>
+	<script src="resources/dist/js/app-style-switcher.js"></script>
+	<!-- slimscrollbar scrollbar JavaScript -->
+	<script
+		src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+	<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
+	<!--Wave Effects -->
+	<script src="resources/dist/js/waves.js"></script>
+	<!--Menu sidebar -->
+	<script src="resources/dist/js/sidebarmenu.js"></script>
+	<!--Custom JavaScript -->
+	<script src="resources/dist/js/custom.min.js"></script>
+	<!--This page JavaScript -->
+	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
+	<script src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
+	<!-- This Page JS -->
+	<!-- This Page JS -->
+	<script src="resources/assets/libs/select2/dist/js/select2.full.min.js"></script>
+	<script src="resources/assets/libs/select2/dist/js/select2.min.js"></script>
+	<script src="resources/dist/js/pages/forms/select2/select2.init.js"></script>
 </body>
 
 </html>

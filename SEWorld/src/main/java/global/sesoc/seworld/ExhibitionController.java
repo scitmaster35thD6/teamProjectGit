@@ -67,4 +67,9 @@ public class ExhibitionController {
 	public String vectorMap() {
 		return "exhibition/vector";
 	}
+
+	@RequestMapping(value="/bestList", method= RequestMethod.GET)
+	public String bestList() {
+		return "exhibition/bestExhibition";
+	}
 }

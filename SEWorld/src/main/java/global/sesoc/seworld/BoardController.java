@@ -2,9 +2,6 @@ package global.sesoc.seworld;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
@@ -16,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,10 +23,13 @@ import global.sesoc.seworld.dao.BoardFileRepository;
 import global.sesoc.seworld.dao.BoardReplyRepository;
 import global.sesoc.seworld.dao.BoardRepository;
 import global.sesoc.seworld.dao.ExhibitionRepository;
+import global.sesoc.seworld.dao.MemberRepository;
 import global.sesoc.seworld.dto.Board;
 import global.sesoc.seworld.dto.BoardFile;
 import global.sesoc.seworld.dto.BoardReply;
+import global.sesoc.seworld.dto.CKEditorAttachement;
 import global.sesoc.seworld.dto.Exhibition;
+import global.sesoc.seworld.dto.Member;
 import global.sesoc.seworld.util.FileService;
 
 @Controller
@@ -55,6 +56,9 @@ public class BoardController {
 
 	@Autowired
 	ExhibitionRepository exhibitionRepository;
+	
+	@Autowired
+	MemberRepository memberRepository;
 
 	final String uploadPath = "/boardfile/reviews";
 
@@ -66,7 +70,8 @@ public class BoardController {
 		String reviewList = "";
 
 		for (int i = 0; i < boardList.size(); i++) {
-			reviewList += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId() + "'\">";
+			reviewList += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId()
+					+ "'\">";
 			reviewList += "<td>" + (i + 1) + "</td>";
 			reviewList += "<td>" + boardList.get(i).getMemberId() + "</td>";
 			reviewList += "<td>" + boardList.get(i).getTitle() + "</td>";
@@ -102,10 +107,12 @@ public class BoardController {
 		Board articleDetail = boardRepository.viewBoardDetail(boardId);
 		Exhibition exbhibitionForArticle = exhibitionRepository.showExhibitionDetail(articleDetail.getExhibitionId());
 		String boardReplyId = boardReplyRepository.getBoardReplyId(boardId);
+		Member articleAuthor = memberRepository.selectOneMember(articleDetail.getMemberId());
 		if (boardReplyId != null) {
 			BoardReply articleReply = boardReplyRepository.selectOneBoardReply(boardReplyId);
 			model.addAttribute("articleReply", articleReply);
 		}
+		model.addAttribute("articleAuthor", articleAuthor);
 		model.addAttribute("articleDetail", articleDetail);
 		model.addAttribute("exbhibitionForArticle", exbhibitionForArticle);
 		return "board/readArticle";
@@ -229,47 +236,30 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/ckeditorFileUpload", method = RequestMethod.POST)
-	public void ckeditorFileUpload(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam MultipartFile upload) {
+	public String ckeditorFileUpload(@ModelAttribute("fileUploadVO") CKEditorAttachement attach,
+			HttpServletRequest request, Model model) {
+		
+		HttpSession session = request.getSession();
+		String rootPath = session.getServletContext().getRealPath("/");
+		String attachPath = "resources/userUploadedFile/";
 
-		OutputStream out = null;
-		PrintWriter printWriter = null;
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+		MultipartFile upload = attach.getUpload();
+		String filename = "";
+		String CKEditorFuncNum = "";
 
-		try {
-
-			String fileName = upload.getOriginalFilename();
-			byte[] bytes = upload.getBytes();
-			String uploadPath = "userFile/" + fileName;// 저장경로
-
-			out = new FileOutputStream(new File(uploadPath));
-			out.write(bytes);
-			String callback = request.getParameter("CKEditorFuncNum");
-
-			printWriter = response.getWriter();
-			String fileUrl = "userFile/" + fileName;// url경로
-
-			printWriter.println("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" + callback
-					+ ",'" + fileUrl + "','이미지를 업로드 완료'" + ")</script>");
-			printWriter.flush();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+		if (upload != null) {
+			filename = upload.getOriginalFilename();
+			attach.setFilename(filename);
+			CKEditorFuncNum = attach.getCKEditorFuncNum();
 			try {
-				if (out != null) {
-					out.close();
-				}
-				if (printWriter != null) {
-					printWriter.close();
-				}
+				File file = new File(rootPath + attachPath + filename);
+				upload.transferTo(file);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
-		return;
-
+		model.addAttribute("filePath", attachPath + filename); // 결과값을
+		model.addAttribute("CKEditorFuncNum", CKEditorFuncNum);// jsp ckeditor 콜백함수로 보내줘야함
+		return "board/CKEditorFileUploadComplete";
 	}
 }
