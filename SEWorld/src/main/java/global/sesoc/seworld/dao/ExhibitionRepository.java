@@ -1,6 +1,7 @@
 package global.sesoc.seworld.dao;
 
 import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,9 +14,9 @@ public class ExhibitionRepository {
 	@Autowired
 	SqlSession sqlSession;
 
-	public int getTotalList(String selectedCountry) {
+	public int getTotalList() {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
-		int result = mapper.getTotalList(selectedCountry);
+		int result = mapper.getTotalList();
 		return result;
 	}
 
@@ -36,9 +37,9 @@ public class ExhibitionRepository {
 		return result;
 	}
 
-	public List<Exhibition> showExhibitionList(String selectedCountry) {
+	public List<Exhibition> showExhibitionList() {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
-		List<Exhibition> result = mapper.showExhibitionList(selectedCountry);
+		List<Exhibition> result = mapper.showExhibitionList();
 		return result;
 	}
 }

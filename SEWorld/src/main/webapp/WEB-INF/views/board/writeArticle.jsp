@@ -32,8 +32,9 @@
 <link
 	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
 	rel="stylesheet">
- <!-- This Select CSS -->
-    <link rel="stylesheet" type="text/css" href="resources/assets/libs/select2/dist/css/select2.min.css">
+<!-- This Select CSS -->
+<link rel="stylesheet" type="text/css"
+	href="resources/assets/libs/select2/dist/css/select2.min.css">
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -91,7 +92,8 @@
 	}
 }
 </style>
-<script type="text/javascript" src="resources/exhibitionCountrySelect.js"></script>
+<script type="text/javascript"
+	src="resources/exhibitionCountrySelect.js"></script>
 <script src="resources/reviewFormCheck.js"></script>
 <script src="resources/ckeditor/ckeditor.js"></script>
 </head>
@@ -474,8 +476,8 @@
 
 							<hr class="m-t-0">
 							<form class="form-horizontal r-separator"
-								enctype="multipart/form-data" action="writeArticle" method="post"
-								onsubmit="return formCheck()">
+								enctype="multipart/form-data" action="writeArticle"
+								method="post" onsubmit="return formCheck()">
 								<div class="card-body">
 									<div class="form-group row align-items-center m-b-0">
 										<label for="inputEmail3"
@@ -522,71 +524,40 @@
 														aria-hidden="true">×</button>
 												</div>
 												<div class="modal-body">
-													<h4>테이블</h4>
-				<!-- 테이블 -->		
-						<!-- select option -->
-											
-                                <select class="select2-with-border border-warning form-control" id="border-with-select2" data-border-color="success" data-border-variation="darken-2" data-text-color="warning" data-text-variation="darken-3" style="width: 100%;height: 36px;">
-                                        <c:forEach var="theCountrys" items="${countryList}">
-                                        <option value="${theCountrys}">${theCountrys}</option>
-                                 </c:forEach>
-                                </select>
-
-											<!-- select option -->
-											<p>
-														<div class="table-responsive">
-															<table id="alt_pagination"
-																class="table table-striped table-bordered display"
-																style="width: 100%">
-																<thead>
-																	<tr>
-																		<th>영어이름</th>
-																		<th>한국제목</th>
-																		<th>도시</th>
-																		<th>시작일</th>
-																		<th>종료일</th>
-																		<th><input type="checkbox" id="checkall" /></th>
-
-																	</tr>
-																</thead>
-
-																<tbody>
-																<c:if test="${not empty exhibitionList}">
-																<c:forEach var="thelist" items="${exhibitionList}">
+													<!-- 테이블 -->
+													<p>
+													<div class="table-responsive">
+														<table id="alt_pagination"
+															class="table table-striped table-bordered display"
+															style="width: 100%">
+															<thead>
 																<tr>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleEng}</a></td>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.openingCity}</a></td>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
-																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
-																<td><input type="checkbox" name="chk" /></td>
+																	<th>타이틀 (영어)</th>
+																	<th>타이틀 (한국)</th>
+																	<th>국가</th>
+																	<th>도시</th>
+																	<th>기간</th>
 																</tr>
-																</c:forEach>
-																</c:if>
-																</tbody>
-																<tfoot>
-																	<tr>
-																		<th>영어이름</th>
-																		<th>한국제목</th>
-																		<th>도시</th>
-																		<th>Start date</th>
-																		<th>End Date</th>
-																	</tr>
-																</tfoot>
-															</table>
-						</div>
-						
-											
-				<!-- 테이블 -->									
-													
-													
+															</thead>
+															<tfoot>
+																<tr>
+																	<th>Eng Title</th>
+																	<th>Kor Title</th>
+																	<th>Country</th>
+																	<th>City</th>
+																	<th>Date</th>
+																</tr>
+															</tfoot>
+														</table>
 													</div>
+													<!-- 테이블 -->
+												</div>
 												<div class="modal-footer">
 													<button type="button"
 														class="btn btn-success waves-effect text-left"
 														data-dismiss="modal">Save</button>
-												
-												
+
+
 													<button type="button"
 														class="btn btn-success waves-effect text-left"
 														data-dismiss="modal">Close</button>
@@ -753,16 +724,10 @@
 	<!--Custom JavaScript -->
 	<script src="resources/dist/js/custom.min.js"></script>
 	<!--This page JavaScript -->
-<!--table JavaScript -->
-			<script
-				src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-			<script
-				src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
-			<!-- This Page JS -->
-			<!-- select -->
-    <script src="resources/assets/libs/select2/dist/js/select2.full.min.js"></script>
-    <script src="resources/assets/libs/select2/dist/js/select2.min.js"></script>
-    <script src="resources/dist/js/pages/forms/select2/select2.init.js"></script>
+	<!--table JavaScript -->
+	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
+	<script src="resources/exhibitionCountrySelect.js"></script>
+	<!-- This Page JS -->
 	<!-- 벡터지도 -->
 	<!-- This Page JS -->
 

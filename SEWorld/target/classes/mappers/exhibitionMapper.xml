@@ -5,29 +5,28 @@
 
 <mapper namespace="global.sesoc.seworld.dao.ExhibitionMapper">
 
-	<select id="showExhibitionList" resultType="exhibition"
-		parameterType="String">
+	<select id="showExhibitionList" resultType="exhibition">
 		SELECT
 		exhibitionId
-		, exhibitionTitleKor
+		,
+		exhibitionTitleKor
 		,
 		exhibitionTitleEng
 		, openingTerm
 		,
 		firstOpeningYear
-		, openingCountry
+		,
+		openingCountry
 		,
 		openingCity
 		, exhibitionHall
 		,sponsor
 		, createdDate
-		, updatedDate
+		,
+		updatedDate
 		,
 		dataOffer
 		FROM c6_exhibition
-		WHERE
-		openingCountry like '%' ||
-		#{selectedCountry}|| '%'
 		ORDER BY
 		openingTerm DESC
 	</select>
@@ -37,13 +36,10 @@
 		c6_countries
 	</select>
 
-	<select id="getTotalList" resultType="int"
-		parameterType="String">
+	<select id="getTotalList" resultType="int">
 		SELECT COUNT(*)
-		FROM c6_exhibition
-		<if test="_parameter != null and !_parameter.equals('')">
-			WHERE openingCountry LIKE '%' || #{selectedCountry} || '%'
-		</if>
+		FROM
+		c6_exhibition
 	</select>
 
 	<select id="showExhibitionDetail" resultType="exhibition"

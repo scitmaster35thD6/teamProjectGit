@@ -1,19 +1,20 @@
 package global.sesoc.seworld;
 
-import java.util.Collections;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import global.sesoc.seworld.dao.ExhibitionRepository;
 import global.sesoc.seworld.dto.Exhibition;
+import global.sesoc.seworld.dto.TableWrapperDTO;
 
 @Controller
 public class ExhibitionController {
@@ -33,16 +34,26 @@ public class ExhibitionController {
 
 	// 전시회 목록 페이지로 이동
 	@RequestMapping(value = "/exhibitionList", method = RequestMethod.GET)
-	public String exhibitionList(@RequestParam(value = "selectedCountry", defaultValue = "") String selectedCountry,
-			Model model) {
-		List<Exhibition> exhibitionList = repository.showExhibitionList(selectedCountry);
-		List<String> countryList = repository.getTotalCountry();
-		Collections.sort(countryList);
-
-		model.addAttribute("countryList", countryList);
-		model.addAttribute("exhibitionList", exhibitionList);
+	public String exhibitionList() {
 
 		return "exhibition/exhibitionList";
+	}
+
+	@RequestMapping(value = "/exhibitionListAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String exhibitionListAjax() {
+		int totalCount = repository.getTotalList();
+		List<Exhibition> exhibitions = repository.showExhibitionList();
+
+		TableWrapperDTO wrapper = new TableWrapperDTO();
+
+		wrapper.setAaData(exhibitions);
+		wrapper.setiTotalRecords(totalCount);
+		wrapper.setiTotalDisplayRecords(totalCount);
+
+		Gson ojb = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
+		return ojb.toJson(wrapper);
 	}
 
 	// 상세 전시회 보기 페이지
@@ -68,7 +79,7 @@ public class ExhibitionController {
 		return "exhibition/vector";
 	}
 
-	@RequestMapping(value="/bestList", method= RequestMethod.GET)
+	@RequestMapping(value = "/bestList", method = RequestMethod.GET)
 	public String bestList() {
 		return "exhibition/bestExhibition";
 	}

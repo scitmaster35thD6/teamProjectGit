@@ -28,8 +28,9 @@
 <link
 	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
 	rel="stylesheet">
- <!-- This Select CSS -->
-    <link rel="stylesheet" type="text/css" href="resources/assets/libs/select2/dist/css/select2.min.css">
+<!-- This Select CSS -->
+<link rel="stylesheet" type="text/css"
+	href="resources/assets/libs/select2/dist/css/select2.min.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,8 +87,9 @@
 	}
 }
 </style>
-<script type="text/javascript"
-	src="resources/exhibitionCountrySelect.js"></script>
+
+<link rel="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
 </head>
 
 <body>
@@ -389,38 +391,39 @@
 					<ul id="sidebarnav">
 						<!-- User Profile-->
 						<li>
-							<!-- User Profile-->
-							<c:if test="${not empty sessionScope.loginId}">
-							<div class="user-profile d-flex no-block dropdown m-t-20">
-								<div class="user-pic">
-									<img src="resources/assets/images/users/user.png" alt="users"
-										class="rounded-circle" width="40" />
-								</div>
-								<div class="user-content hide-menu m-l-10">
-									<a href="javascript:void(0)" class="" id="Userdd" role="button"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										<h5 class="m-b-0 user-name font-medium">
-											${sessionScope.loginId} 님 <i class="fa fa-angle-down"></i>
-										</h5> <span class="op-5 user-email">${sessionScope.loginName} </span>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right"
-										aria-labelledby="Userdd">
-										<a class="dropdown-item" href="javascript:void(0)"><i
-											class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-										<div class="dropdown-divider"></div>
+							<!-- User Profile--> <c:if
+								test="${not empty sessionScope.loginId}">
+								<div class="user-profile d-flex no-block dropdown m-t-20">
+									<div class="user-pic">
+										<img src="resources/assets/images/users/user.png" alt="users"
+											class="rounded-circle" width="40" />
+									</div>
+									<div class="user-content hide-menu m-l-10">
+										<a href="javascript:void(0)" class="" id="Userdd"
+											role="button" data-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false">
+											<h5 class="m-b-0 user-name font-medium">
+												${sessionScope.loginId} 님 <i class="fa fa-angle-down"></i>
+											</h5> <span class="op-5 user-email">${sessionScope.loginName}
+										</span>
+										</a>
+										<div class="dropdown-menu dropdown-menu-right"
+											aria-labelledby="Userdd">
+											<a class="dropdown-item" href="javascript:void(0)"><i
+												class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+											<div class="dropdown-divider"></div>
 
-										<a class="dropdown-item" href="javascript:void(0)"><i
-											class="ti-calendar m-r-5 m-l-5"></i> My Calendar</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="javascript:void(0)"><i
-											class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="javascript:void(0)"><i
-											class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+											<a class="dropdown-item" href="javascript:void(0)"><i
+												class="ti-calendar m-r-5 m-l-5"></i> My Calendar</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="javascript:void(0)"><i
+												class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="javascript:void(0)"><i
+												class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+										</div>
 									</div>
 								</div>
-							</div>
 							</c:if> <!-- End User Profile-->
 						</li>
 						<!-- User Profile-->
@@ -522,19 +525,6 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<!-- select option -->
-
-								<select class="select2-with-border border-warning form-control"
-									id="border-with-select2" data-border-color="success"
-									data-border-variation="darken-2" data-text-color="warning"
-									data-text-variation="darken-3"
-									style="width: 100%; height: 36px;">
-									<c:forEach var="theCountrys" items="${countryList}">
-										<option value="${theCountrys}">${theCountrys}</option>
-									</c:forEach>
-								</select>
-
-								<!-- select option -->
 								<p>
 								<div class="table-responsive">
 									<table id="alt_pagination"
@@ -542,39 +532,20 @@
 										style="width: 100%">
 										<thead>
 											<tr>
-												<th>영어이름</th>
-												<th>한국제목</th>
+												<th>타이틀 (영어)</th>
+												<th>타이틀 (한국)</th>
+												<th>국가</th>
 												<th>도시</th>
-												<th>시작일</th>
-												<th>종료일</th>
+												<th>기간</th>
 											</tr>
 										</thead>
-
-										<tbody>
-											<c:if test="${not empty exhibitionList}">
-												<c:forEach var="thelist" items="${exhibitionList}">
-													<tr>
-														<td><a
-															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleEng}</a></td>
-														<td><a
-															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
-														<td><a
-															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.openingCity}</a></td>
-														<td><a
-															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
-														<td><a
-															href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
-													</tr>
-												</c:forEach>
-											</c:if>
-										</tbody>
 										<tfoot>
 											<tr>
-												<th>영어이름</th>
-												<th>한국제목</th>
-												<th>도시</th>
-												<th>Start date</th>
-												<th>End Date</th>
+												<th>Eng Title</th>
+												<th>Kor Title</th>
+												<th>Country</th>
+												<th>City</th>
+												<th>Date</th>
 											</tr>
 										</tfoot>
 									</table>
@@ -632,7 +603,7 @@
 	<script>
 		// Basic grid
 	</script>
-	<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="resources/jquery-3.3.1.min.js"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
 	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -651,13 +622,10 @@
 	<!--Custom JavaScript -->
 	<script src="resources/dist/js/custom.min.js"></script>
 	<!--This page JavaScript -->
+	<!-- This Page JS -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-	<script src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
+	<script src="resources/exhibitionCountrySelect.js"></script>
 	<!-- This Page JS -->
-	<!-- This Page JS -->
-	<script src="resources/assets/libs/select2/dist/js/select2.full.min.js"></script>
-	<script src="resources/assets/libs/select2/dist/js/select2.min.js"></script>
-	<script src="resources/dist/js/pages/forms/select2/select2.init.js"></script>
 </body>
 
 </html>
