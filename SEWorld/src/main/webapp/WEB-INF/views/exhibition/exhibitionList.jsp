@@ -23,12 +23,12 @@
 <link
 	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
 	rel="stylesheet" />
-<!-- Custom CSS 새로 -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
+<!-- table css새로 -->
 <link
 	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
 	rel="stylesheet">
- <!-- This Page CSS -->
+ <!-- This Select CSS -->
     <link rel="stylesheet" type="text/css" href="resources/assets/libs/select2/dist/css/select2.min.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

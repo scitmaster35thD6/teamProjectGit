@@ -28,7 +28,12 @@
 	rel="stylesheet" />
 <!-- Custom CSS 새로 -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
-
+<!-- table css새로 -->
+<link
+	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
+	rel="stylesheet">
+ <!-- This Select CSS -->
+    <link rel="stylesheet" type="text/css" href="resources/assets/libs/select2/dist/css/select2.min.css">
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -86,6 +91,7 @@
 	}
 }
 </style>
+<script type="text/javascript" src="resources/exhibitionCountrySelect.js"></script>
 <script src="resources/reviewFormCheck.js"></script>
 <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
 </head>
@@ -517,8 +523,61 @@
 												</div>
 												<div class="modal-body">
 													<h4>테이블</h4>
-													<p></p>
-												</div>
+				<!-- 테이블 -->		
+						<!-- select option -->
+											
+                                <select class="select2-with-border border-warning form-control" id="border-with-select2" data-border-color="success" data-border-variation="darken-2" data-text-color="warning" data-text-variation="darken-3" style="width: 100%;height: 36px;">
+                                        <c:forEach var="theCountrys" items="${countryList}">
+                                        <option value="${theCountrys}">${theCountrys}</option>
+                                 </c:forEach>
+                                </select>
+
+											<!-- select option -->
+											<p>
+														<div class="table-responsive">
+															<table id="alt_pagination"
+																class="table table-striped table-bordered display"
+																style="width: 100%">
+																<thead>
+																	<tr>
+																		<th>영어이름</th>
+																		<th>한국제목</th>
+																		<th>도시</th>
+																		<th>시작일</th>
+																		<th>종료일</th>
+																	</tr>
+																</thead>
+
+																<tbody>
+																<c:if test="${not empty exhibitionList}">
+																<c:forEach var="thelist" items="${exhibitionList}">
+																<tr>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleEng}</a></td>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.openingCity}</a></td>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
+																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
+																</tr>
+																</c:forEach>
+																</c:if>
+																</tbody>
+																<tfoot>
+																	<tr>
+																		<th>영어이름</th>
+																		<th>한국제목</th>
+																		<th>도시</th>
+																		<th>Start date</th>
+																		<th>End Date</th>
+																	</tr>
+																</tfoot>
+															</table>
+						</div>
+						
+											
+				<!-- 테이블 -->									
+													
+													
+													</div>
 												<div class="modal-footer">
 													<button type="button"
 														class="btn btn-danger waves-effect text-left"
@@ -705,7 +764,16 @@
 	<!--Custom JavaScript -->
 	<script src="resources/dist/js/custom.min.js"></script>
 	<!--This page JavaScript -->
-
+<!--table JavaScript -->
+			<script
+				src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
+			<script
+				src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
+			<!-- This Page JS -->
+			<!-- select -->
+    <script src="resources/assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="resources/assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="resources/dist/js/pages/forms/select2/select2.init.js"></script>
 	<!-- 벡터지도 -->
 	<!-- This Page JS -->
 
