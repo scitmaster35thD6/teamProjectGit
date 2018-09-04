@@ -30,11 +30,10 @@ public class HomeController {
 		logger.info("[/]");
 		return "index";
 	}
-	
-	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
-	public String calendar() {
-		logger.info("[/]");
-		return "member/calendar";
+
+	@RequestMapping(value = "/readArticle3", method = RequestMethod.GET)
+	public String articlereading() {
+		return "board/readArticle3";
 	}
 	
 	/**

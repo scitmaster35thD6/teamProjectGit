@@ -43,7 +43,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
+<!-- carousel -->
+<link rel="stylesheet" type="text/css" href="resources/assets/extra-libs/prism/prism.css">
 <style>
 .back-to-top {
   position: fixed;
@@ -669,153 +670,266 @@ body.mobile-nav-active #mobile-nav-toggle {
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-      <div class="newpage" style="background-color : #f7edd4">
+      <div class="newpage" style="background-color : #f7e9c3;">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-5 align-self-center">
-                        <h4 class="page-title">Profile</h4>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Calendar</li>
-                                </ol>
-                            </nav>
+        
+            <!-- 새로운 페이지 -->
+     		 <div class="card gredient-success-bg m-t-0 m-b-0" style="background-color:#f7e9c3;">
+                <div class="card-body">
+
+
+
+                
+                    <h4 class="card-title text-white">Exhibition Overview</h4>
+                    <div class="row m-t-30 m-b-20">
+                        <!-- col -->
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="temp d-flex align-items-center flex-row">
+                                <div class="m-l-10">
+                                    <h3 class="m-b-0 text-white">베트남 무역관 화장품 전시회</h3><small class="text-white op-5">URL</small>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- col -->
+                        <div class="col-sm-12 col-lg-8">
+                            <div class="row">
+                                <!-- col -->
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="info d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <i class="mdi mdi-star text-white display-5 op-5"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-white m-b-0">별점</h3>
+                                            <span class="text-white op-5">3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                                <!-- col -->
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="info d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <i class="icon icon-bubbles text-white display-5 op-5"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-white m-b-0">코멘트</h3>
+                                            <span class="text-white op-5">35</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                                <!-- col -->
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="info d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <i class="icon icon-heart text-white display-5 op-5"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-white m-b-0">좋아요</h3>
+                                            <span class="text-white op-5">35</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                </div>
-            </div>
-            <!-- 컨테이너 플루이드 -->
-           <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <!-- Row -->
-                <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3 col-md-5">
-                        <div class="card">
+                </div><!-- 개괄  card body -->
+              </div> <!-- 백그라운드 -->  
+              <div class="card">
                             <div class="card-body">
-                                <center class="m-t-30"> <img src="resources/assets/images/users/5.jpg" class="rounded-circle" width="150" />
-                                    <h4 class="card-title m-t-10">Youngbin Kim</h4>
-                                    <h6 class="card-subtitle">Developer</h6>
-                                    <div class="row text-center justify-content-md-center">
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">254</font></a></div>
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-pencil"></i> <font class="font-medium">54</font></a></div>
+                            
+                                <center class="m-t-30"> 
+                                 <div class="row">
+                                 <div class="col-sm-12 col-lg-6">
+                                    <h4 class="card-title-left m-t-10">제목</h4>
+                                    </div>
+                                     <div class="col-sm-12 col-lg-6">
+                                     <img src="resources/assets/images/users/5.jpg" class="rounded-circle" width="60" /><h6 class="card-subtitle"><center class="m-t-30">글쓴이</h6>
+                                    
+                                    </div>
                                     </div>
                                 </center>
                             </div>
                             <div>
                                 <hr> </div>
-                            <div class="card-body"> <small class="text-muted">Email address </small>
-                                <h6>scit@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
-                                <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
-                                <h6>서울시 삼성동 coex</h6>
-                                <small class="text-muted p-t-30 db">Social Profile</small>
-                                <br/>
-                                <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>
-                                <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
-                                <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
+                            <div class="card-body"> 
+                                	<div class="contents">글 내용</div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        </div>   
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+            
+                  <div class="row">
+                    <div class="col-lg-12">
                         <div class="card">
-                            <!-- Tabs -->
-                            <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#current-month" role="tab" aria-controls="pills-timeline" aria-selected="true">Timeline</a>
-                                </li>
-                               
-                            </ul>
-                            <!-- Tabs -->
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="current-month" role="tabpanel" aria-labelledby="pills-timeline-tab">
-                                    <div class="card-body">
-                                        <div class="profiletimeline m-t-0">
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
-                                                <div class="sl-right">
-                                                    <div><a href="javascript:void(0)" class="link">리뷰게시판</a> <span class="sl-date">2018/09/02</span>
-                                                        <p>new activity : <a href="javascript:void(0)"> Uploaded new article</a></p>
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-6 m-b-20"><img src="resources/assets/images/big/img1.jpg" class="img-fluid rounded" /></div>
-                                                            <div class="col-md-9 col-xs-12">
-                                                                <p> 글 내용 글내용 </p> </div>
-                                                        </div>
-                                                        <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 4 likes</a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
-                                                <div class="sl-right">
-                                                    <div><a href="javascript:void(0)" class="link">ExhibitionList</a> <span class="sl-date">2018/09/01</span>
-                                                        <p>new activity : <a href="javascript:void(0)"> added Calendar </a></p>
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-6 m-b-20"><img src="resources/assets/images/big/img1.jpg" class="img-fluid rounded" /></div>
-                                                            <div class="col-md-9 col-xs-12">
-                                                                <p> 글 내용 글내용 </p> </div>
-                                                        </div>
-                                                        <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 4 likes</a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
-                                                <div class="sl-right">
-                                                    <div><a href="javascript:void(0)" class="link">리뷰게시판</a> <span class="sl-date">2018/09/02</span>
-                                                        <p>new activity : <a href="javascript:void(0)"> Uploaded new article</a></p>
-                                                        <p class="m-t-10"> 글내용 글내용</p>
-                                                        <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 4 likes</a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                           
-                                            <hr>
-                                            <div class="sl-item">
-                                                <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
-                                                <div class="sl-right">
-                                                    <div><a href="javascript:void(0)" class="link">ExhibitionList</a> <span class="sl-date">2018/09/02</span>
-                                                        <p>new activity : <a href="javascript:void(0)">added to Calendar</a></p>
-                                                        <p class="m-t-10"> 글내용 글내용</p>
-                                                        <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 4 likes</a> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Comments</h4>
+                                    </div>
+                                    <div class="ml-auto d-flex no-block align-items-center">
+                                        <div class="dl">
+                                            <select class="custom-select">
+                                                <option value="0" selected="">Monthly</option>
+                                                <option value="1">Daily</option>
+                                                <option value="2">Weekly</option>
+                                                <option value="3">Yearly</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
+                                <div class="row">
+                               <div class="col-lg-4">
+                                        <h6 class="card-subtitle">ddddd</h6>
+                                        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">First title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Second title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Third title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="col-lg-4">
+                                        <h6 class="card-subtitle">ddds</h6>
+                                        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">First title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Second title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Third title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="col-lg-4">
+                                        <h6 class="card-subtitle">ddds</h6>
+                                        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">First title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Second title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Third title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                               
+                               
+                               </div><!-- row -->
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
                 </div>
-                <!-- Row -->
+                  
+                  
+                  
+                  
+                            
             </div>
-            
             
             
             <!-- 컨테이너 플루이드 -->
             
             
             
-            </div><!-- page wrapper -->
+            </div><!--  wrapper-->
     
    
     
@@ -894,13 +1008,8 @@ body.mobile-nav-active #mobile-nav-toggle {
     <!--Custom JavaScript -->
     <script src="resources/dist/js/custom.min.js"></script>
     <!-- This Page JS -->
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-in-mill.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-us-aea-en.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-uk-mill-en.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jquery-jvectormap-au-mill.js"></script>
-    <script src="resources/assets/extra-libs/jvector/jvectormap.custom.js"></script>
+  <!-- carousel -->
+    <script src="resources/assets/extra-libs/prism/prism.js"></script>
     <!-- 메인용 javascript -->
     <script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
   <script src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>

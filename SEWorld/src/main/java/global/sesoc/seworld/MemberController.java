@@ -146,4 +146,11 @@ public class MemberController {
 	public String userprofile() {
 		return "member/profile";
 	}
+	
+
+	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+	public String calendar() {
+		logger.info("[/]");
+		return "member/calendar";
+	}
 }
