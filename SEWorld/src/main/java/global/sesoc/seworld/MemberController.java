@@ -132,16 +132,29 @@ public class MemberController {
 	@RequestMapping(value = "/googleSignin", method = RequestMethod.POST)
 	public @ResponseBody Integer googleSignin(@RequestBody Member signinMember, HttpSession session) {
 		logger.info("[/googleSignin]");
-		logger.info(signinMember.toString());
+//		logger.info(signinMember.toString());
 		Member m = memberRepository.selectOneMember(signinMember.getMemberId());
+		session.setAttribute("loginId", signinMember.getMemberId());
+		session.setAttribute("loginName", signinMember.getMemberName());
 		if (m != null) {
 			return 0;
 		}
-		session.setAttribute("loginId", signinMember.getMemberId());
-		session.setAttribute("loginName", signinMember.getMemberName());
 		return memberRepository.registerGoogleMember(signinMember);
 	}
 
+	@RequestMapping(value = "/facebookSignin", method = RequestMethod.POST)
+	public @ResponseBody Integer facebookSignin(@RequestBody Member signinMember, HttpSession session) {
+		logger.info("[/facebookSignin]");
+//		logger.info(signinMember.toString());
+		Member m = memberRepository.selectOneMember(signinMember.getMemberId());
+		session.setAttribute("loginId", signinMember.getMemberId());
+		session.setAttribute("loginName", signinMember.getMemberName());
+		if (m != null) {
+			return 0;
+		}
+		return memberRepository.registerFacebookMember(signinMember);
+	}
+	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String userprofile() {
 		return "member/profile";

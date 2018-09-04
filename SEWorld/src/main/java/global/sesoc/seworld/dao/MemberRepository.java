@@ -30,4 +30,9 @@ public class MemberRepository {
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
 		return memberMapper.registerGoogleMember(member);
 	}
+
+	public int registerFacebookMember(Member member) {
+		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+		return memberMapper.registerFacebookMember(member);
+	}
 }
