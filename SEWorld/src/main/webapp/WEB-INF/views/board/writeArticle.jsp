@@ -545,6 +545,8 @@
 																		<th>도시</th>
 																		<th>시작일</th>
 																		<th>종료일</th>
+																		<th><input type="checkbox" id="checkall" /></th>
+
 																	</tr>
 																</thead>
 
@@ -557,6 +559,7 @@
 																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.openingCity}</a></td>
 																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
 																<td><a href="exhibitionDetail?exhibitionId=${thelist.exhibitionId}">${thelist.exhibitionTitleKor}</a></td>
+																<td><input type="checkbox" name="chk" /></td>
 																</tr>
 																</c:forEach>
 																</c:if>
@@ -580,7 +583,12 @@
 													</div>
 												<div class="modal-footer">
 													<button type="button"
-														class="btn btn-danger waves-effect text-left"
+														class="btn btn-success waves-effect text-left"
+														data-dismiss="modal">Save</button>
+												
+												
+													<button type="button"
+														class="btn btn-success waves-effect text-left"
 														data-dismiss="modal">Close</button>
 												</div>
 											</div>
