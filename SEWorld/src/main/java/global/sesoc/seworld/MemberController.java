@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.seworld.dao.MemberRepository;
+import global.sesoc.seworld.dao.WishingRepository;
 import global.sesoc.seworld.dto.Member;
+import global.sesoc.seworld.dto.Wishing;
 import global.sesoc.seworld.util.MailHandler;
 
 @Controller
@@ -163,7 +165,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/calendarTest", method = RequestMethod.POST)
-	public String insertcalendarTest() {
-		return "redirect:/";
+	public @ResponseBody Integer insertcalendarTest(Wishing wishing) {
+		int result = wishingRepository.insertOneWishing(wishing);
+		
+		return result;
 	}
+	
+	
+	
 }
