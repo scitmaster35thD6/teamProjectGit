@@ -38,6 +38,9 @@ public class MemberController {
 
 	@Autowired
 	MemberRepository memberRepository;
+	
+	@Autowired
+	WishingRepository wishingRepository;
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
@@ -152,5 +155,15 @@ public class MemberController {
 	public String calendar() {
 		logger.info("[/]");
 		return "member/calendar";
+	}
+	
+	@RequestMapping(value = "/calendarTest", method = RequestMethod.GET)
+	public String calendarTest() {
+		return "member/calendarTest";
+	}
+	
+	@RequestMapping(value = "/calendarTest", method = RequestMethod.POST)
+	public String insertcalendarTest() {
+		return "redirect:/";
 	}
 }
