@@ -1,6 +1,8 @@
 package global.sesoc.seworld;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.seworld.dao.MemberRepository;
 import global.sesoc.seworld.dao.WishingRepository;
+import global.sesoc.seworld.dto.Exhibition;
 import global.sesoc.seworld.dto.Member;
 import global.sesoc.seworld.dto.Wishing;
 import global.sesoc.seworld.util.MailHandler;
@@ -153,10 +156,12 @@ public class MemberController {
 	}
 	
 
-	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
-	public String calendar() {
-		logger.info("[/]");
-		return "member/calendar";
+	@RequestMapping(value = "/calendar", method = RequestMethod.POST)
+	public @ResponseBody List<Exhibition>  calendar(String memberId) {
+		List<Exhibition> list;
+		list = wishingRepository.selectAllWishing(memberId);
+		
+		return list;
 	}
 	
 	@RequestMapping(value = "/calendarTest", method = RequestMethod.GET)
@@ -170,6 +175,7 @@ public class MemberController {
 		
 		return result;
 	}
+	
 	
 	
 	

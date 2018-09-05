@@ -1,5 +1,8 @@
 package global.sesoc.seworld.dao;
 
+import java.util.List;
+
+import global.sesoc.seworld.dto.Exhibition;
 import global.sesoc.seworld.dto.Wishing;
 
 public interface WishingMapper {
@@ -18,4 +21,7 @@ public interface WishingMapper {
 	 * @return 0:삭제실패, 1:삭제성공
 	 */
 	public abstract int deleteOneWishing(Wishing wishing);
+	
+	/**달력 출력**/
+	public abstract List<Exhibition> selectAllWising(String memberId);
 }
