@@ -45,6 +45,8 @@
 <![endif]-->
 <!-- carousel -->
 <link rel="stylesheet" type="text/css" href="resources/assets/extra-libs/prism/prism.css">
+<link rel="stylesheet" type="text/css" href="resources/dist/carousel.css">
+
 <style>
 .back-to-top {
   position: fixed;
@@ -593,7 +595,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #999;
 }
 
-
+#upperbody:hover{
+	font-color : gray;
+}
 
 </style>
 
@@ -677,18 +681,18 @@ body.mobile-nav-active #mobile-nav-toggle {
         
             <!-- 새로운 페이지 -->
      		 <div class="card gredient-success-bg m-t-0 m-b-0" style="background-color:#f7e9c3;">
-                <div class="card-body">
+                <div class="card-body" id="upperbody">
 
 
 
                 
-                    <h4 class="card-title text-white">Exhibition Overview</h4>
+                    <h4 class="card-title text"> &nbsp;&nbsp;Exhibition Overview</h4>
                     <div class="row m-t-30 m-b-20">
                         <!-- col -->
                         <div class="col-sm-12 col-lg-4">
                             <div class="temp d-flex align-items-center flex-row">
                                 <div class="m-l-10">
-                                    <h3 class="m-b-0 text-white">베트남 무역관 화장품 전시회</h3><small class="text-white op-5">URL</small>
+                                    <h3 class="m-b-0 text">베트남 무역관 화장품 전시회</h3><small class="text op-5">URL</small>
                                 </div>
                             </div>
                         </div>
@@ -702,8 +706,8 @@ body.mobile-nav-active #mobile-nav-toggle {
                                             <i class="mdi mdi-star text-white display-5 op-5"></i>
                                         </div>
                                         <div>
-                                            <h3 class="text-white m-b-0">별점</h3>
-                                            <span class="text-white op-5">3</span>
+                                            <h3 class="text m-b-0">별점</h3>
+                                            <span class="text op-5">3</span>
                                         </div>
                                     </div>
                                 </div>
@@ -715,8 +719,8 @@ body.mobile-nav-active #mobile-nav-toggle {
                                             <i class="icon icon-bubbles text-white display-5 op-5"></i>
                                         </div>
                                         <div>
-                                            <h3 class="text-white m-b-0">코멘트</h3>
-                                            <span class="text-white op-5">35</span>
+                                            <h3 class="text m-b-0">코멘트</h3>
+                                            <span class="text op-5">35</span>
                                         </div>
                                     </div>
                                 </div>
@@ -728,8 +732,8 @@ body.mobile-nav-active #mobile-nav-toggle {
                                             <i class="icon icon-heart text-white display-5 op-5"></i>
                                         </div>
                                         <div>
-                                            <h3 class="text-white m-b-0">좋아요</h3>
-                                            <span class="text-white op-5">35</span>
+                                            <h3 class="text m-b-0">좋아요</h3>
+                                            <span class="text op-5">35</span>
                                         </div>
                                     </div>
                                 </div>
@@ -764,7 +768,7 @@ body.mobile-nav-active #mobile-nav-toggle {
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            
+            <!-- 코멘트 만들기 -->
                   <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
@@ -772,6 +776,122 @@ body.mobile-nav-active #mobile-nav-toggle {
                                 <div class="d-md-flex align-items-center">
                                     <div>
                                         <h4 class="card-title">Comments</h4>
+                                    </div>
+                                    <div class="ml-auto d-flex no-block align-items-center">
+                                        <div class="dl">
+                                            <select class="custom-select">
+                                                <option value="0" selected="">Monthly</option>
+                                                <option value="1">Daily</option>
+                                                <option value="2">Weekly</option>
+                                                <option value="3">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                         <div class="row">
+              <div class="container-fluid">           
+                         <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
+        <div class="carousel-inner row w-100 mx-auto" role="listbox">
+            <div class="carousel-item col-md-3  active">
+               <div class="panel panel-default">
+                  <div class="panel-thumbnail">
+                    <a href="#" title="image 1" class="thumb">
+                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=1" alt="slide 1">
+                    </a>
+                  </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3 ">
+               <div class="panel panel-default">
+                  <div class="panel-thumbnail">
+                    <a href="#" title="image 3" class="thumb">
+                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=2" alt="slide 2">
+                    </a>
+                  </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3 ">
+               <div class="panel panel-default">
+                  <div class="panel-thumbnail">
+                    <a href="#" title="image 4" class="thumb">
+                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=3" alt="slide 3">
+                    </a>
+                  </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3 ">
+                <div class="panel panel-default">
+                  <div class="panel-thumbnail">
+                    <a href="#" title="image 5" class="thumb">
+                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=4" alt="slide 4">
+                    </a>
+                  </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3 ">
+              <div class="panel panel-default">
+                  <div class="panel-thumbnail">
+                    <a href="#" title="image 6" class="thumb">
+                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=5" alt="slide 5">
+                    </a>
+                  </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3 ">
+               <div class="panel panel-default">
+                  <div class="panel-thumbnail">
+                    <a href="#" title="image 7" class="thumb">
+                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=6" alt="slide 6">
+                    </a>
+                  </div>
+                </div>
+            </div>
+            <div class="carousel-item col-md-3 ">
+               <div class="panel panel-default">
+                  <div class="panel-thumbnail">
+                    <a href="#" title="image 8" class="thumb">
+                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=7" alt="slide 7">
+                    </a>
+                  </div>
+                </div>
+            </div>
+             <div class="carousel-item col-md-3  ">
+                <div class="panel panel-default">
+                  <div class="panel-thumbnail">
+                    <a href="#" title="image 2" class="thumb">
+                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=8" alt="slide 8">
+                    </a>
+                  </div>
+                  
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+                         
+                              
+                               
+                          </div><!-- row -->
+                          </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  
+              <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Related articles</h4>
                                     </div>
                                     <div class="ml-auto d-flex no-block align-items-center">
                                         <div class="dl">
@@ -912,20 +1032,18 @@ body.mobile-nav-active #mobile-nav-toggle {
                                     </div>
                                
                                
-                               </div><!-- row -->
+                               </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                  
-                  
+                </div>     <!-- row -->
                   
                   
                             
             </div>
-            
-            
             <!-- 컨테이너 플루이드 -->
+            
+            
             
             
             
@@ -1022,6 +1140,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   <script src="resources/regna/lib/superfish/superfish.min.js"></script>
      <script src="resources/dist/typed.js"></script>
     <script src="resources/regna/js/main.js"></script>
+    <!-- carousel -->
+    <script src="resources/dist/carousel.js"></script>
     <script>
     jQuery(document).ready(function( $ ) {
 
