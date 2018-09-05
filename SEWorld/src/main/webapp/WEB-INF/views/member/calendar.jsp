@@ -19,7 +19,6 @@
     
     <!-- Custom CSS -->
     <link href="resources/assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
-    <link href="resources/assets/extra-libs/calendar/calendar.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">
     
@@ -587,7 +586,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 
 </style>
+<script type="text/javascript" src="resources/jquery-3.3.1.min.js"></script>
+<script>
+	
 
+</script>
 </head>
 
 <body>
@@ -841,7 +844,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     <script src="resources/assets/libs/moment/min/moment.min.js"></script>
     <script src="resources/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="resources/dist/js/pages/calendar/cal-init.js"></script>
-    
+    <script src='resources/calendar/locale-all.js'></script>
     <script>
     jQuery(document).ready(function( $ ) {
 

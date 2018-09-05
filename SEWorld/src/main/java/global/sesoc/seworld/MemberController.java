@@ -155,12 +155,21 @@ public class MemberController {
 		return "member/profile";
 	}
 	
-
-	@RequestMapping(value = "/calendar", method = RequestMethod.POST)
-	public @ResponseBody List<Exhibition>  calendar(String memberId) {
+	
+	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+	public String gocalendar() {
+		System.out.println("캘린");
+		return "member/calendar";
+	}
+	
+	
+	
+	@RequestMapping(value = "/gocalendar", method = RequestMethod.POST)
+	public @ResponseBody List<Exhibition>  calendar(@RequestBody Wishing wishing) {
 		List<Exhibition> list;
-		list = wishingRepository.selectAllWishing(memberId);
-		
+		System.out.println("wishing:"+ wishing);
+		list = wishingRepository.selectAllWishing(wishing);
+		System.out.println(list+"리슷");
 		return list;
 	}
 	

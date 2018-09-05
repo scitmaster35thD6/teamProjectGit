@@ -6,11 +6,11 @@
 <mapper namespace="global.sesoc.seworld.dao.WishingMapper">
 	
 	<!-- 달력에 전체 출력용 -->
-	<select id="selectAllWising" resultType="Exhibition" parameterType="String">
+	<select id="selectAllWising" resultType="Exhibition" parameterType="Wishing">
 		select e.openingterm, e.exhibitiontitlekor
 		from c6_wishing w, c6_exhibition e
 		where w.memberId=#{memberId}
-		and w.exhibitionId = e.exhibitionId;
+		and w.exhibitionId = e.exhibitionId
 	</select>
 	
 	<insert id="insertOneWishing" parameterType="Wishing">

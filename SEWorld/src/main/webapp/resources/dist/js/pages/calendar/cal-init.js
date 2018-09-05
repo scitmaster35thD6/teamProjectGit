@@ -1,6 +1,81 @@
+
+    
+    function init2(strDate,endDate,timezone,callback){
+		//ajax로 전체 데이터를 끌어옴
+    	var memberId = 'furaha';
+    	var data = {
+				"memberId" : memberId
+		};
+    	
+		$.ajax({
+			method : 'post'
+			, url : 'gocalendar'
+			, data : JSON.stringify(data)
+			, dataType : 'json'
+		    , contentType : 'application/json; charset=UTF-8'
+		    	,success: function(response){
+		    		var result = output(response);
+		    		//alert(JSON.stringify(response));
+					callback(result);
+			}
+		});//ajax
+		
+	};
+	
+	
+	
+	
+	function output(resp){
+		//alert(JSON.stringify(resp));
+		var date2 = new Date();
+		var result = [];
+		for(var i in resp){
+			var date= new Date();
+			date= toTimeObject(resp[i].openingTerm);
+			var ttl = resp[i].exhibitionTitleKor
+			//alert(date+"데이트");
+			//alert(ttl+"타이즐");
+			 var items = 
+			{
+				title : ttl,
+				start : date,
+				className: 'bg-success'
+			}; 
+			
+			result.push(items);
+		};
+		return result;
+	};
+	
+	
+
+	
+	
+	
+	
+    
+function toTimeObject(str){
+	//alert("str"+str);
+	var year = str.substring(0, 4);
+	var month = str.substring(4, 6);
+	var day  = str.substring(6, 8);
+	/*alert(year+"이얼");
+	alert(month+"먼스");
+	alert(day+"데이");*/
+	return new Date(year,month, day);
+	
+};
+
+
+
 ! function($) {
     "use strict";
-
+    
+    
+    
+    
+    
+    
     var CalendarApp = function() {
         this.$body = $("body")
         this.$calendar = $('#calendar'),
@@ -125,7 +200,7 @@
             var y = date.getFullYear();
             var form = '';
             var today = new Date($.now());
-
+            
             var defaultEvents = [{
                     title: 'Meeting #3',
                     start: new Date($.now() + 506800000),
@@ -165,7 +240,9 @@
                     className: 'bg-success'
                 }
             ];
-
+            
+          
+            
             var $this = this;
             $this.$calendarObj = $this.$calendar.fullCalendar({
                 slotDuration: '00:15:00',
@@ -180,7 +257,8 @@
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay'
                 },
-                events: defaultEvents,
+                events: init2,
+                locale: 'ko',
                 editable: true,
                 droppable: true, // this allows things to be dropped onto the calendar !!!
                 eventLimit: true, // allow "more" link when too many events
@@ -210,6 +288,6 @@
 
 //initializing CalendarApp
 $(window).on('load', function() {
-
+	init2();
     $.CalendarApp.init()
 });

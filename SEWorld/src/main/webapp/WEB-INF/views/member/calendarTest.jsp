@@ -5,6 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="resources/jquery-3.3.1.min.js"></script>
+<script>
+$(function(){
+	
+	$("#insertBtn").on('click', Insert);
+});
+
+function insert (){
+	var memberId = $("#memberId").val();
+	
+};
+
+
+</script>
+
 </head>
 <body>
 <!-- 
@@ -13,10 +28,10 @@
 		this.createdDate = createdDate;
  -->
 	<form action="addpic" method="post" enctype="multipart/form-data" >
-		<input type="text" value="" name="memberId" />아디
-		<input type="text" value="" name="memberId" />전시아디
+		<input type="text" id="memberId" name="memberId" />아디
+		<input type="text" id="exhibitionId" name="exhibitionId" />전시아디
 		
-		<input type="submit" value="submit" />
+		<input type="button" value="submit" id="insertBtn"/>
 		</form>
 </body>
 </html>

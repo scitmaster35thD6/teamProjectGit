@@ -27,8 +27,9 @@ public class WishingRepository {
 	
 	
 	
-	public List<Exhibition> selectAllWishing(String memberId) {
+	public List<Exhibition> selectAllWishing(Wishing wishing) {
+		System.out.println(wishing+"리포지토리");
 		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
-		return wishingMapper.selectAllWising(memberId);
+		return wishingMapper.selectAllWising(wishing);
 	}
 }

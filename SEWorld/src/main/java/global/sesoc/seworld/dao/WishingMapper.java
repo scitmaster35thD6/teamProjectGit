@@ -23,5 +23,5 @@ public interface WishingMapper {
 	public abstract int deleteOneWishing(Wishing wishing);
 	
 	/**달력 출력**/
-	public abstract List<Exhibition> selectAllWising(String memberId);
+	public abstract List<Exhibition> selectAllWising(Wishing wishing);
 }
