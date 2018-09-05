@@ -1,12 +1,17 @@
 package global.sesoc.seworld;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -41,9 +46,9 @@ public class ExhibitionController {
 
 	@RequestMapping(value = "/exhibitionListAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String exhibitionListAjax() {
+	public String exhibitionListAjax(int start, int length,  @RequestParam(value = "search[value]") String searchText) {
 		int totalCount = repository.getTotalList();
-		List<Exhibition> exhibitions = repository.showExhibitionList();
+		List<Exhibition> exhibitions = repository.showExhibitionList(start, length, searchText);
 
 		TableWrapperDTO wrapper = new TableWrapperDTO();
 
