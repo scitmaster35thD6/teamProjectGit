@@ -80,7 +80,6 @@
 
 </style>
 <script type="text/javascript" src="resources/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="resources/reviewListShow.js"></script>
 </head>
 
 <body>
@@ -421,19 +420,13 @@
                                     <table id="alt_pagination" class="table table-striped table-bordered display" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>number</th>
                                                 <th>title</th>
                                                 <th>user</th>
                                                 <th>date</th>
                                             </tr>
                                         </thead>
-                                        ${questionList}
-                                        <tbody>
-                                         
-                                        </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>number</th>
                                                 <th>title</th>
                                                 <th>user</th>
                                                 <th>date</th>
@@ -509,7 +502,7 @@
     <!--This page JavaScript -->
     <!--This page JavaScript -->
      <script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-    <script src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
+	<script src="resources/boardListShow2.js"></script>
     <!-- 벡터지도 -->
     <!-- This Page JS -->
     

@@ -1,9 +1,7 @@
 package global.sesoc.seworld.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,21 +19,17 @@ public class BoardRepository {
 		return result;
 	}
 	
-	public List<Board> viewAllReviews(String searchCategory, String searchKeyword) {
+	public List<Board> viewAllReviews(int start, int length, String searchText) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-		Map<String, String> searchItems = new HashMap<String, String>();
-		searchItems.put("searchCategory", searchCategory);
-		searchItems.put("searchKeyword", searchKeyword);
-		List<Board> result = boardMapper.viewAllReviews(searchItems);
+		RowBounds rb = new RowBounds(start, length);
+		List<Board> result = boardMapper.viewAllReviews(searchText, rb);
 		return result;
 	}
 	
-	public List<Board> viewAllQuestions(String searchCategory, String searchKeyword) {
+	public List<Board> viewAllQuestions(int start, int length, String searchText) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-		Map<String, String> searchItems = new HashMap<String, String>();
-		searchItems.put("searchCategory", searchCategory);
-		searchItems.put("searchKeyword", searchKeyword);
-		List<Board> result = boardMapper.viewAllQuestions(searchItems);
+		RowBounds rb = new RowBounds(start, length);
+		List<Board> result = boardMapper.viewAllReviews(searchText, rb);
 		return result;
 	}
 

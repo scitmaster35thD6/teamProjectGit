@@ -13,11 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import global.sesoc.seworld.dao.BoardFileRepository;
 import global.sesoc.seworld.dao.BoardReplyRepository;
@@ -30,6 +33,7 @@ import global.sesoc.seworld.dto.BoardReply;
 import global.sesoc.seworld.dto.CKEditorAttachement;
 import global.sesoc.seworld.dto.Exhibition;
 import global.sesoc.seworld.dto.Member;
+import global.sesoc.seworld.dto.TableWrapperDTO;
 import global.sesoc.seworld.util.FileService;
 
 @Controller
@@ -60,44 +64,52 @@ public class BoardController {
 	@Autowired
 	MemberRepository memberRepository;
 
-	final String uploadPath = "/boardfile/reviews";
+	final String uploadPath = "resources/userUploadedFile/attachments";
 
 	// 리뷰 게시판 페이지로 이동
 	@RequestMapping(value = "/reviews", method = RequestMethod.GET)
-	public String reviews(@RequestParam(value = "searchCategory", defaultValue = "memberId") String searchCategory,
-			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword, Model model) {
-		List<Board> boardList = boardRepository.viewAllReviews(searchCategory, searchKeyword);
-		String reviewList = "";
-
-		for (int i = 0; i < boardList.size(); i++) {
-			reviewList += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId() + "'\">";
-			reviewList += "<td>" + (i + 1) + "</td>";
-			reviewList += "<td>" + boardList.get(i).getMemberId() + "</td>";
-			reviewList += "<td>" + boardList.get(i).getTitle() + "</td>";
-			reviewList += "<td>" + boardList.get(i).getCreatedDate() + "</td></tr>";
-		}
-		model.addAttribute("reviewList", reviewList);
-
+	public String reviews() {
 		return "board/reviewBoard";
+	}
+
+	// 리뷰 게시판 테이블 정보 전달
+	@RequestMapping(value = "/reviewsAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String reviewsAjax(int start, int length, @RequestParam(value = "search[value]") String searchText) {
+		int totalCount = boardRepository.getTotalList();
+		List<Board> Boards = boardRepository.viewAllReviews(start, length, searchText);
+
+		TableWrapperDTO wrapper = new TableWrapperDTO();
+		wrapper.setAaData(Boards);
+		wrapper.setiTotalRecords(totalCount);
+		wrapper.setiTotalDisplayRecords(totalCount);
+
+		Gson ojb = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
+		return ojb.toJson(wrapper);
 	}
 
 	// 질문 게시판 페이지로 이동
 	@RequestMapping(value = "/questions", method = RequestMethod.GET)
-	public String questions(@RequestParam(value = "searchCategory", defaultValue = "memberId") String searchCategory,
-			@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword, Model model) {
-		List<Board> boardList = boardRepository.viewAllQuestions(searchCategory, searchKeyword);
-		String questionList = "";
-
-		for (int i = 0; i < boardList.size(); i++) {
-			questionList += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId()
-					+ "'\">";
-			questionList += "<td>" + (i + 1) + "</td>";
-			questionList += "<td>" + boardList.get(i).getMemberId() + "</td>";
-			questionList += "<td>" + boardList.get(i).getTitle() + "</td>";
-			questionList += "<td>" + boardList.get(i).getCreatedDate() + "</td></tr>";
-		}
-		model.addAttribute("questionList", questionList);
+	public String questions() {
 		return "board/questionBoard";
+	}
+
+	// 질문 게시판 테이블 정보 전달
+	@RequestMapping(value = "/questionsAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String questionsAjax(int start, int length, @RequestParam(value = "search[value]") String searchText) {
+		int totalCount = boardRepository.getTotalList();
+		List<Board> Boards = boardRepository.viewAllQuestions(start, length, searchText);
+
+		TableWrapperDTO wrapper = new TableWrapperDTO();
+		wrapper.setAaData(Boards);
+		wrapper.setiTotalRecords(totalCount);
+		wrapper.setiTotalDisplayRecords(totalCount);
+
+		Gson ojb = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
+		return ojb.toJson(wrapper);
 	}
 
 	// 게시물 읽기 페이지 이동
@@ -129,7 +141,6 @@ public class BoardController {
 		String userid = (String) session.getAttribute("loginId");
 		board.setMemberId(userid);
 
-		System.out.println(board);
 		// boardRepository.insertBoard(board);
 
 		if (!uploadFile.isEmpty()) {
@@ -241,24 +252,23 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/ckeditorFileUpload", method = RequestMethod.POST)
-	public String ckeditorFileUpload(@ModelAttribute("fileUploadVO") CKEditorAttachement attach,
-			HttpServletRequest request, Model model) {
+	public String ckeditorFileUpload(CKEditorAttachement upload, HttpServletRequest request, Model model) {
 
 		HttpSession session = request.getSession();
 		String rootPath = session.getServletContext().getRealPath("/");
-		String attachPath = "resources/userUploadedFile/";
+		String attachPath = "resources/userUploadedFile/ckeditor";
 
-		MultipartFile upload = attach.getUpload();
+		MultipartFile uploadedFile = upload.getUpload();
 		String filename = "";
 		String CKEditorFuncNum = "";
 
-		if (upload != null) {
-			filename = upload.getOriginalFilename();
-			attach.setFilename(filename);
-			CKEditorFuncNum = attach.getCKEditorFuncNum();
+		if (uploadedFile != null) {
+			filename = uploadedFile.getOriginalFilename();
+			upload.setFilename(filename);
+			CKEditorFuncNum = upload.getCKEditorFuncNum();
 			try {
 				File file = new File(rootPath + attachPath + filename);
-				upload.transferTo(file);
+				uploadedFile.transferTo(file);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -48,7 +48,6 @@ public class ExhibitionController {
 		List<Exhibition> exhibitions = repository.showExhibitionList(start, length, searchText);
 
 		TableWrapperDTO wrapper = new TableWrapperDTO();
-
 		wrapper.setAaData(exhibitions);
 		wrapper.setiTotalRecords(totalCount);
 		wrapper.setiTotalDisplayRecords(totalCount);
@@ -69,9 +68,9 @@ public class ExhibitionController {
 	/** 지도에 전시회 몇개인지 표시하기 **/
 	@RequestMapping(value = "countcountry", method = RequestMethod.POST)
 	public @ResponseBody Integer countcountry(@RequestBody String openingCountry) throws Exception {
-		System.out.println(openingCountry + "오프팅컨트리");
+	//	System.out.println(openingCountry + "오프팅컨트리");
 		int result = repository.countCountry(openingCountry);
-		System.out.println(result + "몇개");
+	//	System.out.println(result + "몇개");
 		return result;
 	}
 

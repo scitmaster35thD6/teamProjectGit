@@ -1,7 +1,8 @@
 package global.sesoc.seworld.dao;
 
 import java.util.List;
-import java.util.Map;
+
+import org.apache.ibatis.session.RowBounds;
 
 import global.sesoc.seworld.dto.Board;
 
@@ -11,9 +12,9 @@ public interface BoardMapper {
 	
 	public List<String> getTotalCountry();
 	
-	public List<Board> viewAllReviews(Map<String, String> searchItems);
+	public List<Board> viewAllReviews(String searchText, RowBounds rb);
 	
-	public List<Board> viewAllQuestions(Map<String, String> searchItems);
+	public List<Board> viewAllQuestions(String searchText, RowBounds rb);
 
 	public Board viewBoardDetail(String boardId);
 	

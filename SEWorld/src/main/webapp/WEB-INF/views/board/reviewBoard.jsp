@@ -471,17 +471,13 @@
 										style="width: 100%">
 										<thead>
 											<tr>
-												<th>number</th>
 												<th>title</th>
 												<th>user</th>
 												<th>date</th>
 											</tr>
 										</thead>
-										<tbody>${reviewList}
-										</tbody>
 										<tfoot>
 											<tr>
-												<th>number</th>
 												<th>title</th>
 												<th>user</th>
 												<th>date</th>
@@ -554,7 +550,7 @@
 	<!--This page JavaScript -->
 	<!--This page JavaScript -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-	<script src="resources/dist/js/pages/datatable/datatable-basic.init.js"></script>
+	<script src="resources/boardListShow.js"></script>
 	<!-- 벡터지도 -->
 	<!-- This Page JS -->
 

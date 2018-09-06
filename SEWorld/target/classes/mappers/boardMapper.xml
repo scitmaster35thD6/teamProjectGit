@@ -12,7 +12,7 @@
 	</select>
 
 	<select id="viewAllReviews" resultType="Board"
-		parameterType="map">
+		parameterType="String">
 		SELECT
 		boardId
 		,memberId
@@ -27,15 +27,17 @@
 		where
 		category =
 		'review' and
-		#{searchCategory} like '%'
-		|| #{searchKeyword} || '%'
+		memberId like '%' ||
+		#{searchText} || '%' or title like '%' || #{searchText}
+		|| '%'
+		or content like '%' || #{searchText} || '%'
 		ORDER BY
 		boardId
 		DESC
 	</select>
-
-	<select id="viewAllQuestions" resultType="Board"
-		parameterType="map">
+	
+		<select id="viewAllQuestions" resultType="Board"
+		parameterType="String">
 		SELECT
 		boardId
 		,memberId
@@ -50,10 +52,12 @@
 		where
 		category =
 		'question' and
-		#{searchCategory} like '%'
-		|| #{searchKeyword} || '%'
-		ORDER
-		BY boardId
+		memberId like '%' ||
+		#{searchText} || '%' or title like '%' || #{searchText}
+		|| '%'
+		or content like '%' || #{searchText} || '%'
+		ORDER BY
+		boardId
 		DESC
 	</select>
 
@@ -78,7 +82,7 @@
 	<select id="getBoardId" resultType="String"
 		parameterType="String">
 		select boardid from
-		c6_board where memberid = ${_parameter}
+		c6_board where memberid = #{memberId}
 		and rownum=1
 	</select>
 

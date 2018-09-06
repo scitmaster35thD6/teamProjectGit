@@ -49,30 +49,4 @@ public class HomeController {
 		return "board/readArticle3";
 	}
 	
-	/**
-	 * 
-	 * 테스트용
-	 * 
-	 * **/
-	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
-	public String bList() {
-
-		return "boardList";
-	}
-	
-	
-	
-	@RequestMapping(value = "/boardWrite", method = RequestMethod.GET)
-	public String write() {
-
-		return "boardWrite";
-	}
-	
-	@RequestMapping(value = "/reviewBoard", method = RequestMethod.GET)
-	public String review() {
-
-		return "reviewBoard";
-	}
-	
-	
 }
