@@ -56,7 +56,7 @@ public class BoardController {
 
 	@Autowired
 	ExhibitionRepository exhibitionRepository;
-	
+
 	@Autowired
 	MemberRepository memberRepository;
 
@@ -70,8 +70,7 @@ public class BoardController {
 		String reviewList = "";
 
 		for (int i = 0; i < boardList.size(); i++) {
-			reviewList += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId()
-					+ "'\">";
+			reviewList += "<tr onclick=\"location.href='readArticle?boardId=" + boardList.get(i).getBoardId() + "'\">";
 			reviewList += "<td>" + (i + 1) + "</td>";
 			reviewList += "<td>" + boardList.get(i).getMemberId() + "</td>";
 			reviewList += "<td>" + boardList.get(i).getTitle() + "</td>";
@@ -126,19 +125,23 @@ public class BoardController {
 
 	// 게시물 입력
 	@RequestMapping(value = "/writeArticle", method = RequestMethod.POST)
-	public String writeReview(Board board, MultipartFile uploadedFile, HttpSession session) {
+	public String writeReview(Board board, MultipartFile uploadFile, HttpSession session) {
 		String userid = (String) session.getAttribute("loginId");
 		board.setMemberId(userid);
-		boardRepository.insertBoard(board);
 
-		String originalfile = uploadedFile.getOriginalFilename();
-		String savedfile = FileService.saveFile(uploadedFile, uploadPath);
-		BoardFile boardFile = new BoardFile();
-		boardFile.setBoardId(boardRepository.getBoardId(userid));
-		boardFile.setOgFilename(originalfile);
-		boardFile.setSvFilename(savedfile);
-		boardFile.setFileSize(uploadedFile.getSize());
-		boardFileRepository.insertOneBoardFile(boardFile);
+		System.out.println(board);
+		// boardRepository.insertBoard(board);
+
+		if (!uploadFile.isEmpty()) {
+			String originalfile = uploadFile.getOriginalFilename();
+			String savedfile = FileService.saveFile(uploadFile, uploadPath);
+			BoardFile boardFile = new BoardFile();
+			boardFile.setBoardId(boardRepository.getBoardId(userid));
+			boardFile.setOgFilename(originalfile);
+			boardFile.setSvFilename(savedfile);
+			boardFile.setFileSize(uploadFile.getSize());
+			// boardFileRepository.insertOneBoardFile(boardFile);
+		}
 
 		if (board.getCategory().equals("question")) {
 			return "redirect:/questions";
@@ -151,18 +154,20 @@ public class BoardController {
 	@RequestMapping(value = "/updateArticle", method = RequestMethod.GET)
 	public String updateReview(String boardId, Model model) {
 		Board original = boardRepository.viewBoardDetail(boardId);
+		Exhibition selectedExhibition = exhibitionRepository.showExhibitionDetail(original.getExhibitionId());
 		String boardFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
 		BoardFile originalFile = boardFileRepository.selectOneBoardFile(boardFileId);
 		if (originalFile != null) {
 			model.addAttribute("originalFile", originalFile);
 		}
 		model.addAttribute("original", original);
+		model.addAttribute("selectedExhibition", selectedExhibition);
 		return "board/writeArticle";
 	}
 
 	// 게시물 수정 입력
 	@RequestMapping(value = "/updateArticle", method = RequestMethod.POST)
-	public String updateReview(Board board, MultipartFile uploadedFile, HttpSession session, String deleteFile) {
+	public String updateReview(Board board, MultipartFile uploadFile, HttpSession session, String deleteFile) {
 		String userid = (String) session.getAttribute("loginId");
 		String boardId = boardRepository.getBoardId(userid);
 		board.setMemberId(userid);
@@ -175,14 +180,14 @@ public class BoardController {
 			String fullpath = uploadPath + "/" + savedfile;
 			FileService.deleteFile(fullpath);
 			boardFileRepository.deleteOneBoardFile(boardId);
-		} else if (oldBoardFile != null && uploadedFile.getSize() != 0) {
-			String originalfile = uploadedFile.getOriginalFilename();
-			String savedfile = FileService.saveFile(uploadedFile, uploadPath);
+		} else if (oldBoardFile != null && !uploadFile.isEmpty()) {
+			String originalfile = uploadFile.getOriginalFilename();
+			String savedfile = FileService.saveFile(uploadFile, uploadPath);
 			BoardFile newBoardFile = new BoardFile();
 			newBoardFile.setBoardId(boardId);
 			newBoardFile.setOgFilename(originalfile);
 			newBoardFile.setSvFilename(savedfile);
-			newBoardFile.setFileSize(uploadedFile.getSize());
+			newBoardFile.setFileSize(uploadFile.getSize());
 			boardFileRepository.insertOneBoardFile(newBoardFile);
 		}
 
@@ -238,7 +243,7 @@ public class BoardController {
 	@RequestMapping(value = "/ckeditorFileUpload", method = RequestMethod.POST)
 	public String ckeditorFileUpload(@ModelAttribute("fileUploadVO") CKEditorAttachement attach,
 			HttpServletRequest request, Model model) {
-		
+
 		HttpSession session = request.getSession();
 		String rootPath = session.getServletContext().getRealPath("/");
 		String attachPath = "resources/userUploadedFile/";
