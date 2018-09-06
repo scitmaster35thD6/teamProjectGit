@@ -1,15 +1,24 @@
 /**
- * jQuery DataTable for exhibitions list
+ * jQuery DataTable for exhibitions list (Selector for write form)
  */
+
 function format(data) {
 	return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'
 			+ '<tr><td>Title in English:</td><td>'
 			+ data.exhibitionTitleEng
 			+ '</td></tr><tr><td>City:</td><td>'
 			+ data.openingCity
-			+ '</td></tr><tr><td>To get extra info:</td><td><a href="exhibitionDetail?exhibitionId='
-			+ data.exhibitionId + '">Click here</a></td></tr></table>';
+			+ '</td></tr><tr><td>To select:</td><td><a href="#" onclick="test(\''
+			+ data.exhibitionTitleKor
+			+ '\', \''
+			+ data.exhibitionId
+			+ '\')" data-dismiss="modal">Click here</a></td></tr></table>';
 }
+
+function test(title, id) {
+	$('#exhURL').val(title);
+	$('#exhibitionId').val(id);
+};
 
 $(document).ready(function() {
 	var table = $('#alt_pagination').DataTable({

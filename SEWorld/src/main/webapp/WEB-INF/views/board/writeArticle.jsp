@@ -92,8 +92,6 @@
 	}
 }
 </style>
-<script type="text/javascript"
-	src="resources/exhibitionCountrySelect.js"></script>
 <script src="resources/reviewFormCheck.js"></script>
 <script src="resources/ckeditor/ckeditor.js"></script>
 </head>
@@ -519,7 +517,7 @@
 										<div class="modal-dialog modal-lg">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h4 class="modal-title" id="myLargeModalLabel">게시판</h4>
+													<h4 class="modal-title" id="myLargeModalLabel">Select the Exhibition</h4>
 													<button type="button" class="close" data-dismiss="modal"
 														aria-hidden="true">×</button>
 												</div>
@@ -532,19 +530,17 @@
 															style="width: 100%">
 															<thead>
 																<tr>
-																	<th>타이틀 (영어)</th>
-																	<th>타이틀 (한국)</th>
-																	<th>국가</th>
-																	<th>도시</th>
-																	<th>기간</th>
+																	<th>상세</th>
+																	<th>전시회 제목</th>
+																	<th>개최국</th>
+																	<th>개최 기간</th>
 																</tr>
 															</thead>
 															<tfoot>
 																<tr>
-																	<th>Eng Title</th>
-																	<th>Kor Title</th>
+																	<th>Detail</th>
+																	<th>Title in Korean</th>
 																	<th>Country</th>
-																	<th>City</th>
 																	<th>Date</th>
 																</tr>
 															</tfoot>
@@ -553,11 +549,6 @@
 													<!-- 테이블 -->
 												</div>
 												<div class="modal-footer">
-													<button type="button"
-														class="btn btn-success waves-effect text-left"
-														data-dismiss="modal">Save</button>
-
-
 													<button type="button"
 														class="btn btn-success waves-effect text-left"
 														data-dismiss="modal">Close</button>
@@ -575,21 +566,22 @@
 									<!-- 보드유알엘 -->
 									<div class="form-group row align-items-center m-b-0">
 										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">choose
-											from board</label>
+											class="col-3 text-right control-label col-form-label">Exhibition: (choose
+											from board)</label>
 										<div class="col-9 border-left p-b-10 p-t-10">
 											<c:if test="${empty original}">
 												<i class="fas fa-external-link-alt" alt="default"
 													data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-												<input type="text" class="form-control" id=""
-													placeholder="boardURL" name="">
+												<input type="text" class="form-control" id="exhURL"
+													placeholder="click button to choose" disabled="disabled">
+												<input type="hidden" id="exhibitionId" name="exhibitionId" value="">
 											</c:if>
 
 											<c:if test="${not empty original}">
 												<i class="fas fa-external-link-alt" alt="default"
 													data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-												<input type="text" class="form-control" id=""
-													placeholder="boardURL" name="" value="${original.title}">
+												<input type="text" class="form-control" id="exhURL" disabled="disabled" value="${selectedExhibition.exhibitionTitleKor}">
+											<input type="hidden" id="exhibitionId" name="exhibitionId" value="${selectedExhibition.exhibitionId}">
 											</c:if>
 										</div>
 									</div>
@@ -705,7 +697,7 @@
 	<script>
 		// Basic grid
 	</script>
-	<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="resources/jquery-3.3.1.min.js"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
 	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -726,7 +718,7 @@
 	<!--This page JavaScript -->
 	<!--table JavaScript -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-	<script src="resources/exhibitionCountrySelect.js"></script>
+	<script src="resources/exhibitionSelectInWriteForm.js"></script>
 	<!-- This Page JS -->
 	<!-- 벡터지도 -->
 	<!-- This Page JS -->

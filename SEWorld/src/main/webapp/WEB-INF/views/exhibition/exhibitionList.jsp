@@ -86,6 +86,8 @@
 		min-width: 500px;
 	}
 }
+
+
 </style>
 
 <link rel="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -533,7 +535,7 @@
 										style="width: 100%">
 										<thead>
 											<tr>
-												<th>상세</th>
+												<th></th>
 												<th>전시회 제목</th>
 												<th>개최국</th>
 												<th>개최 기간</th>
@@ -541,7 +543,7 @@
 										</thead>
 										<tfoot>
 											<tr>
-											<th>Detail</th>
+											<th></th>
 												<th>Title in Korean</th>
 												<th>Country</th>
 												<th>Date</th>

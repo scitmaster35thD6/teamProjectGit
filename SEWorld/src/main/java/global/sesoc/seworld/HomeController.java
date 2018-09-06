@@ -31,8 +31,8 @@ public class HomeController {
 	// 메인 페이지로 이동
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		List<Exhibition> mapList = exhibitionRepository.getListForMap();
-		model.addAttribute("mapList", mapList);
+//		List<Exhibition> mapList = exhibitionRepository.getListForMap();
+//		model.addAttribute("mapList", mapList);
 		logger.info("[/]");
 		
 		return "main";
