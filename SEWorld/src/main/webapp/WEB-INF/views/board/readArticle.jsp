@@ -640,7 +640,7 @@ body.mobile-nav-active #mobile-nav-toggle {
          <li class="menu-has-children"><a href="#portfolio">Review</a>
            <ul>
               <li><a href="reviews">Review</a></li>
-           	  <li><a href="#">Write Review</a></li>   
+           	  <li><a href="writeArticle">Write Review</a></li>   
            	  <li><a href="questions">Question</a></li>
            </ul>
            
@@ -801,12 +801,7 @@ body.mobile-nav-active #mobile-nav-toggle {
                                     </div>
                                     <div class="ml-auto d-flex no-block align-items-center">
                                         <div class="dl">
-                                            <select class="custom-select">
-                                                <option value="0" selected="">Monthly</option>
-                                                <option value="1">Daily</option>
-                                                <option value="2">Weekly</option>
-                                                <option value="3">Yearly</option>
-                                            </select>
+                                            <a href="reviews"><i class="ti-list"></i>글 목록</a>
                                         </div>
                                     </div>
                                 </div>
@@ -996,145 +991,62 @@ body.mobile-nav-active #mobile-nav-toggle {
                                     </div>
                                     <div class="ml-auto d-flex no-block align-items-center">
                                         <div class="dl">
-                                            <select class="custom-select">
-                                                <option value="0" selected="">Monthly</option>
-                                                <option value="1">Daily</option>
-                                                <option value="2">Weekly</option>
-                                                <option value="3">Yearly</option>
-                                            </select>
+                                                  <a href="reviews"><i class="ti-list"></i>글 목록</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                               <div class="col-lg-4">
-                                        <h6 class="card-subtitle">ddddd</h6>
-                                        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-                                                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-                                                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
-                                            </ol>
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="carousel-item active">
-                                                    <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h3 class="text-white">First title goes here</h3>
-                                                        <p>this is the subcontent you can use this</p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h3 class="text-white">Second title goes here</h3>
-                                                        <p>this is the subcontent you can use this</p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h3 class="text-white">Third title goes here</h3>
-                                                        <p>this is the subcontent you can use this</p>
-                                                    </div>
-                                                </div>
+                 				  <!-- 관련글 보기 (열) -->
+                 				   <div class="row">
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+           <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 20 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 3 Comments</a>
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
                                         </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
                                     </div>
-                                    
-                                     <div class="col-lg-4">
-                                        <h6 class="card-subtitle">ddds</h6>
-                                        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
-                                                <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
-                                                <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
-                                            </ol>
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="carousel-item active">
-                                                    <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h3 class="text-white">First title goes here</h3>
-                                                        <p>this is the subcontent you can use this</p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h3 class="text-white">Second title goes here</h3>
-                                                        <p>this is the subcontent you can use this</p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h3 class="text-white">Third title goes here</h3>
-                                                        <p>this is the subcontent you can use this</p>
-                                                    </div>
-                                                </div>
+                                </div>
+          </div>
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+           <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 19 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 5 Comments</a>
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
                                         </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
                                     </div>
-                                    
-                                     <div class="col-lg-4">
-                                        <h6 class="card-subtitle">ddds</h6>
-                                        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
-                                                <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
-                                                <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
-                                            </ol>
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="carousel-item active">
-                                                    <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h3 class="text-white">First title goes here</h3>
-                                                        <p>this is the subcontent you can use this</p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h3 class="text-white">Second title goes here</h3>
-                                                        <p>this is the subcontent you can use this</p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h3 class="text-white">Third title goes here</h3>
-                                                        <p>this is the subcontent you can use this</p>
-                                                    </div>
-                                                </div>
+                                </div>
+          </div>
+       	   <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+          		  <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 29 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 6 Comments</a>
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
                                         </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
                                     </div>
-                               
-                               
-                               </div>
-                            </div>
+                                </div>
+         			 </div>
+                 				  
+                 				  
+           </div>		  <!-- 관련글 보기 (열) -->
+                 				  
+                            </div><!-- card body -->
                         </div>
                     </div>
                 </div>     <!-- row -->
