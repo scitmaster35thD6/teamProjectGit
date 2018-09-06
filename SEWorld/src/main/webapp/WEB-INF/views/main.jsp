@@ -210,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url(resources/assets/images/owl.jpg) top center;
+  background: url(resources/assets/images/cat.jpg) top center;
   background-size: cover;
   position: relative;
 }

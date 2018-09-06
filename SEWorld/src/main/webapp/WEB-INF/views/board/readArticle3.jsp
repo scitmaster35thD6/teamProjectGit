@@ -44,8 +44,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <!-- carousel -->
-<link rel="stylesheet" type="text/css" href="resources/assets/extra-libs/prism/prism.css">
-<link rel="stylesheet" type="text/css" href="resources/dist/carousel.css">
+  <link href="resources/dist/owls/owl.carousel.min.css" rel="stylesheet">
+  <link href="resources/dist/owls/owl.theme.default.css" rel="stylesheet">
+
 
 <style>
 .back-to-top {
@@ -789,98 +790,20 @@ body.mobile-nav-active #mobile-nav-toggle {
                                     </div>
                                 </div>
                          <div class="row">
-              <div class="container-fluid">           
-                         <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
-        <div class="carousel-inner row w-100 mx-auto" role="listbox">
-            <div class="carousel-item col-md-3  active">
-               <div class="panel panel-default">
-                  <div class="panel-thumbnail">
-                    <a href="#" title="image 1" class="thumb">
-                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=1" alt="slide 1">
-                    </a>
-                  </div>
-                </div>
-            </div>
-            <div class="carousel-item col-md-3 ">
-               <div class="panel panel-default">
-                  <div class="panel-thumbnail">
-                    <a href="#" title="image 3" class="thumb">
-                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=2" alt="slide 2">
-                    </a>
-                  </div>
-                </div>
-            </div>
-            <div class="carousel-item col-md-3 ">
-               <div class="panel panel-default">
-                  <div class="panel-thumbnail">
-                    <a href="#" title="image 4" class="thumb">
-                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=3" alt="slide 3">
-                    </a>
-                  </div>
-                </div>
-            </div>
-            <div class="carousel-item col-md-3 ">
-                <div class="panel panel-default">
-                  <div class="panel-thumbnail">
-                    <a href="#" title="image 5" class="thumb">
-                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=4" alt="slide 4">
-                    </a>
-                  </div>
-                </div>
-            </div>
-            <div class="carousel-item col-md-3 ">
-              <div class="panel panel-default">
-                  <div class="panel-thumbnail">
-                    <a href="#" title="image 6" class="thumb">
-                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=5" alt="slide 5">
-                    </a>
-                  </div>
-                </div>
-            </div>
-            <div class="carousel-item col-md-3 ">
-               <div class="panel panel-default">
-                  <div class="panel-thumbnail">
-                    <a href="#" title="image 7" class="thumb">
-                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=6" alt="slide 6">
-                    </a>
-                  </div>
-                </div>
-            </div>
-            <div class="carousel-item col-md-3 ">
-               <div class="panel panel-default">
-                  <div class="panel-thumbnail">
-                    <a href="#" title="image 8" class="thumb">
-                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=7" alt="slide 7">
-                    </a>
-                  </div>
-                </div>
-            </div>
-             <div class="carousel-item col-md-3  ">
-                <div class="panel panel-default">
-                  <div class="panel-thumbnail">
-                    <a href="#" title="image 2" class="thumb">
-                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=8" alt="slide 8">
-                    </a>
-                  </div>
-                  
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-                         
-                              
-                               
-                          </div><!-- row -->
-                          </div>
-                            </div>
+             <!-- owl carousel넣기 -->
+	<div class="owl-carousel">
+  		<div> 댓스글1 </div>
+  		<div> 2Your Content </div>
+ 		 <div> 3Your Content </div>
+ 		 <div> 4Your Content </div>
+ 		 <div> 5Your Content </div>
+  		<div> 6Your Content </div>
+  		<div> 7Your Content </div>
+	</div>             
+             
+             
+             
+             <!-- owl carousel넣기 -->
                         </div>
                     </div>
                 </div>
@@ -1127,7 +1050,6 @@ body.mobile-nav-active #mobile-nav-toggle {
     <script src="resources/dist/js/custom.min.js"></script>
     <!-- This Page JS -->
   <!-- carousel -->
-    <script src="resources/assets/extra-libs/prism/prism.js"></script>
     <!-- 메인용 javascript -->
     <script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
   <script src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1141,8 +1063,13 @@ body.mobile-nav-active #mobile-nav-toggle {
      <script src="resources/dist/typed.js"></script>
     <script src="resources/regna/js/main.js"></script>
     <!-- carousel -->
+    <script src="resources/dist/owls/owl.carousel.min.js"></script>
     <script src="resources/dist/carousel.js"></script>
+    <script src="resources/dist/owls/jquery.mousewheel.min.js"></script>
+    
+    
     <script>
+    
     jQuery(document).ready(function( $ ) {
 
     	  // Header fixed and Back to top button
