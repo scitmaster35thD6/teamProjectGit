@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>   
+ 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -615,7 +618,7 @@ body.mobile-nav-active #mobile-nav-toggle {
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-      <header id="header">
+   <header id="header">
     <div class="container">
 
       <div id="logo" class="pull-left">
@@ -626,35 +629,50 @@ body.mobile-nav-active #mobile-nav-toggle {
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="resources/regna/#hero">Home</a></li>
-          <li><a href="exhibitionList">Exhibition</a></li>
-          <li><a href="reviews">Review</a></li>
-          <li><a href="questions">Question</a></li>
+          <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
+           <li class="menu-has-children"><a href="#services">Exhibition</a>
+           <ul>
+              <li><a href="exhibitionList">전시회게시판</a></li>
+           	  <li><a href="#facts">GoogleMap</a></li>   
+           </ul>
+           
+           
+         <li class="menu-has-children"><a href="#portfolio">Review</a>
+           <ul>
+              <li><a href="reviews">Review</a></li>
+           	  <li><a href="#">Write Review</a></li>   
+           	  <li><a href="questions">Question</a></li>
+           </ul>
+           
 
-          <li><a href="#">Question</a></li>
-          <li><a href="calendar">Calendar</a></li>
-          <li class="menu-has-children"><a href="#">Drop Down</a>
-            <ul>
-              <li><a href="resources/regna/#">Drop Down 1</a></li>
-              <li class="menu-has-children"><a href="resources/regna/#">Drop Down 2</a>
-                <ul>
-                  <li><a href="resources/regna/#">Deep Drop Down 1</a></li>
-                  <li><a href="resources/regna/#">Deep Drop Down 2</a></li>
-                  <li><a href="resources/regna/#">Deep Drop Down 3</a></li>
-                  <li><a href="resources/regna/#">Deep Drop Down 4</a></li>
-                  <li><a href="resources/regna/#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="resources/regna/#">Drop Down 3</a></li>
-              <li><a href="resources/regna/#">Drop Down 4</a></li>
-              <li><a href="resources/regna/#">Drop Down 5</a></li>
-            </ul>
-          </li>
-          <li><a href="resources/regna/#contact">Contact Us</a></li>
+          <li class="menu-has-children"><a href="profile">My Profile</a>
+           <ul>
+              <li><a href="profile">Profile</a></li>
+           	  <li><a href="calendar">calendar</a></li>   
+           </ul>
+         
+        <c:if test="${sessionScope.loginId==null}">		
+          <li class="menu-has-children"><a href="profile">sign up/log in</a>
+           <ul>
+              <li><a href="login">Log in</a></li>
+           	  <li><a href="#">Sign up</a></li>   
+           </ul>
+         </c:if>
+          
+         <c:if test="${sessionScope.loginId !=null}">
+          	<li class="menu-has-children"><a href="#">${sessionScope.loginId}님</a>
+         	<ul>
+              <li><a href="#">Log in</a></li>
+           	  <li><a href="#">Sign up</a></li>   
+           </ul>
+         
+         </c:if> 
+          
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
+   
 
   <!--==========================
     Hero Section
@@ -693,7 +711,10 @@ body.mobile-nav-active #mobile-nav-toggle {
                         <div class="col-sm-12 col-lg-4">
                             <div class="temp d-flex align-items-center flex-row">
                                 <div class="m-l-10">
-                                    <h3 class="m-b-0 text">베트남 무역관 화장품 전시회</h3><small class="text op-5">URL</small>
+                                    <h3 class="m-b-0 text">${exbhibitionForArticle.exhibitionTitleKor}</h3>
+                                    <small class="text op-5">URL : 
+                                    <a href="exhibitionDetail?exhibitionId='${articleDetail.exhibitionId}'">Click !!</a>
+                                    </small>
                                 </div>
                             </div>
                         </div>
@@ -792,13 +813,118 @@ body.mobile-nav-active #mobile-nav-toggle {
                          <div class="row">
              <!-- owl carousel넣기 -->
 	<div class="owl-carousel">
-  		<div> 댓스글1 </div>
-  		<div> 2Your Content </div>
- 		 <div> 3Your Content </div>
- 		 <div> 4Your Content </div>
- 		 <div> 5Your Content </div>
-  		<div> 6Your Content </div>
-  		<div> 7Your Content </div>
+	
+	<!-- 댓글한개 -->
+  		<div> 
+  								 <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                    	<div class="row">
+                                    	<div class="col-8">
+                                        <h6 class="font-medium">heemin</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        <i class="fa fa-spin fa-star" style="color:#ffe83f; "></i>&nbsp; &nbsp; 4점 
+                                        </div>
+                                        
+                                    	</div>
+                                        <span class="m-b-15 d-block">첫번재 댓글. ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</span>
+                                        <div class="comment-footer">
+                                          	<i class="fas fa-heart" style="color:#f77497; "></i>15
+                                            <span class="text-muted float-right">April 14, 2016</span> <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-trash"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+  		
+  		
+  		</div>
+	<!-- 댓글한개 -->
+  		<div> 
+  					 <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                       <div class="row">
+                                    	<div class="col-8">
+                                        <h6 class="font-medium">heemin</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        <i class="fa fa-spin fa-star" style="color:#ffe83f; "></i>&nbsp; &nbsp; 4점 
+                                        </div>
+                                        
+                                    	</div>
+                                        <span class="m-b-15 d-block">좋은 내용입니다 별점 테러 teeeeeeeeeeeeeeeee </span>
+                                        <div class="comment-footer">
+                                        	<i class="fas fa-heart" style="color:#f77497; "></i>10
+                                            <span class="text-muted float-right">April 14, 2016</span> <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-trash"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+  		
+  		
+  		</div>
+  		
+  		
+  		<div>
+  		
+  					 <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                        <div class="row">
+                                    	<div class="col-8">
+                                        <h6 class="font-medium">heemin</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        <i class="fa fa-spin fa-star" style="color:#ffe83f; "></i>&nbsp; &nbsp; 4점 
+                                        </div>
+                                        
+                                    	</div>
+                                        <span class="m-b-15 d-block">ㄴㅇㄹㄴㅇㄹㄴㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ. </span>
+                                        <div class="comment-footer">
+                                        <i class="fas fa-heart" style="color:#f77497; "></i>15
+                                            <span class="text-muted float-right">April 14, 2016</span>  <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-trash"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+  		
+  		</div>
+  		
+  		
+  		<div>
+  				 <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                    
+                                       <div class="row">
+                                    	<div class="col-8">
+                                        <h6 class="font-medium">heemin</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        <i class="fa fa-spin fa-star" style="color:#ffe83f; "></i>&nbsp; &nbsp; 4점 
+                                        </div>
+                                    	</div>
+                                        
+                                        <span class="m-b-15 d-block">ㄴㅇㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴy. </span>
+                                        <div class="comment-footer">
+                                        	<i class="fas fa-heart" style="color:#f77497; "></i>15
+                                            <span class="text-muted float-right">April 14, 2016</span>  <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-trash"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+  		
+  		</div>
+ 		 
 	</div>             
              
              
@@ -806,7 +932,11 @@ body.mobile-nav-active #mobile-nav-toggle {
              <!-- owl carousel넣기 -->
                         </div>
                     </div>
-                </div>
+                <hr>
+                
+                    
+                    
+                </div><!-- card 창 끝 -->
                   
               <div class="row">
                     <div class="col-lg-12">
@@ -962,7 +1092,6 @@ body.mobile-nav-active #mobile-nav-toggle {
                 </div>     <!-- row -->
                   
                   
-                            
             </div>
             <!-- 컨테이너 플루이드 -->
             
