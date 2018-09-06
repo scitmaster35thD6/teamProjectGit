@@ -790,6 +790,59 @@ body.mobile-nav-active #mobile-nav-toggle {
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+            <!-- 코멘트 쓰는 창 -->
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Write Your Comment</h4>
+                                    </div>
+                                    <div class="ml-auto d-flex no-block align-items-center">
+                                        <div class="dl">
+                                            <select class="custom-select">
+                                                <option value="0" selected="">Monthly</option>
+                                                <option value="1">Daily</option>
+                                                <option value="2">Weekly</option>
+                                                <option value="3">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+              <div class="col-lg-3">
+                       <h6 class="font-medium">Rating</h6>
+                                       
+             </div>
+                                    
+                     <div class="col-lg-9">
+                                <textarea class="form-control rounded-0" id="content"
+												rows="5" name="content"></textarea>
+                                        
+                           <button type="button" class="btn btn-success waves-effect text-left float-right">Save</button>
+                   </div>
+                  <hr>
+                  <div>
+                  		
+                  </div>
+                   
+                  
+                               
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <!-- row -->
+            
+            
+            
+            
+            <!-- 코멘트 쓰는 창 -->
+            
+            
+            
+            
             <!-- 코멘트 만들기 -->
                   <div class="row">
                     <div class="col-lg-12">
