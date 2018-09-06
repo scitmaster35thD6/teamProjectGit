@@ -49,8 +49,8 @@
 <!-- carousel -->
   <link href="resources/dist/owls/owl.carousel.min.css" rel="stylesheet">
   <link href="resources/dist/owls/owl.theme.default.css" rel="stylesheet">
-
-
+<!-- 별점 -->
+    <link href="resources/assets/libs/raty-js/lib/jquery.raty.css" rel="stylesheet">
 <style>
 .back-to-top {
   position: fixed;
@@ -810,26 +810,21 @@ body.mobile-nav-active #mobile-nav-toggle {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+         <div class="row">
               <div class="col-lg-3">
                        <h6 class="font-medium">Rating</h6>
-                                       
+                       <div id="score-rating"></div>                
              </div>
                                     
                      <div class="col-lg-9">
                                 <textarea class="form-control rounded-0" id="content"
-												rows="5" name="content"></textarea>
-                                        
+							   rows="5" name="content"></textarea>
+                           <hr>             
                            <button type="button" class="btn btn-success waves-effect text-left float-right">Save</button>
-                   </div>
-                  <hr>
-                  <div>
-                  		
-                  </div>
-                   
+                      </div>
                   
                                
-                               </div>
+                               </div><!-- row -->
                             </div>
                         </div>
                     </div>
@@ -1248,8 +1243,9 @@ body.mobile-nav-active #mobile-nav-toggle {
     <script src="resources/dist/owls/owl.carousel.min.js"></script>
     <script src="resources/dist/carousel.js"></script>
     <script src="resources/dist/owls/jquery.mousewheel.min.js"></script>
-    
-    
+    <!-- 별점 -->
+    <script src="resources/assets/libs/raty-js/lib/jquery.raty.js"></script>
+    <script src="resources/dist/rating-init.js"></script>
     <script>
     
     jQuery(document).ready(function( $ ) {
