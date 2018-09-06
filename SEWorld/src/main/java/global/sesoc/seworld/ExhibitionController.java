@@ -1,10 +1,6 @@
 package global.sesoc.seworld;
 
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,6 +40,7 @@ public class ExhibitionController {
 		return "exhibition/exhibitionList";
 	}
 
+	// DataTable 데이터 전송 메소드
 	@RequestMapping(value = "/exhibitionListAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
 	public String exhibitionListAjax(int start, int length,  @RequestParam(value = "search[value]") String searchText) {

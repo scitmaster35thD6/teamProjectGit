@@ -10,18 +10,26 @@
 		SELECT
 		exhibitionId
 		, exhibitionTitleKor
-		, exhibitionTitleEng
+		,
+		exhibitionTitleEng
 		, openingTerm
 		, firstOpeningYear
 		, openingCountry
-		, openingCity
+		,
+		openingCity
 		, exhibitionHall
 		, sponsor
 		, createdDate
 		, updatedDate
-		, dataOffer
+		,
+		dataOffer
 		FROM c6_exhibition
-		where openingCountry like '%' || #{searchText} || '%'
+		where exhibitionTitleKor like '%' ||
+		#{searchText} || '%' or exhibitionTitleEng like '%' || #{searchText}
+		|| '%'
+		or openingCountry like '%' || #{searchText} || '%' or
+		openingCity like '%' || #{searchText} || '%' or openingTerm like '%'
+		|| #{searchText} || '%'
 		ORDER BY
 		openingTerm DESC
 	</select>
@@ -38,7 +46,8 @@
 	</select>
 
 	<select id="getListForMap" resultType="exhibition">
-		select * FROM c6_exhibition
+		select * FROM
+		c6_exhibition
 	</select>
 
 	<select id="showExhibitionDetail" resultType="exhibition"

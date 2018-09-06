@@ -89,6 +89,7 @@
 </style>
 
 <link rel="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="resources/exhibitionList.css">
 
 </head>
 
@@ -532,19 +533,17 @@
 										style="width: 100%">
 										<thead>
 											<tr>
-												<th>타이틀 (영어)</th>
-												<th>타이틀 (한국)</th>
-												<th>국가</th>
-												<th>도시</th>
-												<th>기간</th>
+												<th>상세</th>
+												<th>전시회 제목</th>
+												<th>개최국</th>
+												<th>개최 기간</th>
 											</tr>
 										</thead>
 										<tfoot>
 											<tr>
-												<th>Eng Title</th>
-												<th>Kor Title</th>
+											<th>Detail</th>
+												<th>Title in Korean</th>
 												<th>Country</th>
-												<th>City</th>
 												<th>Date</th>
 											</tr>
 										</tfoot>
