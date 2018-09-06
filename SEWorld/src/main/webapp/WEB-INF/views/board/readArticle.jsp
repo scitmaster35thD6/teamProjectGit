@@ -1,798 +1,1133 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- Tell the browser to be responsive to screen width -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16"
-	href="resources/assets/images/logo-icon.png">
-<title>SE World 전세계 기술 전시</title>
-<link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
-	rel="stylesheet">
-<link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
-	rel="stylesheet">
-<!-- Custom CSS -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
-<!-- 벡터맵 css지도 -->
-<link
-	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
-	rel="stylesheet" />
-<!-- Custom CSS 새로 -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="any"
+	href="resources/assets/images/logo2.png">
+    <title>SE World 전세계 기술 전시</title>
+    <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css" rel="stylesheet">
+    <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="resources/dist/css/style.min.css" rel="stylesheet">
+    <!-- 벡터맵 css지도 -->
+     <link href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- Custom CSS 새로 -->
+    <link href="resources/dist/css/style.min.css" rel="stylesheet">
+    
+    <!-- 메인 스타일 -->
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
 
-<!-- 프로필용  css -->
-<link
-	href="resources/assets/libs/magnific-popup/dist/magnific-popup.css"
-	rel="stylesheet">
+  <!-- Bootstrap CSS File -->
+  <link href="resources/regna/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Libraries CSS Files -->
+  <link href="resources/regna/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="resources/regna/lib/animate/animate.min.css" rel="stylesheet">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
+  <!-- Main Stylesheet File -->
+  <link href="resources/regna/css/style.css" rel="stylesheet">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+<!-- carousel -->
+  <link href="resources/dist/owls/owl.carousel.min.css" rel="stylesheet">
+  <link href="resources/dist/owls/owl.theme.default.css" rel="stylesheet">
+
 
 <style>
-.dropdown.dropdown-lg .dropdown-menu {
-	margin-top: -1px;
-	padding: 6px 20px;
+.back-to-top {
+  position: fixed;
+  display: none;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  padding: 6px 12px 9px 12px;
+  font-size: 16px;
+  border-radius: 2px;
+  right: 15px;
+  bottom: 15px;
+  transition: background 0.5s;
 }
 
-.input-group-btn .btn-group {
-	display: flex !important;
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 15px;
+  }
 }
 
-.btn-group .btn {
-	border-radius: 0;
-	margin-left: -1px;
+.back-to-top:focus {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  outline: none;
 }
 
-.btn-group .btn:last-child {
-	border-top-right-radius: 4px;
-	border-bottom-right-radius: 4px;
+.back-to-top:hover {
+  background: #2dc997;
+  color: #fff;
 }
 
-.btn-group .form-horizontal .btn[type="submit"] {
-	border-top-left-radius: 4px;
-	border-bottom-left-radius: 4px;
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  background: #fff;
+  color: #666666;
+  font-family: "Open Sans", sans-serif;
 }
 
-.form-horizontal .form-group {
-	margin-left: 0;
-	margin-right: 0;
+a {
+  color: #2dc997;
 }
 
-.form-group .form-control:last-child {
-	border-top-left-radius: 4px;
-	border-bottom-left-radius: 4px;
+a:hover, a:active, a:focus {
+  color: #2dca98;
+  outline: none;
+  text-decoration: none;
 }
 
-@media screen and (min-width: 768px) {
-	#adv-search {
-		width: 500px;
-		margin: 0 auto;
-	}
-	.dropdown.dropdown-lg {
-		position: static !important;
-	}
-	.dropdown.dropdown-lg .dropdown-menu {
-		min-width: 500px;
-	}
+p {
+  padding: 0;
+  margin: 0 0 30px 0;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
+/* Prelaoder */
+#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: #fff url("resources/regna/img/preloader.svg") no-repeat center center;
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  display: none;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  padding: 6px 12px 9px 12px;
+  font-size: 16px;
+  border-radius: 2px;
+  right: 15px;
+  bottom: 15px;
+  transition: background 0.5s;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 15px;
+  }
+}
+
+.back-to-top:focus {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  outline: none;
+}
+
+.back-to-top:hover {
+  background: #2dc997;
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  padding: 30px 0;
+  height: 92px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+
+#header #logo {
+  float: left;
+}
+
+#header #logo h1 {
+  font-size: 36px;
+  margin: 0;
+  padding: 6px 0;
+  line-height: 1;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+#header #logo h1 a, #header #logo h1 a:hover {
+  color: #fff;
+}
+
+#header #logo img {
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #header #logo h1 {
+    font-size: 26px;
+  }
+  #header #logo img {
+    max-height: 40px;
+  }
+}
+
+#header.header-fixed {
+  background: rgba(52, 59, 64, 0.9);
+  padding: 20px 0;
+  height: 72px;
+  transition: all 0.5s;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+  width: 100%;
+  height: 100vh;
+  background: url(resources/assets/images/owl.jpg) top center;
+  background-size: cover;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero .hero-container {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: right;
+  flex-direction: column;
+  text-align: center;
+  float:right;
+  margin-left : 50px;
+}
+
+#hero h1 {
+  margin: 30px 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+#hero h2 {
+  color: #eee;
+  margin-bottom: 50px;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+#hero .btn-get-started {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+#hero .btn-get-started:hover {
+  background: #2dc997;
+  border: 2px solid #2dc997;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Nav Menu Essentials */
+.nav-menu, .nav-menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-menu ul {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+}
+
+.nav-menu li {
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-menu > li {
+  float: left;
+}
+
+.nav-menu li:hover > ul,
+.nav-menu li.sfHover > ul {
+  display: block;
+}
+
+.nav-menu ul ul {
+  top: 0;
+  left: 100%;
+}
+
+.nav-menu ul li {
+  min-width: 180px;
+}
+
+/* Nav Menu Arrows */
+.sf-arrows .sf-with-ul {
+  padding-right: 30px;
+}
+
+.sf-arrows .sf-with-ul:after {
+  content: "\f107";
+  position: absolute;
+  right: 15px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.sf-arrows ul .sf-with-ul:after {
+  content: "\f105";
+}
+
+/* Nav Meu Container */
+#nav-menu-container {
+  float: right;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #nav-menu-container {
+    display: none;
+  }
+}
+
+/* Nav Meu Styling */
+.nav-menu a {
+  padding: 0 8px 10px 8px;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 13px;
+  outline: none;
+}
+
+.nav-menu > li {
+  margin-left: 10px;
+}
+
+.nav-menu > li > a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #2dc997;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.nav-menu a:hover:before, .nav-menu li:hover > a:before, .nav-menu .menu-active > a:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.nav-menu ul {
+  margin: 4px 0 0 0;
+  border: 1px solid #e7e7e7;
+}
+
+.nav-menu ul li {
+  background: #fff;
+}
+
+.nav-menu ul li:first-child {
+  border-top: 0;
+}
+
+.nav-menu ul li a {
+  padding: 10px;
+  color: #333;
+  transition: 0.3s;
+  display: block;
+  font-size: 13px;
+  text-transform: none;
+}
+
+.nav-menu ul li a:hover {
+  background: #2dc997;
+  color: #fff;
+}
+
+.nav-menu ul ul {
+  margin: 0;
+}
+
+/* Mobile Nav Toggle */
+#mobile-nav-toggle {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  margin: 20px 20px 0 0;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  display: none;
+  transition: all 0.4s;
+  outline: none;
+  cursor: pointer;
+}
+
+#mobile-nav-toggle i {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  #mobile-nav-toggle {
+    display: inline;
+  }
+}
+
+/* Mobile Nav Toggle */
+#mobile-nav-toggle {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  margin: 20px 20px 0 0;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  display: none;
+  transition: all 0.4s;
+  outline: none;
+  cursor: pointer;
+}
+
+#mobile-nav-toggle i {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  #mobile-nav-toggle {
+    display: inline;
+  }
+}
+
+/* Mobile Nav Styling */
+#mobile-nav {
+  position: fixed;
+  top: 0;
+  padding-top: 18px;
+  bottom: 0;
+  z-index: 998;
+  background: rgba(52, 59, 64, 0.9);
+  left: -260px;
+  width: 260px;
+  overflow-y: auto;
+  transition: 0.4s;
+}
+
+#mobile-nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#mobile-nav ul li {
+  position: relative;
+}
+
+#mobile-nav ul li a {
+  color: #fff;
+  font-size: 16px;
+  overflow: hidden;
+  padding: 10px 22px 10px 15px;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  outline: none;
+}
+
+#mobile-nav ul li a:hover {
+  color: #fff;
+}
+
+#mobile-nav ul li li {
+  padding-left: 30px;
+}
+
+#mobile-nav ul .menu-has-children i {
+  position: absolute;
+  right: 0;
+  z-index: 99;
+  padding: 15px;
+  cursor: pointer;
+  color: #fff;
+}
+
+#mobile-nav ul .menu-has-children i.fa-chevron-up {
+  color: #2dc997;
+}
+
+#mobile-nav ul .menu-item-active {
+  color: #2dc997;
+}
+
+#mobile-body-overly {
+  width: 100%;
+  height: 100%;
+  z-index: 997;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(52, 59, 64, 0.9);
+  display: none;
+}
+
+/* Mobile Nav body classes */
+body.mobile-nav-active {
+  overflow: hidden;
+}
+
+body.mobile-nav-active #mobile-nav {
+  left: 0;
+}
+
+body.mobile-nav-active #mobile-nav-toggle {
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Sections
+--------------------------------------------------------------*/
+/* Sections Header
+--------------------------------*/
+.section-header .section-title {
+  font-size: 32px;
+  color: #111;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.section-header .section-description {
+  text-align: center;
+  padding-bottom: 40px;
+  color: #999;
+}
+
+#upperbody:hover{
+	font-color : gray;
+}
+
 </style>
 
 </head>
 
 <body>
-	<!-- ============================================================== -->
-	<!-- Preloader - style you can find in spinners.css -->
-	<!-- ============================================================== -->
-	<div class="preloader">
-		<div class="lds-ripple">
-			<div class="lds-pos"></div>
-			<div class="lds-pos"></div>
-		</div>
-	</div>
-	<!-- ============================================================== -->
-	<!-- Main wrapper - style you can find in pages.scss -->
-	<!-- ============================================================== -->
-	<div id="main-wrapper">
-		<!-- ============================================================== -->
-		<!-- Topbar header - style you can find in pages.scss -->
-		<!-- ============================================================== -->
-		<header class="topbar">
-			<nav class="navbar top-navbar navbar-expand-md navbar-dark">
-				<div class="navbar-header">
-					<!-- This is for the sidebar toggle which is visible on mobile only -->
-					<a class="nav-toggler waves-effect waves-light d-block d-md-none"
-						href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-					<!-- ============================================================== -->
-					<!-- Logo -->
-					<!-- ============================================================== -->
-					<a class="navbar-brand" href="./"> <!-- Logo icon --> <b
-						class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-							<!-- Dark Logo icon --> <img
-							src="resources/assets/images/logo2.png"
-							style="width: 60px; height: 50px; margin: auto;" alt="homepage"
-							class="dark-logo" /> <!-- Light Logo icon --> <img
-							src="resources/assets/images/logo2.png"
-							style="width: 60px; height: 50px; margin: auto;" alt="homepage"
-							class="light-logo" />
-					</b>
-					</a>
-					<!-- ============================================================== -->
-					<!-- End Logo -->
-					<!-- ============================================================== -->
-					<!-- ============================================================== -->
-					<!-- Toggle which is visible on mobile only -->
-					<!-- ============================================================== -->
-					<a class="topbartoggler d-block d-md-none waves-effect waves-light"
-						href="javascript:void(0)" data-toggle="collapse"
-						data-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation"><i class="ti-more"></i></a>
-				</div>
-				<!-- ============================================================== -->
-				<!-- End Logo -->
-				<!-- ============================================================== -->
-				<div class="navbar-collapse collapse" id="navbarSupportedContent">
-					<!-- ============================================================== -->
-					<!-- toggle and nav items -->
-					<!-- ============================================================== -->
-					<ul class="navbar-nav float-left mr-auto">
-						<li class="nav-item d-none d-md-block"><a
-							class="nav-link sidebartoggler waves-effect waves-light"
-							href="javascript:void(0)" data-sidebartype="mini-sidebar"><i
-								class="mdi mdi-menu font-24"></i></a></li>
-						<!-- ============================================================== -->
-						<!-- mega menu -->
-						<!-- ============================================================== -->
-						<li class="nav-item dropdown mega-dropdown"><a
-							class="nav-link dropdown-toggle waves-effect waves-dark" href=""
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="d-none d-md-block">Personal Update<i
-									class="fa fa-angle-down"></i></span> <span class="d-block d-md-none"><i
-									class="mdi mdi-dialpad font-24"></i></span>
-						</a>
-							<div class="dropdown-menu animated bounceInDown">
-								<div class="mega-dropdown-menu row">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+      <header id="header">
+    <div class="container">
 
-									<div class="col-lg-3 m-b-30">
-										<h4 class="m-b-20">최근 좋아요 한 전시회</h4>
-										<!-- Accordian -->
-										<div id="accordion">
-											<div class="card m-b-5">
-												<div class="card-header" id="headingOne">
-													<h5 class="mb-0">
-														<button class="btn btn-link" data-toggle="collapse"
-															data-target="#collapseOne" aria-expanded="true"
-															aria-controls="collapseOne">첫번째 전시회 제목</button>
-													</h5>
-												</div>
-												<div id="collapseOne" class="collapse show"
-													aria-labelledby="headingOne" data-parent="#accordion">
-													<div class="card-body">전시회 내용</div>
-												</div>
-											</div>
-											<div class="card m-b-5">
-												<div class="card-header" id="headingTwo">
-													<h5 class="mb-0">
-														<button class="btn btn-link collapsed"
-															data-toggle="collapse" data-target="#collapseTwo"
-															aria-expanded="false" aria-controls="collapseTwo">
-															두번째 전시회제목</button>
-													</h5>
-												</div>
-												<div id="collapseTwo" class="collapse"
-													aria-labelledby="headingTwo" data-parent="#accordion">
-													<div class="card-body">전시회 내용</div>
-												</div>
-											</div>
-											<div class="card m-b-5">
-												<div class="card-header" id="headingThree">
-													<h5 class="mb-0">
-														<button class="btn btn-link collapsed"
-															data-toggle="collapse" data-target="#collapseThree"
-															aria-expanded="false" aria-controls="collapseThree">
-															C세번째 전시회 내용</button>
-													</h5>
-												</div>
-												<div id="collapseThree" class="collapse"
-													aria-labelledby="headingThree" data-parent="#accordion">
-													<div class="card-body">세번째 전시회 내용</div>
-												</div>
-											</div>
-										</div>
-									</div>
+      <div id="logo" class="pull-left">
+        <a href="#hero"><img src="" alt="" title="" /></img></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
+      </div>
 
-									<div class="col-lg-3  m-b-30">
-										<h4 class="m-b-20">Recent Comments</h4>
-										<!-- Contact -->
-										<div class="d-flex flex-row comment-row m-t-0">
-											<div class="p-2">
-												<img src="resources/assets/images/users/people.png"
-													alt="user" width="50" class="rounded-circle">
-											</div>
-											<div class="comment-text w-100">
-												<h6 class="font-medium">James Anderson</h6>
-												<span class="m-b-15 d-block">좋은 후기 잘 읽었습니다^^ </span>
-												<div class="comment-footer">
-													<span class="text-muted float-right">April 14, 2016</span>
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="resources/regna/#hero">Home</a></li>
+          <li><a href="exhibitionList">Exhibition</a></li>
+          <li><a href="reviews">Review</a></li>
+          <li><a href="questions">Question</a></li>
 
-												</div>
-											</div>
-										</div>
+          <li><a href="#">Question</a></li>
+          <li><a href="calendar">Calendar</a></li>
+          <li class="menu-has-children"><a href="#">Drop Down</a>
+            <ul>
+              <li><a href="resources/regna/#">Drop Down 1</a></li>
+              <li class="menu-has-children"><a href="resources/regna/#">Drop Down 2</a>
+                <ul>
+                  <li><a href="resources/regna/#">Deep Drop Down 1</a></li>
+                  <li><a href="resources/regna/#">Deep Drop Down 2</a></li>
+                  <li><a href="resources/regna/#">Deep Drop Down 3</a></li>
+                  <li><a href="resources/regna/#">Deep Drop Down 4</a></li>
+                  <li><a href="resources/regna/#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="resources/regna/#">Drop Down 3</a></li>
+              <li><a href="resources/regna/#">Drop Down 4</a></li>
+              <li><a href="resources/regna/#">Drop Down 5</a></li>
+            </ul>
+          </li>
+          <li><a href="resources/regna/#contact">Contact Us</a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Hero Section
+  ============================-->
+ 
+     <section id="hero">
+    <div class="hero-container" style="height:92px; color :#c9b680; padding: 30px;">
+    </div>
+  </section><!-- #hero -->
+     
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+       
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+      <div class="newpage" style="background-color : #f7e9c3;">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+        
+            <!-- 새로운 페이지 -->
+     		 <div class="card gredient-success-bg m-t-0 m-b-0" style="background-color:#f7e9c3;">
+                <div class="card-body" id="upperbody">
 
 
 
-										<!-- Contact -->
-									</div>
-									<div class="col-lg-3 col-xlg-4 m-b-30">
-										<h4 class="m-b-20">My Schedule</h4>
-										<!-- List style -->
-										<ul class="list-style-none">
-											<li><a href="javascript:void(0)"><i
-													class="fa fa-check text-success"></i> 스케쥴1</a></li>
-											<li><a href="javascript:void(0)"><i
-													class="fa fa-check text-success"></i> 스케쥴2</a></li>
-											<li><a href="javascript:void(0)"><i
-													class="fa fa-check text-success"></i> 스케쥴3</a></li>
-											<li><a href="javascript:void(0)"><i
-													class="fa fa-check text-success"></i> 스케쥴4</a></li>
-											<li><a href="javascript:void(0)"><i
-													class="fa fa-check text-success"></i> 스케쥴5</a></li>
-											<li><a href="#"
-												class="btn btn-sm btn-success btn-rounded">My Calendar</a></li>
-										</ul>
-									</div>
-								</div>
-							</div></li>
-						<!-- ============================================================== -->
-						<!-- End mega menu -->
-						<!-- ============================================================== -->
-						<!-- show map -->
-						<!-- ============================================================== -->
+                
+                    <h4 class="card-title text"> &nbsp;&nbsp;Exhibition Overview</h4>
+                    <div class="row m-t-30 m-b-20">
+                        <!-- col -->
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="temp d-flex align-items-center flex-row">
+                                <div class="m-l-10">
+                                    <h3 class="m-b-0 text">베트남 무역관 화장품 전시회</h3><small class="text op-5">URL</small>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- col -->
+                        <div class="col-sm-12 col-lg-8">
+                            <div class="row">
+                                <!-- col -->
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="info d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <i class="mdi mdi-star text-white display-5 op-5"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text m-b-0">별점</h3>
+                                            <span class="text op-5">3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                                <!-- col -->
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="info d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <i class="icon icon-bubbles text-white display-5 op-5"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text m-b-0">코멘트</h3>
+                                            <span class="text op-5">35</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                                <!-- col -->
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="info d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <i class="icon icon-heart text-white display-5 op-5"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text m-b-0">좋아요</h3>
+                                            <span class="text op-5">35</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- 개괄  card body -->
+              </div> <!-- 백그라운드 -->  
+              <div class="card">
+                            <div class="card-body">
+                            
+                                <center class="m-t-30"> 
+                                 <div class="row">
+                                 <div class="col-sm-12 col-lg-6">
+                                    <h4 class="card-title-left m-t-10">제목</h4>
+                                    </div>
+                                     <div class="col-sm-12 col-lg-6">
+                                     <img src="resources/assets/images/users/5.jpg" class="rounded-circle" width="60" /><h6 class="card-subtitle"><center class="m-t-30">글쓴이</h6>
+                                    
+                                    </div>
+                                    </div>
+                                </center>
+                            </div>
+                            <div>
+                                <hr> </div>
+                            <div class="card-body"> 
+                                	<div class="contents">글 내용</div>
+                            </div>
+                        </div>   
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+            <!-- 코멘트 만들기 -->
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Comments</h4>
+                                    </div>
+                                    <div class="ml-auto d-flex no-block align-items-center">
+                                        <div class="dl">
+                                            <select class="custom-select">
+                                                <option value="0" selected="">Monthly</option>
+                                                <option value="1">Daily</option>
+                                                <option value="2">Weekly</option>
+                                                <option value="3">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                         <div class="row">
+             <!-- owl carousel넣기 -->
+	<div class="owl-carousel">
+  		<div> 댓스글1 </div>
+  		<div> 2Your Content </div>
+ 		 <div> 3Your Content </div>
+ 		 <div> 4Your Content </div>
+ 		 <div> 5Your Content </div>
+  		<div> 6Your Content </div>
+  		<div> 7Your Content </div>
+	</div>             
+             
+             
+             
+             <!-- owl carousel넣기 -->
+                        </div>
+                    </div>
+                </div>
+                  
+              <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Related articles</h4>
+                                    </div>
+                                    <div class="ml-auto d-flex no-block align-items-center">
+                                        <div class="dl">
+                                            <select class="custom-select">
+                                                <option value="0" selected="">Monthly</option>
+                                                <option value="1">Daily</option>
+                                                <option value="2">Weekly</option>
+                                                <option value="3">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                               <div class="col-lg-4">
+                                        <h6 class="card-subtitle">ddddd</h6>
+                                        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">First title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Second title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Third title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="col-lg-4">
+                                        <h6 class="card-subtitle">ddds</h6>
+                                        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">First title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Second title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Third title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="col-lg-4">
+                                        <h6 class="card-subtitle">ddds</h6>
+                                        <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">First title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Second title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h3 class="text-white">Third title goes here</h3>
+                                                        <p>this is the subcontent you can use this</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                               
+                               
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>     <!-- row -->
+                  
+                  
+                            
+            </div>
+            <!-- 컨테이너 플루이드 -->
+            
+            
+            
+            
+            
+            </div><!--  wrapper-->
+    
+   
+    
+         <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+           
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+         
+                <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+       <!-- 페이지 레퍼 div있던 자리 -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
 
+      </div>
+    </div>
 
-					</ul>
-					<!-- ============================================================== -->
-					<!-- Right side toggle and nav items -->
-					<!-- ============================================================== -->
-					<ul class="navbar-nav float-right">
-						<!-- create new -->
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>SE WROLD</strong>.
+      </div>
+     
+    </div>
+  </footer><!-- #footer -->
 
+     <a href="#" class="back-to-top"><i class="fas fa-angle-double-up"></i></a>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+<!-- 메인 레퍼 자꾸 엉켜서  지웠음..; -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- customizer Panel -->
+    <!-- ============================================================== -->
+    <!-- aside -->
+    <div class="chat-windows"></div>
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <script src="resources/dist/js/app.min.js"></script>
+     <script src="resources/dist/js/app.init.iconbar.js"></script>
+    <script src="resources/dist/js/app-style-switcher.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="resources/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="resources/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="resources/dist/js/custom.min.js"></script>
+    <!-- This Page JS -->
+  <!-- carousel -->
+    <!-- 메인용 javascript -->
+    <script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/regna/lib/easing/easing.min.js"></script>
+  <script src="resources/regna/lib/wow/wow.min.js"></script>
 
-						<!-- ============================================================== -->
-						<!-- Messages -->
-						<!-- ============================================================== -->
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle waves-effect waves-dark" href=""
-							id="2" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <i
-								class="font-24 mdi mdi-comment-processing"></i>
+  <script src="resources/regna/lib/waypoints/waypoints.min.js"></script>
+  <script src="resources/regna/lib/counterup/counterup.min.js"></script>
+  <script src="resources/regna/lib/superfish/hoverIntent.js"></script>
+  <script src="resources/regna/lib/superfish/superfish.min.js"></script>
+     <script src="resources/dist/typed.js"></script>
+    <script src="resources/regna/js/main.js"></script>
+    <!-- carousel -->
+    <script src="resources/dist/owls/owl.carousel.min.js"></script>
+    <script src="resources/dist/carousel.js"></script>
+    <script src="resources/dist/owls/jquery.mousewheel.min.js"></script>
+    
+    
+    <script>
+    
+    jQuery(document).ready(function( $ ) {
 
-						</a>
-							<div
-								class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown"
-								aria-labelledby="2">
-								<span class="with-arrow"><span class="bg-white"></span></span>
-								<ul class="list-style-none">
-									<li>
-										<div class="drop-title text-black bg-#f7b2c5">
-											<h4 class="m-b-0 m-t-5">2 New</h4>
-											<span class="font-light">Messages</span>
-										</div>
-									</li>
-									<li>
-										<div class="message-center message-body" style="height: 100%;">
-											<!-- Message -->
-											<a href="javascript:void(0)" class="message-item"> <span
-												class="user-img"><i class="fas fa-user"></i> </span>
-												<div class="mail-contnet">
-													<h5 class="message-title">heemin</h5>
-													<span class="mail-desc">안녕하세요 전시회 정보 문으드립니다.</span> <span
-														class="time">9:30 AM</span>
-												</div>
-											</a>
-											<!-- Message -->
-											<a href="javascript:void(0)" class="message-item"> <span
-												class="user-img"><i class="fas fa-user"></i> </span>
-												<div class="mail-contnet">
-													<h5 class="message-title">happy</h5>
-													<span class="mail-desc">what sup </span><span class="time">9:10
-														AM</span>
-												</div>
-											</a>
+    	  // Header fixed and Back to top button
+    	
+    	  
+    	// Mobile Navigation
+    	  if( $('#nav-menu-container').length ) {
+    	    var $mobile_nav = $('#nav-menu-container').clone().prop({ id: 'mobile-nav'});
+    	    $mobile_nav.find('> ul').attr({ 'class' : '', 'id' : '' });
+    	    $('body').append( $mobile_nav );
+    	    $('body').prepend( '<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>' );
+    	    $('body').append( '<div id="mobile-body-overly"></div>' );
+    	    $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
 
+    	    $(document).on('click', '.menu-has-children i', function(e){
+    	      $(this).next().toggleClass('menu-item-active');
+    	      $(this).nextAll('ul').eq(0).slideToggle();
+    	      $(this).toggleClass("fa-chevron-up fa-chevron-down");
+    	    });
 
-										</div>
-									</li>
-									<li><a class="nav-link text-center link"
-										href="javascript:void(0);"> <b>모든 메세지 보기</b> <i
-											class="fa fa-angle-right"></i>
-									</a></li>
-								</ul>
-							</div></li>
+    	    $(document).on('click', '#mobile-nav-toggle', function(e){
+    	      $('body').toggleClass('mobile-nav-active');
+    	      $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+    	      $('#mobile-body-overly').toggle();
+    	    });
 
-						<!-- end+++++================== -->
+    	    $(document).click(function (e) {
+    	      var container = $("#mobile-nav, #mobile-nav-toggle");
+    	      if (!container.is(e.target) && container.has(e.target).length === 0) {
+    	       if ( $('body').hasClass('mobile-nav-active') ) {
+    	          $('body').removeClass('mobile-nav-active');
+    	          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+    	          $('#mobile-body-overly').fadeOut();
+    	        }
+    	      }
+    	    });
+    	  } else if ( $("#mobile-nav, #mobile-nav-toggle").length ) {
+    	    $("#mobile-nav, #mobile-nav-toggle").hide();
+    	  }
+    	  // Smoth scroll on page hash links
+    	  
+    	  
+    
+    	 /*타자 쳐지는 효과 만들기 */
+    	  var typed = $(".typed");
 
-						<!-- ============================================================== -->
-						<!-- User profile and search -->
-						<!-- ============================================================== -->
-
-						<c:if test="${not empty sessionScope.loginId}">
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
-								href="" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"> <img
-									src="resources/assets/images/users/user.png" alt="user"
-									class="rounded-circle" width="31">
-
-							</a>
-								<div
-									class="dropdown-menu dropdown-menu-right user-dd animated bounceInDown"
-									style="background-color: #f7d6b7;">
-									<span class="with-arrow"><span class="bg-primary"></span></span>
-									<div
-										class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
-										<div class="">
-											<!-- 아이콘 유저 -->
-											<i class="fas fa-user" width="60"></i>
-
-
-										</div>
-
-										<div class="m-l-10">
-											<h4 class="m-b-0">${sessionScope.loginId}</h4>
-											<p class=" m-b-0">${sessionScope.loginName}</p>
-										</div>
-									</div>
-									<a class="dropdown-item" href="javascript:void(0)"><i
-										class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="javascript:void(0)"><i
-										class="ti-calendar m-r-5 m-l-5"></i> My Calendar </a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="javascript:void(0)"><i
-										class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="javascript:void(0)"><i
-										class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-
-								</div></li>
-						</c:if>
-						<!-- ============================================================== -->
-						<!-- User profile and search -->
-						<!-- ============================================================== -->
-					</ul>
-				</div>
-			</nav>
-		</header>
-		<!-- ============================================================== -->
-		<!-- End Topbar header -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- Left Sidebar - style you can find in sidebar.scss  -->
-		<!-- ============================================================== -->
-<aside class="left-sidebar">
-			<!-- Sidebar scroll-->
-			<div class="scroll-sidebar">
-				<!-- Sidebar navigation-->
-				<nav class="sidebar-nav">
-					<ul id="sidebarnav">
-						<!-- User Profile-->
-						<li>
-							<!-- User Profile-->
-							<c:if test="${not empty sessionScope.loginId}">
-							<div class="user-profile d-flex no-block dropdown m-t-20">
-								<div class="user-pic">
-									<img src="resources/assets/images/users/user.png" alt="users"
-										class="rounded-circle" width="40" />
-								</div>
-								<div class="user-content hide-menu m-l-10">
-									<a href="javascript:void(0)" class="" id="Userdd" role="button"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										<h5 class="m-b-0 user-name font-medium">
-											${sessionScope.loginId} 님 <i class="fa fa-angle-down"></i>
-										</h5> <span class="op-5 user-email">${sessionScope.loginName} </span>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right"
-										aria-labelledby="Userdd">
-										<a class="dropdown-item" href="javascript:void(0)"><i
-											class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-										<div class="dropdown-divider"></div>
-
-										<a class="dropdown-item" href="javascript:void(0)"><i
-											class="ti-calendar m-r-5 m-l-5"></i> My Calendar</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="javascript:void(0)"><i
-											class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="javascript:void(0)"><i
-											class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-									</div>
-								</div>
-							</div>
-							</c:if> <!-- End User Profile-->
-						</li>
-						<!-- User Profile-->
-						<li class="sidebar-item"><a
-							class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i
-								class="mdi mdi-view-dashboard"></i><span class="hide-menu">Exhibition
-							</span></a>
-							<ul aria-expanded="false" class="collapse  first-level">
-								<li class="sidebar-item"><a href="exhibitionList"
-									class="sidebar-link"><i class="mdi mdi-adjust"></i><span
-										class="hide-menu"> List </span></a></li>
-								<li class="sidebar-item"><a href="vector"
-									class="sidebar-link"><i class="mdi mdi-adjust"></i><span
-										class="hide-menu"> vectorMap </span></a></li>
-								<li class="sidebar-item"><a href="bestList"
-									class="sidebar-link"><i class="mdi mdi-adjust"></i><span
-										class="hide-menu"> Best Exhb </span></a></li>
-								<li class="sidebar-item"><a href="attendForm"
-									class="sidebar-link"><i class="mdi mdi-adjust"></i><span
-										class="hide-menu"> Attend </span></a></li>
-
-							</ul></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i
-								class="mdi mdi-tune-vertical"></i><span class="hide-menu">Review,Q&A
-							</span></a>
-							<ul aria-expanded="false" class="collapse  first-level">
-								<li class="sidebar-item"><a href="reviews"
-									class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span
-										class="hide-menu"> User Review </span></a></li>
-								<li class="sidebar-item"><a href="questions"
-									class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span
-										class="hide-menu"> Question </span></a></li>
-								<li class="sidebar-item"><a href="writeArticle"
-									class="sidebar-link"><i class="mdi mdi-view-day"></i><span
-										class="hide-menu"> WriteForm </span></a></li>
-							</ul></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i
-								class="mdi mdi-content-copy"></i><span class="hide-menu">User
-									Board</span></a>
-							<ul aria-expanded="false" class="collapse  first-level">
-								<li class="sidebar-item"><a href="#" class="sidebar-link"><i
-										class="mdi mdi-format-align-left"></i><span class="hide-menu">
-											My Exhibition</span></a></li>
-								<li class="sidebar-item"><a href="#" class="sidebar-link"><i
-										class="mdi mdi-format-align-right"></i><span class="hide-menu">
-											Calendar </span></a></li>
-							</ul></li>
-
-					</ul>
-				</nav>
-				<!-- End Sidebar navigation -->
-			</div>
-			<!-- End Sidebar scroll-->
-		</aside>
-		<!-- ============================================================== -->
-		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- Page wrapper  -->
-		<!-- ============================================================== -->
-		<div class="page-wrapper">
-			<!-- ============================================================== -->
-			<!-- Bread crumb and right sidebar toggle -->
-			<!-- ============================================================== -->
-			<div class="page-breadcrumb">
-				<div class="row">
-					<div class="col-5 align-self-center">
-						<h4 class="page-title">Basic Table</h4>
-						<div class="d-flex align-items-center">
-							<nav aria-label="breadcrumb">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Board</li>
-								</ol>
-							</nav>
-						</div>
-					</div>
-
-
-
-				</div>
-			</div>
-			<!-- ============================================================== -->
-			<!-- End Bread crumb and right sidebar toggle -->
-			<!-- ============================================================== -->
-			<!-- ============================================================== -->
-			<!-- Container fluid  -->
-			<!-- ============================================================== -->
-			<div class="container-fluid">
-				<!-- ============================================================== -->
-				<!-- Start Page Content 페이지 내용보기-->
-				<!-- ============================================================== -->
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<div class="d-md-flex align-items-center">
-									<div>
-										<h4 class="card-title">${articleDetail.title}</h4>
-									</div>
-									<div class="ml-auto d-flex no-block align-items-center">
-										<ul class="list-inline font-12 dl m-r-15 m-b-0">
-											<li class="list-inline-item text-secondary"><i
-												class="fas fa-star"></i> 리뷰자의 별점</li>
-											<li class="list-inline-item text-primary">4점</li>
-										</ul>
-
-									</div>
-								</div>
-
-								<div class="container-fluid">
-									<div class="row el-element-overlay">
-
-										<!-- column -->
-										<div class="col-lg-3 col-md-6" contextmenu="">
-											<div class="card" contextmenu="">
-												<div class="el-card-item">
-													<div class="el-card-avatar el-overlay-1">
-														<img src="resources/assets/images/users/1.jpg" alt="user" />
-														<div class="el-overlay">
-															<ul class="list-style-none el-info">
-																<li class="el-item"><a
-																	class="btn default btn-outline image-popup-vertical-fit el-link"
-																	href="resources/assets/images/users/1.jpg"><i
-																		class="icon-magnifier"></i></a></li>
-																<li class="el-item"><a
-																	class="btn default btn-outline el-link"
-																	href="javascript:void(0);"><i class="icon-link"></i></a></li>
-															</ul>
-														</div>
-													</div>
-													<div class="el-card-content">
-														<h4 class="m-b-0">${articleAuthor.memberId}</h4>
-														<span class="text-muted">${articleAuthor.memberName}</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- column -->
-										<div class="col-lg-9">
-											<div class="content">${articleDetail.content}</div>
-										</div>
-										<!-- column -->
-									</div>
-								</div>
-
-							</div>
-							<!-- ============================================================== -->
-							<!-- Info Box -->
-							<!-- ============================================================== -->
-							<div class="card-body border-top">
-								<div class="row m-b-0">
-									<!-- col -->
-									<div class="col-lg-3 col-md-6">
-										<div class="d-flex align-items-center"></div>
-									</div>
-									<!-- col -->
-									<!-- col -->
-									<div class="col-lg-3 col-md-6">
-										<div class="d-flex align-items-center"></div>
-									</div>
-									<!-- col -->
-									<!-- col -->
-									<div class="col-lg-3 col-md-6">
-
-										<div class="d-flex align-items-center">
-											<ul>
-												<li>
-													<h6 class="font-medium">
-														<a
-															href="exhibitionDetail?exhibitionId='${articleDetail.exhibitionId}'">URL</a>
-													</h6>
-												</li>
-												<li>
-													<h6 class="font-medium">${exbhibitionForArticle.exhibitionTitleKor}</h6>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<!-- col -->
-									<!-- col -->
-									<div class="col-lg-3 col-md-6">
-										<div class="d-flex align-items-center"></div>
-									</div>
-									<!-- col -->
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- ============================================================== -->
-				<!-- Sales chart -->
-				<!-- ============================================================== -->
-				<!-- ============================================================== -->
-				<!-- Email campaign chart -->
-				<!-- ============================================================== -->
-				<div class="row">
-					<div class="col-lg-8 col-xl-6">
-						<div class="card card-hover">
-							<div class="card-body">
-								<div class="d-md-flex align-items-center">
-									<h3>연관 글 더보기</h3>
-								</div>
-								<!-- column -->
-								<div class="row m-t-40">
-									<!-- column -->
-									<div class="col-lg-6">
-										<div id="visitor" style="height: 290px; width: 100%;"
-											class="m-t-20"></div>
-									</div>
-									<!-- column -->
-									<div class="col-lg-6">
-										<h3>연관글 더보기?</h3>
-									</div>
-								</div>
-								<!-- column -->
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-xl-6">
-						<div class="card card-hover">
-							<div class="card-body"
-								style="background: url(resources/assets/images/background/active-bg.png) no-repeat top center;">
-
-
-								<h1>여기 뭐넣지?</h1>
-
-
-
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- ============================================================== -->
-				<!-- 글 더보기-->
-				<!-- ============================================================== -->
-				<!-- ============================================================== -->
-				<!-- 뎃글s -->
-				<!-- ============================================================== -->
-				<div class="row">
-					<!-- column -->
-					<div class="col-lg-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">Recent Comments</h4>
-							</div>
-							<c:if test="${empty articleReply}">
-								<div>댓글이 없습니다.</div>
-							</c:if>
-							<c:if test="${not empty articleReply}">
-								<div class="container-fluid">
-									<div class="comment-widgets scrollable">
-										<!-- Comment Row -->
-										<div class="d-flex flex-row comment-row m-t-0">
-											<div class="p-2">
-												<img src="resources/assets/images/users/1.jpg" alt="user"
-													width="50" class="rounded-circle">
-											</div>
-											<div class="comment-text w-100">
-												<h6 class="font-medium">${articleReply.memberId}</h6>
-												<h6>별점 들어갈 곳</h6>
-												<span class="m-b-15 d-block">${articleReply.content}</span>
-												<div class="comment-footer">
-													<span class="text-muted float-right">${articleReply.updatedDate}</span>
-													<span class="label label-rounded label-primary">Pending</span>
-													<span class="action-icons"> <a
-														href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
-														<a href="javascript:void(0)"><i class="ti-check"></i></a>
-														<a href="javascript:void(0)"><i class="ti-heart"></i></a>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:if>
-							<!-- 댓글 열 -->
-						</div>
-
-					</div>
-					<!-- 플루이드는 여기까지입니다. -->
-				</div>
-			</div>
-
-		</div>
-		<!-- ============================================================== -->
-		<!-- 댓글 -->
-		<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Container fluid  -->
-	<!-- ============================================================== -->
-
-
-
-	<!-- ============================================================== -->
-	<!-- 페이지 끝 -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- Right sidebar -->
-	<!-- ============================================================== -->
-	<!-- .right-sidebar -->
-	<!-- ============================================================== -->
-	<!-- End Right sidebar -->
-	<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Container fluid  -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- footer -->
-	<!-- ============================================================== -->
-	<footer class="footer text-center"> SCIT Poject </footer>
-	<!-- ============================================================== -->
-	<!-- End footer -->
-	<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Page wrapper  -->
-	<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Wrapper -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- customizer Panel -->
-	<!-- ============================================================== -->
-	<a class="nav-link dropdown-toggle waves-effect waves-dark" href=""
-		data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-	</a>
-	</aside>
-
-	<div class="chat-windows"></div>
-	<!-- ============================================================== -->
-	<!-- All Jquery -->
-	<!-- ============================================================== -->
-	<script>
-		// Basic grid
-	</script>
-	<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap tether Core JavaScript -->
-	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- apps -->
-	<script src="resources/dist/js/app.min.js"></script>
-	<script src="resources/dist/js/app.init.iconbar.js"></script>
-	<script src="resources/dist/js/app-style-switcher.js"></script>
-	<!-- slimscrollbar scrollbar JavaScript -->
-	<script
-		src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-	<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
-	<!--Wave Effects -->
-	<script src="resources/dist/js/waves.js"></script>
-	<!--Menu sidebar -->
-	<script src="resources/dist/js/sidebarmenu.js"></script>
-	<!--Custom JavaScript -->
-	<script src="resources/dist/js/custom.min.js"></script>
-	<!--This page JavaScript -->
-	<script
-		src="resources/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-	<script src="resources/assets/libs/magnific-popup/meg.init.js"></script>
-
+    	  $(function() {
+    	    typed.typed({
+    	      strings: [" ARE GLOBALLY UNLIMITED.", "SHOW YOU TONS OF EXHIBITIONS.", "PROVIDE USER-FRIENDLY MAPS."],
+    	      typeSpeed: 100,
+    	      loop: true,
+    	    });
+    	  });
+    	  
+    });
+    
+    
+    </script>
 </body>
 
 </html>
