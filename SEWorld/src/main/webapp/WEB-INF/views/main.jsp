@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -620,31 +621,45 @@ body.mobile-nav-active #mobile-nav-toggle {
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="resources/regna/#hero">Home</a></li>
-          <li><a href="exhibitionList">Exhibition</a></li>
-          <li><a href="reviews">Review</a></li>
-          <li><a href="questions">Question</a></li>
+          <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
+           <li class="menu-has-children"><a href="#services">Exhibition</a>
+           <ul>
+              <li><a href="exhibitionList">전시회게시판</a></li>
+           	  <li><a href="#facts">GoogleMap</a></li>   
+           </ul>
+           
+           
+         <li class="menu-has-children"><a href="#portfolio">Review</a>
+           <ul>
+              <li><a href="reviews">Review</a></li>
+           	  <li><a href="#">Write Review</a></li>   
+           	  <li><a href="questions">Question</a></li>
+           </ul>
+           
 
-          <li><a href="#">Question</a></li>
-          <li><a href="calendar">Calendar</a></li>
-          <li class="menu-has-children"><a href="#">Drop Down</a>
-            <ul>
-              <li><a href="resources/regna/#">Drop Down 1</a></li>
-              <li class="menu-has-children"><a href="resources/regna/#">Drop Down 2</a>
-                <ul>
-                  <li><a href="resources/regna/#">Deep Drop Down 1</a></li>
-                  <li><a href="resources/regna/#">Deep Drop Down 2</a></li>
-                  <li><a href="resources/regna/#">Deep Drop Down 3</a></li>
-                  <li><a href="resources/regna/#">Deep Drop Down 4</a></li>
-                  <li><a href="resources/regna/#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="resources/regna/#">Drop Down 3</a></li>
-              <li><a href="resources/regna/#">Drop Down 4</a></li>
-              <li><a href="resources/regna/#">Drop Down 5</a></li>
-            </ul>
-          </li>
-          <li><a href="resources/regna/#contact">Contact Us</a></li>
+          <li class="menu-has-children"><a href="profile">My Profile</a>
+           <ul>
+              <li><a href="profile">Profile</a></li>
+           	  <li><a href="calendar">calendar</a></li>   
+           </ul>
+         
+        <c:if test="${sessionScope.loginId==null}">		
+          <li class="menu-has-children"><a href="profile">sign up/log in</a>
+           <ul>
+              <li><a href="login">Log in</a></li>
+           	  <li><a href="#">Sign up</a></li>   
+           </ul>
+         </c:if>
+          
+         <c:if test="${sessionScope.loginId !=null}">
+          	<li class="menu-has-children"><a href="#">${sessionScope.loginId}님</a>
+         	<ul>
+              <li><a href="#">Log in</a></li>
+           	  <li><a href="#">Sign up</a></li>   
+           </ul>
+         
+         </c:if> 
+          
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -895,7 +910,7 @@ body.mobile-nav-active #mobile-nav-toggle {
      <!-- 전시회목록 end-->   
         
         
-     <section id="services">
+     <section id="portfolio">
       <div class="container wow fadeIn">
         <div class="section-header">
           <h3 class="section-title">Recent reviews</h3>

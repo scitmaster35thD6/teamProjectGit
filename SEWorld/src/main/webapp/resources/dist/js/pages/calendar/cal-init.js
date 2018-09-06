@@ -210,34 +210,6 @@ function toTimeObject(str){
                     start: today,
                     end: today,
                     className: 'bg-danger'
-                }, {
-                    title: 'Meetup #6',
-                    start: new Date($.now() + 848000000),
-                    className: 'bg-info'
-                }, {
-                    title: 'Seminar #4',
-                    start: new Date($.now() - 1099000000),
-                    end: new Date($.now() - 919000000),
-                    className: 'bg-warning'
-                }, {
-                    title: 'Event Conf.',
-                    start: new Date($.now() - 1199000000),
-                    end: new Date($.now() - 1199000000),
-                    className: 'bg-purple'
-                }, {
-                    title: 'Meeting #5',
-                    start: new Date($.now() - 399000000),
-                    end: new Date($.now() - 219000000),
-                    className: 'bg-info'
-                },
-                {
-                    title: 'Submission #2',
-                    start: new Date($.now() + 868000000),
-                    className: 'bg-danger'
-                }, {
-                    title: 'Seminar #5',
-                    start: new Date($.now() + 348000000),
-                    className: 'bg-success'
                 }
             ];
             
