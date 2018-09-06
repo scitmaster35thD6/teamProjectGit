@@ -45,42 +45,55 @@
 		  AND exhibitionId = #{exhibitionId}
 	</select>
 
-	<insert id="insertOneComment" parameterType="Comment">
+	<insert id="insertComment" parameterType="Comment">
 		INSERT INTO c6_comment
 		(
 		memberId
 		,exhibitionId
-		,rating
+		<if test="content != null">
 		,content
-		,createdDate
-		,updtaedDate
-		,likes
+		</if>
+		<if test="rating != null">
+		,rating
+		</if>
 		)
 		VALUES
 		(
 		#{memberId}
 		,#{exhibitionId}
-		,#{rating}
+		<if test="content != null">
 		,#{content}
-		,SYSDATE
-		,SYSDATE
-		,0
+		</if>
+		<if test="rating != null">
+		,#{rating}
+		</if>
 		)
 	</insert>
 
-	<delete id="deleteOneComment" parameterType="Comment">
-		DELETE
-		FROM c6_comment
+	<delete id="updateCommentDeleted" parameterType="Comment">
+		UPDATE c6_comment
+		SET
+		updatedDate = SYSDATE
+		<if test="content != null">
+		,content = ''
+		</if>
+		<if test="rating != null">
+		,rating = 0
+		</if>
 		WHERE memberId = #{memberId}
 		  AND exhibitionId = #{exhibitionId}
 	</delete>
 
-	<update id="updateOneComment" parameterType="Comment">
+	<update id="updateCommentInserted" parameterType="Comment">
 		UPDATE c6_comment
 		SET
-		rating = #{rating}
+		updatedDate = SYSDATE
+		<if test="content != null">
 		,content = #{content}
-		,updatedDate = SYSDATE
+		</if>
+		<if test="rating != null">
+		,rating = #{rating}
+		</if>
 		WHERE memberId = #{memberId}
 		  AND exhibitionId = #{exhibitionId}
 	</update>

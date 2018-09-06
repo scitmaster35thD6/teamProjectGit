@@ -11,13 +11,23 @@ public class WishingRepository {
 	@Autowired
 	SqlSession sqlSession;
 
+	public Wishing selectOneWishing(Wishing wishing) {
+		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
+		return wishingMapper.selectOneWishing(wishing);
+	}
+
 	public int insertOneWishing(Wishing wishing) {
 		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
 		return wishingMapper.insertOneWishing(wishing);
 	}
 
-	public int deleteOneWishing(Wishing wishing) {
+	public int updateWishingDeleted(Wishing wishing) {
 		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
-		return wishingMapper.deleteOneWishing(wishing);
+		return wishingMapper.updateWishingDeleted(wishing);
+	}
+
+	public int updateWishingInserted(Wishing wishing) {
+		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
+		return wishingMapper.updateWishingInserted(wishing);
 	}
 }
