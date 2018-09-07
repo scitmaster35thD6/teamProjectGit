@@ -1,5 +1,7 @@
 package global.sesoc.seworld;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,32 +11,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import global.sesoc.seworld.dao.ExhibitionRepository;
+import global.sesoc.seworld.dto.Exhibition;
 
 @Controller
 public class HomeController {
-	
+
 	/**
 	 * SE World Home Controller
 	 * 
 	 * @author youngbinkim
 	 * @version 0.1
 	 */
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@Autowired
 	ExhibitionRepository exhibitionRepository;
 
 	// 메인 페이지로 이동
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-//		List<Exhibition> mapList = exhibitionRepository.getListForMap();
-//		model.addAttribute("mapList", mapList);
+		// List<Exhibition> mapList = exhibitionRepository.getListForMap();
+		// model.addAttribute("mapList", mapList);
 		logger.info("[/]");
-		
+		List<Exhibition> recentExhibition = exhibitionRepository.getRecentExhibition();
+		model.addAttribute("recentExhibition", recentExhibition);
 		return "main";
 	}
-	/*예전 메인*/
+
+	/* 예전 메인 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String newMainPage() {
 		logger.info("[/]");
@@ -45,5 +50,5 @@ public class HomeController {
 	public String articlereading() {
 		return "board/readArticle3";
 	}
-	
+
 }

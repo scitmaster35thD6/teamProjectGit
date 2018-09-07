@@ -49,4 +49,9 @@ public class ExhibitionRepository {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
 		return mapper.getListForMap();
 	}
+	
+	public List<Exhibition> getRecentExhibition(){
+		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
+		return mapper.getRecentExhibition();
+	}
 }

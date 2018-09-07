@@ -1231,24 +1231,24 @@ var countries = {
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-            <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+            <img class="img-fluid" src="resources/assets/images/big/img1.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">한국기술과학 연구원 전시회</h3>
-                <p>한국기술과학 연구원 20주년을 맞아...</p>
+                <h3 class="text-white">${recentExhibition[0].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[0].exhibitionTitleEng}</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+            <img class="img-fluid" src="resources/assets/images/big/img2.jpg" alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">Second title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[1].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[1].exhibitionTitleEng}</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+            <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">Third title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[2].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[2].exhibitionTitleEng}</p>
             </div>
         </div>
     </div>
@@ -1266,24 +1266,24 @@ var countries = {
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-            <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+            <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">First title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[3].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[3].exhibitionTitleEng}</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+            <img class="img-fluid" src="resources/assets/images/big/img5.jpg" alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">Second title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[4].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[4].exhibitionTitleEng}</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+            <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">Third title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[5].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[5].exhibitionTitleEng}</p>
             </div>
         </div>
     </div>
@@ -1303,24 +1303,24 @@ var countries = {
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-            <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+            <img class="img-fluid" src="resources/assets/images/big/img7.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">First title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[6].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[6].exhibitionTitleEng}</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+            <img class="img-fluid" src="resources/assets/images/big/img8.jpg" alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">Second title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[7].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[7].exhibitionTitleEng}</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+            <img class="img-fluid" src="resources/assets/images/big/img9.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">Third title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[8].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[8].exhibitionTitleEng}</p>
             </div>
         </div>
     </div>
@@ -1338,24 +1338,24 @@ var countries = {
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-            <img class="img-fluid" src="resources/assets/images/big/img6.jpg" alt="First slide">
+            <img class="img-fluid" src="resources/assets/images/big/img10.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">First title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[9].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[9].exhibitionTitleEng}</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid" src="resources/assets/images/big/img3.jpg" alt="Second slide">
+            <img class="img-fluid" src="resources/assets/images/big/img11.jpg" alt="Second slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">Second title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[10].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[10].exhibitionTitleEng}</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="img-fluid" src="resources/assets/images/big/img4.jpg" alt="Third slide">
+            <img class="img-fluid" src="resources/assets/images/big/img12.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white">Third title goes here</h3>
-                <p>this is the subcontent you can use this</p>
+                <h3 class="text-white">${recentExhibition[11].exhibitionTitleKor}</h3>
+                <p>${recentExhibition[11].exhibitionTitleEng}</p>
             </div>
         </div>
     </div>
