@@ -631,46 +631,43 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<header id="header">
 		<div class="container">
 
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
-           <li class="menu-has-children"><a href="#services">Exhibition</a>
-           <ul>
-              <li><a href="exhibitionList">Exhibition List</a></li>
-           	  <li><a href="#facts">GoogleMap</a></li>   
-           </ul>
-           
-           
-         <li class="menu-has-children"><a href="#portfolio">User's Voice</a>
-           <ul>
-              <li><a href="reviews">Review</a></li>
-           	  <li><a href="questions">Question</a></li>
-           	  <li><a href="writeArticle">Write Article</a></li>   
-           </ul>
-           
-         
-        <c:if test="${empty sessionScope.loginId}">		
-          <li class="menu-has-children"><a href="profile">Member</a>
-           <ul>
-              <li><a href="login">Log in</a></li>
-           	  <li><a href="#">Sign up</a></li>   
-           </ul>
-         </c:if>
-          
-         <c:if test="${not empty sessionScope.loginId}">
-          	<li class="menu-has-children"><a href="#">${sessionScope.loginId} 님</a>
-         	<ul>
-           	  <li><a href="logout">Log out</a></li>   
-              <li><a href="profile">Profile</a></li>
-           	  <li><a href="calendar">calendar</a></li>  
-           </ul>
-         </c:if> 
-          
-        </ul>
-      </nav><!-- #nav-menu-container -->
-    </div>
-  </header><!-- #header -->
-   
+			<nav id="nav-menu-container">
+				<ul class="nav-menu">
+					<li class="menu-active"><a
+						href="${pageContext.servletContext.contextPath}">Home</a></li>
+					<li class="menu-has-children"><a href="#services">Exhibition</a>
+						<ul>
+							<li><a href="exhibitionList">Exhibition List</a></li>
+							<li><a href="#facts">GoogleMap</a></li>
+						</ul>
+					<li class="menu-has-children"><a href="#portfolio">User's
+							Voice</a>
+						<ul>
+							<li><a href="reviews">Review</a></li>
+							<li><a href="questions">Question</a></li>
+							<li><a href="writeArticle">Write Article</a></li>
+						</ul> <c:if test="${empty sessionScope.loginId}">
+							<li class="menu-has-children"><a href="profile">Member</a>
+								<ul>
+									<li><a href="login">Log in</a></li>
+									<li><a href="#">Sign up</a></li>
+								</ul>
+						</c:if> <c:if test="${not empty sessionScope.loginId}">
+							<li class="menu-has-children"><a href="#">${sessionScope.loginId}
+									님</a>
+								<ul>
+									<li><a href="logout">Log out</a></li>
+									<li><a href="profile">Profile</a></li>
+									<li><a href="calendar">calendar</a></li>
+								</ul>
+						</c:if>
+				</ul>
+			</nav>
+			<!-- #nav-menu-container -->
+		</div>
+	</header>
+	<!-- #header -->
+
 
 
 	<!--==========================
@@ -693,7 +690,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- ============================================================== -->
 	<!-- End Left Sidebar - style you can find in sidebar.scss  -->
 	<!-- ============================================================== -->
-	<div class="newpage" style="background-color: #f7e9c3;">
+	<div class="newpage" style="background-color: #f7e9c3;"  id="scroll">
 		<!-- ============================================================== -->
 		<!-- Bread crumb and right sidebar toggle -->
 		<!-- ============================================================== -->
@@ -788,19 +785,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 					</div>
 				</center>
 			</div>
-			
+
 			<div>
 				<hr>
 			</div>
 			<div class="card-body">
 				<div class="contents">${articleDetail.content}</div>
-				
+
 			</div>
-				<!--첨부파일-->
-				<hr>
-				<div class="card-body">
-				<span class="label label-info">첨부파일</span> abc.txt						
-				</div>
+			<!--첨부파일-->
+			<hr>
+			<div class="card-body">
+				<span class="label label-info">첨부파일</span> abc.txt
+			</div>
 		</div>
 		<!-- ============================================================== -->
 		<!-- Container fluid  -->
@@ -875,492 +872,500 @@ body.mobile-nav-active #mobile-nav-toggle {
 							<div class="row">
 								<!-- owl carousel넣기 -->
 								<div class="owl-carousel">
-						<c:if test="${not empty articleReply}">
-								<div>댓글이 없습니다.</div>
-						</c:if>		
-								
-						<c:if test="${not empty articleReply}">
-								<!--  -->
-								
-						<c:forEach var="replys" items="${articleReply}">
-										<!-- 댓글한개 -->
-										<div>
-											<div class="d-flex flex-row comment-row m-t-0">
-												<div class="comment-text w-100">
-													<div class="row">
-														<div class="col-8">
-															<h6 class="font-medium">${replys.memberId}</h6>
+									<c:if test="${not empty articleReply}">
+										<div>댓글이 없습니다.</div>
+									</c:if>
+
+									<c:if test="${not empty articleReply}">
+										<!--  -->
+
+										<c:forEach var="replys" items="${articleReply}">
+											<!-- 댓글한개 -->
+											<div>
+												<div class="d-flex flex-row comment-row m-t-0">
+													<div class="comment-text w-100">
+														<div class="row">
+															<div class="col-8">
+																<h6 class="font-medium">${replys.memberId}</h6>
+															</div>
+															<div class="col-4">
+																<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
+																&nbsp; 4점
+															</div>
+
 														</div>
-														<div class="col-4">
-															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
-															&nbsp; 4점
+														<span class="m-b-15 d-block">${replys.content}</span>
+														<div class="comment-footer">
+															<i class="fas fa-heart" style="color: #f77497;"></i>15 <span
+																class="text-muted float-right">${replys.updatedDate}</span>
+															<span class="action-icons"> <a
+																href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+																<a href="javascript:void(0)"><i class="ti-trash"></i></a>
+																<a href="javascript:void(0)"><i class="ti-heart"></i></a>
+															</span>
 														</div>
-
-													</div>
-													<span class="m-b-15 d-block">${replys.content}</span>
-													<div class="comment-footer">
-														<i class="fas fa-heart" style="color: #f77497;"></i>15 <span
-															class="text-muted float-right">${replys.updatedDate}</span> <span
-															class="action-icons"> <a href="javascript:void(0)"><i
-																class="ti-pencil-alt"></i></a> <a href="javascript:void(0)"><i
-																class="ti-trash"></i></a> <a href="javascript:void(0)"><i
-																class="ti-heart"></i></a>
-														</span>
 													</div>
 												</div>
-											</div>
-								
 
-								</div>								
-							</c:forEach>
-							</c:if>	
-								
-								
-								
-								<!--  -->
+
+											</div>
+										</c:forEach>
+									</c:if>
+
+
+
+									<!--  -->
 									<div>
-									<div class="d-flex flex-row comment-row m-t-0">
-										<div class="comment-text w-100">
-											<div class="row">
-												<div class="col-8">
-													<h6 class="font-medium">heemin</h6>
-												</div>
-												<div class="col-4">
-													<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
-													&nbsp; 4점
-												</div>
+										<div class="d-flex flex-row comment-row m-t-0">
+											<div class="comment-text w-100">
+												<div class="row">
+													<div class="col-8">
+														<h6 class="font-medium">heemin</h6>
+													</div>
+													<div class="col-4">
+														<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
+														&nbsp; 4점
+													</div>
 
-											</div>
-											<span class="m-b-15 d-block">좋은 내용입니다 별점 테러
-												teeeeeeeeeeeeeeeee </span>
-											<div class="comment-footer">
-												<i class="fas fa-heart" style="color: #f77497;"></i>10 <span
-													class="text-muted float-right">April 14, 2016</span> <span
-													class="action-icons"> <a href="javascript:void(0)"><i
-														class="ti-pencil-alt"></i></a> <a href="javascript:void(0)"><i
-														class="ti-trash"></i></a> <a href="javascript:void(0)"><i
-														class="ti-heart"></i></a>
-												</span>
+												</div>
+												<span class="m-b-15 d-block">좋은 내용입니다 별점 테러
+													teeeeeeeeeeeeeeeee </span>
+												<div class="comment-footer">
+													<i class="fas fa-heart" style="color: #f77497;"></i>10 <span
+														class="text-muted float-right">April 14, 2016</span> <span
+														class="action-icons"> <a href="javascript:void(0)"><i
+															class="ti-pencil-alt"></i></a> <a href="javascript:void(0)"><i
+															class="ti-trash"></i></a> <a href="javascript:void(0)"><i
+															class="ti-heart"></i></a>
+													</span>
+												</div>
 											</div>
 										</div>
+
+
 									</div>
 
-
-								</div>
-									
-								<!-- 댓글한개 -->
-								<div>
-									<div class="d-flex flex-row comment-row m-t-0">
-										<div class="comment-text w-100">
-											<div class="row">
-												<div class="col-8">
-													<h6 class="font-medium">heemin</h6>
-												</div>
-												<div class="col-4">
-													<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
-													&nbsp; 4점
-												</div>
-
-											</div>
-											<span class="m-b-15 d-block">좋은 내용입니다 별점 테러
-												teeeeeeeeeeeeeeeee </span>
-											<div class="comment-footer">
-												<i class="fas fa-heart" style="color: #f77497;"></i>10 <span
-													class="text-muted float-right">April 14, 2016</span> <span
-													class="action-icons"> <a href="javascript:void(0)"><i
-														class="ti-pencil-alt"></i></a> <a href="javascript:void(0)"><i
-														class="ti-trash"></i></a> <a href="javascript:void(0)"><i
-														class="ti-heart"></i></a>
-												</span>
-											</div>
-										</div>
-									</div>
-
-
-								</div>
-
-
-								<div>
-
-									<div class="d-flex flex-row comment-row m-t-0">
-										<div class="comment-text w-100">
-											<div class="row">
-												<div class="col-8">
-													<h6 class="font-medium">heemin</h6>
-												</div>
-												<div class="col-4">
-													<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
-													&nbsp; 4점
-												</div>
-
-											</div>
-											<span class="m-b-15 d-block">ㄴㅇㄹㄴㅇㄹㄴㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ.
-											</span>
-											<div class="comment-footer">
-												<i class="fas fa-heart" style="color: #f77497;"></i>15 <span
-													class="text-muted float-right">April 14, 2016</span> <span
-													class="action-icons"> <a href="javascript:void(0)"><i
-														class="ti-pencil-alt"></i></a> <a href="javascript:void(0)"><i
-														class="ti-trash"></i></a> <a href="javascript:void(0)"><i
-														class="ti-heart"></i></a>
-												</span>
-											</div>
-										</div>
-									</div>
-
-								</div>
-
-
-								<div>
-									<div class="d-flex flex-row comment-row m-t-0">
-										<div class="comment-text w-100">
-
-											<div class="row">
-												<div class="col-8">
-													<h6 class="font-medium">heemin</h6>
-												</div>
-												<div class="col-4">
-													<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
-													&nbsp; 4점
-												</div>
-											</div>
-
-											<span class="m-b-15 d-block">ㄴㅇㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴy.
-											</span>
-											<div class="comment-footer">
-												<i class="fas fa-heart" style="color: #f77497;"></i>15 <span
-													class="text-muted float-right">April 14, 2016</span> <span
-													class="action-icons"> <a href="javascript:void(0)"><i
-														class="ti-pencil-alt"></i></a> <a href="javascript:void(0)"><i
-														class="ti-trash"></i></a> <a href="javascript:void(0)"><i
-														class="ti-heart"></i></a>
-												</span>
-											</div>
-										</div>
-									</div>
-
-								</div>
-
-	
-
-
-							<!-- owl carousel넣기 -->
-						</div>
-					</div>
-				</div>
-		</div>
-
-
-				
-				<!-- card 창 끝 -->
-
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="card">
-							<div class="card-body">
-								<div class="d-md-flex align-items-center">
+									<!-- 댓글한개 -->
 									<div>
-										<h4 class="card-title">Related articles</h4>
-									</div>
-									<div class="ml-auto d-flex no-block align-items-center">
-										<div class="dl">
-											<a href="reviews"><i class="ti-list"></i>글 목록</a>
+										<div class="d-flex flex-row comment-row m-t-0">
+											<div class="comment-text w-100">
+												<div class="row">
+													<div class="col-8">
+														<h6 class="font-medium">heemin</h6>
+													</div>
+													<div class="col-4">
+														<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
+														&nbsp; 4점
+													</div>
+
+												</div>
+												<span class="m-b-15 d-block">좋은 내용입니다 별점 테러
+													teeeeeeeeeeeeeeeee </span>
+												<div class="comment-footer">
+													<i class="fas fa-heart" style="color: #f77497;"></i>10 <span
+														class="text-muted float-right">April 14, 2016</span> <span
+														class="action-icons"> <a href="javascript:void(0)"><i
+															class="ti-pencil-alt"></i></a> <a href="javascript:void(0)"><i
+															class="ti-trash"></i></a> <a href="javascript:void(0)"><i
+															class="ti-heart"></i></a>
+													</span>
+												</div>
+											</div>
 										</div>
+
+
 									</div>
+
+
+									<div>
+
+										<div class="d-flex flex-row comment-row m-t-0">
+											<div class="comment-text w-100">
+												<div class="row">
+													<div class="col-8">
+														<h6 class="font-medium">heemin</h6>
+													</div>
+													<div class="col-4">
+														<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
+														&nbsp; 4점
+													</div>
+
+												</div>
+												<span class="m-b-15 d-block">ㄴㅇㄹㄴㅇㄹㄴㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ.
+												</span>
+												<div class="comment-footer">
+													<i class="fas fa-heart" style="color: #f77497;"></i>15 <span
+														class="text-muted float-right">April 14, 2016</span> <span
+														class="action-icons"> <a href="javascript:void(0)"><i
+															class="ti-pencil-alt"></i></a> <a href="javascript:void(0)"><i
+															class="ti-trash"></i></a> <a href="javascript:void(0)"><i
+															class="ti-heart"></i></a>
+													</span>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+
+									<div>
+										<div class="d-flex flex-row comment-row m-t-0">
+											<div class="comment-text w-100">
+
+												<div class="row">
+													<div class="col-8">
+														<h6 class="font-medium">heemin</h6>
+													</div>
+													<div class="col-4">
+														<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
+														&nbsp; 4점
+													</div>
+												</div>
+
+												<span class="m-b-15 d-block">ㄴㅇㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴy.
+												</span>
+												<div class="comment-footer">
+													<i class="fas fa-heart" style="color: #f77497;"></i>15 <span
+														class="text-muted float-right">April 14, 2016</span> <span
+														class="action-icons"> <a href="javascript:void(0)"><i
+															class="ti-pencil-alt"></i></a> <a href="javascript:void(0)"><i
+															class="ti-trash"></i></a> <a href="javascript:void(0)"><i
+															class="ti-heart"></i></a>
+													</span>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+
+
+
+									<!-- owl carousel넣기 -->
 								</div>
-								<!-- 관련글 보기 (열) -->
-								<div class="row">
-									<div class="col-lg-4 col-md-6 wow fadeInUp"
-										data-wow-delay="0.2s">
-										<div class="card">
-											<div class="card-body">
-												<div class="d-flex no-block align-items-center m-b-15">
-													<span><i class="ti-calendar"></i> 20 May 2018</span>
-													<div class="ml-auto">
-														<a href="javascript:void(0)" class="link"><i
-															class="ti-comments"></i> 3 Comments</a>
-													</div>
-												</div>
-												<h3 class="font-normal">Featured Hydroflora Pots Garden
-													&amp; Outdoors</h3>
-												<p class="m-b-0 m-t-10">Titudin venenatis ipsum ac
-													feugiat. Vestibulum ullamcorper quam.</p>
-												<button
-													class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read
-													more</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 wow fadeInUp"
-										data-wow-delay="0.4s">
-										<div class="card">
-											<div class="card-body">
-												<div class="d-flex no-block align-items-center m-b-15">
-													<span><i class="ti-calendar"></i> 19 May 2018</span>
-													<div class="ml-auto">
-														<a href="javascript:void(0)" class="link"><i
-															class="ti-comments"></i> 5 Comments</a>
-													</div>
-												</div>
-												<h3 class="font-normal">Featured Hydroflora Pots Garden
-													&amp; Outdoors</h3>
-												<p class="m-b-0 m-t-10">Titudin venenatis ipsum ac
-													feugiat. Vestibulum ullamcorper quam.</p>
-												<button
-													class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read
-													more</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 wow fadeInUp"
-										data-wow-delay="0.6s">
-										<div class="card">
-											<div class="card-body">
-												<div class="d-flex no-block align-items-center m-b-15">
-													<span><i class="ti-calendar"></i> 29 May 2018</span>
-													<div class="ml-auto">
-														<a href="javascript:void(0)" class="link"><i
-															class="ti-comments"></i> 6 Comments</a>
-													</div>
-												</div>
-												<h3 class="font-normal">Featured Hydroflora Pots Garden
-													&amp; Outdoors</h3>
-												<p class="m-b-0 m-t-10">Titudin venenatis ipsum ac
-													feugiat. Vestibulum ullamcorper quam.</p>
-												<button
-													class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read
-													more</button>
-											</div>
-										</div>
-									</div>
-
-
-								</div>
-								<!-- 관련글 보기 (열) -->
-
 							</div>
-							<!-- card body -->
 						</div>
 					</div>
+
+
+
+					<!-- card 창 끝 -->
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="d-md-flex align-items-center">
+										<div>
+											<h4 class="card-title">Related articles</h4>
+										</div>
+										<div class="ml-auto d-flex no-block align-items-center">
+											<div class="dl">
+												<a href="reviews"><i class="ti-list"></i>글 목록</a>
+											</div>
+										</div>
+									</div>
+									<!-- 관련글 보기 (열) -->
+									<div class="row">
+										<div class="col-lg-4 col-md-6 wow fadeInUp"
+											data-wow-delay="0.2s">
+											<div class="card">
+												<div class="card-body">
+													<div class="d-flex no-block align-items-center m-b-15">
+														<span><i class="ti-calendar"></i> 20 May 2018</span>
+														<div class="ml-auto">
+															<a href="javascript:void(0)" class="link"><i
+																class="ti-comments"></i> 3 Comments</a>
+														</div>
+													</div>
+													<h3 class="font-normal">Featured Hydroflora Pots
+														Garden &amp; Outdoors</h3>
+													<p class="m-b-0 m-t-10">Titudin venenatis ipsum ac
+														feugiat. Vestibulum ullamcorper quam.</p>
+													<button
+														class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read
+														more</button>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-6 wow fadeInUp"
+											data-wow-delay="0.4s">
+											<div class="card">
+												<div class="card-body">
+													<div class="d-flex no-block align-items-center m-b-15">
+														<span><i class="ti-calendar"></i> 19 May 2018</span>
+														<div class="ml-auto">
+															<a href="javascript:void(0)" class="link"><i
+																class="ti-comments"></i> 5 Comments</a>
+														</div>
+													</div>
+													<h3 class="font-normal">Featured Hydroflora Pots
+														Garden &amp; Outdoors</h3>
+													<p class="m-b-0 m-t-10">Titudin venenatis ipsum ac
+														feugiat. Vestibulum ullamcorper quam.</p>
+													<button
+														class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read
+														more</button>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-6 wow fadeInUp"
+											data-wow-delay="0.6s">
+											<div class="card">
+												<div class="card-body">
+													<div class="d-flex no-block align-items-center m-b-15">
+														<span><i class="ti-calendar"></i> 29 May 2018</span>
+														<div class="ml-auto">
+															<a href="javascript:void(0)" class="link"><i
+																class="ti-comments"></i> 6 Comments</a>
+														</div>
+													</div>
+													<h3 class="font-normal">Featured Hydroflora Pots
+														Garden &amp; Outdoors</h3>
+													<p class="m-b-0 m-t-10">Titudin venenatis ipsum ac
+														feugiat. Vestibulum ullamcorper quam.</p>
+													<button
+														class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read
+														more</button>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+									<!-- 관련글 보기 (열) -->
+
+								</div>
+								<!-- card body -->
+							</div>
+						</div>
+					</div>
+					<!-- row -->
+
+
 				</div>
-				<!-- row -->
+				<!-- 컨테이너 플루이드 -->
+
+
+
 
 
 			</div>
-			<!-- 컨테이너 플루이드 -->
+			<!--  wrapper-->
 
 
 
+			<!-- ============================================================== -->
+			<!-- Page wrapper  -->
+			<!-- ============================================================== -->
 
+			<!-- ============================================================== -->
+			<!-- Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
 
-		</div>
-		<!--  wrapper-->
+			<!-- ============================================================== -->
+			<!-- End Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Container fluid  -->
+			<!-- ============================================================== -->
 
-
-
-		<!-- ============================================================== -->
-		<!-- Page wrapper  -->
-		<!-- ============================================================== -->
-
-		<!-- ============================================================== -->
-		<!-- Bread crumb and right sidebar toggle -->
-		<!-- ============================================================== -->
-
-		<!-- ============================================================== -->
-		<!-- End Bread crumb and right sidebar toggle -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- Container fluid  -->
-		<!-- ============================================================== -->
-
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- End Container fluid  -->
-		<!-- ============================================================== -->
-		<!-- 페이지 레퍼 div있던 자리 -->
-		<!-- ============================================================== -->
-		<!-- footer -->
-		<!-- ============================================================== -->
-		<footer id="footer">
-			<div class="footer-top">
-				<div class="container"></div>
-			</div>
-
-			<div class="container">
-				<div class="copyright">
-					&copy; Copyright <strong>SE WROLD</strong>.
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- End Container fluid  -->
+			<!-- ============================================================== -->
+			<!-- 페이지 레퍼 div있던 자리 -->
+			<!-- ============================================================== -->
+			<!-- footer -->
+			<!-- ============================================================== -->
+			<footer id="footer">
+				<div class="footer-top">
+					<div class="container"></div>
 				</div>
 
-			</div>
-		</footer>
-		<!-- #footer -->
+				<div class="container">
+					<div class="copyright">
+						&copy; Copyright <strong>SE WROLD</strong>.
+					</div>
 
-		<a href="#" class="back-to-top"><i class="fas fa-angle-double-up"></i></a>
-		<!-- ============================================================== -->
-		<!-- End footer -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- End Page wrapper  -->
-		<!-- ============================================================== -->
-		<!-- 메인 레퍼 자꾸 엉켜서  지웠음..; -->
-		<!-- ============================================================== -->
-		<!-- End Wrapper -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- customizer Panel -->
-		<!-- ============================================================== -->
-		<!-- aside -->
-		<div class="chat-windows"></div>
-		<!-- ============================================================== -->
-		<!-- All Jquery -->
-		<!-- ============================================================== -->
-		<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
-		<!-- Bootstrap tether Core JavaScript -->
-		<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-		<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-		<!-- apps -->
-		<script src="resources/dist/js/app.min.js"></script>
-		<script src="resources/dist/js/app.init.iconbar.js"></script>
-		<script src="resources/dist/js/app-style-switcher.js"></script>
-		<!-- slimscrollbar scrollbar JavaScript -->
-		<script
-			src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-		<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
-		<!--Wave Effects -->
-		<script src="resources/dist/js/waves.js"></script>
-		<!--Menu sidebar -->
-		<script src="resources/dist/js/sidebarmenu.js"></script>
-		<!--Custom JavaScript -->
-		<script src="resources/dist/js/custom.min.js"></script>
-		<!-- This Page JS -->
-		<!-- carousel -->
-		<!-- 메인용 javascript -->
-		<script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
-		<script src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="resources/regna/lib/easing/easing.min.js"></script>
-		<script src="resources/regna/lib/wow/wow.min.js"></script>
+				</div>
+			</footer>
+			<!-- #footer -->
 
-		<script src="resources/regna/lib/waypoints/waypoints.min.js"></script>
-		<script src="resources/regna/lib/counterup/counterup.min.js"></script>
-		<script src="resources/regna/lib/superfish/hoverIntent.js"></script>
-		<script src="resources/regna/lib/superfish/superfish.min.js"></script>
-		<script src="resources/dist/typed.js"></script>
-		<script src="resources/regna/js/main.js"></script>
-		<!-- carousel -->
-		<script src="resources/dist/owls/owl.carousel.min.js"></script>
-		<script src="resources/dist/carousel.js"></script>
-		<script src="resources/dist/owls/jquery.mousewheel.min.js"></script>
-		<!-- 별점 -->
-		<script src="resources/assets/libs/raty-js/lib/jquery.raty.js"></script>
-		<script src="resources/dist/rating-init.js"></script>
-		<script>
-			jQuery(document)
-					.ready(
-							function($) {
+			<a href="#" class="back-to-top"><i class="fas fa-angle-double-up"></i></a>
+			<!-- ============================================================== -->
+			<!-- End footer -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- End Page wrapper  -->
+			<!-- ============================================================== -->
+			<!-- 메인 레퍼 자꾸 엉켜서  지웠음..; -->
+			<!-- ============================================================== -->
+			<!-- End Wrapper -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- customizer Panel -->
+			<!-- ============================================================== -->
+			<!-- aside -->
+			<div class="chat-windows"></div>
+			<!-- ============================================================== -->
+			<!-- All Jquery -->
+			<!-- ============================================================== -->
+			<script src="resources/jquery-3.3.1.min.js"></script>
+			<script src="resources/custom/autoScroll.js"></script>
+			<!-- Bootstrap tether Core JavaScript -->
+			<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+			<script
+				src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+			<!-- apps -->
+			<script src="resources/dist/js/app.min.js"></script>
+			<script src="resources/dist/js/app.init.iconbar.js"></script>
+			<script src="resources/dist/js/app-style-switcher.js"></script>
+			<!-- slimscrollbar scrollbar JavaScript -->
+			<script
+				src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+			<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
+			<!--Wave Effects -->
+			<script src="resources/dist/js/waves.js"></script>
+			<!--Menu sidebar -->
+			<script src="resources/dist/js/sidebarmenu.js"></script>
+			<!--Custom JavaScript -->
+			<script src="resources/dist/js/custom.min.js"></script>
+			<!-- This Page JS -->
+			<!-- carousel -->
+			<!-- 메인용 javascript -->
+			<script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
+			<script
+				src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+			<script src="resources/regna/lib/easing/easing.min.js"></script>
+			<script src="resources/regna/lib/wow/wow.min.js"></script>
 
-								// Header fixed and Back to top button
+			<script src="resources/regna/lib/waypoints/waypoints.min.js"></script>
+			<script src="resources/regna/lib/counterup/counterup.min.js"></script>
+			<script src="resources/regna/lib/superfish/hoverIntent.js"></script>
+			<script src="resources/regna/lib/superfish/superfish.min.js"></script>
+			<script src="resources/dist/typed.js"></script>
+			<script src="resources/regna/js/main.js"></script>
+			<!-- carousel -->
+			<script src="resources/dist/owls/owl.carousel.min.js"></script>
+			<script src="resources/dist/carousel.js"></script>
+			<script src="resources/dist/owls/jquery.mousewheel.min.js"></script>
+			<!-- 별점 -->
+			<script src="resources/assets/libs/raty-js/lib/jquery.raty.js"></script>
+			<script src="resources/dist/rating-init.js"></script>
+			<script>
+				jQuery(document)
+						.ready(
+								function($) {
 
-								// Mobile Navigation
-								if ($('#nav-menu-container').length) {
-									var $mobile_nav = $('#nav-menu-container')
-											.clone().prop({
-												id : 'mobile-nav'
-											});
-									$mobile_nav.find('> ul').attr({
-										'class' : '',
-										'id' : ''
-									});
-									$('body').append($mobile_nav);
-									$('body')
-											.prepend(
-													'<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
-									$('body')
-											.append(
-													'<div id="mobile-body-overly"></div>');
-									$('#mobile-nav')
-											.find('.menu-has-children')
-											.prepend(
-													'<i class="fa fa-chevron-down"></i>');
+									// Header fixed and Back to top button
 
-									$(document)
-											.on(
-													'click',
-													'.menu-has-children i',
-													function(e) {
-														$(this)
-																.next()
-																.toggleClass(
-																		'menu-item-active');
-														$(this).nextAll('ul')
-																.eq(0)
-																.slideToggle();
-														$(this)
-																.toggleClass(
-																		"fa-chevron-up fa-chevron-down");
-													});
+									// Mobile Navigation
+									if ($('#nav-menu-container').length) {
+										var $mobile_nav = $(
+												'#nav-menu-container').clone()
+												.prop({
+													id : 'mobile-nav'
+												});
+										$mobile_nav.find('> ul').attr({
+											'class' : '',
+											'id' : ''
+										});
+										$('body').append($mobile_nav);
+										$('body')
+												.prepend(
+														'<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
+										$('body')
+												.append(
+														'<div id="mobile-body-overly"></div>');
+										$('#mobile-nav')
+												.find('.menu-has-children')
+												.prepend(
+														'<i class="fa fa-chevron-down"></i>');
 
-									$(document)
-											.on(
-													'click',
-													'#mobile-nav-toggle',
-													function(e) {
-														$('body')
-																.toggleClass(
-																		'mobile-nav-active');
-														$(
-																'#mobile-nav-toggle i')
-																.toggleClass(
-																		'fa-times fa-bars');
-														$('#mobile-body-overly')
-																.toggle();
-													});
+										$(document)
+												.on(
+														'click',
+														'.menu-has-children i',
+														function(e) {
+															$(this)
+																	.next()
+																	.toggleClass(
+																			'menu-item-active');
+															$(this)
+																	.nextAll(
+																			'ul')
+																	.eq(0)
+																	.slideToggle();
+															$(this)
+																	.toggleClass(
+																			"fa-chevron-up fa-chevron-down");
+														});
 
-									$(document)
-											.click(
-													function(e) {
-														var container = $("#mobile-nav, #mobile-nav-toggle");
-														if (!container
-																.is(e.target)
-																&& container
-																		.has(e.target).length === 0) {
-															if ($('body')
-																	.hasClass(
-																			'mobile-nav-active')) {
-																$('body')
-																		.removeClass(
-																				'mobile-nav-active');
-																$(
-																		'#mobile-nav-toggle i')
-																		.toggleClass(
-																				'fa-times fa-bars');
-																$(
-																		'#mobile-body-overly')
-																		.fadeOut();
+										$(document)
+												.on(
+														'click',
+														'#mobile-nav-toggle',
+														function(e) {
+															$('body')
+																	.toggleClass(
+																			'mobile-nav-active');
+															$(
+																	'#mobile-nav-toggle i')
+																	.toggleClass(
+																			'fa-times fa-bars');
+															$(
+																	'#mobile-body-overly')
+																	.toggle();
+														});
+
+										$(document)
+												.click(
+														function(e) {
+															var container = $("#mobile-nav, #mobile-nav-toggle");
+															if (!container
+																	.is(e.target)
+																	&& container
+																			.has(e.target).length === 0) {
+																if ($('body')
+																		.hasClass(
+																				'mobile-nav-active')) {
+																	$('body')
+																			.removeClass(
+																					'mobile-nav-active');
+																	$(
+																			'#mobile-nav-toggle i')
+																			.toggleClass(
+																					'fa-times fa-bars');
+																	$(
+																			'#mobile-body-overly')
+																			.fadeOut();
+																}
 															}
-														}
-													});
-								} else if ($("#mobile-nav, #mobile-nav-toggle").length) {
-									$("#mobile-nav, #mobile-nav-toggle").hide();
-								}
-								// Smoth scroll on page hash links
+														});
+									} else if ($("#mobile-nav, #mobile-nav-toggle").length) {
+										$("#mobile-nav, #mobile-nav-toggle")
+												.hide();
+									}
+									// Smoth scroll on page hash links
 
-								/*타자 쳐지는 효과 만들기 */
-								var typed = $(".typed");
+									/*타자 쳐지는 효과 만들기 */
+									var typed = $(".typed");
 
-								$(function() {
-									typed
-											.typed({
-												strings : [
-														" ARE GLOBALLY UNLIMITED.",
-														"SHOW YOU TONS OF EXHIBITIONS.",
-														"PROVIDE USER-FRIENDLY MAPS." ],
-												typeSpeed : 100,
-												loop : true,
-											});
+									$(function() {
+										typed
+												.typed({
+													strings : [
+															" ARE GLOBALLY UNLIMITED.",
+															"SHOW YOU TONS OF EXHIBITIONS.",
+															"PROVIDE USER-FRIENDLY MAPS." ],
+													typeSpeed : 100,
+													loop : true,
+												});
+									});
+
 								});
-
-							});
-		</script>
+			</script>
 </body>
 
 </html>

@@ -370,7 +370,7 @@ CREATE TABLE c6_board (
     CONSTRAINT c6_board_fk1 FOREIGN KEY(memberId)
     REFERENCES c6_member(memberId),
     CONSTRAINT c6_board_fk2 FOREIGN KEY(exhibitionId)
-    REFERENCES c6_exhibition(exhibitionId),
+    REFERENCES c6_exhibition(exhibitionId)
 );
 COMMENT ON TABLE c6_board IS '게시판';
 COMMENT ON COLUMN c6_board.boardId IS '게시판 ID';
