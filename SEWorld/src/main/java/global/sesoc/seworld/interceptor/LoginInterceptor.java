@@ -16,7 +16,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		String loginId = (String) session.getAttribute("loginId");
 		if (loginId == null) {
 			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath + "/loginAsAdmin");
+			response.sendRedirect(contextPath + "/login");
 			return false;
 		}
 		return true;

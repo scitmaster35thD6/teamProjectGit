@@ -1,11 +1,9 @@
 package global.sesoc.seworld;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.net.URLEncoder;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +28,6 @@ import global.sesoc.seworld.dao.MemberRepository;
 import global.sesoc.seworld.dto.Board;
 import global.sesoc.seworld.dto.BoardFile;
 import global.sesoc.seworld.dto.BoardReply;
-import global.sesoc.seworld.dto.CKEditorAttachement;
 import global.sesoc.seworld.dto.Exhibition;
 import global.sesoc.seworld.dto.Member;
 import global.sesoc.seworld.dto.TableWrapperDTO;
@@ -142,7 +138,7 @@ public class BoardController {
 		String userid = (String) session.getAttribute("loginId");
 		board.setMemberId(userid);
 
-		// boardRepository.insertBoard(board);
+		boardRepository.insertBoard(board);
 
 		if (!uploadFile.isEmpty()) {
 			String originalfile = uploadFile.getOriginalFilename();
@@ -152,7 +148,7 @@ public class BoardController {
 			boardFile.setOgFilename(originalfile);
 			boardFile.setSvFilename(savedfile);
 			boardFile.setFileSize(uploadFile.getSize());
-			// boardFileRepository.insertOneBoardFile(boardFile);
+			boardFileRepository.insertOneBoardFile(boardFile);
 		}
 
 		if (board.getCategory().equals("question")) {
