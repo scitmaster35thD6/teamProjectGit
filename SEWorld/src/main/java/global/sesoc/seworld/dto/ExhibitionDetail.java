@@ -5,17 +5,17 @@ public class ExhibitionDetail {
 	public String memberId;
 	public String wishing;
 	public String rating;
-	public String comment;
+	public String content;
 	public ExhibitionDetail() {
 		super();
 	}
-	public ExhibitionDetail(String exhibitionId, String memberId, String wishing, String rating, String comment) {
+	public ExhibitionDetail(String exhibitionId, String memberId, String wishing, String rating, String content) {
 		super();
 		this.exhibitionId = exhibitionId;
 		this.memberId = memberId;
 		this.wishing = wishing;
 		this.rating = rating;
-		this.comment = comment;
+		this.content = content;
 	}
 	public String getExhibitionId() {
 		return exhibitionId;
@@ -41,15 +41,15 @@ public class ExhibitionDetail {
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
-	public String getComment() {
-		return comment;
+	public String getContent() {
+		return content;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	@Override
 	public String toString() {
 		return "ExhibitionDetail [exhibitionId=" + exhibitionId + ", memberId=" + memberId + ", wishing=" + wishing
-				+ ", rating=" + rating + ", comment=" + comment + "]";
+				+ ", rating=" + rating + ", content=" + content + "]";
 	}
 }

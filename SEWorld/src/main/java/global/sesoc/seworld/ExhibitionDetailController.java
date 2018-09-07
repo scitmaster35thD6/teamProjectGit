@@ -64,12 +64,13 @@ public class ExhibitionDetailController {
 		return wishingRepository.updateWishingDeleted(wishing);
 	}
 
-	@RequestMapping(value = "/insertRating", method = RequestMethod.POST)
-	public @ResponseBody Integer insertRating(@RequestBody Comment comment, HttpSession session) {
-		logger.info("[/insertRating]");
+	@RequestMapping(value = "/insertComment", method = RequestMethod.POST)
+	public @ResponseBody Integer insertComment(@RequestBody Comment comment, HttpSession session) {
+		logger.info("[/insertComment]");
 		String loginId = (String) session.getAttribute("loginId");
 		comment.setMemberId(loginId);
 		if (commentRepository.selectOneComment(comment) != null) {
+			System.out.println(comment.toString());
 			return commentRepository.updateCommentInserted(comment);
 		}
 		return commentRepository.insertComment(comment);
@@ -82,7 +83,16 @@ public class ExhibitionDetailController {
 		Comment comment = new Comment();
 		comment.setExhibitionId(exhibitionId);
 		comment.setMemberId(loginId);
-		comment.setRating(0);
+		return commentRepository.updateRatingDeleted(comment);
+	}
+
+	@RequestMapping(value = "/deleteComment", method = RequestMethod.POST)
+	public @ResponseBody Integer deleteComment(String exhibitionId, HttpSession session) {
+		logger.info("[/deleteComment]");
+		String loginId = (String) session.getAttribute("loginId");
+		Comment comment = new Comment();
+		comment.setExhibitionId(exhibitionId);
+		comment.setMemberId(loginId);
 		return commentRepository.updateCommentDeleted(comment);
 	}
 }

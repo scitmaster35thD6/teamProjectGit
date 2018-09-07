@@ -117,17 +117,24 @@
       result += '</span>';
       result += '</span>';
     }
-    if (resp.comment == null) {
-      result += '<input type="button" value="코멘트" />';
-    } else {
-      result += '<input type="button" value="코멘트" style="background-color:green;" />';	
-    }
     $('#wrc').html(result);
 	$('.wish_n').on('click', insertWishing);
     $('.wish_y').on('click', deleteWishing);
     $('.star-input :radio').on('click', insertRating);
     $('#star-delete').on('click', deleteRating);
     
+    var result2 = '';
+    if (resp.content == null) {
+      result2 += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Comment</button>';
+    } else {
+      result2 += resp.content;
+      result2 += '<input id="comment-modify" type="button" value="수정" />';
+      result2 += '<input id="comment-delete" type="button" value="삭제" />';
+    }
+    $('#c2').html(result2);
+    $('#sendComment').on('click', insertComment);
+    $('#comment-modify').on('click', modifyComment);
+    $('#comment-delete').on('click', deleteComment);
   }
   function insertWishing() {
     var exhibitionId = $('#exhibitionId').val();
@@ -158,10 +165,9 @@
     };
     $.ajax({
       method : 'POST',
-      url : 'insertRating',
+      url : 'insertComment',
       data : JSON.stringify(comment),
       contentType : 'application/json; charset=UTF-8',
-      dataType : 'JSON',
       success : initExbtDetail
     });
   }
@@ -173,6 +179,36 @@
       data : 'exhibitionId=' + exhibitionId,
       success : initExbtDetail
 	});
+  }
+  
+  /* comment modal */
+  function insertComment() {
+    var exhibitionId = $('#exhibitionId').val();
+    var content = $('#commentText').val(); 
+    var comment = {
+      "exhibitionId" : exhibitionId,
+      "content" : content
+    };
+    $.ajax({
+      method : 'POST',
+      url : 'insertComment',
+      data : JSON.stringify(comment),
+      contentType : 'application/json; charset=UTF-8',
+      success : initExbtDetail
+    });
+    $('#exampleModal').modal('hide');
+  }
+  function modifyComment() {
+	  
+  }
+  function deleteComment() {
+    var exhibitionId = $('#exhibitionId').val();
+    $.ajax({
+      method : 'POST',
+      url : 'deleteComment',
+      data : 'exhibitionId=' + exhibitionId,
+      success : initExbtDetail
+  	});
   }
 </script>
 <style type="text/css">
@@ -432,8 +468,10 @@ td{
 					<td>${exhibitionDetail.sponsor}</td>
 				</tr>
 				<tr>
-					<td id="wrc" colspan="2">
-					</td>
+					<td id="wrc" colspan="2"></td>
+				</tr>
+				<tr>
+					<td id="c2" colspan="2"></td>
 				</tr>
 			</table>
 			<br/>
@@ -457,6 +495,34 @@ td{
 		</div>
 	</div> -->
 </section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">${exhibitionDetail.exhibitionTitleKor}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="commentText" class="col-form-label">Comment:</label>
+            <textarea class="form-control" id="commentText" rows="10" placeholder="이 전시에 대한 감상을 자유롭게 표현해주세요."></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button id="sendComment" type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <!-- Core JavaScript Files -->
   <script src="resources/volumn/js/jquery.min.js"></script>
