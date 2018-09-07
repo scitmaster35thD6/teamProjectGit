@@ -16,23 +16,6 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="any"
 	href="resources/assets/images/logo2.png">
-<<<<<<< Updated upstream
-<title>SE World 전세계 기술 전시</title>
-<link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
-	rel="stylesheet">
-<link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
-	rel="stylesheet">
-<!-- Custom CSS -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
-<!-- 벡터맵 css지도 -->
-<link
-	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
-	rel="stylesheet" />
-<!-- Custom CSS 새로 -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
-<link href="resources/custom/exhibitionList.css" rel="stylesheet">
-
-=======
     <title>SE World 전세계 기술 전시</title>
     <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css" rel="stylesheet">
     <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css" rel="stylesheet">
@@ -63,7 +46,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <!-- 테이블 용 -->
->>>>>>> Stashed changes
 <link
 	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
 	rel="stylesheet">
@@ -754,8 +736,7 @@ body.mobile-nav-active #mobile-nav-toggle {
                             <div class="card-body">
                                 <div class="d-md-flex align-items-center">
                                     <div>
-                                        <h4 class="card-title">유저 리뷰 게시판</h4>
-                                        <h6 class="card-subtitle">전시에 대한 리뷰를 게시하는 곳입니다.</h6>
+                                        <h4 class="card-title">전국 전시회 리스트</h4>
                                     </div>
                                     <div class="ml-auto d-flex no-block align-items-center">
                                         <div class="dl">
@@ -767,26 +748,29 @@ body.mobile-nav-active #mobile-nav-toggle {
 		<!-- 테이블 들어가는 곳  -->	
 		
 		<p>
-					<div class="table-responsive">
+								<div class="table-responsive">
 									<table id="alt_pagination"
 										class="table table-striped table-bordered display"
 										style="width: 100%">
 										<thead>
 											<tr>
-												<th>title</th>
-												<th>user</th>
-												<th>date</th>
+												<th></th>
+												<th>전시회 제목</th>
+												<th>개최국</th>
+												<th>개최 기간</th>
 											</tr>
 										</thead>
 										<tfoot>
 											<tr>
-												<th>title</th>
-												<th>user</th>
-												<th>date</th>
+											<th></th>
+												<th>Title in Korean</th>
+												<th>Country</th>
+												<th>Date</th>
 											</tr>
 										</tfoot>
 									</table>
-					</div>
+								</div>
+		
 		
 		<!-- 테이블 들어가는 곳  -->	
 			
@@ -901,12 +885,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     <!-- carousel -->
     <!-- This Page JS -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-<<<<<<< Updated upstream
-	<script src="resources/custom/boardListShow.js"></script>
-	<!-- 벡터지도 -->
-=======
 	<script src="resources/exhibitionCountrySelect.js"></script>
->>>>>>> Stashed changes
 	<!-- This Page JS -->
     <script>
     jQuery(document).ready(function( $ ) {
