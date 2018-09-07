@@ -631,33 +631,39 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<header id="header">
 		<div class="container">
 
-			<div id="logo" class="pull-left">
-				<a href="#hero"><img src="" alt="" title="" /></img></a>
-				<!-- Uncomment below if you prefer to use a text logo -->
-				<!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
-			</div>
-
-          <li class="menu-has-children"><a href="profile">My Profile</a>
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
+           <li class="menu-has-children"><a href="#services">Exhibition</a>
            <ul>
-              <li><a href="profile">Profile</a></li>
-           	  <li><a href="calendar">calendar</a></li>   
+              <li><a href="exhibitionList">Exhibition List</a></li>
+           	  <li><a href="#facts">GoogleMap</a></li>   
            </ul>
+           
+           
+         <li class="menu-has-children"><a href="#portfolio">User's Voice</a>
+           <ul>
+              <li><a href="reviews">Review</a></li>
+           	  <li><a href="questions">Question</a></li>
+           	  <li><a href="writeArticle">Write Article</a></li>   
+           </ul>
+           
          
-        <c:if test="${sessionScope.loginId==null}">		
-          <li class="menu-has-children"><a href="profile">sign up/log in</a>
+        <c:if test="${empty sessionScope.loginId}">		
+          <li class="menu-has-children"><a href="profile">Member</a>
            <ul>
               <li><a href="login">Log in</a></li>
            	  <li><a href="#">Sign up</a></li>   
            </ul>
          </c:if>
           
-         <c:if test="${sessionScope.loginId !=null}">
-          	<li class="menu-has-children"><a href="#">${sessionScope.loginId}님</a>
+         <c:if test="${not empty sessionScope.loginId}">
+          	<li class="menu-has-children"><a href="#">${sessionScope.loginId} 님</a>
          	<ul>
-              <li><a href="#">Setting</a></li>
-           	  <li><a href="#">Log out</a></li>   
+           	  <li><a href="logout">Log out</a></li>   
+              <li><a href="profile">Profile</a></li>
+           	  <li><a href="calendar">calendar</a></li>  
            </ul>
-         
          </c:if> 
           
         </ul>

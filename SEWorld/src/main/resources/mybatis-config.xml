@@ -15,7 +15,7 @@
 		<typeAlias type="global.sesoc.seworld.dto.Countries" alias="Countries" />
 		<typeAlias type="global.sesoc.seworld.dto.ExbtInfo" alias="ExbtInfo" />
 		<typeAlias type="global.sesoc.seworld.dto.Exhibition" alias="Exhibition"/>
-		<typeAlias type="global.sesoc.seworld.dto.ExhibitionDetail" alias="ExhibitionDetail"/>
+		<typeAlias type="global.sesoc.seworld.dto.ExhibitionDetail" alias="ExhibitionDetail"/> 
 		<typeAlias type="global.sesoc.seworld.dto.Member" alias="Member"/>
 		<typeAlias type="global.sesoc.seworld.dto.Participating" alias="Participating" />
 		<typeAlias type="global.sesoc.seworld.dto.Regions" alias="Regions" />
