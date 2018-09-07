@@ -662,8 +662,8 @@ body.mobile-nav-active #mobile-nav-toggle {
          <c:if test="${sessionScope.loginId !=null}">
           	<li class="menu-has-children"><a href="#">${sessionScope.loginId}님</a>
          	<ul>
-              <li><a href="#">Log in</a></li>
-           	  <li><a href="#">Sign up</a></li>   
+              <li><a href="#">Setting</a></li>
+           	  <li><a href="#">Log out</a></li>   
            </ul>
          
          </c:if> 

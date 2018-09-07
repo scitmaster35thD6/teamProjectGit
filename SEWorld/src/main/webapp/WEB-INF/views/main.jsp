@@ -210,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url(resources/assets/images/cat.jpg) top center;
+  background: url(resources/assets/images/land1.jpg) top center;
   background-size: cover;
   position: relative;
 }
@@ -654,8 +654,8 @@ body.mobile-nav-active #mobile-nav-toggle {
          <c:if test="${sessionScope.loginId !=null}">
           	<li class="menu-has-children"><a href="#">${sessionScope.loginId}님</a>
          	<ul>
-              <li><a href="#">Log in</a></li>
-           	  <li><a href="#">Sign up</a></li>   
+              <li><a href="#">Setting</a></li>
+           	  <li><a href="#">Log out</a></li>   
            </ul>
          
          </c:if> 
