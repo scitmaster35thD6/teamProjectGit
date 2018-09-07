@@ -219,7 +219,7 @@ public class BoardController {
 
 	// 게시물 첨부 파일 다운로드
 	@RequestMapping(value = "/downloadFile", method = RequestMethod.GET)
-	public String download(String boardId, HttpServletResponse response) {
+	public String downloadFile(String boardId, HttpServletResponse response) {
 		String boardFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
 		BoardFile originalFile = boardFileRepository.selectOneBoardFile(boardFileId);
 		String originalfile = originalFile.getOgFilename();
