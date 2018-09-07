@@ -19,8 +19,8 @@
 		,category
 		,title
 		,content
-		,createdDate
-		,updatedDate
+		,to_char(createdDate, 'HH:MM, MON DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') createdDate
+		,to_char(updatedDate, 'HH:MM, MON DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') updatedDate
 		,exhibitionid
 		FROM
 		c6_board

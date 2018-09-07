@@ -19,4 +19,6 @@ public interface ExhibitionMapper {
 	public List<String> getTotalCountry();
 
 	public List<Exhibition> getListForMap();
+	
+	public List<Exhibition> getRecentExhibition();
 }
