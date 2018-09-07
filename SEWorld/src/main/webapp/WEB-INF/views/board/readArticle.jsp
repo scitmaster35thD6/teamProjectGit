@@ -788,12 +788,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 					</div>
 				</center>
 			</div>
+			
 			<div>
 				<hr>
 			</div>
 			<div class="card-body">
 				<div class="contents">${articleDetail.content}</div>
+				
 			</div>
+				<!--첨부파일-->
+				<hr>
+				<div class="card-body">
+				<span class="label label-info">첨부파일</span> abc.txt						
+				</div>
 		</div>
 		<!-- ============================================================== -->
 		<!-- Container fluid  -->
