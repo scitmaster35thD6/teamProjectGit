@@ -31,15 +31,14 @@
 		,createdDate
 		,updatedDate
 		FROM c6_board_file
-		WHERE boardFileId =
-		#{boardFileId}
+		WHERE boardFileId = #{boardfileid, jdbcType=VARCHAR}
 	</select>
 
 	<select id="getBoardFileIdByBoardId" parameterType="String"
 		resultType="String">
 		select boardFileId
 		from c6_board_file
-		where boardId=#{boardId}
+		where boardId=#{boardId, jdbcType=VARCHAR}
 	</select>
 
 	<insert id="insertOneBoardFile" parameterType="BoardFile">
@@ -56,8 +55,7 @@
 		)
 		VALUES
 		(
-		#{boardId} || '-F' ||
-		TO_CHAR(c6_board_file_seq.NEXTVAL, '0000')
+		REPLACE(#{boardId} || '-F' || TO_CHAR(c6_board_file_seq.NEXTVAL, '0000'), ' ', '')
 		,#{boardId}
 		,#{ogFilename}
 		,#{svFilename}
@@ -71,7 +69,7 @@
 		DELETE
 		FROM
 		c6_board_file
-		WHERE boardFileId = #{boardFileId}
+		WHERE boardFileId = #{boardFileId, jdbcType=VARCHAR}
 	</delete>
 
 	<update id="updateOneBoardFile" parameterType="BoardFile">

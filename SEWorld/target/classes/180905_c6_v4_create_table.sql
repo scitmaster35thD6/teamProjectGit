@@ -1,4 +1,4 @@
--- 180828_c6_v4_create_table.sql
+-- 180903_c6_v4_create_table.sql
 
 
 CREATE TABLE c6_exbtinfo (
@@ -120,29 +120,49 @@ COMMENT ON COLUMN c6_exhibition.dataOffer IS '자료제공';
 
 -- 회원
 CREATE TABLE c6_member (
-    memberId VARCHAR2(20 BYTE) PRIMARY KEY,
-    memberPwd VARCHAR2(20 BYTE) NOT NULL,
-    memberName VARCHAR2(40 BYTE) NOT NULL,
-    memberBirth DATE,
-    memberEmail VARCHAR2(40 BYTE),
-    memberPhone VARCHAR2(20 BYTE), 
+    memberId VARCHAR2(40 BYTE) PRIMARY KEY,
+    memberPwd VARCHAR2(20 BYTE),
+    memberName VARCHAR2(20 BYTE) NOT NULL,
+    memberType VARCHAR2(8 BYTE) NOT NULL,
+    verified CHAR(1 BYTE) DEFAULT 'N' NOT NULL,
     regDate DATE DEFAULT SYSDATE NOT NULL
 );
 COMMENT ON TABLE c6_member IS '회원';
-COMMENT ON COLUMN c6_member.memberId IS '회원 ID';
-COMMENT ON COLUMN c6_member.memberPwd IS ' 회원 비밀번호';
+COMMENT ON COLUMN c6_member.memberId IS '회원 계정';
+COMMENT ON COLUMN c6_member.memberPwd IS '회원 비밀번호';
 COMMENT ON COLUMN c6_member.memberName IS '회원 이름';
-COMMENT ON COLUMN c6_member.memberBirth IS '회원 생년월일';
-COMMENT ON COLUMN c6_member.memberEmail IS '회원 이메일';
-COMMENT ON COLUMN c6_member.memberPhone IS '회원 휴대전화';
-COMMENT ON COLUMN c6_member.regDate IS '회원 등록날짜';
+COMMENT ON COLUMN c6_member.memberType IS '계정종류(Email,Google,Facebook)';
+COMMENT ON COLUMN c6_member.verified IS '회원 인증여부';
+COMMENT ON COLUMN c6_member.regDate IS '회원 등록일';
+
+
+-- 회원 프로필
+CREATE TABLE c6_member_profile (
+	memberId VARCHAR2(40 BYTE) PRIMARY KEY,	
+	ogFilename VARCHAR2(260 BYTE) NOT NULL,
+    svFilename VARCHAR2(40 BYTE) NOT NULL,
+    fileSize NUMBER,
+    createdDate DATE DEFAULT SYSDATE NOT NULL,
+    updatedDate DATE DEFAULT SYSDATE NOT NULL,
+    CONSTRAINT c6_member_profile_fk FOREIGN KEY(memberId)
+    REFERENCES c6_member(memberId)
+);
+COMMENT ON TABLE c6_member_profile IS '회원 프로필';
+COMMENT ON COLUMN c6_member_profile.memberId IS '회원 ID';
+COMMENT ON COLUMN c6_member_profile.ogFilename IS '원본 파일이름';
+COMMENT ON COLUMN c6_member_profile.svFilename IS '저장된 파일이름';
+COMMENT ON COLUMN c6_member_profile.fileSize IS '파일 크기';
+COMMENT ON COLUMN c6_member_profile.createdDate IS '등록일';
+COMMENT ON COLUMN c6_member_profile.updatedDate IS '수정일';
 
 
 -- 가고싶어요
 CREATE TABLE c6_wishing (
     memberId VARCHAR2(20 BYTE) NOT NULL,
     exhibitionId CHAR(13 BYTE) NOT NULL,
+    wished CHAR(1 BYTE) DEFAULT 'Y' NOT NULL,
     createdDate DATE DEFAULT SYSDATE NOT NULL,
+    updatedDate DATE DEFAULT SYSDATE NOT NULL,
     CONSTRAINT c6_wishing_fk1 FOREIGN KEY(memberId)
     REFERENCES c6_member(memberId),
     CONSTRAINT c6_wishing_fk2 FOREIGN KEY(exhibitionId)
@@ -152,24 +172,26 @@ CREATE TABLE c6_wishing (
 COMMENT ON TABLE c6_wishing IS '가고싶어요';
 COMMENT ON COLUMN c6_wishing.memberId IS '회원 ID';
 COMMENT ON COLUMN c6_wishing.exhibitionId IS '전시정보 ID';
+COMMENT ON COLUMN c6_wishing.wished IS '클릭 여부';
 COMMENT ON COLUMN c6_wishing.createdDate IS '등록일';
+COMMENT ON COLUMN c6_wishing.updatedDate IS '수정일';
 
 
 -- 참여하기
-CREATE TABLE c6_participating (
-    memberId VARCHAR2(20 BYTE) NOT NULL,
-    exhibitionId CHAR(13 BYTE) NOT NULL,
-    createdDate DATE DEFAULT SYSDATE NOT NULL,
-    CONSTRAINT c6_participating_fk1 FOREIGN KEY(memberId)
-    REFERENCES c6_member(memberId),
-    CONSTRAINT c6_participating_fk2 FOREIGN KEY(exhibitionId)
-    REFERENCES c6_exhibition(exhibitionId),
-    CONSTRAINT c6_participating_pk PRIMARY KEY(memberId, exhibitionId)
-);
-COMMENT ON TABLE c6_participating IS '참여하기';
-COMMENT ON COLUMN c6_participating.memberId IS '회원 ID';
-COMMENT ON COLUMN c6_participating.exhibitionId IS '전시정보 ID';
-COMMENT ON COLUMN c6_participating.createdDate IS '등록일';
+-- CREATE TABLE c6_participating (
+--     memberId VARCHAR2(20 BYTE) NOT NULL,
+--     exhibitionId CHAR(13 BYTE) NOT NULL,
+--     createdDate DATE DEFAULT SYSDATE NOT NULL,
+--     CONSTRAINT c6_participating_fk1 FOREIGN KEY(memberId)
+--     REFERENCES c6_member(memberId),
+--     CONSTRAINT c6_participating_fk2 FOREIGN KEY(exhibitionId)
+--     REFERENCES c6_exhibition(exhibitionId),
+--     CONSTRAINT c6_participating_pk PRIMARY KEY(memberId, exhibitionId)
+-- );
+-- COMMENT ON TABLE c6_participating IS '참여하기';
+-- COMMENT ON COLUMN c6_participating.memberId IS '회원 ID';
+-- COMMENT ON COLUMN c6_participating.exhibitionId IS '전시정보 ID';
+-- COMMENT ON COLUMN c6_participating.createdDate IS '등록일';
 
 
 -- 평가하기
@@ -187,7 +209,7 @@ CREATE TABLE c6_comment (
     REFERENCES c6_exhibition(exhibitionId),
     CONSTRAINT c6_comment_pk PRIMARY KEY(memberId, exhibitionId)
 );
-COMMENT ON TABLE c6_comment IS '평가하기';
+COMMENT ON TABLE c6_comment IS '코멘트';
 COMMENT ON COLUMN c6_comment.memberId IS '회원 ID';
 COMMENT ON COLUMN c6_comment.exhibitionId IS '전시정보 ID';
 COMMENT ON COLUMN c6_comment.rating IS '평점';

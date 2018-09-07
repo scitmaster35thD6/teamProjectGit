@@ -92,7 +92,8 @@
 	}
 }
 </style>
-<script src="resources/reviewFormCheck.js"></script>
+<link href="resources/custom/exhibitionList.css" rel="stylesheet">
+<script src="resources/custom/reviewFormCheck.js"></script>
 <script src="resources/ckeditor/ckeditor.js"></script>
 </head>
 
@@ -630,9 +631,7 @@
 												<c:out value="${original.content}"></c:out>
 												</c:if></textarea>
 											<script>
-												CKEDITOR.replace('content', {
-													filebrowserUploadUrl : "/ckeditorFileUpload"
-												});
+												CKEDITOR.replace('content');
 											</script>
 										</div>
 									</div>
@@ -725,7 +724,7 @@
 	<!--This page JavaScript -->
 	<!--table JavaScript -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-	<script src="resources/exhibitionSelectInWriteForm.js"></script>
+	<script src="resources/custom/exhibitionSelectInWriteForm.js"></script>
 	<!-- This Page JS -->
 	<!-- 벡터지도 -->
 	<!-- This Page JS -->

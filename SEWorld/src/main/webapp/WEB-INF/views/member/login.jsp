@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html dir="ltr">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +24,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script>
+		/* google login */
 		function init() {
 			console.log('init');
 			gapi.load('auth2', function() {
@@ -34,19 +34,20 @@
 				})
 				gauth.then(function() {
 					console.log('googleAuth success');
-					checkLoginStatus();
+					checkLoginGoogle();
 				}, function() {
 					console.log('googleAuth fail');
 				});
 				console.log(Promise);
 			});
 	    }
-	    function checkLoginStatus() {
-	    	var loginBtn = document.querySelector('#loginBtn');
+		
+	    function checkLoginGoogle() {
+	    	var googleBtn = document.querySelector('#googleBtn');
 			var nameTxt = document.querySelector('#name');
 			if (gauth.isSignedIn.get()) {
 				console.log('logined');
-				loginBtn.value = 'Logout';
+				googleBtn.value = 'Logout';
 				var profile = gauth.currentUser.get().getBasicProfile();				
 				var member = {
 					"memberId" : profile.getEmail(),
@@ -62,21 +63,76 @@
 						
 					}
 				});
-				nameTxt.innerHTML = 'Welcome <strong>'+profile.getName()+'</strong> ';
+				nameTxt.innerHTML = 'Welcome <strong>' + profile.getName() + '</strong> ';
 			} else {
 				console.log('logouted');
-				loginBtn.value = 'Login';
+				googleBtn.value = 'Login';
 				nameTxt.innerHTML = '';
 	        }
 		}
+	    
 	    function gauthSignIn() {
 	    	gauth.signIn({
 				scope : 'https://www.googleapis.com/auth/calendar'
 			}).then(function(){
 				console.log('gauth.signIn()');
-				checkLoginStatus();
+				checkLoginGoogle();
 			});
 	    }
+	    
+	    
+		/* facebook login */
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '1821608304626477',
+				cookie     : true, 
+				xfbml      : true,
+				version    : 'v3.1'
+			});
+			FB.getLoginStatus(checkLoginFacebook);
+		};
+		
+		var checkLoginFacebook = function(response) {
+			console.log(response);
+			// statusChangeCallback(response);
+			if (response.status === 'connected') {
+				document.querySelector('#facebookBtn').value = 'Logout';
+				FB.api('/me', {fields: 'email,name'}, function(resp){
+					document.querySelector('#fname').innerHTML = 'Welcome <strong>' + resp.name +'</strong>';
+					var member = {
+						"memberId" : resp.id,
+						"memberName" : resp.name
+					};
+					$.ajax({
+						method : 'POST',
+						url : 'facebookSignin',
+						data : JSON.stringify(member),
+						contentType : 'application/json; charset=UTF-8',
+						dataType : 'JSON',
+						success : function(resp) {
+							
+						}
+					});
+				});
+			} else {
+			  document.querySelector('#facebookBtn').value = 'Login';
+			  document.querySelector('#fname').innerHTML = '';
+			}
+		}
+		
+		function fauthSignIn() {
+			FB.login(function(response) {
+				checkLoginFacebook(response);
+			});
+		}
 	</script>
 	<style type="text/css">
 		p#msg {
@@ -84,21 +140,34 @@
 		}
 </style>
 </head>
-
 <body>
 	<span id="name"></span>
-	<input type="button" id="loginBtn" value="checking..." onclick="
-		if(this.value === 'Login'){
+	<input type="button" id="googleBtn" value="checking..." onclick="
+		if (this.value === 'Login'){
 			gauth.signIn({
 				scope : 'https://www.googleapis.com/auth/calendar'
 			}).then(function(){
 				console.log('gauth.signIn()');
-				checkLoginStatus();
+				checkLoginGoogle();
 			});
 		} else {
 			gauth.signOut().then(function(){
 				console.log('gauth.signOut()');
-				checkLoginStatus();
+				checkLoginGoogle();
+			});
+		}
+	">
+	<span id="fname"></span>
+	<input type="button" id="facebookBtn" value="checking..." onclick="
+		if (this.value === 'Login') {
+			FB.login(function(response) {
+				console.log('login => ', response);
+				checkLoginFacebook(response);
+			});
+		} else {
+			FB.logout(function(response) {
+				console.log('logout => ', response);
+				checkLoginFacebook(response);
 			});
 		}
 	">
@@ -163,7 +232,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
                                         <div class="social">
-                                            <a href="javascript:void(0)" class="btn btn-facebook" data-toggle="tooltip" title="" data-original-title="Login with Facebook"> <i aria-hidden="true" class="fab  fa-facebook"></i></a>
+                                            <a href="javascript:fauthSignIn()" class="btn btn-facebook" data-toggle="tooltip" title="" data-original-title="Login with Facebook"> <i aria-hidden="true" class="fab  fa-facebook"></i></a>
                                             <a href="javascript:gauthSignIn()" class="btn btn-googleplus" data-toggle="tooltip" title="" data-original-title="Login with Google"> <i aria-hidden="true" class="fab  fa-google-plus"></i></a>
                                         </div>
                                     </div>

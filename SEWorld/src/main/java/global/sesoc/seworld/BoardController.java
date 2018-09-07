@@ -1,11 +1,9 @@
 package global.sesoc.seworld;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.net.URLEncoder;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -30,7 +28,6 @@ import global.sesoc.seworld.dao.MemberRepository;
 import global.sesoc.seworld.dto.Board;
 import global.sesoc.seworld.dto.BoardFile;
 import global.sesoc.seworld.dto.BoardReply;
-import global.sesoc.seworld.dto.CKEditorAttachement;
 import global.sesoc.seworld.dto.Exhibition;
 import global.sesoc.seworld.dto.Member;
 import global.sesoc.seworld.dto.TableWrapperDTO;
@@ -141,7 +138,7 @@ public class BoardController {
 		String userid = (String) session.getAttribute("loginId");
 		board.setMemberId(userid);
 
-		// boardRepository.insertBoard(board);
+		boardRepository.insertBoard(board);
 
 		if (!uploadFile.isEmpty()) {
 			String originalfile = uploadFile.getOriginalFilename();
@@ -151,7 +148,7 @@ public class BoardController {
 			boardFile.setOgFilename(originalfile);
 			boardFile.setSvFilename(savedfile);
 			boardFile.setFileSize(uploadFile.getSize());
-			// boardFileRepository.insertOneBoardFile(boardFile);
+			boardFileRepository.insertOneBoardFile(boardFile);
 		}
 
 		if (board.getCategory().equals("question")) {
@@ -222,7 +219,7 @@ public class BoardController {
 
 	// 게시물 첨부 파일 다운로드
 	@RequestMapping(value = "/downloadFile", method = RequestMethod.GET)
-	public String download(String boardId, HttpServletResponse response) {
+	public String downloadFile(String boardId, HttpServletResponse response) {
 		String boardFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
 		BoardFile originalFile = boardFileRepository.selectOneBoardFile(boardFileId);
 		String originalfile = originalFile.getOgFilename();
@@ -249,32 +246,5 @@ public class BoardController {
 			}
 		}
 		return null;
-	}
-
-	@RequestMapping(value = "/ckeditorFileUpload", method = RequestMethod.POST)
-	public String ckeditorFileUpload(CKEditorAttachement upload, HttpServletRequest request, Model model) {
-
-		HttpSession session = request.getSession();
-		String rootPath = session.getServletContext().getRealPath("/");
-		String attachPath = "resources/userUploadedFile/ckeditor";
-
-		MultipartFile uploadedFile = upload.getUpload();
-		String filename = "";
-		String CKEditorFuncNum = "";
-
-		if (uploadedFile != null) {
-			filename = uploadedFile.getOriginalFilename();
-			upload.setFilename(filename);
-			CKEditorFuncNum = upload.getCKEditorFuncNum();
-			try {
-				File file = new File(rootPath + attachPath + filename);
-				uploadedFile.transferTo(file);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		model.addAttribute("filePath", attachPath + filename); // 결과값을
-		model.addAttribute("CKEditorFuncNum", CKEditorFuncNum);// jsp ckeditor 콜백함수로 보내줘야함
-		return "board/CKEditorFileUploadComplete";
 	}
 }

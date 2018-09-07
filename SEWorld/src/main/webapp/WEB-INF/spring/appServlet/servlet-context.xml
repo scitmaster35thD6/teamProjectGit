@@ -36,9 +36,9 @@
 	<!-- Interceptor 경로 설정 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="writeArticle" />
-			<mapping path="updateArticle" />
-			<mapping path="deleteArticle" />
+			<mapping path="/writeArticle" />
+			<mapping path="/updateArticle" />
+			<mapping path="/deleteArticle" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 	</interceptors>
