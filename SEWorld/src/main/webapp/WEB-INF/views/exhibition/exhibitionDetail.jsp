@@ -25,89 +25,54 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>전시회 상세 정보 - SE World</title>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf0YT_ifom64iJnlKsQ7XYfONTzQcNGvg&callback=initMap"></script>
-    <script>
-    var map;
-        function initMap() {
-            
-                var options = {
-                    zoom: 15,			// 확대 비율!
-                    center: new google.maps.LatLng(37.5130509, 127.0584479), // centered KOEX
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,					// HYBRID, ROADMAP, SATELLITE, TERRAIN 4가지 종류가 있음
-                    mapTypeControl: false,
-                    fullscreenControl: false,
-                    scaleControl: false,
-                    rotateControl: true,
-                    streetViewControl: false,
-                    suppressInfoWindows: true,
-                    gestureHandling: 'greedy'		//지도 확대/축소 컨트롤 키 누르고 스크롤 기능 안하고 그냥 스크롤로 확대/축소
-                    
-                };
+<!-- 구글맵 -->
+<script>
+var map;
+var exhibitionhall = "${exhibitionDetail.exhibitionHall}";	//전시회장 이름 불러옴
 
-                
-                
-                // init map
-                map = new google.maps.Map(document.getElementById('map'), options);		// 맵 생성!
-                
- /*                var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                var markers = locations.map(function(location, i) {
-                    return new google.maps.Marker({
-                      position: location,
-                      label: labels[i % labels.length]
-                    });
-                  });
-                var markerCluster = new MarkerClusterer(map, markers,
-                        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}); */
-                  
-        
-        
-                // koex and bigsight sample Lat / Lng
-                var koex = new google.maps.LatLng(37.5130509, 127.0584479); // 서울 코엑스 좌표 37.5130509, 127.0584479
-                var bigsight = new google.maps.LatLng(35.6298556, 139.7945055); // 도쿄 빅사이트 좌표 35.6298556, 139.7945055
-                // 마커 지정
-                placeMarker(koex);
-                placeMarker(bigsight);
-  /*               var features = [
-                	{
-                		position:koex
-                	}, {
-                		position:bigsight
-                	}
-                ];
-                // 마커 아이콘 변경
-                var myIcon = new google.maps.MarkerImage("resources/image/icon/maps_icon7(50, 50).png", null, null, null, new google.maps.Size(50, 50)); // (가로, 세로)
-				// 마커생성
-		        features.forEach(function(feature) {
-		          var marker = new google.maps.Marker({
-		            position: feature.position,
-		            map: map,
-		            icon: myIcon
-		            // draggable: true, 마커 이동
-		            // animation: google.maps.Animation.DROP 지도 실행시 마커 표시가 위에서 떨어지는 효과
-		          });
-		          marker.addListener('click', toggleBounce);		// 바운스!
-	                 
-	                function toggleBounce() {
-	                    if (marker.getAnimation() !== null) {
-	                      marker.setAnimation(null);
-	                    } else {
-	                      marker.setAnimation(google.maps.Animation.BOUNCE);
-	                    }
-	              } 
-		        }); */
-              };
-            /* // 마커 아이콘 변경
-              var myIcon = "resources/image/icon/maps_icon7(50, 50).png"; */
+function initMap() {
+	// 마커 아이콘 변경
+	var options = {
+	           zoom: 16,			// 확대 비율!
+	           center: new google.maps.LatLng(37.5130509, 127.0584479), // centered KOEX
+	           mapTypeId: google.maps.MapTypeId.ROADMAP,					// HYBRID, ROADMAP, SATELLITE, TERRAIN 4가지 종류가 있음
+	           mapTypeControl: false,
+	           scaleControl: false,
+	           rotateControl: true,
+	           suppressInfoWindows: true,
+	           gestureHandling: 'greedy'		//지도 확대/축소 컨트롤 키 누르고 스크롤 기능 안하고 그냥 스크롤로 확대/축소
+	       };
+	       
+  // init map
+  map = new google.maps.Map(document.getElementById('map'), options);		// 맵 생성!
+  //Geocoder 를 받아옴. : 주소 - > 좌표값 얻음
+  var geocoder = new google.maps.Geocoder();
+  //geocodeAddress를 불러와서 exhibitionhall를 뿌림.
+  if(exhibitionhall!=null){
+	  geocodeAddress(geocoder, map);
+  }
+}
 
-              function placeMarker(location) {
-            	   var marker = new google.maps.Marker({
-            	      position : location,
-            	      map : map,
-            	      
-            	   });
-            	   map.setCenter(location);
-              }
+function geocodeAddress(geocoder, resultsMap) {
+    //전시회장 이름 불러옴
+	var address = exhibitionhall;
+    // 마커 아이콘 변경
+    var myIcon = new google.maps.MarkerImage("resources/image/icon/maps_icon7(50, 50).png", null, null, null, new google.maps.Size(50, 50)); // (가로, 세로)
+    
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        resultsMap.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          icon: myIcon,
+          animation: google.maps.Animation.DROP, 		//지도 실행시 마커 표시가 위에서 떨어지는 효과
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+}
 </script>
 <style type="text/css">
 section{
@@ -310,7 +275,6 @@ td{
   <script src="resources/volumn/js/slippry.min.js"></script>
   <script src="resources/volumn/js/jquery.flexslider-min.js"></script>
   <script src="resources/volumn/js/morphext.min.js"></script>
-  <script src="resources/volumn/js/gmap.js"></script>
   <script src="resources/volumn/js/jquery.mb.YTPlayer.js"></script>
   <script src="resources/volumn/js/jquery.easing.min.js"></script>
   <script src="resources/volumn/js/jquery.scrollTo.js"></script>
@@ -322,9 +286,8 @@ td{
   <script src="resources/volumn/js/jquery.nicescroll.min.js"></script>
   <script src="resources/volumn/js/custom.js"></script>
   <script src="resources/volumn/contactform/contactform.js"></script>
-
-
-
-
+<!-- 구글 맵 -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf0YT_ifom64iJnlKsQ7XYfONTzQcNGvg&libraries=places&callback=initMap"
+         async defer></script>
 </body>
 </html>
