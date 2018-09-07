@@ -53,7 +53,7 @@
 		)
 		VALUES
 		(
-		REPLACE(#{boardId} || '-R' || TO_CHAR(c6_board_reply_seq.NEXTVAL, '0000'))
+		REPLACE(#{boardId} || '-R' || TO_CHAR(c6_board_reply_seq.NEXTVAL, '0000'), ' ', '')
 		,#{boardId}
 		,#{memberId}
 		,#{content}
