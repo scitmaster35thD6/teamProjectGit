@@ -75,9 +75,9 @@ public class ExhibitionController {
 	}
 
 	// 벡터 지도로 이동
-	@RequestMapping(value = "/vector", method = RequestMethod.GET)
+	@RequestMapping(value = "/jvectorMap", method = RequestMethod.GET)
 	public String vectorMap() {
-		return "exhibition/vector";
+		return "exhibition/jvectorMap";
 	}
 
 	@RequestMapping(value = "/bestList", method = RequestMethod.GET)

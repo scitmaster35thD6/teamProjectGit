@@ -626,6 +626,7 @@ body.mobile-nav-active #mobile-nav-toggle {
            <ul>
               <li><a href="exhibitionList">Exhibition List</a></li>
            	  <li><a href="#facts">GoogleMap</a></li>   
+           	  <li><a href="jvectorMap">VectorMap</a></li>   
            </ul>
            
            
