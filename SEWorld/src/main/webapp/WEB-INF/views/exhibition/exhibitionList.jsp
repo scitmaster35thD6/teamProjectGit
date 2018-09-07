@@ -886,6 +886,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     <!-- This Page JS -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
 	<script src="resources/exhibitionCountrySelect.js"></script>
+	<script src="resources/custom/exhibitionSelect.js"></script>
 	<!-- This Page JS -->
     <script>
     jQuery(document).ready(function( $ ) {
