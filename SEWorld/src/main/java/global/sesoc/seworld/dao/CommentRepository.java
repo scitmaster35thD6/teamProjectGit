@@ -33,6 +33,11 @@ public class CommentRepository {
 		return commentMapper.insertComment(comment);
 	}
 
+	public int updateRatingDeleted(Comment comment) {
+		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
+		return commentMapper.updateRatingDeleted(comment);
+	}
+
 	public int updateCommentDeleted(Comment comment) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
 		return commentMapper.updateCommentDeleted(comment);

@@ -13,6 +13,8 @@ public interface CommentMapper {
 
 	public abstract int insertComment(Comment comment);
 
+	public abstract int updateRatingDeleted(Comment comment);
+
 	public abstract int updateCommentDeleted(Comment comment);
 
 	public abstract int updateCommentInserted(Comment comment);

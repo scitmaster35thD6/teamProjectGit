@@ -70,16 +70,20 @@
 		)
 	</insert>
 
+	<delete id="updateRatingDeleted" parameterType="Comment">
+		UPDATE c6_comment
+		SET
+		updatedDate = SYSDATE
+		,rating = 0
+		WHERE memberId = #{memberId}
+		  AND exhibitionId = #{exhibitionId}
+	</delete>
+
 	<delete id="updateCommentDeleted" parameterType="Comment">
 		UPDATE c6_comment
 		SET
 		updatedDate = SYSDATE
-		<if test="content != null">
 		,content = ''
-		</if>
-		<if test="rating != null">
-		,rating = 0
-		</if>
 		WHERE memberId = #{memberId}
 		  AND exhibitionId = #{exhibitionId}
 	</delete>
@@ -91,7 +95,7 @@
 		<if test="content != null">
 		,content = #{content}
 		</if>
-		<if test="rating != null">
+		<if test="rating != 0">
 		,rating = #{rating}
 		</if>
 		WHERE memberId = #{memberId}
