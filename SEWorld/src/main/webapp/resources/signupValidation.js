@@ -8,9 +8,16 @@ function register() {
 	var memberPwd2 = $('#memberPwd2').val();
 	var memberName = $('#memberName').val();
 
+	/* 이름 검증 */
+	if (memberName.length < 2 || memberName.length > 20) {
+		alert("이름은 2자 이상 입력해주세요.");
+		return;
+	}
+	
 	/* 아이디 검증 */
-	if (memberId.length < 6 || memberId.length > 20) {
-		alert("아이디는 6자 이상 20자 이하로 입력해 주세요.");
+	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+	if (regex.text(memberId) == false) {
+		alert("이메일 형식이 올바르지 않습니다.");
 		return;
 	}
 

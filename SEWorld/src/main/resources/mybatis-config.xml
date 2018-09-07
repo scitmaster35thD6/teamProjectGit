@@ -15,6 +15,7 @@
 		<typeAlias type="global.sesoc.seworld.dto.Countries" alias="Countries" />
 		<typeAlias type="global.sesoc.seworld.dto.ExbtInfo" alias="ExbtInfo" />
 		<typeAlias type="global.sesoc.seworld.dto.Exhibition" alias="Exhibition"/>
+		<typeAlias type="global.sesoc.seworld.dto.ExhibitionDetail" alias="ExhibitionDetail"/>
 		<typeAlias type="global.sesoc.seworld.dto.Member" alias="Member"/>
 		<typeAlias type="global.sesoc.seworld.dto.Participating" alias="Participating" />
 		<typeAlias type="global.sesoc.seworld.dto.Regions" alias="Regions" />
@@ -33,6 +34,7 @@
 		<mapper resource="mappers/countriesMapper.xml"/>
 		<mapper resource="mappers/exbtInfoMapper.xml"/>
 		<mapper resource="mappers/exhibitionMapper.xml"/>
+		<mapper resource="mappers/exhibitionDetailMapper.xml"/>
 		<mapper resource="mappers/memberMapper.xml"/>
 		<mapper resource="mappers/participatingMapper.xml"/>
 		<mapper resource="mappers/regionsMapper.xml"/>

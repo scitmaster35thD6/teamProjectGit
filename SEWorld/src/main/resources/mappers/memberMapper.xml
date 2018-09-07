@@ -59,4 +59,22 @@
 		)
 	</insert>
 
+	<insert id="registerFacebookMember" parameterType="Member">
+		INSERT INTO
+		c6_member
+		(
+		memberId
+		,memberName
+		,memberType
+		,verified
+		)
+		VALUES
+		(
+		#{memberId}
+		,#{memberName}
+		,'Facebook'
+		,'Y'
+		)
+	</insert>
+
 </mapper>

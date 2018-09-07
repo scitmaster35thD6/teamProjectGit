@@ -10,4 +10,6 @@ public interface MemberMapper {
 	public abstract int verifyMember(String memberId);
 
 	public abstract int registerGoogleMember(Member member);
+
+	public abstract int registerFacebookMember(Member member);
 }
