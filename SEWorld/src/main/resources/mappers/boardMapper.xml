@@ -100,7 +100,7 @@
 		)
 		VALUES
 		(
-		'REPLACE('B' || TO_CHAR(c6_board_seq.NEXTVAL, '000000000'), ' ', '')
+		REPLACE('B' || TO_CHAR(c6_board_seq.NEXTVAL, '000000000'), ' ', '')
 		,#{memberId}
 		,#{category}
 		,#{title}

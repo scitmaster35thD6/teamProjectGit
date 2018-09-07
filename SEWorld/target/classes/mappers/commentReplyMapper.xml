@@ -45,7 +45,7 @@
 		)
 		VALUES
 		(
-		'CR' || TO_CHAR(c6_comment_reply_seq.NEXTVAL, '000000')
+		REPLACE('CR' || TO_CHAR(c6_comment_reply_seq.NEXTVAL, '000000'))
 		#{memberId}
 		,#{exhibitionId}
 		,#{content}

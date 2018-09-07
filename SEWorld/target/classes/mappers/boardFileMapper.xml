@@ -56,8 +56,7 @@
 		)
 		VALUES
 		(
-		#{boardId} || '-F' ||
-		TO_CHAR(c6_board_file_seq.NEXTVAL, '0000')
+		REPLACE(#{boardId} || '-F' || TO_CHAR(c6_board_file_seq.NEXTVAL, '0000'))
 		,#{boardId}
 		,#{ogFilename}
 		,#{svFilename}
