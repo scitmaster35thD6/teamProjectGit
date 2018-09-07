@@ -19,6 +19,7 @@
 
 <!-- Custom CSS -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
+<link href="resources/custom/exhibitionList.css" rel="stylesheet">
 <!-- 벡터맵 css지도 -->
 <link
 	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
@@ -86,12 +87,7 @@
 		min-width: 500px;
 	}
 }
-
-
 </style>
-
-<link rel="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-<link rel="resources/exhibitionList.css">
 
 </head>
 
@@ -535,7 +531,7 @@
 										style="width: 100%">
 										<thead>
 											<tr>
-												<th></th>
+												<th>상세</th>
 												<th>전시회 제목</th>
 												<th>개최국</th>
 												<th>개최 기간</th>
@@ -543,7 +539,7 @@
 										</thead>
 										<tfoot>
 											<tr>
-											<th></th>
+												<th>Detail</th>
 												<th>Title in Korean</th>
 												<th>Country</th>
 												<th>Date</th>
@@ -625,7 +621,7 @@
 	<!--This page JavaScript -->
 	<!-- This Page JS -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-	<script src="resources/exhibitionCountrySelect.js"></script>
+	<script src="resources/custom/exhibitionSelect.js"></script>
 	<!-- This Page JS -->
 </body>
 
