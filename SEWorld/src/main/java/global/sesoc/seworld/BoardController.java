@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -249,32 +250,5 @@ public class BoardController {
 			}
 		}
 		return null;
-	}
-
-	@RequestMapping(value = "/ckeditorFileUpload", method = RequestMethod.POST)
-	public String ckeditorFileUpload(CKEditorAttachement upload, HttpServletRequest request, Model model) {
-
-		HttpSession session = request.getSession();
-		String rootPath = session.getServletContext().getRealPath("/");
-		String attachPath = "resources/userUploadedFile/ckeditor";
-
-		MultipartFile uploadedFile = upload.getUpload();
-		String filename = "";
-		String CKEditorFuncNum = "";
-
-		if (uploadedFile != null) {
-			filename = uploadedFile.getOriginalFilename();
-			upload.setFilename(filename);
-			CKEditorFuncNum = upload.getCKEditorFuncNum();
-			try {
-				File file = new File(rootPath + attachPath + filename);
-				uploadedFile.transferTo(file);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		model.addAttribute("filePath", attachPath + filename); // 결과값을
-		model.addAttribute("CKEditorFuncNum", CKEditorFuncNum);// jsp ckeditor 콜백함수로 보내줘야함
-		return "board/CKEditorFileUploadComplete";
 	}
 }

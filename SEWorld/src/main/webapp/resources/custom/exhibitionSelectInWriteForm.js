@@ -39,7 +39,7 @@ $(document).ready(function() {
 			"className" : 'details-control',
 			"orderable" : false,
 			"data" : null,
-			"defaultContent" : ''
+			"defaultContent" : '',
 		}, {
 			data : "exhibitionTitleKor"
 		}, {

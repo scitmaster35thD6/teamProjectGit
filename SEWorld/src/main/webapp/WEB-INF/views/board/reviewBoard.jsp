@@ -28,6 +28,7 @@
 	rel="stylesheet" />
 <!-- Custom CSS 새로 -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
+<link href="resources/custom/exhibitionList.css" rel="stylesheet">
 
 <link
 	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
@@ -550,7 +551,7 @@
 	<!--This page JavaScript -->
 	<!--This page JavaScript -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-	<script src="resources/boardListShow.js"></script>
+	<script src="resources/custom/boardListShow.js"></script>
 	<!-- 벡터지도 -->
 	<!-- This Page JS -->
 
