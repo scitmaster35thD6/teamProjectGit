@@ -16,29 +16,13 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="any"
 	href="resources/assets/images/logo2.png">
-<<<<<<< Updated upstream
-<title>SE World 전세계 기술 전시</title>
-<link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
-	rel="stylesheet">
-<link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
-	rel="stylesheet">
-<!-- Custom CSS -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
-<!-- 벡터맵 css지도 -->
-<link
-	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
-	rel="stylesheet" />
-<!-- Custom CSS 새로 -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
-<link href="resources/custom/exhibitionList.css" rel="stylesheet">
-
-=======
     <title>SE World 전세계 기술 전시</title>
     <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css" rel="stylesheet">
     <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">
     <!-- 벡터맵 css지도 -->
+     <link href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- Custom CSS 새로 -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">
     
@@ -62,16 +46,11 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-<!-- 테이블 용 -->
->>>>>>> Stashed changes
-<link
-	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
-	rel="stylesheet">
-<!-- This Select CSS -->
-<link rel="stylesheet" type="text/css"
-	href="resources/assets/libs/select2/dist/css/select2.min.css">
-
-
+<!-- carousel -->
+  <link href="resources/dist/owls/owl.carousel.min.css" rel="stylesheet">
+  <link href="resources/dist/owls/owl.theme.default.css" rel="stylesheet">
+<!-- 별점 -->
+    <link href="resources/assets/libs/raty-js/lib/jquery.raty.css" rel="stylesheet">
 <style>
 .back-to-top {
   position: fixed;
@@ -720,29 +699,93 @@ body.mobile-nav-active #mobile-nav-toggle {
             <!-- ============================================================== -->
         
             <!-- 새로운 페이지 -->
-     		
-            <!-- 브레드 크럼 -->      
-          <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-5 align-self-center">
-                        <h4 class="card-title text">EXHIBITION LIST</h4>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Exhibition List</li>
-                                </ol>
-                            </nav>
+     		 <div class="card gredient-success-bg m-t-0 m-b-0" style="background-color:#f7e9c3;">
+                <div class="card-body" id="upperbody">
+
+
+
+                
+                    <h4 class="card-title text"> &nbsp;&nbsp;Exhibition Overview</h4>
+                    <div class="row m-t-30 m-b-20">
+                        <!-- col -->
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="temp d-flex align-items-center flex-row">
+                                <div class="m-l-10">
+                                    <h3 class="m-b-0 text">${exbhibitionForArticle.exhibitionTitleKor}</h3>
+                                    <small class="text op-5">URL : 
+                                    <a href="exhibitionDetail?exhibitionId='${articleDetail.exhibitionId}'">Click !!</a>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- col -->
+                        <div class="col-sm-12 col-lg-8">
+                            <div class="row">
+                                <!-- col -->
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="info d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <i class="mdi mdi-star text-white display-5 op-5"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text m-b-0">별점</h3>
+                                            <span class="text op-5">3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                                <!-- col -->
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="info d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <i class="icon icon-bubbles text-white display-5 op-5"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text m-b-0">코멘트</h3>
+                                            <span class="text op-5">35</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                                <!-- col -->
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="info d-flex align-items-center">
+                                        <div class="m-r-10">
+                                            <i class="icon icon-heart text-white display-5 op-5"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text m-b-0">좋아요</h3>
+                                            <span class="text op-5">35</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- col -->
+                            </div>
                         </div>
                     </div>
-                    
-                    
-                    
-                </div>
-            </div> 
-                  
-            <!-- 브레드 크럼 -->            
-               
+                </div><!-- 개괄  card body -->
+              </div> <!-- 백그라운드 -->  
+              <div class="card">
+                            <div class="card-body">
+                            
+                                <center class="m-t-30"> 
+                                 <div class="row">
+                                 <div class="col-sm-12 col-lg-6">
+                                    <h4 class="card-title-left m-t-10">제목</h4>
+                                    </div>
+                                     <div class="col-sm-12 col-lg-6">
+                                     <img src="resources/assets/images/users/5.jpg" class="rounded-circle" width="60" /><h6 class="card-subtitle"><center class="m-t-30">글쓴이</h6>
+                                    
+                                    </div>
+                                    </div>
+                                </center>
+                            </div>
+                            <div>
+                                <hr> </div>
+                            <div class="card-body"> 
+                                	<div class="contents">글 내용</div>
+                            </div>
+                        </div>   
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
@@ -754,60 +797,270 @@ body.mobile-nav-active #mobile-nav-toggle {
                             <div class="card-body">
                                 <div class="d-md-flex align-items-center">
                                     <div>
-                                        <h4 class="card-title">유저 리뷰 게시판</h4>
-                                        <h6 class="card-subtitle">전시에 대한 리뷰를 게시하는 곳입니다.</h6>
+                                        <h4 class="card-title">Write Your Comment</h4>
                                     </div>
                                     <div class="ml-auto d-flex no-block align-items-center">
                                         <div class="dl">
-                                            <a href="#"><i class="ti-list"></i>Google Map보기</a>
+                                            <a href="reviews"><i class="ti-list"></i>글 목록</a>
                                         </div>
                                     </div>
                                 </div>
-         <!--카드 바디 시작-->
-		<!-- 테이블 들어가는 곳  -->	
-		
-		<p>
-					<div class="table-responsive">
-									<table id="alt_pagination"
-										class="table table-striped table-bordered display"
-										style="width: 100%">
-										<thead>
-											<tr>
-												<th>title</th>
-												<th>user</th>
-												<th>date</th>
-											</tr>
-										</thead>
-										<tfoot>
-											<tr>
-												<th>title</th>
-												<th>user</th>
-												<th>date</th>
-											</tr>
-										</tfoot>
-									</table>
-					</div>
-		
-		<!-- 테이블 들어가는 곳  -->	
-			
-			
-			
-
-
-                               
-      			  </div><!-- 카드 바디 끝-->
-    		 </div><!-- 카드 -->
-		 </div><!-- 코롬 -->
-       </div>             <!-- row -->
-            
+         <div class="row">
+              <div class="col-lg-3">
+                       <h6 class="font-medium">Rating</h6>
+                       <div id="score-rating"></div>                
+             </div>
+                                    
+                     <div class="col-lg-9">
+                                <textarea class="form-control rounded-0" id="content"
+							   rows="5" name="content"></textarea>
+                           <hr>             
+                           <button type="button" class="btn btn-success waves-effect text-left float-right">Save</button>
+                      </div>
                   
-             </div><!-- 컨테이너 플루이드 -->
+                               
+                               </div><!-- row -->
+                            </div>
+                        </div>
+                    </div>
+                </div>     <!-- row -->
+            
+            
+            
+            
+            <!-- 코멘트 쓰는 창 -->
+            
+            
+            
+            
+            <!-- 코멘트 만들기 -->
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Comments</h4>
+                                    </div>
+                                    <div class="ml-auto d-flex no-block align-items-center">
+                                        <div class="dl">
+                                            <select class="custom-select">
+                                                <option value="0" selected="">Monthly</option>
+                                                <option value="1">Daily</option>
+                                                <option value="2">Weekly</option>
+                                                <option value="3">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                         <div class="row">
+             <!-- owl carousel넣기 -->
+	<div class="owl-carousel">
+	
+	<!-- 댓글한개 -->
+  		<div> 
+  								 <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                    	<div class="row">
+                                    	<div class="col-8">
+                                        <h6 class="font-medium">heemin</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        <i class="fa fa-spin fa-star" style="color:#ffe83f; "></i>&nbsp; &nbsp; 4점 
+                                        </div>
+                                        
+                                    	</div>
+                                        <span class="m-b-15 d-block">첫번재 댓글. ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</span>
+                                        <div class="comment-footer">
+                                          	<i class="fas fa-heart" style="color:#f77497; "></i>15
+                                            <span class="text-muted float-right">April 14, 2016</span> <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-trash"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+  		
+  		
+  		</div>
+	<!-- 댓글한개 -->
+  		<div> 
+  					 <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                       <div class="row">
+                                    	<div class="col-8">
+                                        <h6 class="font-medium">heemin</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        <i class="fa fa-spin fa-star" style="color:#ffe83f; "></i>&nbsp; &nbsp; 4점 
+                                        </div>
+                                        
+                                    	</div>
+                                        <span class="m-b-15 d-block">좋은 내용입니다 별점 테러 teeeeeeeeeeeeeeeee </span>
+                                        <div class="comment-footer">
+                                        	<i class="fas fa-heart" style="color:#f77497; "></i>10
+                                            <span class="text-muted float-right">April 14, 2016</span> <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-trash"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+  		
+  		
+  		</div>
+  		
+  		
+  		<div>
+  		
+  					 <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                        <div class="row">
+                                    	<div class="col-8">
+                                        <h6 class="font-medium">heemin</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        <i class="fa fa-spin fa-star" style="color:#ffe83f; "></i>&nbsp; &nbsp; 4점 
+                                        </div>
+                                        
+                                    	</div>
+                                        <span class="m-b-15 d-block">ㄴㅇㄹㄴㅇㄹㄴㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ. </span>
+                                        <div class="comment-footer">
+                                        <i class="fas fa-heart" style="color:#f77497; "></i>15
+                                            <span class="text-muted float-right">April 14, 2016</span>  <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-trash"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+  		
+  		</div>
+  		
+  		
+  		<div>
+  				 <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                    
+                                       <div class="row">
+                                    	<div class="col-8">
+                                        <h6 class="font-medium">heemin</h6>
+                                        </div>
+                                        <div class="col-4">
+                                        <i class="fa fa-spin fa-star" style="color:#ffe83f; "></i>&nbsp; &nbsp; 4점 
+                                        </div>
+                                    	</div>
+                                        
+                                        <span class="m-b-15 d-block">ㄴㅇㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴy. </span>
+                                        <div class="comment-footer">
+                                        	<i class="fas fa-heart" style="color:#f77497; "></i>15
+                                            <span class="text-muted float-right">April 14, 2016</span>  <span class="action-icons">
+                                                    <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-trash"></i></a>
+                                                    <a href="javascript:void(0)"><i class="ti-heart"></i></a>    
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+  		
+  		</div>
+ 		 
+	</div>             
+             
+             
+             
+             <!-- owl carousel넣기 -->
+                        </div>
+                    </div>
+                <hr>
+                
+                    
+                    
+                </div><!-- card 창 끝 -->
+                  
+              <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Related articles</h4>
+                                    </div>
+                                    <div class="ml-auto d-flex no-block align-items-center">
+                                        <div class="dl">
+                                                  <a href="reviews"><i class="ti-list"></i>글 목록</a>
+                                        </div>
+                                    </div>
+                                </div>
+                 				  <!-- 관련글 보기 (열) -->
+                 				   <div class="row">
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+           <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 20 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 3 Comments</a>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                    </div>
+                                </div>
+          </div>
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+           <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 19 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 5 Comments</a>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                    </div>
+                                </div>
+          </div>
+       	   <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+          		  <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex no-block align-items-center m-b-15">
+                                            <span><i class="ti-calendar"></i> 29 May 2018</span>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 6 Comments</a>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
+                                        <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                                    </div>
+                                </div>
+         			 </div>
+                 				  
+                 				  
+           </div>		  <!-- 관련글 보기 (열) -->
+                 				  
+                            </div><!-- card body -->
+                        </div>
+                    </div>
+                </div>     <!-- row -->
+                  
+                  
+            </div>
+            <!-- 컨테이너 플루이드 -->
             
             
             
             
             
-    </div><!--  wrapper-->
+            </div><!--  wrapper-->
+    
    
     
          <!-- ============================================================== -->
@@ -899,16 +1152,14 @@ body.mobile-nav-active #mobile-nav-toggle {
      <script src="resources/dist/typed.js"></script>
     <script src="resources/regna/js/main.js"></script>
     <!-- carousel -->
-    <!-- This Page JS -->
-	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-
-	<script src="resources/custom/boardListShow.js"></script>
-	<!-- 벡터지도 -->
-
-	<script src="resources/exhibitionCountrySelect.js"></script>
-
-	<!-- This Page JS -->
+    <script src="resources/dist/owls/owl.carousel.min.js"></script>
+    <script src="resources/dist/carousel.js"></script>
+    <script src="resources/dist/owls/jquery.mousewheel.min.js"></script>
+    <!-- 별점 -->
+    <script src="resources/assets/libs/raty-js/lib/jquery.raty.js"></script>
+    <script src="resources/dist/rating-init.js"></script>
     <script>
+    
     jQuery(document).ready(function( $ ) {
 
     	  // Header fixed and Back to top button
