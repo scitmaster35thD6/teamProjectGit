@@ -15,7 +15,7 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="any"
 	href="resources/assets/images/logo2.png">
-    <title>SE World 전세계 기술 전시</title>
+    <title>SE World - User Profile</title>
     <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css" rel="stylesheet">
     <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -601,7 +601,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 </head>
 
 <body>
-    <!-- ============================================================== -->
+     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
     
@@ -620,45 +620,39 @@ body.mobile-nav-active #mobile-nav-toggle {
         <!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
       </div>
 
-            <nav id="nav-menu-container">
+      <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
            <li class="menu-has-children"><a href="#services">Exhibition</a>
            <ul>
-              <li><a href="exhibitionList">전시회게시판</a></li>
+              <li><a href="exhibitionList">Exhibition List</a></li>
            	  <li><a href="#facts">GoogleMap</a></li>   
            </ul>
            
            
-         <li class="menu-has-children"><a href="#portfolio">Review</a>
+         <li class="menu-has-children"><a href="#portfolio">User's Voice</a>
            <ul>
               <li><a href="reviews">Review</a></li>
-           	  <li><a href="#">Write Review</a></li>   
            	  <li><a href="questions">Question</a></li>
+           	  <li><a href="writeArticle">Write Article</a></li>   
            </ul>
            
-
-          <li class="menu-has-children"><a href="profile">My Profile</a>
-           <ul>
-              <li><a href="profile">Profile</a></li>
-           	  <li><a href="calendar">calendar</a></li>   
-           </ul>
          
-        <c:if test="${sessionScope.loginId==null}">		
-          <li class="menu-has-children"><a href="profile">sign up/log in</a>
+        <c:if test="${empty sessionScope.loginId}">		
+          <li class="menu-has-children"><a href="profile">Member</a>
            <ul>
               <li><a href="login">Log in</a></li>
            	  <li><a href="#">Sign up</a></li>   
            </ul>
          </c:if>
           
-         <c:if test="${sessionScope.loginId !=null}">
-          	<li class="menu-has-children"><a href="#">${sessionScope.loginId}님</a>
+         <c:if test="${not empty sessionScope.loginId}">
+          	<li class="menu-has-children"><a href="#">${sessionScope.loginId} 님</a>
          	<ul>
-              <li><a href="#">Setting</a></li>
-           	  <li><a href="#">Log out</a></li>   
+           	  <li><a href="logout">Log out</a></li>   
+              <li><a href="profile">Profile</a></li>
+           	  <li><a href="calendar">calendar</a></li>  
            </ul>
-         
          </c:if> 
           
         </ul>
@@ -696,7 +690,7 @@ body.mobile-nav-active #mobile-nav-toggle {
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="./">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Profile</li>
                                 </ol>
                             </nav>

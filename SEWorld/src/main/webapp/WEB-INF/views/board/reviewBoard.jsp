@@ -16,7 +16,6 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="any"
 	href="resources/assets/images/logo2.png">
-<<<<<<< Updated upstream
 <title>SE World 전세계 기술 전시</title>
 <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
 	rel="stylesheet">
@@ -31,9 +30,7 @@
 <!-- Custom CSS 새로 -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
 <link href="resources/custom/exhibitionList.css" rel="stylesheet">
-
-=======
-    <title>SE World 전세계 기술 전시</title>
+    <title>SE World - User Review</title>
     <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css" rel="stylesheet">
     <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -62,8 +59,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-<!-- 테이블 용 -->
->>>>>>> Stashed changes
 <link
 	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
 	rel="stylesheet">
@@ -648,43 +643,38 @@ body.mobile-nav-active #mobile-nav-toggle {
         <!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
       </div>
 
-      <nav id="nav-menu-container">
+           <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
            <li class="menu-has-children"><a href="#services">Exhibition</a>
            <ul>
-              <li><a href="exhibitionList">전시회게시판</a></li>
+              <li><a href="exhibitionList">Exhibition List</a></li>
            	  <li><a href="#facts">GoogleMap</a></li>   
            </ul>
            
            
-         <li class="menu-has-children"><a href="#portfolio">Review</a>
+         <li class="menu-has-children"><a href="#portfolio">User's Voice</a>
            <ul>
               <li><a href="reviews">Review</a></li>
-           	  <li><a href="writeArticle">Write Review</a></li>   
            	  <li><a href="questions">Question</a></li>
+           	  <li><a href="writeArticle">Write Article</a></li>   
            </ul>
            
-
-          <li class="menu-has-children"><a href="profile">My Profile</a>
-           <ul>
-              <li><a href="profile">Profile</a></li>
-           	  <li><a href="calendar">calendar</a></li>   
-           </ul>
          
-        <c:if test="${sessionScope.loginId==null}">		
-          <li class="menu-has-children"><a href="profile">sign up/log in</a>
+        <c:if test="${empty sessionScope.loginId}">		
+          <li class="menu-has-children"><a href="profile">Member</a>
            <ul>
               <li><a href="login">Log in</a></li>
            	  <li><a href="#">Sign up</a></li>   
            </ul>
          </c:if>
           
-         <c:if test="${sessionScope.loginId !=null}">
-          	<li class="menu-has-children"><a href="#">${sessionScope.loginId}님</a>
+         <c:if test="${not empty sessionScope.loginId}">
+          	<li class="menu-has-children"><a href="#">${sessionScope.loginId} 님</a>
          	<ul>
-              <li><a href="#">Setting</a></li>
-           	  <li><a href="#">Log out</a></li>   
+           	  <li><a href="logout">Log out</a></li>   
+              <li><a href="profile">Profile</a></li>
+           	  <li><a href="calendar">calendar</a></li>  
            </ul>
          
          </c:if> 
@@ -725,12 +715,12 @@ body.mobile-nav-active #mobile-nav-toggle {
           <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="card-title text">EXHIBITION LIST</h4>
+                        <h4 class="card-title text">User Review</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Exhibition List</li>
+                                    <li class="breadcrumb-item"><a href="./">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">User Review</li>
                                 </ol>
                             </nav>
                         </div>
@@ -904,8 +894,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 	<script src="resources/custom/boardListShow.js"></script>
 	<!-- 벡터지도 -->
-
-	<script src="resources/exhibitionCountrySelect.js"></script>
 
 	<!-- This Page JS -->
     <script>
