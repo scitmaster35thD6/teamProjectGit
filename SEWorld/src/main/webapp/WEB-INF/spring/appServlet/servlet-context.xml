@@ -39,6 +39,7 @@
 			<mapping path="/writeArticle" />
 			<mapping path="/updateArticle" />
 			<mapping path="/deleteArticle" />
+			<mapping path="/profile"/>
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 	</interceptors>

@@ -1049,7 +1049,7 @@ var countries = {
           <li class="menu-has-children"><a href="profile">Member</a>
            <ul>
               <li><a href="login">Log in</a></li>
-           	  <li><a href="#">Sign up</a></li>   
+           	  <li><a href="signup">Sign up</a></li>   
            </ul>
          </c:if>
           

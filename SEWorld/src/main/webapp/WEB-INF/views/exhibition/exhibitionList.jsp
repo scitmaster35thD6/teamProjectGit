@@ -638,36 +638,41 @@ body.mobile-nav-active #mobile-nav-toggle {
 				<!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
 			</div>
 
-			<nav id="nav-menu-container">
-				<ul class="nav-menu">
-					<li class="menu-active"><a
-						href="${pageContext.servletContext.contextPath}">Home</a></li>
-					<li class="menu-has-children"><a href="#services">Exhibition</a>
-						<ul>
-							<li><a href="exhibitionList">Exhibitions List</a></li>
-							<li><a href="#facts">GoogleMap</a></li>
-						</ul>
-					<li class="menu-has-children"><a href="#portfolio">User's
-							Voice</a>
-						<ul>
-							<li><a href="reviews">Review</a></li>
-							<li><a href="questions">Question</a></li>
-							<li><a href="writeArticle">Write Article</a></li>
-						</ul> <c:if test="${empty sessionScope.loginId}">
-							<li class="menu-has-children"><a href="profile">Member</a>
-								<ul>
-									<li><a href="login">Log in</a></li>
-									<li><a href="#">Sign up</a></li>
-								</ul>
-						</c:if> <c:if test="${not empty sessionScope.loginId}">
-							<li class="menu-has-children"><a href="#">${sessionScope.loginId}
-									님</a>
-								<ul>
-									<li><a href="logout">Log out</a></li>
-									<li><a href="profile">Profile</a></li>
-									<li><a href="calendar">calendar</a></li>
-								</ul>
-						</c:if>
+    <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
+           <li class="menu-has-children"><a href="#services">Exhibition</a>
+           <ul>
+              <li><a href="exhibitionList">Exhibition List</a></li>
+           	  <li><a href="#facts">GoogleMap</a></li>   
+           	  <li><a href="jvectorMap">VectorMap</a></li>   
+           </ul>
+           
+           
+         <li class="menu-has-children"><a href="#portfolio">User's Voice</a>
+           <ul>
+              <li><a href="reviews">Review</a></li>
+           	  <li><a href="questions">Question</a></li>
+           	  <li><a href="writeArticle">Write Article</a></li>   
+           </ul>
+           
+         
+        <c:if test="${empty sessionScope.loginId}">		
+          <li class="menu-has-children"><a href="profile">Member</a>
+           <ul>
+              <li><a href="login">Log in</a></li>
+           	  <li><a href="signup">Sign up</a></li>   
+           </ul>
+         </c:if>
+          
+         <c:if test="${not empty sessionScope.loginId}">
+          	<li class="menu-has-children"><a href="#">${sessionScope.loginId} 님</a>
+         	<ul>
+           	  <li><a href="logout">Log out</a></li>   
+              <li><a href="profile">Profile</a></li>
+           	  <li><a href="calendar">calendar</a></li>  
+           </ul>
+         </c:if> 
 				</ul>
 			</nav>
 			<!-- #nav-menu-container -->
