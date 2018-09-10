@@ -56,15 +56,17 @@
 		FROM(select * from
 		c6_board where
 		memberId like '%' ||
-		#{searchText} || '%' or title like
+		#{searchText} ||
+		'%' or title like
 		'%' ||
 		#{searchText}
 		|| '%'
-		or content like '%' || #{searchText} || '%'
+		or content like '%' ||
+		#{searchText} || '%'
 		)
 		where
 		category =
-		'question'ORDER BY
+		'question' ORDER BY
 		boardId
 		DESC
 	</select>
@@ -84,6 +86,32 @@
 		c6_board
 		WHERE boardid =
 		#{boardId}
+	</select>
+
+	<!-- 메인 화면에 띄울 최근 리뷰 게시글 6건 -->
+	<select id="getRecentReviews" resultType="Board">
+		select
+		boardId
+		,memberId
+		,category
+		,title
+		,content
+		,to_char(createdDate, 'DD MON YYYY',
+		'NLS_DATE_LANGUAGE=ENGLISH') createdDate
+		,to_char(updatedDate, 'DD MON
+		YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') updatedDate
+		,exhibitionid
+		FROM
+		(
+		select
+		*
+		from c6_board
+		where category = 'review'
+		order by
+		boardId DESC
+		)
+		where rownum
+		&lt; 7
 	</select>
 
 	<!-- 게시물에 파일 저장시 외래키 받아오기 -->

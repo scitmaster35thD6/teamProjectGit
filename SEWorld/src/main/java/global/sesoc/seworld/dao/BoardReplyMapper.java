@@ -46,4 +46,6 @@ public interface BoardReplyMapper {
 	public abstract int updateOneBoardReply(BoardReply boardReply);
 
 	public abstract String getBoardReplyId(String boardId);
+
+	public abstract List<BoardReply> getBoardRepliesList();
 }

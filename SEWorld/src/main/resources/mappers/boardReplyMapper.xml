@@ -14,8 +14,9 @@
 		,content
 		,createdDate
 		,updatedDate
-		FROM c6_board_reply
-		WHERE boardId = #{boardReplyId}
+		FROM
+		c6_board_reply
+		WHERE boardReplyId = #{boardReplyId}
 		ORDER BY
 		boardReplyId
 	</select>
@@ -33,11 +34,19 @@
 		WHERE boardReplyId = #{boardReplyId}
 	</select>
 
+	<!-- 전체 목록 받아오기 -->
+	<select id="getBoardRepliesList" resultType="BoardReply">
+		select *
+		from
+		c6_board_reply
+	</select>
+
 	<select id="getBoardReplyId" parameterType="String"
 		resultType="String">
 		select boardReplyId
 		from c6_board_reply
-		where boardId=#{boardReplyId}
+		where
+		boardId=#{boardReplyId}
 	</select>
 
 	<insert id="insertOneBoardReply" parameterType="BoardReply">
@@ -53,7 +62,8 @@
 		)
 		VALUES
 		(
-		REPLACE(#{boardId} || '-R' || TO_CHAR(c6_board_reply_seq.NEXTVAL, '0000'), ' ', '')
+		REPLACE(#{boardId} || '-R' ||
+		TO_CHAR(c6_board_reply_seq.NEXTVAL, '0000'), ' ', '')
 		,#{boardId}
 		,#{memberId}
 		,#{content}
@@ -67,7 +77,8 @@
 		FROM
 		c6_board_reply
 		WHERE boardReplyId = #{boardReplyId}
-		AND memberId = #{memberId}
+		AND memberId =
+		#{memberId}
 	</delete>
 
 	<update id="updateOneBoardReply" parameterType="BoardReply">

@@ -18,18 +18,24 @@ public class BoardRepository {
 		int result = boardMapper.getTotalList();
 		return result;
 	}
-	
+
 	public List<Board> viewAllReviews(int start, int length, String searchText) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
 		RowBounds rb = new RowBounds(start, length);
 		List<Board> result = boardMapper.viewAllReviews(searchText, rb);
 		return result;
 	}
-	
+
 	public List<Board> viewAllQuestions(int start, int length, String searchText) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
 		RowBounds rb = new RowBounds(start, length);
 		List<Board> result = boardMapper.viewAllQuestions(searchText, rb);
+		return result;
+	}
+
+	public List<Board> getRecentReviews() {
+		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
+		List<Board> result = boardMapper.getRecentReviews();
 		return result;
 	}
 
@@ -38,7 +44,7 @@ public class BoardRepository {
 		Board result = boardMapper.viewBoardDetail(boardId);
 		return result;
 	}
-	
+
 	public String getBoardId(String memberId) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
 		String result = boardMapper.getBoardId(memberId);

@@ -1,6 +1,8 @@
 package global.sesoc.seworld;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import global.sesoc.seworld.dao.BoardReplyRepository;
+import global.sesoc.seworld.dao.BoardRepository;
 import global.sesoc.seworld.dao.ExhibitionRepository;
+import global.sesoc.seworld.dto.Board;
+import global.sesoc.seworld.dto.BoardReply;
 import global.sesoc.seworld.dto.Exhibition;
 
 @Controller
@@ -28,6 +34,12 @@ public class HomeController {
 	@Autowired
 	ExhibitionRepository exhibitionRepository;
 
+	@Autowired
+	BoardRepository boardRepository;
+
+	@Autowired
+	BoardReplyRepository boardReplyRepository;
+
 	// 메인 페이지로 이동
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
@@ -35,14 +47,28 @@ public class HomeController {
 		// model.addAttribute("mapList", mapList);
 		logger.info("[/]");
 		List<Exhibition> recentExhibition = exhibitionRepository.getRecentExhibition();
+		List<Board> recentReviews = boardRepository.getRecentReviews();
+		List<BoardReply> replies = boardReplyRepository.getBoardRepliesList();
+		Map<String, Integer> replyListCount = new HashMap<>();
+		for (int i = 0; i < recentReviews.size(); i++) {
+			int counter = 0;
+			for (int j = 0; j < replies.size(); j++) {
+				if (recentReviews.get(i).getBoardId().equals(replies.get(j).getBoardId())) {
+					counter += 1;
+				}
+			}
+			replyListCount.put(recentReviews.get(i).getBoardId(), counter);
+		}
 		model.addAttribute("recentExhibition", recentExhibition);
+		model.addAttribute("recentReviews", recentReviews);
+		model.addAttribute("replyListCount", replyListCount);
 		return "main";
 	}
 
 	/* 예전 메인 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String newMainPage() {
-		logger.info("[/]");
+		logger.info("[/oldIndex]");
 		return "index";
 	}
 

@@ -116,6 +116,11 @@ public class BoardController {
 		Exhibition exbhibitionForArticle = exhibitionRepository.showExhibitionDetail(articleDetail.getExhibitionId());
 		String boardReplyId = boardReplyRepository.getBoardReplyId(boardId);
 		Member articleAuthor = memberRepository.selectOneMember(articleDetail.getMemberId());
+		String articleFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
+		if (articleFileId != null) {
+			BoardFile articleAttachement = boardFileRepository.selectOneBoardFile(articleFileId);
+			model.addAttribute("articleAttachement", articleAttachement);
+		}
 		if (boardReplyId != null) {
 			BoardReply articleReply = boardReplyRepository.selectOneBoardReply(boardReplyId);
 			model.addAttribute("articleReply", articleReply);

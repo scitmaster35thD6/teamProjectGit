@@ -795,17 +795,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 			</div>
 			<!--첨부파일-->
 			<hr>
-		<div class="card-body">
-			<div class="d-md-flex align-items-center">
-				<span class="label label-info">첨부파일</span> abc.txt
-			
-			
-				<div class="ml-auto d-flex no-block align-items-center">
-				<a href=""><i class="far fa-sun"></i>수정</a>
-				<a href=""><i class="far fa-trash-alt"></i>삭제</a>
-			    </div>
-			</div>	
-		</div><!-- 카드바디 -->
+			<div class="card-body">
+				<span class="label label-info">첨부파일</span> 
+				<c:if test="${empty articleAttachement}">&nbsp;첨부 파일이 없습니다.</c:if>
+				<c:if test="${not empty articleAttachement}">&nbsp;<a href="downloadFile?boardId=${articleAttachement.boardId}">${articleAttachement.ogFilename}</a></c:if>
+			</div>
 		</div>
 		<!-- ============================================================== -->
 		<!-- Container fluid  -->

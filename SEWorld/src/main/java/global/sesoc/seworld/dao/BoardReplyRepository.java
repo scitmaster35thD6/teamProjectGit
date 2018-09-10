@@ -42,4 +42,9 @@ public class BoardReplyRepository {
 		BoardReplyMapper boardReplyMapper = sqlSession.getMapper(BoardReplyMapper.class);
 		return boardReplyMapper.getBoardReplyId(boardId);
 	}
+	
+	public List<BoardReply> getBoardRepliesList(){
+		BoardReplyMapper boardReplyMapper = sqlSession.getMapper(BoardReplyMapper.class);
+		return boardReplyMapper.getBoardRepliesList();
+	}
 }

@@ -34,32 +34,38 @@
 		openingTerm DESC
 	</select>
 
+	<!-- 전체 국가들 가져오기 -->
 	<select id="getTotalCountry" resultType="String">
 		select countryname from
 		c6_countries
 	</select>
 
+	<!-- 전체 건수 가져오기 -->
 	<select id="getTotalList" resultType="int">
 		SELECT COUNT(*)
 		FROM
 		c6_exhibition
 	</select>
 
+	<!-- 메인에 표시할 최근 전시회 12건 -->
 	<select id="getRecentExhibition" resultType="exhibition">
 		SELECT
 		exhibitionId
-		, exhibitionTitleKor
+		,
+		exhibitionTitleKor
 		,
 		exhibitionTitleEng
 		, openingTerm
 		, firstOpeningYear
-		, openingCountry
+		,
+		openingCountry
 		,
 		openingCity
 		, exhibitionHall
 		, sponsor
 		, createdDate
-		, updatedDate
+		,
+		updatedDate
 		,
 		dataOffer
 		from(
