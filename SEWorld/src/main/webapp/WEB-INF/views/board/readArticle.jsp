@@ -795,9 +795,17 @@ body.mobile-nav-active #mobile-nav-toggle {
 			</div>
 			<!--첨부파일-->
 			<hr>
-			<div class="card-body">
+		<div class="card-body">
+			<div class="d-md-flex align-items-center">
 				<span class="label label-info">첨부파일</span> abc.txt
-			</div>
+			
+			
+				<div class="ml-auto d-flex no-block align-items-center">
+				<a href=""><i class="far fa-sun"></i>수정</a>
+				<a href=""><i class="far fa-trash-alt"></i>삭제</a>
+			    </div>
+			</div>	
+		</div><!-- 카드바디 -->
 		</div>
 		<!-- ============================================================== -->
 		<!-- Container fluid  -->
