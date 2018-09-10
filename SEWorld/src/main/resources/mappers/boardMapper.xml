@@ -19,44 +19,52 @@
 		,category
 		,title
 		,content
-		,to_char(createdDate, 'HH:MM, MON DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') createdDate
-		,to_char(updatedDate, 'HH:MM, MON DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') updatedDate
+		,to_char(createdDate, 'HH:MM, MON DD, YYYY',
+		'NLS_DATE_LANGUAGE=ENGLISH') createdDate
+		,to_char(updatedDate, 'HH:MM,
+		MON DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') updatedDate
 		,exhibitionid
 		FROM
+		(select * from c6_board where memberId like '%' ||
+		#{searchText} ||
+		'%' or title like '%' || #{searchText}
+		|| '%'
+		or content like '%' ||
+		#{searchText} || '%'
+		)
 		c6_board
 		where
 		category =
-		'review' and
-		memberId like '%' ||
-		#{searchText} || '%' or title like '%' || #{searchText}
-		|| '%'
-		or content like '%' || #{searchText} || '%'
+		'review'
 		ORDER BY
 		boardId
 		DESC
 	</select>
-	
-		<select id="viewAllQuestions" resultType="Board"
+
+	<select id="viewAllQuestions" resultType="Board"
 		parameterType="String">
 		SELECT
 		boardId
 		,memberId
 		,category
 		,title
-		,content
-		,createdDate
-		,updatedDate
+		,to_char(createdDate, 'HH:MM, MON DD, YYYY',
+		'NLS_DATE_LANGUAGE=ENGLISH') createdDate
+		,to_char(updatedDate, 'HH:MM,
+		MON DD, YYYY', 'NLS_DATE_LANGUAGE=ENGLISH') updatedDate
 		,exhibitionid
-		FROM
-		c6_board
-		where
-		category =
-		'question' and
+		FROM(select * from
+		c6_board where
 		memberId like '%' ||
-		#{searchText} || '%' or title like '%' || #{searchText}
+		#{searchText} || '%' or title like
+		'%' ||
+		#{searchText}
 		|| '%'
 		or content like '%' || #{searchText} || '%'
-		ORDER BY
+		)
+		where
+		category =
+		'question'ORDER BY
 		boardId
 		DESC
 	</select>
@@ -100,7 +108,8 @@
 		)
 		VALUES
 		(
-		REPLACE('B' || TO_CHAR(c6_board_seq.NEXTVAL, '000000000'), ' ', '') 
+		REPLACE('B' || TO_CHAR(c6_board_seq.NEXTVAL,
+		'000000000'), ' ', '')
 		,#{memberId}
 		,#{category}
 		,#{title}

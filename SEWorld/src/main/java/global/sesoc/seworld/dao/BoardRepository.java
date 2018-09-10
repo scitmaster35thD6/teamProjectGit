@@ -29,7 +29,7 @@ public class BoardRepository {
 	public List<Board> viewAllQuestions(int start, int length, String searchText) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
 		RowBounds rb = new RowBounds(start, length);
-		List<Board> result = boardMapper.viewAllReviews(searchText, rb);
+		List<Board> result = boardMapper.viewAllQuestions(searchText, rb);
 		return result;
 	}
 
