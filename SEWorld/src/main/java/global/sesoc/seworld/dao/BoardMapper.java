@@ -26,6 +26,6 @@ public interface BoardMapper {
 
 	public int updateBoard(Board board);
 
-	public int deleteBoard(Board board);
+	public int deleteBoard(String boardId);
 
 }
