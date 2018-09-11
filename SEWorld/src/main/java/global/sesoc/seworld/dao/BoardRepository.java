@@ -61,8 +61,8 @@ public class BoardRepository {
 		return boardMapper.updateBoard(board);
 	}
 
-	public int deleteBoard(Board board) {
+	public int deleteBoard(String boardId) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
-		return boardMapper.deleteBoard(board);
+		return boardMapper.deleteBoard(boardId);
 	}
 }

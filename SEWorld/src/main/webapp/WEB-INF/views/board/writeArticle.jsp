@@ -532,6 +532,7 @@
 															style="width: 100%">
 															<thead>
 																<tr>
+																	<th>번호</th>
 																	<th>상세</th>
 																	<th>전시회 제목</th>
 																	<th>개최국</th>
@@ -540,6 +541,7 @@
 															</thead>
 															<tfoot>
 																<tr>
+																	<th>Number</th>
 																	<th>Detail</th>
 																	<th>Title in Korean</th>
 																	<th>Country</th>

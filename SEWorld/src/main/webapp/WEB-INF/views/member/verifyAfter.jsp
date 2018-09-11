@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>SE World - Signed up</title>
 </head>
 <body>
 	<h1>SE World 회원가입이 완료되었습니다.</h1>

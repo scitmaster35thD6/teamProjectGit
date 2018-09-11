@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>SE World - Error</title>
 </head>
 <body>
 	<h1>인증메일 전송에 실패하였습니다.</h1>

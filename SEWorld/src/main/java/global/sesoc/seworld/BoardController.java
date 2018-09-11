@@ -212,14 +212,10 @@ public class BoardController {
 	}
 
 	// 게시물 삭제하기
-	@RequestMapping(value = "/deleteArticle", method = RequestMethod.POST)
-	public String deleteReview(Board board) {
-		boardRepository.deleteBoard(board);
-		if (board.getCategory().equals("question")) {
-			return "redirect:/questions";
-		} else {
-			return "redirect:/reviews";
-		}
+	@RequestMapping(value = "/deleteArticle", method = RequestMethod.GET)
+	public String deleteReview(String boardId) {
+		boardRepository.deleteBoard(boardId);
+		return "redirect:/reviews";
 	}
 
 	// 게시물 첨부 파일 다운로드
