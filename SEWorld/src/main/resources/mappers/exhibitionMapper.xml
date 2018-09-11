@@ -114,4 +114,14 @@
 		select count(*) from c6_exhibition where openingCountry =
 		#{selectedCountry}
 	</select>
+	
+	<select id="countAllExhibition" resultType="Counting">
+		SELECT c.countryName as countryName, count(e.openingCountry) as num
+		FROM c6_countries c LEFT OUTER JOIN c6_exhibition e
+ 		ON c.countryName = e.openingCountry
+		GROUP BY c.countryName
+		ORDER BY 1
+	
+	</select>
+	
 </mapper>

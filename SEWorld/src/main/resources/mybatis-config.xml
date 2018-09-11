@@ -20,6 +20,7 @@
 		<typeAlias type="global.sesoc.seworld.dto.Participating" alias="Participating" />
 		<typeAlias type="global.sesoc.seworld.dto.Regions" alias="Regions" />
 		<typeAlias type="global.sesoc.seworld.dto.Wishing" alias="Wishing" />
+		<typeAlias type="global.sesoc.seworld.dto.Counting" alias="Counting" />
 	</typeAliases>
 
 	<mappers>

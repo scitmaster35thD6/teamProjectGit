@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 
+import global.sesoc.seworld.dto.Counting;
 import global.sesoc.seworld.dto.Exhibition;
 
 public interface ExhibitionMapper {
@@ -13,6 +14,8 @@ public interface ExhibitionMapper {
 	public Exhibition showExhibitionDetail(String exhibitionId);
 	
 	public int countCountry (String openingCountry) ;
+	
+	public List<Counting> countAllExhibition ();
 
 	public List<Exhibition> showExhibitionList(String searchText, RowBounds rb);
 

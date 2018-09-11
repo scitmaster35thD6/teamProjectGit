@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import global.sesoc.seworld.dto.Counting;
 import global.sesoc.seworld.dto.Exhibition;
 
 @Repository
@@ -53,5 +54,11 @@ public class ExhibitionRepository {
 	public List<Exhibition> getRecentExhibition(){
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
 		return mapper.getRecentExhibition();
+	}
+	/**지도에 띄우기**/
+	public List<Counting> countAllExhibition (){
+		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
+		return mapper.countAllExhibition();
+		
 	}
 }

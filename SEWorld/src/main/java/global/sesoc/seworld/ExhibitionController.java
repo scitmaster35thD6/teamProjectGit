@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import global.sesoc.seworld.dao.ExhibitionRepository;
+import global.sesoc.seworld.dto.Counting;
 import global.sesoc.seworld.dto.Exhibition;
 import global.sesoc.seworld.dto.TableWrapperDTO;
 
@@ -73,6 +74,13 @@ public class ExhibitionController {
 	//	System.out.println(result + "몇개");
 		return result;
 	}
+	/**지도에 전체 수 표시**/
+	@RequestMapping(value = "countAllEx", method = RequestMethod.POST)
+	public @ResponseBody List<Counting> countAllExhibition() throws Exception {
+		List<Counting>result = repository.countAllExhibition();
+		return result;
+	}
+	
 
 	// 벡터 지도로 이동
 	@RequestMapping(value = "/jvectorMap", method = RequestMethod.GET)
