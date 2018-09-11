@@ -1306,24 +1306,24 @@ table {
 							</ol>
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img1.jpg" alt="First slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[0].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img1.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[0].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[0].exhibitionTitleEng}</p>
 									</div>
 								</div>
 								<div class="carousel-item">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img2.jpg" alt="Second slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[1].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img2.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[1].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[1].exhibitionTitleEng}</p>
 									</div>
 								</div>
 								<div class="carousel-item">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img3.jpg" alt="Third slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[2].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img3.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[2].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[2].exhibitionTitleEng}</p>
@@ -1347,24 +1347,24 @@ table {
 							</ol>
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img4.jpg" alt="First slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[3].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img4.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[3].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[3].exhibitionTitleEng}</p>
 									</div>
 								</div>
 								<div class="carousel-item">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img5.jpg" alt="Second slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[4].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img5.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[4].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[4].exhibitionTitleEng}</p>
 									</div>
 								</div>
 								<div class="carousel-item">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img6.jpg" alt="Third slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[5].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img6.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[5].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[5].exhibitionTitleEng}</p>
@@ -1389,24 +1389,24 @@ table {
 							</ol>
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img7.jpg" alt="First slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[6].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img7.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[6].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[6].exhibitionTitleEng}</p>
 									</div>
 								</div>
 								<div class="carousel-item">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img8.jpg" alt="Second slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[7].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img8.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[7].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[7].exhibitionTitleEng}</p>
 									</div>
 								</div>
 								<div class="carousel-item">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img9.jpg" alt="Third slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[8].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img9.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[8].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[8].exhibitionTitleEng}</p>
@@ -1429,24 +1429,24 @@ table {
 							</ol>
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img10.jpg" alt="First slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[9].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img10.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[9].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[9].exhibitionTitleEng}</p>
 									</div>
 								</div>
 								<div class="carousel-item">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img11.jpg" alt="Second slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[10].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img11.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[10].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[10].exhibitionTitleEng}</p>
 									</div>
 								</div>
 								<div class="carousel-item">
-									<img class="img-fluid"
-										src="resources/assets/images/big/img12.jpg" alt="Third slide">
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[11].exhibitionId}"><img class="img-fluid"
+										src="resources/assets/images/big/img12.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[11].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[11].exhibitionTitleEng}</p>
@@ -1485,7 +1485,7 @@ table {
 								<div class="d-flex no-block align-items-center m-b-15">
 									<span><i class="ti-calendar"></i>&nbsp;&nbsp;${recentReviews[0].updatedDate}</span>
 									<div class="ml-auto">
-										<a href="javascript:void(0)" class="link"><i
+										<a href="readArticle?boardId=${recentReviews[0].boardId}" class="link"><i
 											class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[recentReviews[0].boardId]}
 											Comments</a>
 									</div>
@@ -1509,7 +1509,7 @@ table {
 								<div class="d-flex no-block align-items-center m-b-15">
 									<span><i class="ti-calendar"></i>&nbsp;&nbsp;${recentReviews[1].updatedDate}</span>
 									<div class="ml-auto">
-										<a href="javascript:void(0)" class="link"><i
+										<a href="readArticle?boardId=${recentReviews[1].boardId}" class="link"><i
 											class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[recentReviews[1].boardId]}
 											Comments</a>
 									</div>
@@ -1533,7 +1533,7 @@ table {
 								<div class="d-flex no-block align-items-center m-b-15">
 									<span><i class="ti-calendar"></i>&nbsp;&nbsp;${recentReviews[2].updatedDate}</span>
 									<div class="ml-auto">
-										<a href="javascript:void(0)" class="link"><i
+										<a href="readArticle?boardId=${recentReviews[2].boardId}" class="link"><i
 											class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[recentReviews[2].boardId]}
 											Comments</a>
 									</div>
@@ -1557,7 +1557,7 @@ table {
 								<div class="d-flex no-block align-items-center m-b-15">
 									<span><i class="ti-calendar"></i>&nbsp;&nbsp;${recentReviews[3].updatedDate}</span>
 									<div class="ml-auto">
-										<a href="javascript:void(0)" class="link"><i
+										<a href="readArticle?boardId=${recentReviews[3].boardId}" class="link"><i
 											class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[recentReviews[3].boardId]}
 											Comments</a>
 									</div>
@@ -1581,7 +1581,7 @@ table {
 								<div class="d-flex no-block align-items-center m-b-15">
 									<span><i class="ti-calendar"></i>&nbsp;&nbsp;${recentReviews[4].updatedDate}</span>
 									<div class="ml-auto">
-										<a href="javascript:void(0)" class="link"><i
+										<a href="readArticle?boardId=${recentReviews[4].boardId}" class="link"><i
 											class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[recentReviews[4].boardId]}
 											Comments</a>
 									</div>
@@ -1605,7 +1605,7 @@ table {
 								<div class="d-flex no-block align-items-center m-b-15">
 									<span><i class="ti-calendar"></i>&nbsp;&nbsp;${recentReviews[5].updatedDate}</span>
 									<div class="ml-auto">
-										<a href="javascript:void(0)" class="link"><i
+										<a href="readArticle?boardId=${recentReviews[5].boardId}" class="link"><i
 											class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[recentReviews[5].boardId]}
 											Comments</a>
 									</div>
