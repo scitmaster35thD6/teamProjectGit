@@ -13,11 +13,6 @@ public class CommentRepository {
 	@Autowired
 	SqlSession sqlSession;
 
-	public List<Comment> selectAllCommentsFromMember(String memberId) {
-		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.selectAllCommentsFromMember(memberId);
-	}
-
 	public List<Comment> selectAllCommentsFromExhibition(String exhibitionId) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
 		return commentMapper.selectAllCommentsFromExhibition(exhibitionId);

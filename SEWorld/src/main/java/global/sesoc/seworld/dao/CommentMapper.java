@@ -5,8 +5,6 @@ import java.util.List;
 import global.sesoc.seworld.dto.Comment;
 
 public interface CommentMapper {
-	public abstract List<Comment> selectAllCommentsFromMember(String memberId);
-
 	public abstract List<Comment> selectAllCommentsFromExhibition(String exhibitionId);
 
 	public abstract Comment selectOneComment(Comment comment);

@@ -13,7 +13,6 @@ import global.sesoc.seworld.dto.Wishing;
 public class WishingRepository {
 	@Autowired
 	SqlSession sqlSession;
-	private Object selectAllWising;
 
 	public Wishing selectOneWishing(Wishing wishing) {
 		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
@@ -34,11 +33,9 @@ public class WishingRepository {
 		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
 		return wishingMapper.updateWishingInserted(wishing);
 	}
-	
-	
-	
+
 	public List<Exhibition> selectAllWishing(Wishing wishing) {
-		System.out.println(wishing+"리포지토리");
+		System.out.println(wishing + "리포지토리");
 		WishingMapper wishingMapper = sqlSession.getMapper(WishingMapper.class);
 		return wishingMapper.selectAllWising(wishing);
 	}

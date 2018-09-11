@@ -5,19 +5,6 @@
 
 <mapper namespace="global.sesoc.seworld.dao.CommentMapper">
 
-	<select id="selectAllCommentsFromMember" parameterType="String" resultType="Comment">
-		SELECT
-		memberId
-		,exhibitionId
-		,rating
-		,content
-		,createdDate
-		,updatedDate
-		,likes
-		FROM c6_comment
-		WHERE memberId = #{memberId}
-	</select>
-
 	<select id="selectAllCommentsFromExhibition" parameterType="String" resultType="Comment">
 		SELECT
 		memberId

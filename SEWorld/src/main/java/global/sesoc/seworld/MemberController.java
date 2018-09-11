@@ -1,7 +1,6 @@
 package global.sesoc.seworld;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -30,24 +29,16 @@ import global.sesoc.seworld.util.MailHandler;
 
 @Controller
 public class MemberController {
-
-	/**
-	 * SE World Board Controller
-	 * 
-	 * @author youngbinkim
-	 * @version 0.1
-	 */
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@Autowired
 	JavaMailSender mailSender;
 
 	@Autowired
 	MemberRepository memberRepository;
-	
+
 	@Autowired
 	WishingRepository wishingRepository;
-
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
@@ -108,8 +99,7 @@ public class MemberController {
 			MailHandler sendMail = new MailHandler(mailSender);
 			sendMail.setSubject("[SE World] 이메일을 인증해주세요.");
 			sendMail.setText(new StringBuffer().append("<h1>SE World</h1>")
-					.append(signupMember.getMemberName() + "님의 이메일 주소를 인증해 주세요.")
-					.append("<hr/>")
+					.append(signupMember.getMemberName() + "님의 이메일 주소를 인증해 주세요.").append("<hr/>")
 					.append("SE World의 모든 기능을 사용하시기 위해 이메일 인증이 필요합니다.<br/>")
 					.append("아래 링크를 눌러 이메일 인증을 완료해주세요.<br/><br/>")
 					.append("<a href='http://localhost:8888/seworld/verify.do?email=" + signupMember.getMemberId())
@@ -140,7 +130,7 @@ public class MemberController {
 	@RequestMapping(value = "/googleSignin", method = RequestMethod.POST)
 	public @ResponseBody Integer googleSignin(@RequestBody Member signinMember, HttpSession session) {
 		logger.info("[/googleSignin]");
-//		logger.info(signinMember.toString());
+		// logger.info(signinMember.toString());
 		Member m = memberRepository.selectOneMember(signinMember.getMemberId());
 		session.setAttribute("loginId", signinMember.getMemberId());
 		session.setAttribute("loginName", signinMember.getMemberName());
@@ -153,7 +143,7 @@ public class MemberController {
 	@RequestMapping(value = "/facebookSignin", method = RequestMethod.POST)
 	public @ResponseBody Integer facebookSignin(@RequestBody Member signinMember, HttpSession session) {
 		logger.info("[/facebookSignin]");
-//		logger.info(signinMember.toString());
+		// logger.info(signinMember.toString());
 		Member m = memberRepository.selectOneMember(signinMember.getMemberId());
 		session.setAttribute("loginId", signinMember.getMemberId());
 		session.setAttribute("loginName", signinMember.getMemberName());
@@ -162,43 +152,32 @@ public class MemberController {
 		}
 		return memberRepository.registerFacebookMember(signinMember);
 	}
-	
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String userprofile() {
-		return "member/profile";
-	}
-	
-	
+
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	public String gocalendar() {
-		System.out.println("캘린");
+		logger.info("[/calendar]");
 		return "member/calendar";
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/gocalendar", method = RequestMethod.POST)
-	public @ResponseBody List<Exhibition>  calendar(@RequestBody Wishing wishing) {
+	public @ResponseBody List<Exhibition> calendar(@RequestBody Wishing wishing) {
+		logger.info("[/gocalendar]");
 		List<Exhibition> list;
-		System.out.println("wishing:"+ wishing);
+		System.out.println("wishing:" + wishing);
 		list = wishingRepository.selectAllWishing(wishing);
-		System.out.println(list+"리슷");
+		System.out.println(list + "리슷");
 		return list;
 	}
-	
+
 	@RequestMapping(value = "/calendarTest", method = RequestMethod.GET)
 	public String calendarTest() {
 		return "member/calendarTest";
 	}
-	
+
 	@RequestMapping(value = "/calendarTest", method = RequestMethod.POST)
 	public @ResponseBody Integer insertcalendarTest(Wishing wishing) {
+		logger.info("[/calendarTest]");
 		int result = wishingRepository.insertOneWishing(wishing);
-		
 		return result;
 	}
-	
-	
-	
-	
 }

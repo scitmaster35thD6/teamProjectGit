@@ -13,5 +13,6 @@ public interface WishingMapper {
 	public abstract int updateWishingDeleted(Wishing wishing);
 
 	public abstract int updateWishingInserted(Wishing wishing);
+
 	public abstract List<Exhibition> selectAllWising(Wishing wishing);
 }

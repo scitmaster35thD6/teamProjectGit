@@ -128,7 +128,7 @@
       result2 += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Comment</button>';
     } else {
       result2 += resp.content;
-      result2 += '<input id="comment-modify" type="button" value="수정" />';
+      result2 += '<input id="comment-modify" type="button" value="수정" data-toggle="modal" data-target="#exampleModal" />';
       result2 += '<input id="comment-delete" type="button" value="삭제" />';
     }
     $('#c2').html(result2);
@@ -199,7 +199,11 @@
     $('#exampleModal').modal('hide');
   }
   function modifyComment() {
-	  
+    var exhibitionId = $('#exhibitionId').val();
+    
+    $.ajax({
+    	
+    });
   }
   function deleteComment() {
     var exhibitionId = $('#exhibitionId').val();
