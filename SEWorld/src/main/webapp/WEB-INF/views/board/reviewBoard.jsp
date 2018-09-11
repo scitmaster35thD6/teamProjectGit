@@ -23,6 +23,7 @@
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
+<link href="resources/custom/exhibitionList.css" rel="stylesheet">
 <!-- 벡터맵 css지도 -->
 <link
 	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
