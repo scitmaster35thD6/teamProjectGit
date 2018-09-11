@@ -885,7 +885,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 						<div class="row">
 							<!-- owl carousel넣기 -->
 							<div class="owl-carousel">
-								<c:if test="${not empty articleReply}">
+								<c:if test="${empty articleReply}">
 									<div>댓글이 없습니다.</div>
 								</c:if>
 

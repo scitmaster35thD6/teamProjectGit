@@ -16,17 +16,18 @@
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="any"
 	href="resources/assets/images/logo2.png">
-<title>SE World - Exhibition List</title>
+<title>SE World - User Review</title>
 <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
 	rel="stylesheet">
 <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
-<!-- 벡터맵 css지도 -->
-<!-- Custom CSS 새로 -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
 <link href="resources/custom/exhibitionList.css" rel="stylesheet">
+<!-- 벡터맵 css지도 -->
+<link
+	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
+	rel="stylesheet" />
 
 <!-- 메인 스타일 -->
 <!-- Google Fonts -->
@@ -53,13 +54,11 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-<!-- 테이블 용 -->
 <link
 	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
 	rel="stylesheet">
 <!-- This Select CSS -->
-<link rel="stylesheet" type="text/css"
-	href="resources/assets/libs/select2/dist/css/select2.min.css">
+
 
 
 <style>
@@ -646,7 +645,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 						<ul>
 							<li><a href="exhibitionList">Exhibition List</a></li>
 							<li><a href="#facts">GoogleMap</a></li>
-							<li><a href="jvectorMap">VectorMap</a></li>
 						</ul>
 					<li class="menu-has-children"><a href="#portfolio">User's
 							Voice</a>
@@ -708,13 +706,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 		<div class="page-breadcrumb">
 			<div class="row">
 				<div class="col-5 align-self-center">
-					<h4 class="card-title text">Exhibition List</h4>
+					<h4 class="card-title text">User Review</h4>
 					<div class="d-flex align-items-center">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="./">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Exhibition
-									List</li>
+								<li class="breadcrumb-item active" aria-current="page">User
+									Review</li>
 							</ol>
 						</nav>
 					</div>
@@ -731,209 +729,60 @@ body.mobile-nav-active #mobile-nav-toggle {
 		<!-- Container fluid  -->
 		<!-- ============================================================== -->
 		<div class="container-fluid">
-			
-			<!-- ============================================================== -->
-				<!-- Start Page Content -->
-				<!-- ============================================================== -->
-				<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-body">
-								<h4 class="card-title">Write Article</h4>
-								<h6 class="card-subtitle">do something.</h6>
+			<!-- 코멘트 쓰는 창 -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-md-flex align-items-center">
+								<div>
+									<h4 class="card-title">질문 게시판</h4>
+									<h6 class="card-subtitle">전시에 대한 정보를 질문하는 곳입니다.</h6>
+								</div>
+								<div class="ml-auto d-flex no-block align-items-center">
+									<div class="dl">
+										<a href="#"><i class="ti-list"></i>&nbsp;Google Map보기</a>
+									</div>
+								</div>
 							</div>
-							<!-- card body -->
-							<!--  글쓰기 폼 -->
+							<!--카드 바디 시작-->
+							<!-- 테이블 들어가는 곳  -->
 
-							<hr class="m-t-0">
-							<form class="form-horizontal r-separator"
-								enctype="multipart/form-data" action="writeArticle"
-								method="post" onsubmit="return formCheck()">
-								<div class="card-body">
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">title</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-											<c:if test="${empty original}">
-												<input type="text" class="form-control" id="title"
-													placeholder="title" name="title">
-											</c:if>
-											<c:if test="${not empty original}">
-												<input type="text" class="form-control" id="title"
-													placeholder="title" name="title" value="${original.title}">
-											</c:if>
-										</div>
-									</div>
-
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">category</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-
-											<select class="select2 form-control custom-select"
-												style="width: 80%; height: 36px;" name="category"
-												id="category">
-												<option value="review"
-													<c:if test="${original.category eq 'review'}">selected</c:if>>Review</option>
-												<option value="question"
-													<c:if test="${original.category eq 'question'}">selected</c:if>>Question</option>
-											</select>
-
-
-										</div>
-									</div>
-
-									<!-- 테이블 넣을 모달 창 -->
-									<div class="modal fade bs-example-modal-lg" tabindex="-1"
-										role="dialog" aria-labelledby="myLargeModalLabel"
-										aria-hidden="true" style="display: none;">
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h4 class="modal-title" id="myLargeModalLabel">Select
-														the Exhibition</h4>
-													<button type="button" class="close" data-dismiss="modal"
-														aria-hidden="true">×</button>
-												</div>
-												<div class="modal-body">
-													<!-- 테이블 -->
-													<p>
-													<div class="table-responsive">
-														<table id="alt_pagination"
-															class="table table-striped table-bordered display"
-															style="width: 100%">
-															<thead>
-																<tr>
-																	<th>번호</th>
-																	<th>상세</th>
-																	<th>전시회 제목</th>
-																	<th>개최국</th>
-																	<th>개최 기간</th>
-																</tr>
-															</thead>
-															<tfoot>
-																<tr>
-																	<th>Number</th>
-																	<th>Detail</th>
-																	<th>Title in Korean</th>
-																	<th>Country</th>
-																	<th>Date</th>
-																</tr>
-															</tfoot>
-														</table>
-													</div>
-													<!-- 테이블 -->
-												</div>
-												<div class="modal-footer">
-													<button type="button"
-														class="btn btn-success waves-effect text-left"
-														data-dismiss="modal">Close</button>
-												</div>
-											</div>
-											<!-- /.modal-content -->
-										</div>
-										<!-- /.modal-dialog -->
-									</div>
-									<!-- /.modal -->
-									<!-- 테이블 모달 -->
-
-
-
-									<!-- 보드유알엘 -->
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">Exhibition:
-											(choose from board)</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-											<c:if test="${empty original}">
-												<i class="fas fa-external-link-alt" alt="default"
-													data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-												<input type="text" class="form-control" id="exhURL"
-													placeholder="click button to choose" disabled="disabled">
-												<input type="hidden" id="exhibitionId" name="exhibitionId"
-													value="">
-											</c:if>
-
-											<c:if test="${not empty original}">
-												<i class="fas fa-external-link-alt" alt="default"
-													data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-												<input type="text" class="form-control" id="exhURL"
-													disabled="disabled"
-													value="${selectedExhibition.exhibitionTitleKor}">
-												<input type="hidden" id="exhibitionId" name="exhibitionId"
-													value="${selectedExhibition.exhibitionId}">
-											</c:if>
-										</div>
-									</div>
-
-
-									<!-- 보드유알엘 -->
-									<!-- 첨부파일 -->
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">Select
-											File</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-											<div class="input-group">
-												<div class="input-group-prepend">
-													<span class="input-group-text">Upload</span>
-												</div>
-												<div class="custom-file">
-													<c:if test="${empty originalFile}">
-														<input type="file" class="custom-file-input"
-															id="uploadFile" name="uploadFile">
-													</c:if>
-													<c:if test="${not empty originalFile}">
-														<a href="download?boardnum=${originalFile.boardId}">${originalFile.ogFilename}</a>
-													</c:if>
-													<label class="custom-file-label" for="inputGroupFile01">Choose
-														file</label>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<!-- 첨부파일 -->
-
-									<div class="form-group row align-items-center m-b-0">
-										<label for="inputEmail3"
-											class="col-3 text-right control-label col-form-label">contents</label>
-										<div class="col-9 border-left p-b-10 p-t-10">
-											<textarea class="form-control rounded-0" id="content"
-												rows="10" name="content">	<c:if
-													test="${not empty original}">
-												<c:out value="${original.content}"></c:out>
-												</c:if></textarea>
-											<script>
-												CKEDITOR.replace('content');
-											</script>
-										</div>
-									</div>
+							<div class="table-responsive">
+									<table id="alt_pagination"
+										class="table table-striped table-bordered display"
+										style="width: 100%">
+										<thead>
+											<tr>
+												<th>title</th>
+												<th>user</th>
+												<th>date</th>
+											</tr>
+										</thead>
+										<tfoot>
+											<tr>
+												<th>title</th>
+												<th>user</th>
+												<th>date</th>
+											</tr>
+										</tfoot>
+									</table>
 								</div>
-								<hr>
-								<div class="card-body">
-									<div class="form-group m-b-0 text-right">
-										<button type="submit"
-											class="btn btn-info waves-effect waves-light">Save</button>
-										<button type="reset"
-											class="btn btn-dark waves-effect waves-light">Cancel</button>
-									</div>
-								</div>
-							</form>
+
+							<!-- 테이블 들어가는 곳  -->
+
+
 
 
 
 
 						</div>
-						<!-- card -->
+						<!-- 카드 바디 끝-->
 					</div>
-
-
-
-
+					<!-- 카드 -->
 				</div>
-				<!-- ============================================================== -->
-				<!-- End PAge Content -->
+				<!-- 코롬 -->
+			</div>
 			<!-- row -->
 
 
@@ -1005,6 +854,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
 	<script src="resources/jquery-3.3.1.min.js"></script>
+	<script src="resources/custom/boardListShow.js"></script>
 	<script src="resources/custom/autoScroll.js"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
@@ -1040,7 +890,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- carousel -->
 	<!-- This Page JS -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-	<script src="resources/custom/exhibitionSelectInWriteForm.js"></script>
+	<script src="resources/custom/boardListShow2.js"></script>
+	<!-- 벡터지도 -->
+
 	<!-- This Page JS -->
 	<script>
 		jQuery(document)
