@@ -15,7 +15,7 @@
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="any"
 	href="resources/assets/images/logo2.png">
-<title>SE World - 전세계 기술 전시</title>
+<title>SE World - Best Exhibition</title>
 
 <!-- Custom CSS -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">

@@ -742,7 +742,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 								</div>
 								<div class="ml-auto d-flex no-block align-items-center">
 									<div class="dl">
-										<a href="#"><i class="ti-list"></i>Google Map보기</a>
+										<a href="#"><i class="ti-list"></i>&nbsp;Google Map보기</a>
 									</div>
 								</div>
 							</div>

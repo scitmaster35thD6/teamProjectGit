@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>SE World - Mail sent</title>
 </head>
 <body>
 	<h1>인증메일을 전송하였습니다.</h1>

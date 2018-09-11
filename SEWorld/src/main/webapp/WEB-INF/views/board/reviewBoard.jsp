@@ -16,7 +16,7 @@
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="any"
 	href="resources/assets/images/logo2.png">
-<title>SE World 전세계 기술 전시</title>
+<title>SE World - User Review</title>
 <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
 	rel="stylesheet">
 <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
@@ -27,19 +27,6 @@
 <link
 	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
 	rel="stylesheet" />
-<!-- Custom CSS 새로 -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
-<link href="resources/custom/exhibitionList.css" rel="stylesheet">
-<title>SE World - User Review</title>
-<link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
-	rel="stylesheet">
-<link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
-	rel="stylesheet">
-<!-- Custom CSS -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
-<!-- 벡터맵 css지도 -->
-<!-- Custom CSS 새로 -->
-<link href="resources/dist/css/style.min.css" rel="stylesheet">
 
 <!-- 메인 스타일 -->
 <!-- Google Fonts -->
@@ -754,7 +741,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 								</div>
 								<div class="ml-auto d-flex no-block align-items-center">
 									<div class="dl">
-										<a href="#"><i class="ti-list"></i>Google Map보기</a>
+										<a href="#"><i class="ti-list"></i>&nbsp;Google Map보기</a>
 									</div>
 								</div>
 							</div>
