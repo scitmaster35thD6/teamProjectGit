@@ -768,16 +768,18 @@ body.mobile-nav-active #mobile-nav-toggle {
 									style="width: 100%">
 									<thead>
 										<tr>
-											<th>title</th>
-											<th>user</th>
-											<th>date</th>
+											<th>번호</th>
+											<th>제목</th>
+											<th>글쓴이</th>
+											<th>날짜</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>title</th>
-											<th>user</th>
-											<th>date</th>
+											<th>Number</th>
+											<th>Title</th>
+											<th>User</th>
+											<th>Date</th>
 										</tr>
 									</tfoot>
 								</table>
@@ -868,6 +870,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
 	<script src="resources/jquery-3.3.1.min.js"></script>
+	<script src="resources/custom/boardListShow.js"></script>
 	<script src="resources/custom/autoScroll.js"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
@@ -903,8 +906,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- carousel -->
 	<!-- This Page JS -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-
-	<script src="resources/custom/boardListShow.js"></script>
 	<!-- 벡터지도 -->
 
 	<!-- This Page JS -->
