@@ -209,6 +209,8 @@ $(function() {
 			
 		 $('#world-map-markers').vectorMap({
 			  map: 'world_mill_en',
+			  backgroundColor: 'transparent',
+			  zoomOnScroll: false,
 			  series: {
 			    regions: [{
 			      values: exData,

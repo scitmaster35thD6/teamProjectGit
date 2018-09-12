@@ -616,42 +616,36 @@ body.mobile-nav-active #mobile-nav-toggle {
       </div>
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
-            <li class="menu-has-children"><a href="#services">Exhibition</a>
-              <ul>
-                <li><a href="exhibitionList">전시회게시판</a></li>
-           	    <li><a href="#facts">GoogleMap</a></li>   
-              </ul>
-              
-            <li class="menu-has-children"><a href="#portfolio">Review</a>
-              <ul>
-                <li><a href="reviews">Review</a></li>
-           	    <li><a href="#">Write Review</a></li>   
-           	    <li><a href="questions">Question</a></li>
-              </ul>
-              
-            <li class="menu-has-children"><a href="profile">My Profile</a>
-              <ul>
-                <li><a href="profile">Profile</a></li>
-           	    <li><a href="calendar">calendar</a></li>   
-              </ul>
-         
-            <c:if test="${sessionScope.loginId == null}">		
-            <li class="menu-has-children"><a href="profile">sign up/log in</a>
-              <ul>
-                <li><a href="login">Log in</a></li>
-           	    <li><a href="#">Sign up</a></li>   
-              </ul>
-            </c:if>
-          
-            <c:if test="${sessionScope.loginId !=null}">
-          	<li class="menu-has-children"><a href="#">${sessionScope.loginId}님</a>
-         	  <ul>
-                <li><a href="#">Setting</a></li>
-           	    <li><a href="#">Log out</a></li>   
-              </ul>
-            </c:if> 
-        </ul>
+					<li class="menu-active"><a
+						href="${pageContext.servletContext.contextPath}">Home</a></li>
+					<li class="menu-has-children"><a href="#services">Exhibition</a>
+						<ul>
+							<li><a href="exhibitionList">Exhibition List</a></li>
+							<li><a href="#facts">GoogleMap</a></li>
+							<li><a href="jvectorMap">VectorMap</a></li>
+						</ul>
+					<li class="menu-has-children"><a href="#portfolio">User's
+							Voice</a>
+						<ul>
+							<li><a href="reviews">Review</a></li>
+							<li><a href="questions">Question</a></li>
+							<li><a href="writeArticle">Write Article</a></li>
+						</ul> <c:if test="${empty sessionScope.loginId}">
+							<li class="menu-has-children"><a href="profile">Member</a>
+								<ul>
+									<li><a href="login">Log in</a></li>
+									<li><a href="signup">Sign up</a></li>
+								</ul>
+						</c:if> <c:if test="${not empty sessionScope.loginId}">
+							<li class="menu-has-children"><a href="#">${sessionScope.loginId}
+									님</a>
+								<ul>
+									<li><a href="logout">Log out</a></li>
+									<li><a href="profile">Profile</a></li>
+									<li><a href="calendar">calendar</a></li>
+								</ul>
+						</c:if>
+				</ul>
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
@@ -966,7 +960,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 <script src="resources/regna/lib/superfish/superfish.min.js"></script>
 <script src="resources/dist/typed.js"></script>
 <script src="resources/regna/js/main.js"></script>
-
+<script src="resources/custom/autoScroll.js"></script>
 <script>
     jQuery(document).ready(function( $ ) {
 
