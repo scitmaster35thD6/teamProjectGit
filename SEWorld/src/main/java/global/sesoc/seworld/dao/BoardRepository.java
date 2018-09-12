@@ -38,6 +38,12 @@ public class BoardRepository {
 		List<Board> result = boardMapper.getRecentReviews();
 		return result;
 	}
+	
+	public List<Board> getAuthosRecentReviews(String author){
+		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
+		List<Board> result = boardMapper.getAuthorsRecentReviews(author);
+		return result;
+	}
 
 	public Board viewBoardDetail(String boardId) {
 		BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);

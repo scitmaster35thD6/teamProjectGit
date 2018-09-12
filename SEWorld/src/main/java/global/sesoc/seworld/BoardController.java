@@ -118,22 +118,38 @@ public class BoardController {
 		Board articleDetail = boardRepository.viewBoardDetail(boardId);
 		Exhibition exbhibitionForArticle = exhibitionRepository.showExhibitionDetail(articleDetail.getExhibitionId());
 		String boardReplyId = boardReplyRepository.getBoardReplyId(boardId);
+		if (boardReplyId != null) {
+			List<BoardReply> articleReply = boardReplyRepository.selectAllBoardReplies(boardReplyId);
+			model.addAttribute("articleReply", articleReply);
+		}
 		Member articleAuthor = memberRepository.selectOneMember(articleDetail.getMemberId());
 		String articleFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
+		if (articleFileId != null) {
+			BoardFile articleAttachement = boardFileRepository.selectOneBoardFile(articleFileId);
+			model.addAttribute("articleAttachement", articleAttachement);
+		}
 		List<BoardReply> replies = boardReplyRepository.getBoardRepliesList();
+		List<Board> RelatedArticles = boardRepository.getAuthosRecentReviews(articleDetail.getMemberId());
+		if (RelatedArticles != null) {
+			model.addAttribute("RelatedArticles", RelatedArticles);
+			List<BoardReply> repliesOfOtherArticle = boardReplyRepository.getBoardRepliesList();
+			Map<String, Integer> replyListCount = new HashMap<>();
+			for (int i = 0; i < RelatedArticles.size(); i++) {
+				int counter = 0;
+				for (int j = 0; j < replies.size(); j++) {
+					if (RelatedArticles.get(i).getBoardId().equals(repliesOfOtherArticle.get(j).getBoardId())) {
+						counter += 1;
+					}
+				}
+				replyListCount.put(RelatedArticles.get(i).getBoardId(), counter);
+			}
+			model.addAttribute("replyListCount", replyListCount);
+		}
 		int replyCount = 0;
 		for (BoardReply br : replies) {
 			if (br.getBoardId().equals(boardId)) {
 				replyCount += 1;
 			}
-		}
-		if (articleFileId != null) {
-			BoardFile articleAttachement = boardFileRepository.selectOneBoardFile(articleFileId);
-			model.addAttribute("articleAttachement", articleAttachement);
-		}
-		if (boardReplyId != null) {
-			List<BoardReply> articleReply = boardReplyRepository.selectAllBoardReplies(boardReplyId);
-			model.addAttribute("articleReply", articleReply);
 		}
 		model.addAttribute("articleAuthor", articleAuthor);
 		model.addAttribute("articleDetail", articleDetail);

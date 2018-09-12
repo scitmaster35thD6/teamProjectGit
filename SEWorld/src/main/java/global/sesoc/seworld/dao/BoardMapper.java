@@ -17,6 +17,8 @@ public interface BoardMapper {
 	public List<Board> viewAllQuestions(String searchText, RowBounds rb);
 
 	public List<Board> getRecentReviews();
+	
+	public List<Board> getAuthorsRecentReviews(String Author);
 
 	public Board viewBoardDetail(String boardId);
 

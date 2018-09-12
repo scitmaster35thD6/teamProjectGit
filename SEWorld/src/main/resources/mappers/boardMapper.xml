@@ -114,6 +114,35 @@
 		&lt; 7
 	</select>
 
+	<!-- 게시물 상세보기에 띄울 작성자 게시글 3건 -->
+	<select id="getAuthorsRecentReviews" resultType="Board"
+		parameterType="String">
+		select
+		boardId
+		,memberId
+		,category
+		,title
+		,content
+		,to_char(createdDate, 'DD MON YYYY',
+		'NLS_DATE_LANGUAGE=ENGLISH')
+		createdDate
+		,to_char(updatedDate, 'DD MON
+		YYYY',
+		'NLS_DATE_LANGUAGE=ENGLISH') updatedDate
+		,exhibitionid
+		FROM
+		(
+		select
+		*
+		from
+		c6_board
+		order by
+		boardId DESC
+		)
+		where memberId=#{memberId} and rownum
+		&lt; 4
+	</select>
+
 	<!-- 게시물에 파일 저장시 외래키 받아오기 -->
 	<select id="getBoardId" resultType="String"
 		parameterType="String">

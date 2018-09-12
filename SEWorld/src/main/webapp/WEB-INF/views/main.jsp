@@ -1491,7 +1491,7 @@ table {
 									</div>
 								</div>
 								<h3 class="font-normal">${recentReviews[0].title}</h3>
-								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[0].title, 0, 10)}</p>
+								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[0].content, 0, 10)}</p>
 								<button
 									class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
 									onclick="location.href='readArticle?boardId=${recentReviews[0].boardId}'">Read
@@ -1515,7 +1515,7 @@ table {
 									</div>
 								</div>
 								<h3 class="font-normal">${recentReviews[1].title}</h3>
-								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[1].title, 0, 10)}</p>
+								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[1].content, 0, 10)}</p>
 								<button
 									class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
 									onclick="location.href='readArticle?boardId=${recentReviews[1].boardId}'">Read
@@ -1539,7 +1539,7 @@ table {
 									</div>
 								</div>
 								<h3 class="font-normal">${recentReviews[2].title}</h3>
-								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[2].title, 0, 10)}</p>
+								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[2].content, 0, 10)}</p>
 								<button
 									class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
 									onclick="location.href='readArticle?boardId=${recentReviews[2].boardId}'">Read
@@ -1563,7 +1563,7 @@ table {
 									</div>
 								</div>
 								<h3 class="font-normal">${recentReviews[3].title}</h3>
-								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[3].title, 0, 10)}</p>
+								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[3].content, 0, 10)}</p>
 								<button
 									class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
 									onclick="location.href='readArticle?boardId=${recentReviews[3].boardId}'">Read
@@ -1587,7 +1587,7 @@ table {
 									</div>
 								</div>
 								<h3 class="font-normal">${recentReviews[4].title}</h3>
-								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[4].title, 0, 10)}</p>
+								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[4].content, 0, 10)}</p>
 								<button
 									class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
 									onclick="location.href='readArticle?boardId=${recentReviews[0].boardId}'">Read
@@ -1611,7 +1611,7 @@ table {
 									</div>
 								</div>
 								<h3 class="font-normal">${recentReviews[5].title}</h3>
-								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[5].title, 0, 10)}</p>
+								<p class="m-b-0 m-t-10">${fn:substring(recentReviews[5].content, 0, 10)}</p>
 								<button
 									class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
 									onclick="location.href='readArticle?boardId=${recentReviews[5].boardId}'">Read
