@@ -1,7 +1,6 @@
 package global.sesoc.seworld;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -30,13 +29,7 @@ import global.sesoc.seworld.util.MailHandler;
 
 @Controller
 public class MemberController {
-
-	/**
-	 * SE World Board Controller
-	 * 
-	 * @author youngbinkim
-	 * @version 0.1
-	 */
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@Autowired
 	JavaMailSender mailSender;
@@ -46,8 +39,6 @@ public class MemberController {
 
 	@Autowired
 	WishingRepository wishingRepository;
-
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
@@ -162,14 +153,6 @@ public class MemberController {
 		return memberRepository.registerFacebookMember(signinMember);
 	}
 
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String userprofile(HttpSession session) {
-		logger.info("[/profile]");
-		String memberId = (String) session.getAttribute("loginId");
-		memberRepository.selectOneMember(memberId);
-		return "member/profile";
-	}
-
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	public String gocalendar() {
 		logger.info("[/calendar]");
@@ -177,6 +160,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/gocalendar", method = RequestMethod.POST)
+		logger.info("[/gocalendar]");
 	public @ResponseBody List<Exhibition> calendar(@RequestBody Wishing wishing) {
 		List<Exhibition> list;
 		System.out.println("wishing:" + wishing);
@@ -192,8 +176,8 @@ public class MemberController {
 
 	@RequestMapping(value = "/calendarTest", method = RequestMethod.POST)
 	public @ResponseBody Integer insertcalendarTest(Wishing wishing) {
+		logger.info("[/calendarTest]");
 		int result = wishingRepository.insertOneWishing(wishing);
-
 		return result;
 	}
 }
