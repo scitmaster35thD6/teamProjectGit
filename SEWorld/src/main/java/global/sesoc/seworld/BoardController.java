@@ -2,7 +2,10 @@ package global.sesoc.seworld;
 
 import java.io.FileInputStream;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -117,17 +120,25 @@ public class BoardController {
 		String boardReplyId = boardReplyRepository.getBoardReplyId(boardId);
 		Member articleAuthor = memberRepository.selectOneMember(articleDetail.getMemberId());
 		String articleFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
+		List<BoardReply> replies = boardReplyRepository.getBoardRepliesList();
+		int replyCount = 0;
+		for (BoardReply br : replies) {
+			if (br.getBoardId().equals(boardId)) {
+				replyCount += 1;
+			}
+		}
 		if (articleFileId != null) {
 			BoardFile articleAttachement = boardFileRepository.selectOneBoardFile(articleFileId);
 			model.addAttribute("articleAttachement", articleAttachement);
 		}
 		if (boardReplyId != null) {
-			BoardReply articleReply = boardReplyRepository.selectOneBoardReply(boardReplyId);
+			List<BoardReply> articleReply = boardReplyRepository.selectAllBoardReplies(boardReplyId);
 			model.addAttribute("articleReply", articleReply);
 		}
 		model.addAttribute("articleAuthor", articleAuthor);
 		model.addAttribute("articleDetail", articleDetail);
 		model.addAttribute("exbhibitionForArticle", exbhibitionForArticle);
+		model.addAttribute("replyCount", replyCount);
 		return "board/readArticle";
 	}
 

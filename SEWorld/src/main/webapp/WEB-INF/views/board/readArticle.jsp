@@ -741,7 +741,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 									</div>
 									<div>
 										<h3 class="text m-b-0">코멘트</h3>
-										<span class="text op-5">35</span>
+										<span class="text op-5">${replyCount}</span>
 									</div>
 								</div>
 							</div>
@@ -1074,7 +1074,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 									</div>
 									<div class="ml-auto d-flex no-block align-items-center">
 										<div class="dl">
-											<a href="reviews"><i class="ti-list"></i>글 목록</a>
+											<a href="reviews"><i class="ti-list"></i>&nbsp;글 목록</a>
 										</div>
 									</div>
 								</div>
