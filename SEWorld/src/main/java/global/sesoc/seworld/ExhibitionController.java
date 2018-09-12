@@ -45,7 +45,7 @@ public class ExhibitionController {
 	@RequestMapping(value = "/exhibitionListAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
 	public String exhibitionListAjax(int start, int length,  @RequestParam(value = "search[value]") String searchText) {
-		int totalCount = repository.getTotalList();
+		int totalCount = repository.getTotalList(searchText);
 		List<Exhibition> exhibitions = repository.showExhibitionList(start, length, searchText);
 
 		TableWrapperDTO wrapper = new TableWrapperDTO();

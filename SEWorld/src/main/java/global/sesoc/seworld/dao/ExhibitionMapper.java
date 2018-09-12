@@ -9,7 +9,7 @@ import global.sesoc.seworld.dto.Exhibition;
 
 public interface ExhibitionMapper {
 
-	public int getTotalList();
+	public int getTotalList(String searchItem);
 
 	public Exhibition showExhibitionDetail(String exhibitionId);
 	

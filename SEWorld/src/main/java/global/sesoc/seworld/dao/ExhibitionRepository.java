@@ -16,9 +16,9 @@ public class ExhibitionRepository {
 	@Autowired
 	SqlSession sqlSession;
 
-	public int getTotalList() {
+	public int getTotalList(String searchItem) {
 		ExhibitionMapper mapper = sqlSession.getMapper(ExhibitionMapper.class);
-		int result = mapper.getTotalList();
+		int result = mapper.getTotalList(searchItem);
 		return result;
 	}
 
