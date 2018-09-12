@@ -41,10 +41,20 @@
 	</select>
 
 	<!-- 전체 건수 가져오기 -->
-	<select id="getTotalList" resultType="int">
+	<select id="getTotalList" resultType="int"
+		parameterType="String">
 		SELECT COUNT(*)
 		FROM
 		c6_exhibition
+		where exhibitionTitleKor
+		like '%' ||
+		#{searchText} || '%' or exhibitionTitleEng like '%' ||
+		#{searchText}
+		|| '%'
+		or openingCountry like '%' || #{searchText} || '%'
+		or
+		openingCity like '%' || #{searchText} || '%' or openingTerm like '%'
+		|| #{searchText} || '%'
 	</select>
 
 	<!-- 메인에 표시할 최근 전시회 12건 -->
@@ -114,14 +124,16 @@
 		select count(*) from c6_exhibition where openingCountry =
 		#{selectedCountry}
 	</select>
-	
+
 	<select id="countAllExhibition" resultType="Counting">
-		SELECT c.countryName as countryName, count(e.openingCountry) as num
-		FROM c6_countries c LEFT OUTER JOIN c6_exhibition e
- 		ON c.countryName = e.openingCountry
+		SELECT c.countryName
+		as countryName, count(e.openingCountry) as num
+		FROM c6_countries c LEFT
+		OUTER JOIN c6_exhibition e
+		ON c.countryName = e.openingCountry
 		GROUP BY c.countryName
 		ORDER BY 1
-	
+
 	</select>
-	
+
 </mapper>
