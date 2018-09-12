@@ -160,8 +160,8 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/gocalendar", method = RequestMethod.POST)
-		logger.info("[/gocalendar]");
 	public @ResponseBody List<Exhibition> calendar(@RequestBody Wishing wishing) {
+		logger.info("[/gocalendar]");
 		List<Exhibition> list;
 		System.out.println("wishing:" + wishing);
 		list = wishingRepository.selectAllWishing(wishing);
