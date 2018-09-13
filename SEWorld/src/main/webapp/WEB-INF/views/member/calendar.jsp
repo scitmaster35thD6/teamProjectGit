@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -692,6 +694,10 @@ body.mobile-nav-active #mobile-nav-toggle {
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
+            <c:if test="${not empty sessionScope.loginId}">
+			<input type="hidden" id = "logId" value="${sessionScope.loginId}" name="action">
+			</c:if>
+			
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">

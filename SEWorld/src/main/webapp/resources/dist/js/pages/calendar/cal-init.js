@@ -2,7 +2,8 @@
     
     function init2(strDate,endDate,timezone,callback){
 		//ajax로 전체 데이터를 끌어옴
-    	var memberId = 'furaha';
+    	var memberId = '';
+    	memberId=$("#logId").val();
     	var data = {
 				"memberId" : memberId
 		};
@@ -57,7 +58,7 @@
 function toTimeObject(str){
 	//alert("str"+str);
 	var year = str.substring(0, 4);
-	var month = str.substring(4, 6);
+	var month = str.substring(4, 6)-1;
 	var day  = str.substring(6, 8);
 	/*alert(year+"이얼");
 	alert(month+"먼스");
