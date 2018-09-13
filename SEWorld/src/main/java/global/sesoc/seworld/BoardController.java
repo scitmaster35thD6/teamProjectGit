@@ -2,6 +2,7 @@ package global.sesoc.seworld;
 
 import java.io.FileInputStream;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,17 +112,20 @@ public class BoardController {
 
 		return ojb.toJson(wrapper);
 	}
-
-	// 게시물 읽기 페이지 이동
+	
+	//게시글 읽기
 	@RequestMapping(value = "/readArticle", method = RequestMethod.GET)
 	public String readArticle(String boardId, Model model) {
 		Board articleDetail = boardRepository.viewBoardDetail(boardId);
 		Exhibition exbhibitionForArticle = exhibitionRepository.showExhibitionDetail(articleDetail.getExhibitionId());
-		String boardReplyId = boardReplyRepository.getBoardReplyId(boardId);
-		if (boardReplyId != null) {
-			List<BoardReply> articleReply = boardReplyRepository.selectAllBoardReplies(boardReplyId);
-			model.addAttribute("articleReply", articleReply);
-		}
+		List<BoardReply> replyList= new ArrayList<>();
+		
+		int countR = boardReplyRepository.countBoardReply(boardId);
+		model.addAttribute("countNum", countR);
+		replyList= boardReplyRepository.boardReplyOfOneboard(boardId);
+		model.addAttribute("replyList", replyList);
+		
+		
 		Member articleAuthor = memberRepository.selectOneMember(articleDetail.getMemberId());
 		String articleFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
 		if (articleFileId != null) {
@@ -275,4 +279,7 @@ public class BoardController {
 		}
 		return null;
 	}
+	
+
+
 }

@@ -885,14 +885,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 						<div class="row">
 							<!-- owl carousel넣기 -->
 							<div class="owl-carousel">
-								<c:if test="${empty articleReply}">
+								<c:if test="${countNum eq 0}">
 									<div>댓글이 없습니다.</div>
 								</c:if>
-
-								<c:if test="${not empty articleReply}">
+			
+								<c:if test="${countNum gt 0}">
 									<!--  -->
 
-									<c:forEach var="replys" items="${articleReply}">
+									<c:forEach var="replys" items="${replyList}">
 										<!-- 댓글한개 -->
 										<div>
 											<div class="d-flex flex-row comment-row m-t-0">
@@ -925,7 +925,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 									</c:forEach>
 								</c:if>
 
-							</div>
+							</div><!-- 부엉이 캐러솔 -->
 						</div>
 
 					</div>
@@ -933,7 +933,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 
 
-					<!-- owl carousel넣기 -->
 				</div>
 			</div>
 		</div>
