@@ -838,11 +838,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 							</div>
 
 							<div class="col-lg-9">
-								<textarea class="form-control rounded-0" id="content" rows="5"
-									name="content"></textarea>
+								<input type="hidden" id="memberId" value="${sessionScope.loginId}">
+								<input type="hidden" id="boardId" value="${articleDetail.boardId}">
+								<textarea class="form-control rounded-0" id="comentContent"
+									rows="5" name="content"></textarea>
 								<hr>
 								<button type="button"
-									class="btn btn-success waves-effect text-left float-right">Save</button>
+									class="btn btn-success waves-effect text-left float-right"
+									id="commentSave">Save</button>
 							</div>
 
 
@@ -888,7 +891,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 								<c:if test="${countNum eq 0}">
 									<div>댓글이 없습니다.</div>
 								</c:if>
-			
+
 								<c:if test="${countNum gt 0}">
 									<!--  -->
 
@@ -925,7 +928,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 									</c:forEach>
 								</c:if>
 
-							</div><!-- 부엉이 캐러솔 -->
+							</div>
+							<!-- 부엉이 캐러솔 -->
 						</div>
 
 					</div>
@@ -1112,6 +1116,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- ============================================================== -->
 	<script src="resources/jquery-3.3.1.min.js"></script>
 	<script src="resources/custom/autoScroll.js"></script>
+	<script src="resources/custom/articleComment.js"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
 	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>

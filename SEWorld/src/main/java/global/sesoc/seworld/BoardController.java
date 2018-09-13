@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -112,20 +113,19 @@ public class BoardController {
 
 		return ojb.toJson(wrapper);
 	}
-	
-	//게시글 읽기
+
+	// 게시글 읽기
 	@RequestMapping(value = "/readArticle", method = RequestMethod.GET)
 	public String readArticle(String boardId, Model model) {
 		Board articleDetail = boardRepository.viewBoardDetail(boardId);
 		Exhibition exbhibitionForArticle = exhibitionRepository.showExhibitionDetail(articleDetail.getExhibitionId());
-		List<BoardReply> replyList= new ArrayList<>();
-		
+		List<BoardReply> replyList = new ArrayList<>();
+
 		int countR = boardReplyRepository.countBoardReply(boardId);
 		model.addAttribute("countNum", countR);
-		replyList= boardReplyRepository.boardReplyOfOneboard(boardId);
+		replyList = boardReplyRepository.boardReplyOfOneboard(boardId);
 		model.addAttribute("replyList", replyList);
-		
-		
+
 		Member articleAuthor = memberRepository.selectOneMember(articleDetail.getMemberId());
 		String articleFileId = boardFileRepository.getBoardFileIdByBoardId(boardId);
 		if (articleFileId != null) {
@@ -279,7 +279,12 @@ public class BoardController {
 		}
 		return null;
 	}
-	
 
+	@RequestMapping(value = "/insertArticleComment", method = RequestMethod.POST)
+	public @ResponseBody List<BoardReply> insertComment(@RequestBody BoardReply boardReply) {
+		boardReplyRepository.insertOneBoardReply(boardReply);
+		List<BoardReply> result = boardReplyRepository.boardReplyOfOneboard(boardReply.getBoardId());
+		return result;
+	}
 
 }
