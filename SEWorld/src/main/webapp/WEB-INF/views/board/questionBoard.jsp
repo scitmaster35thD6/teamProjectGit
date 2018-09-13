@@ -63,6 +63,7 @@
 	href="resources/assets/libs/select2/dist/css/select2.min.css">
 
 
+
 <style>
 .back-to-top {
 	position: fixed;
@@ -750,27 +751,27 @@ body.mobile-nav-active #mobile-nav-toggle {
 							<!--카드 바디 시작-->
 							<!-- 테이블 들어가는 곳  -->
 
-							
-						<div class="table-responsive">
-									<table id="alt_pagination"
-										class="table table-striped table-bordered display"
-										style="width: 100%">
-										<thead>
-											<tr>
-												<th>title</th>
-												<th>user</th>
-												<th>date</th>
-											</tr>
-										</thead>
-										<tfoot>
-											<tr>
-												<th>title</th>
-												<th>user</th>
-												<th>date</th>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
+
+							<div class="table-responsive">
+								<table id="alt_pagination" class="table table-striped table-bordered display" style="width: 100%">
+									<thead>
+										<tr>
+											<th>번호</th>
+											<th>제목</th>
+											<th>글쓴이</th>
+											<th>날짜</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>Number</th>
+											<th>Title</th>
+											<th>User</th>
+											<th>Date</th>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
 
 
 							<!-- 테이블 들어가는 곳  -->

@@ -615,7 +615,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 	font-color: gray;
 }
 </style>
-
 </head>
 
 <body>

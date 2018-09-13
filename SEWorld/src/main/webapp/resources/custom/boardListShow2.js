@@ -7,7 +7,7 @@ $(document).ready(function() {
 		pagingType : "full_numbers",
 		responsive : true,
 		processing : true,
-		ordering : true,
+		ordering : false,
 		serverSide : true,
 		searching : true,
 
@@ -18,6 +18,8 @@ $(document).ready(function() {
 		},
 
 		columns : [ {
+			data : null
+		}, {
 			className : 'details-show',
 			data : "title"
 		}, {
@@ -26,7 +28,24 @@ $(document).ready(function() {
 		}, {
 			className : 'details-show',
 			data : "createdDate"
-		} ]
+		} ],
+
+		columnDefs : [ {
+			searchable : false,
+			orderable : false,
+			targets : 0
+		}, ]
+	});
+
+	table.on('draw.dt', function() {
+		var info = table.page.info();
+		table.column(0, {
+			search : 'applied',
+			order : 'applied',
+			page : 'applied'
+		}).nodes().each(function(cell, i) {
+			cell.innerHTML = i + 1 + info.start;
+		});
 	});
 
 	$('#alt_pagination').on('click', 'td.details-show', function() {
@@ -35,4 +54,5 @@ $(document).ready(function() {
 
 		location.href = 'readArticle?boardId=' + row.data().boardId;
 	});
+
 });

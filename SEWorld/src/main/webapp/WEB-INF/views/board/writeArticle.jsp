@@ -615,7 +615,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	font-color: gray;
 }
 </style>
-
+<script src="resources/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -1012,7 +1012,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- This Page JS -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
 	<script src="resources/custom/exhibitionSelectInWriteForm.js"></script>
-	<script src="resources/ckeditor/ckeditor.js"></script>
 	<!-- This Page JS -->
 	<script>
 		jQuery(document)
