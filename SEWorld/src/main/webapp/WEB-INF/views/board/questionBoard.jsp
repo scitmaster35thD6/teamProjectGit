@@ -787,6 +787,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 					<!-- 카드 -->
 				</div>
 				<!-- 코롬 -->
+				<h3 class="title">&nbsp;</h3><br />
 			</div>
 			<!-- row -->
 

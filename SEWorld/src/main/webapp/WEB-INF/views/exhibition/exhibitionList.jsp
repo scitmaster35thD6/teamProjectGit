@@ -697,7 +697,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- ============================================================== -->
 	<!-- End Left Sidebar - style you can find in sidebar.scss  -->
 	<!-- ============================================================== -->
-	<div class="newpage" style="background-color: #f7e9c3;" id="scroll">
+	<div class="newpage" style="background-color:#f7e9c3;" id="scroll">
+	<!-- 배경색 변경#f7e9c3 에서  #f7edd4 -->
 		<!-- ============================================================== -->
 		<!-- Bread crumb and right sidebar toggle -->
 		<!-- ============================================================== -->
@@ -789,6 +790,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 					<!-- 카드 -->
 				</div>
 				<!-- 코롬 -->
+				<h3 class="title">&nbsp;</h3><br />
 			</div>
 			<!-- row -->
 

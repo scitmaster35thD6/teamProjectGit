@@ -669,13 +669,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->
-  <div class="newpage" style="background-color : #f7edd4">
+  <div class="newpage" style="background-color : #f7edd4" id="scroll">
   <!-- ============================================================== -->
   <!-- Bread crumb and right sidebar toggle -->
   <!-- ============================================================== -->
     <div class="page-breadcrumb">
       <div class="row">
         <div class="col-5 align-self-center">
+        	<h3 class="title">&nbsp;</h3>
           <h4 class="page-title">Profile</h4>
           <div class="d-flex align-items-center">
             <nav aria-label="breadcrumb">
@@ -867,6 +868,7 @@ body.mobile-nav-active #mobile-nav-toggle {
           </div>
         </div>
         <!-- Column -->
+        <h3 class="title">&nbsp;</h3><br />
       </div>
       <!-- Row -->
     </div>
@@ -925,6 +927,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 <!-- All Jquery -->
 <!-- ============================================================== -->
 <script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="resources/custom/autoScroll.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
 <script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -960,7 +963,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 <script src="resources/regna/lib/superfish/superfish.min.js"></script>
 <script src="resources/dist/typed.js"></script>
 <script src="resources/regna/js/main.js"></script>
-<script src="resources/custom/autoScroll.js"></script>
+
 <script>
     jQuery(document).ready(function( $ ) {
 
