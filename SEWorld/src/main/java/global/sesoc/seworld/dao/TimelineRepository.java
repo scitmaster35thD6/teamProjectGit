@@ -17,4 +17,19 @@ public class TimelineRepository {
 		TimelineMapper timelineMapper = sqlSession.getMapper(TimelineMapper.class);
 		return timelineMapper.myTimeline(memberId);
 	}
+
+	public List<Timeline> myWishing(String memberId) {
+		TimelineMapper timelineMapper = sqlSession.getMapper(TimelineMapper.class);
+		return timelineMapper.myWishing(memberId);
+	}
+
+	public List<Timeline> myComment(String memberId) {
+		TimelineMapper timelineMapper = sqlSession.getMapper(TimelineMapper.class);
+		return timelineMapper.myComment(memberId);
+	}
+
+	public List<Timeline> myReview(String memberId) {
+		TimelineMapper timelineMapper = sqlSession.getMapper(TimelineMapper.class);
+		return timelineMapper.myReview(memberId);
+	}
 }
