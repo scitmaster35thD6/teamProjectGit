@@ -202,7 +202,7 @@ public class BoardController {
 		}
 		model.addAttribute("original", original);
 		model.addAttribute("selectedExhibition", selectedExhibition);
-		return "board/writeArticle";
+		return "board/updateArticle";
 	}
 
 	// 게시물 수정 입력

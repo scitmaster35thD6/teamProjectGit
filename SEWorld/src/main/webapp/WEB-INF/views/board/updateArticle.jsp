@@ -747,15 +747,21 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 						<hr class="m-t-0">
 						<form class="form-horizontal r-separator"
-							enctype="multipart/form-data" action="writeArticle" method="post"
+							enctype="multipart/form-data" action="updateArticle" method="post"
 							onsubmit="return formCheck()">
 							<div class="card-body">
 								<div class="form-group row align-items-center m-b-0">
 									<label for="inputEmail3"
 										class="col-3 text-right control-label col-form-label">title</label>
 									<div class="col-9 border-left p-b-10 p-t-10">
-										<input type="text" class="form-control" id="title"
-											placeholder="title" name="title">
+										<c:if test="${empty original}">
+											<input type="text" class="form-control" id="title"
+												placeholder="title" name="title">
+										</c:if>
+										<c:if test="${not empty original}">
+											<input type="text" class="form-control" id="title"
+												placeholder="title" name="title" value="${original.title}">
+										</c:if>
 									</div>
 								</div>
 
@@ -767,8 +773,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 										<select class="select2 form-control custom-select"
 											style="width: 80%; height: 36px;" name="category"
 											id="category">
-											<option value="review">Review</option>
-											<option value="question">Question</option>
+											<option value="review"
+												<c:if test="${original.category eq 'review'}">selected</c:if>>Review</option>
+											<option value="question"
+												<c:if test="${original.category eq 'question'}">selected</c:if>>Question</option>
 										</select>
 
 
@@ -837,12 +845,24 @@ body.mobile-nav-active #mobile-nav-toggle {
 										class="col-3 text-right control-label col-form-label">Exhibition:
 										(choose from board)</label>
 									<div class="col-9 border-left p-b-10 p-t-10">
-										<i class="fas fa-external-link-alt" alt="default"
-											data-toggle="modal" data-target=".bs-example-modal-lg"></i> <input
-											type="text" class="form-control" id="exhURL"
-											placeholder="click button to choose" disabled="disabled">
-										<input type="hidden" id="exhibitionId" name="exhibitionId"
-											value="">
+										<c:if test="${empty original}">
+											<i class="fas fa-external-link-alt" alt="default"
+												data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+											<input type="text" class="form-control" id="exhURL"
+												placeholder="click button to choose" disabled="disabled">
+											<input type="hidden" id="exhibitionId" name="exhibitionId"
+												value="">
+										</c:if>
+
+										<c:if test="${not empty original}">
+											<i class="fas fa-external-link-alt" alt="default"
+												data-toggle="modal" data-target=".bs-example-modal-lg"></i>
+											<input type="text" class="form-control" id="exhURL"
+												disabled="disabled"
+												value="${selectedExhibition.exhibitionTitleKor}">
+											<input type="hidden" id="exhibitionId" name="exhibitionId"
+												value="${selectedExhibition.exhibitionId}">
+										</c:if>
 									</div>
 								</div>
 
@@ -859,9 +879,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 												<span class="input-group-text">Upload</span>
 											</div>
 											<div class="custom-file">
-												<input type="file" class="custom-file-input" id="uploadFile"
-													name="uploadFile"> <label class="custom-file-label"
-													for="inputGroupFile01">Choose file</label>
+												<c:if test="${empty originalFile}">
+													<input type="file" class="custom-file-input"
+														id="uploadFile" name="uploadFile">
+												</c:if>
+												<c:if test="${not empty originalFile}">
+													<a href="download?boardnum=${originalFile.boardId}">${originalFile.ogFilename}</a>
+												</c:if>
+												<label class="custom-file-label" for="inputGroupFile01">Choose
+													file</label>
 											</div>
 										</div>
 									</div>
@@ -874,7 +900,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 										class="col-3 text-right control-label col-form-label">contents</label>
 									<div class="col-9 border-left p-b-10 p-t-10">
 										<textarea class="form-control rounded-0" id="content"
-											rows="10" name="content">	</textarea>
+											rows="10" name="content">	<c:if
+												test="${not empty original}">
+												<c:out value="${original.content}"></c:out>
+												</c:if></textarea>
 										<script>
 											CKEDITOR.replace('content');
 										</script>
