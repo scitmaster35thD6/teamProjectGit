@@ -616,36 +616,35 @@ body.mobile-nav-active #mobile-nav-toggle {
       </div>
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-					<li class="menu-active"><a
-						href="${pageContext.servletContext.contextPath}">Home</a></li>
-					<li class="menu-has-children"><a href="#services">Exhibition</a>
-						<ul>
-							<li><a href="exhibitionList">Exhibition List</a></li>
-							<li><a href="#facts">GoogleMap</a></li>
-							<li><a href="jvectorMap">VectorMap</a></li>
-						</ul>
-					<li class="menu-has-children"><a href="#portfolio">User's
-							Voice</a>
-						<ul>
-							<li><a href="reviews">Review</a></li>
-							<li><a href="questions">Question</a></li>
-							<li><a href="writeArticle">Write Article</a></li>
-						</ul> <c:if test="${empty sessionScope.loginId}">
-							<li class="menu-has-children"><a href="profile">Member</a>
-								<ul>
-									<li><a href="login">Log in</a></li>
-									<li><a href="signup">Sign up</a></li>
-								</ul>
-						</c:if> <c:if test="${not empty sessionScope.loginId}">
-							<li class="menu-has-children"><a href="#">${sessionScope.loginId}
-									님</a>
-								<ul>
-									<li><a href="logout">Log out</a></li>
-									<li><a href="profile">Profile</a></li>
-									<li><a href="calendar">calendar</a></li>
-								</ul>
-						</c:if>
-				</ul>
+          <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
+          <li class="menu-has-children"><a href="#services">Exhibition</a>
+          <ul>
+            <li><a href="exhibitionList">Exhibition List</a></li>
+            <li><a href="#facts">GoogleMap</a></li>
+            <li><a href="jvectorMap">VectorMap</a></li>
+          </ul>
+          <li class="menu-has-children"><a href="#portfolio">User's Voice</a>
+          <ul>
+            <li><a href="reviews">Review</a></li>
+            <li><a href="questions">Question</a></li>
+            <li><a href="writeArticle">Write Article</a></li>
+          </ul>
+          <c:if test="${empty sessionScope.loginId}">
+          <li class="menu-has-children"><a href="profile">Member</a>
+          <ul>
+            <li><a href="login">Log in</a></li>
+            <li><a href="signup">Sign up</a></li>
+          </ul>
+          </c:if>
+          <c:if test="${not empty sessionScope.loginId}">
+          <li class="menu-has-children"><a href="#">${sessionScope.loginId} 님</a>
+          <ul>
+            <li><a href="logout">Log out</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="calendar">calendar</a></li>
+          </ul>
+          </c:if>
+        </ul>
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
@@ -669,14 +668,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->
-  <div class="newpage" style="background-color : #f7edd4" id="scroll">
+  <div class="newpage" style="background-color : #f7edd4">
   <!-- ============================================================== -->
   <!-- Bread crumb and right sidebar toggle -->
   <!-- ============================================================== -->
     <div class="page-breadcrumb">
       <div class="row">
         <div class="col-5 align-self-center">
-        	<h3 class="title">&nbsp;</h3>
           <h4 class="page-title">Profile</h4>
           <div class="d-flex align-items-center">
             <nav aria-label="breadcrumb">
@@ -703,11 +701,10 @@ body.mobile-nav-active #mobile-nav-toggle {
             <div class="card-body">
               <center class="m-t-30"> <img src="resources/assets/images/users/5.jpg" class="rounded-circle" width="150" />
                 <h4 class="card-title m-t-10">${member.memberName}</h4>
-                <h6 class="card-subtitle">${member.memberId}</h6>
-                <div class="row text-center justify-content-md-center">
-                  <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로워 ${memberDetail.followerCount}</font></a></div>
-                  <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로잉 ${memberDetail.followingCount}</font></a></div>
-                </div>
+                <h6 id="memberId" class="card-subtitle">${member.memberId}</h6>
+                <input id="loginId" type="hidden" value="${sessionScope.loginId}">
+                <div id="followshipCount" class="row text-center justify-content-md-center"></div>
+                <div id="followshipButton"></div>
               </center>
             </div>
             <div><hr></div>
@@ -722,9 +719,9 @@ body.mobile-nav-active #mobile-nav-toggle {
               <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
             </div> -->
             <div class="row text-center justify-content-md-center">
-              <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-heart"></i><font class="font-medium">가고싶어요 ${memberDetail.wishingCount}</font></a></div>
-              <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-pencil"></i><font class="font-medium">코멘트 ${memberDetail.commentCount}</font></a></div>
-              <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-book-open"></i><font class="font-medium">리뷰 ${memberDetail.reviewCount}</font></a></div>
+              <div class="col-4"><a href="p?mid=${member.memberId}&ptype=w" class="link"><i class="icon-heart"></i><font class="font-medium">가고싶어요 ${memberDetail.wishingCount}</font></a></div>
+              <div class="col-4"><a href="p?mid=${member.memberId}&ptype=c" class="link"><i class="icon-pencil"></i><font class="font-medium">코멘트 ${memberDetail.commentCount}</font></a></div>
+              <div class="col-4"><a href="p?mid=${member.memberId}&ptype=r" class="link"><i class="icon-book-open"></i><font class="font-medium">리뷰 ${memberDetail.reviewCount}</font></a></div>
             </div>
           </div>
         </div>
@@ -761,7 +758,7 @@ body.mobile-nav-active #mobile-nav-toggle {
                     <hr> -->
                     
                     <!-- Wishing -->
-                    <c:if test="${timelineList != null}">
+                    <c:if test="${not empty timelineList}">
                     <c:forEach var="timeline" items="${timelineList}">
                     <div class="sl-item">
                       <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /></div>
@@ -868,7 +865,6 @@ body.mobile-nav-active #mobile-nav-toggle {
           </div>
         </div>
         <!-- Column -->
-        <h3 class="title">&nbsp;</h3><br />
       </div>
       <!-- Row -->
     </div>
@@ -927,7 +923,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 <!-- All Jquery -->
 <!-- ============================================================== -->
 <script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="resources/custom/autoScroll.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
 <script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -963,59 +958,107 @@ body.mobile-nav-active #mobile-nav-toggle {
 <script src="resources/regna/lib/superfish/superfish.min.js"></script>
 <script src="resources/dist/typed.js"></script>
 <script src="resources/regna/js/main.js"></script>
-
+<script src="resources/custom/autoScroll.js"></script>
 <script>
     jQuery(document).ready(function( $ ) {
+   	// Header fixed and Back to top button
+   	// Mobile Navigation
+   	  if( $('#nav-menu-container').length ) {
+   	    var $mobile_nav = $('#nav-menu-container').clone().prop({ id: 'mobile-nav'});
+   	    $mobile_nav.find('> ul').attr({ 'class' : '', 'id' : '' });
+   	    $('body').append( $mobile_nav );
+   	    $('body').prepend( '<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>' );
+   	    $('body').append( '<div id="mobile-body-overly"></div>' );
+   	    $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
 
-    	  // Header fixed and Back to top button
-    	
-    	  
-    	// Mobile Navigation
-    	  if( $('#nav-menu-container').length ) {
-    	    var $mobile_nav = $('#nav-menu-container').clone().prop({ id: 'mobile-nav'});
-    	    $mobile_nav.find('> ul').attr({ 'class' : '', 'id' : '' });
-    	    $('body').append( $mobile_nav );
-    	    $('body').prepend( '<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>' );
-    	    $('body').append( '<div id="mobile-body-overly"></div>' );
-    	    $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
+   	    $(document).on('click', '.menu-has-children i', function(e){
+   	      $(this).next().toggleClass('menu-item-active');
+   	      $(this).nextAll('ul').eq(0).slideToggle();
+   	      $(this).toggleClass("fa-chevron-up fa-chevron-down");
+   	    });
 
-    	    $(document).on('click', '.menu-has-children i', function(e){
-    	      $(this).next().toggleClass('menu-item-active');
-    	      $(this).nextAll('ul').eq(0).slideToggle();
-    	      $(this).toggleClass("fa-chevron-up fa-chevron-down");
-    	    });
+   	    $(document).on('click', '#mobile-nav-toggle', function(e){
+   	      $('body').toggleClass('mobile-nav-active');
+   	      $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+   	      $('#mobile-body-overly').toggle();
+   	    });
 
-    	    $(document).on('click', '#mobile-nav-toggle', function(e){
-    	      $('body').toggleClass('mobile-nav-active');
-    	      $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-    	      $('#mobile-body-overly').toggle();
-    	    });
-
-    	    $(document).click(function (e) {
-    	      var container = $("#mobile-nav, #mobile-nav-toggle");
-    	      if (!container.is(e.target) && container.has(e.target).length === 0) {
-    	       if ( $('body').hasClass('mobile-nav-active') ) {
-    	          $('body').removeClass('mobile-nav-active');
-    	          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-    	          $('#mobile-body-overly').fadeOut();
-    	        }
-    	      }
-    	    });
-    	  } else if ( $("#mobile-nav, #mobile-nav-toggle").length ) {
-    	    $("#mobile-nav, #mobile-nav-toggle").hide();
-    	  }
-    	  // Smoth scroll on page hash links
-    
-    	 /*타자 쳐지는 효과 만들기 */
-    	  var typed = $(".typed");
-    	  $(function() {
-    	    typed.typed({
-    	      strings: [" ARE GLOBALLY UNLIMITED.", "SHOW YOU TONS OF EXHIBITIONS.", "PROVIDE USER-FRIENDLY MAPS."],
-    	      typeSpeed: 100,
-    	      loop: true,
-    	    });
-    	  });
+   	    $(document).click(function (e) {
+   	      var container = $("#mobile-nav, #mobile-nav-toggle");
+   	      if (!container.is(e.target) && container.has(e.target).length === 0) {
+   	       if ( $('body').hasClass('mobile-nav-active') ) {
+   	          $('body').removeClass('mobile-nav-active');
+   	          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+   	          $('#mobile-body-overly').fadeOut();
+   	        }
+   	      }
+   	    });
+   	  } else if ( $("#mobile-nav, #mobile-nav-toggle").length ) {
+   	    $("#mobile-nav, #mobile-nav-toggle").hide();
+   	  }
+   	  // Smoth scroll on page hash links
+   	  
+   	  initFollowship();
     });
+    function initFollowship() {
+      initFollowshipCount();
+      initFollowshipButton();
+    }
+    function initFollowshipCount() {
+      var memberId = $('#memberId').val();
+      $.ajax({
+        method : 'POST',
+        url : 'getFollowshipCount',
+        data : 'mid=' + memberId,
+        success : printFollowshipCount
+      });
+    }
+    function printFollowshipCount(resp) {
+      var result = '';
+      result += '<div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로워 ' + resp.followerCount + '</font></a></div>';
+      result += '<div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로잉 ' + resp.followingCount + '</font></a></div>';
+      $('#followshipCount').html(result);
+    }
+    function initFollowshipButton() {
+   	  var memberId = $('#memberId').val();
+   	  $.ajax({
+        method : 'POST',
+        url : 'getFollowshipButton',
+        data : 'mid=' + memberId,
+        success : printFollowshipButton
+   	  });
+    }
+    function printFollowshipButton(resp) {
+      var loginId = $('#loginId').val();
+      var memberId = $('#memberId').val();
+      var result = '';
+      if (resp.createdDate == null && loginId != memberId) {
+        result += '<button id="follow" type="button"><i class="fa fa-plus-square-o"></i><font class="font-medium">follow</font></button>';
+      } else if (resp.createdDate != null && loginId != memberId) {
+        result += '<button id="unfollow" type="button"><i id="unfollow" class="fa fa-minus-square-o"></i><font class="font-medium">unfollow</font></button>';
+      }
+      $('#followshipButton').html(result);
+      $('#follow').on('click', insertFollowship);
+      $('#unfollow').on('click', deleteFollowship);
+    }
+    function insertFollowship() {
+      var memberId = $('#memberId').val();
+      $.ajax({
+        method : 'POST',
+        url : 'follow',
+        data : 'mid=' + memberId,
+        success : initFollowship
+      });
+    }
+    function deleteFollowship() {
+      var memberId = $('#memberId').val();
+      $.ajax({
+        method : 'POST',
+        url : 'unfollow',
+        data : 'mid=' + memberId,
+        success : initFollowship
+      });
+    }
 </script>
 </body>
 </html>
