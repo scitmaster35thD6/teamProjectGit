@@ -805,7 +805,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 				<div class="ml-auto d-flex no-block align-items-center">
 					<a href="updateArticle?boardId=${articleDetail.boardId}"><i
 						class="far fa-sun"></i>&nbsp;수정</a>&nbsp;&nbsp;<a
-						href="deleteArticle?boardId=${articleDetail.boardId}"><i
+						href="javascript:areYouSure('${articleDetail.boardId}')"><i
 						class="far fa-trash-alt"></i>&nbsp;삭제&nbsp;&nbsp;&nbsp;&nbsp;</a>
 				</div>
 				<p></p>
@@ -970,13 +970,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 												<span><i class="ti-calendar"></i>&nbsp;&nbsp;${RelatedArticles[2].updatedDate}</span>
 												<div class="ml-auto">
 													<a href="javascript:void(0)" class="link"><i
-														class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[2].boardId]} Comments</a>
+														class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[2].boardId]}
+														Comments</a>
 												</div>
 											</div>
 											<h3 class="font-normal">${RelatedArticles[2].title}</h3>
 											<p class="m-b-0 m-t-10">${fn:substring(RelatedArticles[2].content, 0, 10)}</p>
 											<button
-												class="btn btn-success btn-rounded waves-effect waves-light m-t-20" onclick="location.href='readArticle?boardId=${RelatedArticles[2].boardId}'">Read
+												class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
+												onclick="location.href='readArticle?boardId=${RelatedArticles[2].boardId}'">Read
 												more</button>
 										</div>
 									</div>
@@ -991,13 +993,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 												<span><i class="ti-calendar"></i>&nbsp;&nbsp;${RelatedArticles[1].updatedDate}</span>
 												<div class="ml-auto">
 													<a href="javascript:void(0)" class="link"><i
-														class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[1].boardId]} Comments</a>
+														class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[1].boardId]}
+														Comments</a>
 												</div>
 											</div>
 											<h3 class="font-normal">${RelatedArticles[1].title}</h3>
 											<p class="m-b-0 m-t-10">${fn:substring(RelatedArticles[1].content, 0, 10)}</p>
 											<button
-												class="btn btn-success btn-rounded waves-effect waves-light m-t-20" onclick="location.href='readArticle?boardId=${RelatedArticles[1].boardId}'">Read
+												class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
+												onclick="location.href='readArticle?boardId=${RelatedArticles[1].boardId}'">Read
 												more</button>
 										</div>
 									</div>
@@ -1012,7 +1016,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 												<span><i class="ti-calendar"></i>&nbsp;&nbsp;${RelatedArticles[0].updatedDate}</span>
 												<div class="ml-auto">
 													<a href="javascript:void(0)" class="link"><i
-														class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[0].boardId]} Comments</a>
+														class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[0].boardId]}
+														Comments</a>
 												</div>
 											</div>
 											<h3 class="font-normal">${RelatedArticles[0].title}</h3>
@@ -1244,6 +1249,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 							});
 
 						});
+		function areYouSure(boardId) {
+			if (confirm("정말 삭제하시겠습니까?")) {
+				location.href = "deleteArticle?boardId=" + boardId;
+			}
+		}
 	</script>
 </body>
 

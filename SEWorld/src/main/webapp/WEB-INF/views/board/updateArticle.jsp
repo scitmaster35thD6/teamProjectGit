@@ -615,7 +615,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	font-color: gray;
 }
 </style>
-
+<script src="resources/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -747,9 +747,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 						<hr class="m-t-0">
 						<form class="form-horizontal r-separator"
-							enctype="multipart/form-data" action="updateArticle" method="post"
-							onsubmit="return formCheck()">
+							enctype="multipart/form-data" action="updateArticle"
+							method="post" onsubmit="return formCheck()">
 							<div class="card-body">
+							<input type="hidden" name="boardId" value="${original.boardId}">
 								<div class="form-group row align-items-center m-b-0">
 									<label for="inputEmail3"
 										class="col-3 text-right control-label col-form-label">title</label>
@@ -1041,7 +1042,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- This Page JS -->
 	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
 	<script src="resources/custom/exhibitionSelectInWriteForm.js"></script>
-	<script src="resources/ckeditor/ckeditor.js"></script>
+
 	<!-- This Page JS -->
 	<script>
 		jQuery(document)
