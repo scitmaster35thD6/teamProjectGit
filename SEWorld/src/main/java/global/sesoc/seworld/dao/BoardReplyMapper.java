@@ -48,4 +48,8 @@ public interface BoardReplyMapper {
 	public abstract String getBoardReplyId(String boardId);
 
 	public abstract List<BoardReply> getBoardRepliesList();
+	
+	
+	public abstract List<BoardReply> boardReplyOfOneboard(String boardId);
+	public abstract int countBoardReply(String boardId);
 }
