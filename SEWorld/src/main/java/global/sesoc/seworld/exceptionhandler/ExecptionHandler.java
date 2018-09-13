@@ -10,6 +10,6 @@ public class ExecptionHandler {
 	public String errorHandler(Exception e) {
 		System.out.println(e);
 		e.printStackTrace();
-		return "/error";
+		return "/error/errorView";
 	}
 }
