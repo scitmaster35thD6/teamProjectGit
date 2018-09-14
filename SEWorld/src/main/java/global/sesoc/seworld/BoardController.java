@@ -281,9 +281,11 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/insertArticleComment", method = RequestMethod.POST)
-	public @ResponseBody List<BoardReply> insertComment(@RequestBody BoardReply boardReply) {
+	public @ResponseBody Map<String, Object> insertComment(@RequestBody BoardReply boardReply) {
 		boardReplyRepository.insertOneBoardReply(boardReply);
-		List<BoardReply> result = boardReplyRepository.boardReplyOfOneboard(boardReply.getBoardId());
+		List<BoardReply> replies = boardReplyRepository.boardReplyOfOneboard(boardReply.getBoardId());
+		Map<String, Object> result = new HashMap<>();
+		result.put("replies", replies);
 		return result;
 	}
 
