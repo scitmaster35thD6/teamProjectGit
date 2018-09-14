@@ -773,16 +773,35 @@ body.mobile-nav-active #mobile-nav-toggle {
 					<div class="row">
 						<div class="col-sm-12 col-lg-6">
 							<h4 class="card-title-left m-t-10">${articleDetail.title}</h4>
-						</div>
-						<div class="col-sm-12 col-lg-6">
+						</div><!-- 타이틀 콜롬 -->
+					<div class="col-sm-12 col-lg-6">
 							<img src="resources/assets/images/users/5.jpg"
 								class="rounded-circle" width="60" />
-							<h6 class="card-subtitle">
-								<center class="m-t-30">${articleAuthor.memberId}
-							</h6>
-
-						</div>
-					</div>
+							
+							
+					
+					
+				<!-- 팔로우 버튼 -->	
+					<h6>&nbsp;</h6>
+					<h5 class="card-subtitle">
+							<center class="m-t-30">${articleAuthor.memberId}님 
+<div class="btn-group">
+    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <i class="fas fa-user"></i>
+    </button>
+    <div class="dropdown-menu animated flipInY">
+        <a class="dropdown-item" href="javascript:void(0)"><i class="icon-user"></i>&nbsp;프로필 보기</a>
+        <div class="dropdown-divider"></div><!-- 구분선 -->
+        <a class="dropdown-item" href="javascript:void(0)"><i class="icon-user-follow"></i>&nbsp; 팔로우</a>
+        <div class="dropdown-divider"></div><!-- 구분선 -->
+        <a class="dropdown-item" href="javascript:void(0)"><i class="icon-user-unfollow"></i>&nbsp;팔로우 취소</a>
+    </div>
+</div>
+							</h5>
+				</div>
+				<!-- 팔로우 버튼 -->	
+					
+			</div><!-- row -->
 			</div>
 			</center>
 			<div>
