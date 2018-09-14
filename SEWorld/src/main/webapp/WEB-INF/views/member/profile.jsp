@@ -13,31 +13,41 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="any" href="resources/assets/images/logo2.png">
+<link rel="icon" type="image/png" sizes="any"
+	href="resources/assets/images/logo2.png">
 <title>SE World 전세계 기술 전시</title>
-<link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css" rel="stylesheet">
-<link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css" rel="stylesheet">
+<link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
+	rel="stylesheet">
+<link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
+	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
 <!-- 벡터맵 css지도 -->
-<link href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+<link
+	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
+	rel="stylesheet" />
 <!-- Custom CSS 새로 -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
 
 <!-- 메인 스타일 -->
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+	rel="stylesheet">
 
 <!-- Bootstrap CSS File -->
-<link href="resources/regna/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/regna/lib/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <!-- Libraries CSS Files -->
-<link href="resources/regna/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="resources/regna/lib/animate/animate.min.css" rel="stylesheet">
+<link href="resources/regna/lib/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="resources/regna/lib/animate/animate.min.css"
+	rel="stylesheet">
 
 <!-- Main Stylesheet File -->
 <link href="resources/regna/css/style.css" rel="stylesheet">
-  
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -597,118 +607,130 @@ body.mobile-nav-active #mobile-nav-toggle {
 </head>
 
 <body>
-<!-- ============================================================== -->
-<!-- Preloader - style you can find in spinners.css -->
-<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- Preloader - style you can find in spinners.css -->
+	<!-- ============================================================== -->
 
-<!-- ============================================================== -->
-<!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Topbar header - style you can find in pages.scss -->
-<!-- ============================================================== -->
-  <header id="header">
-    <div class="container">
-      <div id="logo" class="pull-left">
-        <a href="#hero"><img src="" alt="" title="" /></img></a>
-        <!-- Uncomment below if you prefer to use a text logo -->
-        <!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
-      </div>
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a href="${pageContext.servletContext.contextPath}">Home</a></li>
-          <li class="menu-has-children"><a href="#services">Exhibition</a>
-          <ul>
-            <li><a href="exhibitionList">Exhibition List</a></li>
-            <li><a href="#facts">GoogleMap</a></li>
-            <li><a href="jvectorMap">VectorMap</a></li>
-          </ul>
-          <li class="menu-has-children"><a href="#portfolio">User's Voice</a>
-          <ul>
-            <li><a href="reviews">Review</a></li>
-            <li><a href="questions">Question</a></li>
-            <li><a href="writeArticle">Write Article</a></li>
-          </ul>
-          <c:if test="${empty sessionScope.loginId}">
-          <li class="menu-has-children"><a href="profile">Member</a>
-          <ul>
-            <li><a href="login">Log in</a></li>
-            <li><a href="signup">Sign up</a></li>
-          </ul>
-          </c:if>
-          <c:if test="${not empty sessionScope.loginId}">
-          <li class="menu-has-children"><a href="#">${sessionScope.loginId} 님</a>
-          <ul>
-            <li><a href="logout">Log out</a></li>
-            <li><a href="profile">Profile</a></li>
-            <li><a href="calendar">calendar</a></li>
-          </ul>
-          </c:if>
-        </ul>
-      </nav><!-- #nav-menu-container -->
-    </div>
-  </header><!-- #header -->
+	<!-- ============================================================== -->
+	<!-- Main wrapper - style you can find in pages.scss -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- Topbar header - style you can find in pages.scss -->
+	<!-- ============================================================== -->
+	<header id="header">
+		<div class="container">
+			<div id="logo" class="pull-left">
+				<a href="#hero"><img src="" alt="" title="" /></img></a>
+				<!-- Uncomment below if you prefer to use a text logo -->
+				<!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
+			</div>
+			<nav id="nav-menu-container">
+				<ul class="nav-menu">
+					<li class="menu-active"><a
+						href="${pageContext.servletContext.contextPath}">Home</a></li>
+					<li class="menu-has-children"><a href="#services">Exhibition</a>
+						<ul>
+							<li><a href="exhibitionList">Exhibition List</a></li>
+							<li><a href="#facts">GoogleMap</a></li>
+							<li><a href="jvectorMap">VectorMap</a></li>
+						</ul>
+					<li class="menu-has-children"><a href="#portfolio">User's
+							Voice</a>
+						<ul>
+							<li><a href="reviews">Review</a></li>
+							<li><a href="questions">Question</a></li>
+							<li><a href="writeArticle">Write Article</a></li>
+						</ul> <c:if test="${empty sessionScope.loginId}">
+							<li class="menu-has-children"><a href="profile">Member</a>
+								<ul>
+									<li><a href="login">Log in</a></li>
+									<li><a href="signup">Sign up</a></li>
+								</ul>
+						</c:if> <c:if test="${not empty sessionScope.loginId}">
+							<li class="menu-has-children"><a href="#">${sessionScope.loginId}
+									님</a>
+								<ul>
+									<li><a href="logout">Log out</a></li>
+									<li><a href="profile">Profile</a></li>
+									<li><a href="calendar">calendar</a></li>
+								</ul>
+						</c:if>
+				</ul>
+			</nav>
+			<!-- #nav-menu-container -->
+		</div>
+	</header>
+	<!-- #header -->
 
-  <!--==========================
+	<!--==========================
     Hero Section
   ============================-->
- 
-  <section id="hero">
-    <div class="hero-container" style="height:92px; color :#c9b680; padding: 30px;">
-    </div>
-  </section><!-- #hero -->
-     
-<!-- ============================================================== -->
-<!-- End Topbar header -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Left Sidebar - style you can find in sidebar.scss  -->
-<!-- ============================================================== -->
 
-<!-- ============================================================== -->
-<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-<!-- ============================================================== -->
-  <div class="newpage" style="background-color : #f7edd4">
-  <!-- ============================================================== -->
-  <!-- Bread crumb and right sidebar toggle -->
-  <!-- ============================================================== -->
-    <div class="page-breadcrumb">
-      <div class="row">
-        <div class="col-5 align-self-center">
-          <h4 class="page-title">Profile</h4>
-          <div class="d-flex align-items-center">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Profile</li>
-              </ol>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+	<section id="hero">
+		<div class="hero-container"
+			style="height: 92px; color: #c9b680; padding: 30px;"></div>
+	</section>
+	<!-- #hero -->
 
-    <!-- 컨테이너 플루이드 -->
-    <div class="container-fluid">
-      <!-- ============================================================== -->
-      <!-- Start Page Content -->
-      <!-- ============================================================== -->
-      <!-- Row -->
-      <div class="row">
-        <!-- Column -->
-        <div class="col-lg-4 col-xlg-3 col-md-5">
-          <div class="card">
-            <div class="card-body">
-              <center class="m-t-30"> <img src="resources/assets/images/users/5.jpg" class="rounded-circle" width="150" />
-                <h4 class="card-title m-t-10">${member.memberName}</h4>
-                <h6 id="memberId" class="card-subtitle">${member.memberId}</h6>
-                <input id="loginId" type="hidden" value="${sessionScope.loginId}">
-                <div id="followshipCount" class="row text-center justify-content-md-center"></div>
-                <div id="followshipButton"></div>
-              </center>
-            </div>
-            <div><hr></div>
-            <!-- <div class="card-body"> <small class="text-muted">Email address </small>
+	<!-- ============================================================== -->
+	<!-- End Topbar header -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- Left Sidebar - style you can find in sidebar.scss  -->
+	<!-- ============================================================== -->
+
+	<!-- ============================================================== -->
+	<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+	<!-- ============================================================== -->
+	<div class="newpage" style="background-color: #f7edd4">
+		<!-- ============================================================== -->
+		<!-- Bread crumb and right sidebar toggle -->
+		<!-- ============================================================== -->
+		<div class="page-breadcrumb">
+			<div class="row">
+				<div class="col-5 align-self-center">
+					<h4 class="page-title">Profile</h4>
+					<div class="d-flex align-items-center">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Profile</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 컨테이너 플루이드 -->
+		<div class="container-fluid">
+			<!-- ============================================================== -->
+			<!-- Start Page Content -->
+			<!-- ============================================================== -->
+			<!-- Row -->
+			<div class="row">
+				<!-- Column -->
+				<div class="col-lg-4 col-xlg-3 col-md-5">
+					<div class="card">
+						<div class="card-body">
+							<center class="m-t-30">
+								<img src="resources/assets/images/users/5.jpg"
+									class="rounded-circle" width="150" />
+								<h4 class="card-title m-t-10">${member.memberName}</h4>
+								<h6 id="memberId" class="card-subtitle">${member.memberId}</h6>
+								<input id="loginId" type="hidden"
+									value="${sessionScope.loginId}">
+								<div id="followshipCount"
+									class="row text-center justify-content-md-center"></div>
+								<c:if test="${sessionScope.loginId ne member.memberId}">
+									<div id="followshipButton"></div>
+								</c:if>
+							</center>
+						</div>
+						<div>
+							<hr>
+						</div>
+						<!-- <div class="card-body"> <small class="text-muted">Email address </small>
               <h6>scit@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
               <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
               <h6>서울시 삼성동 coex</h6>
@@ -718,30 +740,45 @@ body.mobile-nav-active #mobile-nav-toggle {
               <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
               <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
             </div> -->
-            <div class="row text-center justify-content-md-center">
-              <div class="col-4"><a href="p?mid=${member.memberId}&ptype=w" class="link"><i class="icon-heart"></i><font class="font-medium">가고싶어요 ${memberDetail.wishingCount}</font></a></div>
-              <div class="col-4"><a href="p?mid=${member.memberId}&ptype=c" class="link"><i class="icon-pencil"></i><font class="font-medium">코멘트 ${memberDetail.commentCount}</font></a></div>
-              <div class="col-4"><a href="p?mid=${member.memberId}&ptype=r" class="link"><i class="icon-book-open"></i><font class="font-medium">리뷰 ${memberDetail.reviewCount}</font></a></div>
-            </div>
-          </div>
-        </div>
-        <!-- Column -->
-        <!-- Column -->
-        <div class="col-lg-8 col-xlg-9 col-md-7">
-          <div class="card">
-            <!-- Tabs -->
-            <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#current-month" role="tab" aria-controls="pills-timeline" aria-selected="true">Timeline</a>
-              </li>
-            </ul>
-            <!-- Tabs -->
-            <div class="tab-content" id="pills-tabContent">
-              <div class="tab-pane fade show active" id="current-month" role="tabpanel" aria-labelledby="pills-timeline-tab">
-                <div class="card-body">
-                  <div class="profiletimeline m-t-0">
-                  
-                    <!-- <div class="sl-item">
+						<div class="row text-center justify-content-md-center">
+							<div class="col-4">
+								<a href="p?mid=${member.memberId}&ptype=w" class="link"><i
+									class="icon-heart"></i><font class="font-medium">가고싶어요
+										${memberDetail.wishingCount}</font></a>
+							</div>
+							<div class="col-4">
+								<a href="p?mid=${member.memberId}&ptype=c" class="link"><i
+									class="icon-pencil"></i><font class="font-medium">코멘트
+										${memberDetail.commentCount}</font></a>
+							</div>
+							<div class="col-4">
+								<a href="p?mid=${member.memberId}&ptype=r" class="link"><i
+									class="icon-book-open"></i><font class="font-medium">리뷰
+										${memberDetail.reviewCount}</font></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Column -->
+				<!-- Column -->
+				<div class="col-lg-8 col-xlg-9 col-md-7">
+					<div class="card">
+						<!-- Tabs -->
+						<ul class="nav nav-pills custom-pills" id="pills-tab"
+							role="tablist">
+							<li class="nav-item"><a class="nav-link active"
+								id="pills-timeline-tab" data-toggle="pill" href="#current-month"
+								role="tab" aria-controls="pills-timeline" aria-selected="true">Timeline</a>
+							</li>
+						</ul>
+						<!-- Tabs -->
+						<div class="tab-content" id="pills-tabContent">
+							<div class="tab-pane fade show active" id="current-month"
+								role="tabpanel" aria-labelledby="pills-timeline-tab">
+								<div class="card-body">
+									<div class="profiletimeline m-t-0">
+
+										<!-- <div class="sl-item">
                       <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
                       <div class="sl-right">
                         <div><a href="javascript:void(0)" class="link">하하호호히히후</a> <span class="sl-date">2018/09/02</span>
@@ -756,309 +793,390 @@ body.mobile-nav-active #mobile-nav-toggle {
                       </div>
                     </div>
                     <hr> -->
-                    
-                    <!-- Wishing -->
-                    <c:if test="${not empty timelineList}">
-                    <c:forEach var="timeline" items="${timelineList}">
-                    <div class="sl-item">
-                      <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /></div>
-                      <div class="sl-right">
-                        <c:if test="${timeline.wishingCreatedDate != null}">
-                        <div><a href="javascript:void(0)" class="link">Wishing </a><span class="sl-date">${timeline.wishingCreatedDate}</span>
-                          <div class="row">
-                            <div class="col-lg-3 col-md-6 m-b-20"><img src="resources/assets/images/big/img1.jpg" class="img-fluid rounded" /></div>
-                            <div class="col-md-9 col-xs-12">
-                              <table border="1">
-                                <tr>
-                                  <td>전시회명</td>
-                                  <td>${timeline.exhibitionTitleKor}</td>
-                                </tr>
-                                <tr>
-                                  <td>개최기간</td>
-                                  <td>${timeline.openingTerm}</td>
-                                </tr>
-                                <tr>
-                                  <td>개최국가</td>
-                                  <td>${timeline.openingCountry}</td>
-                                </tr>
-                                <tr>
-                                  <td>개최도시</td>
-                                  <td>${timeline.openingCity}</td>
-                                </tr>
-                              </table>
-                            </div>
-                          </div>
-                          <div class="like-comm"><a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> Likes</a></div>
-                        </div>
-                        </c:if>
-                        
-                        <!-- Comment -->
-                        <c:if test="${timeline.commentCreatedDate != null}">
-                        <div><a href="javascript:void(0)" class="link">Comment </a><span class="sl-date">${timeline.commentCreatedDate}</span>
-                          <div class="row">
-                            <div class="col-lg-3 col-md-6 m-b-20"><img src="resources/assets/images/big/img1.jpg" class="img-fluid rounded" /></div>
-                            <div class="col-md-9 col-xs-12">
-                              <table border="1">
-                                <tr>
-                                  <td>전시회명</td>
-                                  <td>${timeline.exhibitionTitleKor}</td>
-                                </tr>
-                                <tr>
-                                  <td>개최기간</td>
-                                  <td>${timeline.openingTerm}</td>
-                                </tr>
-                                <tr>
-                                  <td>개최국가</td>
-                                  <td>${timeline.openingCountry}</td>
-                                </tr>
-                                <tr>
-                                  <td>개최도시</td>
-                                  <td>${timeline.openingCity}</td>
-                                </tr>
-                              </table>
-                            </div>
-                          </div>                          
-                          <div class="like-comm">별점: ${timeline.commentRating}점</div>
-                          <div class="like-comm">코멘트: ${timeline.commentContent}</div>
-                        </div>
-                        </c:if>
-                        
-                        <!-- Review -->
-                        <c:if test="${timeline.boardCreatedDate != null}">
-                        <div><a href="javascript:void(0)" class="link">Review </a><span class="sl-date">${timeline.boardCreatedDate}</span>
-                        <div class="row">
-                          <div class="col-lg-3 col-md-6 m-b-20"><img src="resources/assets/images/big/img1.jpg" class="img-fluid rounded" /></div>
-                          <div class="col-md-9 col-xs-12">
-                            <table border="1">
-                              <tr>
-                                <td>전시회명</td>
-                                <td>${timeline.exhibitionTitleKor}</td>
-                              </tr>
-                              <tr>
-                                <td>개최기간</td>
-                                <td>${timeline.openingTerm}</td>
-                              </tr>
-                              <tr>
-                                <td>개최국가</td>
-                                <td>${timeline.openingCountry}</td>
-                              </tr>
-                              <tr>
-                                <td>개최도시</td>
-                                <td>${timeline.openingCity}</td>
-                              </tr>
-                            </table>
-                          </div>
-                        </div>
-                        <div class="like-comm">제목: ${timeline.boardTitle}</div>
-                        <div class="like-comm">내용: ${timeline.boardContent}</div>
-                        </div>
-                        </c:if>
-                      </div>
-                      <hr>
-                    </div>
-                    </c:forEach>
-                    </c:if>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Column -->
-      </div>
-      <!-- Row -->
-    </div>
-    <!-- 컨테이너 플루이드 -->
-  </div><!-- page wrapper -->
-    
-<!-- ============================================================== -->
-<!-- Page wrapper  -->
-<!-- ============================================================== -->
 
-<!-- ============================================================== -->
-<!-- Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
+										<!-- Wishing -->
+										<c:if test="${not empty timelineList}">
+											<c:forEach var="timeline" items="${timelineList}">
+												<div class="sl-item">
+													<div class="sl-left">
+														<img src="resources/assets/images/users/1.jpg" alt="user"
+															class="rounded-circle" />
+													</div>
+													<div class="sl-right">
+														<c:if test="${timeline.wishingCreatedDate != null}">
+															<div>
+																<a href="javascript:void(0)" class="link">Wishing </a><span
+																	class="sl-date">${timeline.wishingCreatedDate}</span>
+																<div class="row">
+																	<div class="col-lg-3 col-md-6 m-b-20">
+																		<img src="resources/assets/images/big/img1.jpg"
+																			class="img-fluid rounded" />
+																	</div>
+																	<div class="col-md-9 col-xs-12">
+																		<table border="1">
+																			<tr>
+																				<td>전시회명</td>
+																				<td>${timeline.exhibitionTitleKor}</td>
+																			</tr>
+																			<tr>
+																				<td>개최기간</td>
+																				<td>${timeline.openingTerm}</td>
+																			</tr>
+																			<tr>
+																				<td>개최국가</td>
+																				<td>${timeline.openingCountry}</td>
+																			</tr>
+																			<tr>
+																				<td>개최도시</td>
+																				<td>${timeline.openingCity}</td>
+																			</tr>
+																		</table>
+																	</div>
+																</div>
+																<div class="like-comm">
+																	<a href="javascript:void(0)" class="link m-r-10"><i
+																		class="fa fa-heart text-danger"></i> Likes</a>
+																</div>
+															</div>
+														</c:if>
 
-<!-- ============================================================== -->
-<!-- End Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Container fluid  -->
-<!-- ============================================================== -->
+														<!-- Comment -->
+														<c:if test="${timeline.commentCreatedDate != null}">
+															<div>
+																<a href="javascript:void(0)" class="link">Comment </a><span
+																	class="sl-date">${timeline.commentCreatedDate}</span>
+																<div class="row">
+																	<div class="col-lg-3 col-md-6 m-b-20">
+																		<img src="resources/assets/images/big/img1.jpg"
+																			class="img-fluid rounded" />
+																	</div>
+																	<div class="col-md-9 col-xs-12">
+																		<table border="1">
+																			<tr>
+																				<td>전시회명</td>
+																				<td>${timeline.exhibitionTitleKor}</td>
+																			</tr>
+																			<tr>
+																				<td>개최기간</td>
+																				<td>${timeline.openingTerm}</td>
+																			</tr>
+																			<tr>
+																				<td>개최국가</td>
+																				<td>${timeline.openingCountry}</td>
+																			</tr>
+																			<tr>
+																				<td>개최도시</td>
+																				<td>${timeline.openingCity}</td>
+																			</tr>
+																		</table>
+																	</div>
+																</div>
+																<div class="like-comm">별점:
+																	${timeline.commentRating}점</div>
+																<div class="like-comm">코멘트:
+																	${timeline.commentContent}</div>
+															</div>
+														</c:if>
 
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- End Container fluid  -->
-<!-- ============================================================== -->
-<!-- 페이지 레퍼 div있던 자리 -->
-<!-- ============================================================== -->
-<!-- footer -->
-<!-- ============================================================== -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container"></div>
-    </div>
-    <div class="container">
-      <div class="copyright">&copy; Copyright <strong>SE WROLD</strong>.</div>
-    </div>
-  </footer><!-- #footer -->
+														<!-- Review -->
+														<c:if test="${timeline.boardCreatedDate != null}">
+															<div>
+																<a href="javascript:void(0)" class="link">Review </a><span
+																	class="sl-date">${timeline.boardCreatedDate}</span>
+																<div class="row">
+																	<div class="col-lg-3 col-md-6 m-b-20">
+																		<img src="resources/assets/images/big/img1.jpg"
+																			class="img-fluid rounded" />
+																	</div>
+																	<div class="col-md-9 col-xs-12">
+																		<table border="1">
+																			<tr>
+																				<td>전시회명</td>
+																				<td>${timeline.exhibitionTitleKor}</td>
+																			</tr>
+																			<tr>
+																				<td>개최기간</td>
+																				<td>${timeline.openingTerm}</td>
+																			</tr>
+																			<tr>
+																				<td>개최국가</td>
+																				<td>${timeline.openingCountry}</td>
+																			</tr>
+																			<tr>
+																				<td>개최도시</td>
+																				<td>${timeline.openingCity}</td>
+																			</tr>
+																		</table>
+																	</div>
+																</div>
+																<div class="like-comm">제목: ${timeline.boardTitle}</div>
+																<div class="like-comm">내용:
+																	${timeline.boardContent}</div>
+															</div>
+														</c:if>
+													</div>
+													<hr>
+												</div>
+											</c:forEach>
+										</c:if>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Column -->
+			</div>
+			<!-- Row -->
+		</div>
+		<!-- 컨테이너 플루이드 -->
+	</div>
+	<!-- page wrapper -->
 
-<a href="#" class="back-to-top"><i class="fas fa-angle-double-up"></i></a>
-<!-- ============================================================== -->
-<!-- End footer -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- End Page wrapper  -->
-<!-- ============================================================== -->
-<!-- 메인 레퍼 자꾸 엉켜서  지웠음..; -->
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- customizer Panel -->
-<!-- ============================================================== -->
-<!-- aside -->
-<div class="chat-windows"></div>
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
-<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap tether Core JavaScript -->
-<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- apps -->
-<script src="resources/dist/js/app.min.js"></script>
-<script src="resources/dist/js/app.init.iconbar.js"></script>
-<script src="resources/dist/js/app-style-switcher.js"></script>
-<!-- slimscrollbar scrollbar JavaScript -->
-<script src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
-<!--Wave Effects -->
-<script src="resources/dist/js/waves.js"></script>
-<!--Menu sidebar -->
-<script src="resources/dist/js/sidebarmenu.js"></script>
-<!--Custom JavaScript -->
-<script src="resources/dist/js/custom.min.js"></script>
-<!-- This Page JS -->
-<script src="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="resources/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-<script src="resources/assets/extra-libs/jvector/jquery-jvectormap-in-mill.js"></script>
-<script src="resources/assets/extra-libs/jvector/jquery-jvectormap-us-aea-en.js"></script>
-<script src="resources/assets/extra-libs/jvector/jquery-jvectormap-uk-mill-en.js"></script>
-<script src="resources/assets/extra-libs/jvector/jquery-jvectormap-au-mill.js"></script>
-<script src="resources/assets/extra-libs/jvector/jvectormap.custom.js"></script>
-<!-- 메인용 javascript -->
-<script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
-<script src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="resources/regna/lib/easing/easing.min.js"></script>
-<script src="resources/regna/lib/wow/wow.min.js"></script>
-<script src="resources/regna/lib/waypoints/waypoints.min.js"></script>
-<script src="resources/regna/lib/counterup/counterup.min.js"></script>
-<script src="resources/regna/lib/superfish/hoverIntent.js"></script>
-<script src="resources/regna/lib/superfish/superfish.min.js"></script>
-<script src="resources/dist/typed.js"></script>
-<script src="resources/regna/js/main.js"></script>
-<script src="resources/custom/autoScroll.js"></script>
-<script>
-    jQuery(document).ready(function( $ ) {
-   	// Header fixed and Back to top button
-   	// Mobile Navigation
-   	  if( $('#nav-menu-container').length ) {
-   	    var $mobile_nav = $('#nav-menu-container').clone().prop({ id: 'mobile-nav'});
-   	    $mobile_nav.find('> ul').attr({ 'class' : '', 'id' : '' });
-   	    $('body').append( $mobile_nav );
-   	    $('body').prepend( '<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>' );
-   	    $('body').append( '<div id="mobile-body-overly"></div>' );
-   	    $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
+	<!-- ============================================================== -->
+	<!-- Page wrapper  -->
+	<!-- ============================================================== -->
 
-   	    $(document).on('click', '.menu-has-children i', function(e){
-   	      $(this).next().toggleClass('menu-item-active');
-   	      $(this).nextAll('ul').eq(0).slideToggle();
-   	      $(this).toggleClass("fa-chevron-up fa-chevron-down");
-   	    });
+	<!-- ============================================================== -->
+	<!-- Bread crumb and right sidebar toggle -->
+	<!-- ============================================================== -->
 
-   	    $(document).on('click', '#mobile-nav-toggle', function(e){
-   	      $('body').toggleClass('mobile-nav-active');
-   	      $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-   	      $('#mobile-body-overly').toggle();
-   	    });
+	<!-- ============================================================== -->
+	<!-- End Bread crumb and right sidebar toggle -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- Container fluid  -->
+	<!-- ============================================================== -->
 
-   	    $(document).click(function (e) {
-   	      var container = $("#mobile-nav, #mobile-nav-toggle");
-   	      if (!container.is(e.target) && container.has(e.target).length === 0) {
-   	       if ( $('body').hasClass('mobile-nav-active') ) {
-   	          $('body').removeClass('mobile-nav-active');
-   	          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-   	          $('#mobile-body-overly').fadeOut();
-   	        }
-   	      }
-   	    });
-   	  } else if ( $("#mobile-nav, #mobile-nav-toggle").length ) {
-   	    $("#mobile-nav, #mobile-nav-toggle").hide();
-   	  }
-   	  // Smoth scroll on page hash links
-   	  
-   	  initFollowship();
-    });
-    function initFollowship() {
-      initFollowshipCount();
-      initFollowshipButton();
-    }
-    function initFollowshipCount() {
-      var memberId = $('#memberId').val();
-      $.ajax({
-        method : 'POST',
-        url : 'getFollowshipCount',
-        data : 'mid=' + memberId,
-        success : printFollowshipCount
-      });
-    }
-    function printFollowshipCount(resp) {
-      var result = '';
-      result += '<div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로워 ' + resp.followerCount + '</font></a></div>';
-      result += '<div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로잉 ' + resp.followingCount + '</font></a></div>';
-      $('#followshipCount').html(result);
-    }
-    function initFollowshipButton() {
-   	  var memberId = $('#memberId').val();
-   	  $.ajax({
-        method : 'POST',
-        url : 'getFollowshipButton',
-        data : 'mid=' + memberId,
-        success : printFollowshipButton
-   	  });
-    }
-    function printFollowshipButton(resp) {
-      var loginId = $('#loginId').val();
-      var memberId = $('#memberId').val();
-      var result = '';
-      if (resp.createdDate == null && loginId != memberId) {
-        result += '<button id="follow" type="button"><i class="fa fa-plus-square-o"></i><font class="font-medium">follow</font></button>';
-      } else if (resp.createdDate != null && loginId != memberId) {
-        result += '<button id="unfollow" type="button"><i id="unfollow" class="fa fa-minus-square-o"></i><font class="font-medium">unfollow</font></button>';
-      }
-      $('#followshipButton').html(result);
-      $('#follow').on('click', insertFollowship);
-      $('#unfollow').on('click', deleteFollowship);
-    }
-    function insertFollowship() {
-      var memberId = $('#memberId').val();
-      $.ajax({
-        method : 'POST',
-        url : 'follow',
-        data : 'mid=' + memberId,
-        success : initFollowship
-      });
-    }
-    function deleteFollowship() {
-      var memberId = $('#memberId').val();
-      $.ajax({
-        method : 'POST',
-        url : 'unfollow',
-        data : 'mid=' + memberId,
-        success : initFollowship
-      });
-    }
-</script>
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- End Container fluid  -->
+	<!-- ============================================================== -->
+	<!-- 페이지 레퍼 div있던 자리 -->
+	<!-- ============================================================== -->
+	<!-- footer -->
+	<!-- ============================================================== -->
+	<footer id="footer">
+		<div class="footer-top">
+			<div class="container"></div>
+		</div>
+		<div class="container">
+			<div class="copyright">
+				&copy; Copyright <strong>SE WROLD</strong>.
+			</div>
+		</div>
+	</footer>
+	<!-- #footer -->
+
+	<a href="#" class="back-to-top"><i class="fas fa-angle-double-up"></i></a>
+	<!-- ============================================================== -->
+	<!-- End footer -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- End Page wrapper  -->
+	<!-- ============================================================== -->
+	<!-- 메인 레퍼 자꾸 엉켜서  지웠음..; -->
+	<!-- ============================================================== -->
+	<!-- End Wrapper -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- customizer Panel -->
+	<!-- ============================================================== -->
+	<!-- aside -->
+	<div class="chat-windows"></div>
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
+	<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap tether Core JavaScript -->
+	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- apps -->
+	<script src="resources/dist/js/app.min.js"></script>
+	<script src="resources/dist/js/app.init.iconbar.js"></script>
+	<script src="resources/dist/js/app-style-switcher.js"></script>
+	<!-- slimscrollbar scrollbar JavaScript -->
+	<script
+		src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+	<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
+	<!--Wave Effects -->
+	<script src="resources/dist/js/waves.js"></script>
+	<!--Menu sidebar -->
+	<script src="resources/dist/js/sidebarmenu.js"></script>
+	<!--Custom JavaScript -->
+	<script src="resources/dist/js/custom.min.js"></script>
+	<!-- This Page JS -->
+	<script
+		src="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+	<script
+		src="resources/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+	<script
+		src="resources/assets/extra-libs/jvector/jquery-jvectormap-in-mill.js"></script>
+	<script
+		src="resources/assets/extra-libs/jvector/jquery-jvectormap-us-aea-en.js"></script>
+	<script
+		src="resources/assets/extra-libs/jvector/jquery-jvectormap-uk-mill-en.js"></script>
+	<script
+		src="resources/assets/extra-libs/jvector/jquery-jvectormap-au-mill.js"></script>
+	<script src="resources/assets/extra-libs/jvector/jvectormap.custom.js"></script>
+	<!-- 메인용 javascript -->
+	<script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
+	<script src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="resources/regna/lib/easing/easing.min.js"></script>
+	<script src="resources/regna/lib/wow/wow.min.js"></script>
+	<script src="resources/regna/lib/waypoints/waypoints.min.js"></script>
+	<script src="resources/regna/lib/counterup/counterup.min.js"></script>
+	<script src="resources/regna/lib/superfish/hoverIntent.js"></script>
+	<script src="resources/regna/lib/superfish/superfish.min.js"></script>
+	<script src="resources/dist/typed.js"></script>
+	<script src="resources/regna/js/main.js"></script>
+	<script src="resources/custom/autoScroll.js"></script>
+	<script>
+		jQuery(document)
+				.ready(
+						function($) {
+							// Header fixed and Back to top button
+							// Mobile Navigation
+							if ($('#nav-menu-container').length) {
+								var $mobile_nav = $('#nav-menu-container')
+										.clone().prop({
+											id : 'mobile-nav'
+										});
+								$mobile_nav.find('> ul').attr({
+									'class' : '',
+									'id' : ''
+								});
+								$('body').append($mobile_nav);
+								$('body')
+										.prepend(
+												'<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
+								$('body').append(
+										'<div id="mobile-body-overly"></div>');
+								$('#mobile-nav')
+										.find('.menu-has-children')
+										.prepend(
+												'<i class="fa fa-chevron-down"></i>');
+
+								$(document)
+										.on(
+												'click',
+												'.menu-has-children i',
+												function(e) {
+													$(this).next().toggleClass(
+															'menu-item-active');
+													$(this).nextAll('ul').eq(0)
+															.slideToggle();
+													$(this)
+															.toggleClass(
+																	"fa-chevron-up fa-chevron-down");
+												});
+
+								$(document)
+										.on(
+												'click',
+												'#mobile-nav-toggle',
+												function(e) {
+													$('body')
+															.toggleClass(
+																	'mobile-nav-active');
+													$('#mobile-nav-toggle i')
+															.toggleClass(
+																	'fa-times fa-bars');
+													$('#mobile-body-overly')
+															.toggle();
+												});
+
+								$(document)
+										.click(
+												function(e) {
+													var container = $("#mobile-nav, #mobile-nav-toggle");
+													if (!container.is(e.target)
+															&& container
+																	.has(e.target).length === 0) {
+														if ($('body')
+																.hasClass(
+																		'mobile-nav-active')) {
+															$('body')
+																	.removeClass(
+																			'mobile-nav-active');
+															$(
+																	'#mobile-nav-toggle i')
+																	.toggleClass(
+																			'fa-times fa-bars');
+															$(
+																	'#mobile-body-overly')
+																	.fadeOut();
+														}
+													}
+												});
+							} else if ($("#mobile-nav, #mobile-nav-toggle").length) {
+								$("#mobile-nav, #mobile-nav-toggle").hide();
+							}
+							// Smoth scroll on page hash links
+
+							initFollowship();
+						});
+		function initFollowship() {
+			initFollowshipCount();
+			initFollowshipButton();
+		}
+		function initFollowshipCount() {
+			var memberId = $('#memberId').val();
+			$.ajax({
+				method : 'POST',
+				url : 'getFollowshipCount',
+				data : 'mid=' + memberId,
+				success : printFollowshipCount
+			});
+		}
+		function printFollowshipCount(resp) {
+			var result = '';
+			result += '<div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로워 '
+					+ resp.followerCount + '</font></a></div>';
+			result += '<div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로잉 '
+					+ resp.followingCount + '</font></a></div>';
+			$('#followshipCount').html(result);
+		}
+		function initFollowshipButton() {
+			var memberId = $('#memberId').val();
+			$.ajax({
+				method : 'POST',
+				url : 'getFollowshipButton',
+				data : 'mid=' + memberId,
+				success : printFollowshipButton
+			});
+		}
+		function printFollowshipButton(resp) {
+			var loginId = $('#loginId').val();
+			var memberId = $('#memberId').val();
+			var result = '';
+			if (resp.createdDate == null && loginId != memberId) {
+				result += '<button id="follow" type="button"><i class="fa fa-plus-square-o"></i><font class="font-medium">follow</font></button>';
+			} else if (resp.createdDate != null && loginId != memberId) {
+				result += '<button id="unfollow" type="button"><i id="unfollow" class="fa fa-minus-square-o"></i><font class="font-medium">unfollow</font></button>';
+			}
+			$('#followshipButton').html(result);
+			$('#follow').on('click', insertFollowship);
+			$('#unfollow').on('click', deleteFollowship);
+		}
+		function insertFollowship() {
+			var memberId = $('#memberId').val();
+			$.ajax({
+				method : 'POST',
+				url : 'follow',
+				data : 'mid=' + memberId,
+				success : initFollowship
+			});
+		}
+		function deleteFollowship() {
+			var memberId = $('#memberId').val();
+			$.ajax({
+				method : 'POST',
+				url : 'unfollow',
+				data : 'mid=' + memberId,
+				success : initFollowship
+			});
+		}
+	</script>
 </body>
 </html>

@@ -16,7 +16,7 @@ function register() {
 	
 	/* 아이디 검증 */
 	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-	if (regex.text(memberId) == false) {
+	if (!regex.test(memberId)) {
 		alert("이메일 형식이 올바르지 않습니다.");
 		return;
 	}
