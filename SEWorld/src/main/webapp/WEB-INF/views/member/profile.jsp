@@ -1121,7 +1121,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 			initFollowshipButton();
 		}
 		function initFollowshipCount() {
-			var memberId = $('#memberId').val();
+			var memberId = $('#memberId').html();
 			$.ajax({
 				method : 'POST',
 				url : 'getFollowshipCount',
@@ -1138,7 +1138,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 			$('#followshipCount').html(result);
 		}
 		function initFollowshipButton() {
-			var memberId = $('#memberId').val();
+			var memberId = $('#memberId').html();
 			$.ajax({
 				method : 'POST',
 				url : 'getFollowshipButton',
@@ -1148,7 +1148,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 		}
 		function printFollowshipButton(resp) {
 			var loginId = $('#loginId').val();
-			var memberId = $('#memberId').val();
+			var memberId = $('#memberId').html();
 			var result = '';
 			if (resp.createdDate == null && loginId != memberId) {
 				result += '<button id="follow" type="button"><i class="fa fa-plus-square-o"></i><font class="font-medium">follow</font></button>';
@@ -1160,7 +1160,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 			$('#unfollow').on('click', deleteFollowship);
 		}
 		function insertFollowship() {
-			var memberId = $('#memberId').val();
+			var memberId = $('#memberId').html();
 			$.ajax({
 				method : 'POST',
 				url : 'follow',
@@ -1169,7 +1169,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 			});
 		}
 		function deleteFollowship() {
-			var memberId = $('#memberId').val();
+			var memberId = $('#memberId').html();
 			$.ajax({
 				method : 'POST',
 				url : 'unfollow',
