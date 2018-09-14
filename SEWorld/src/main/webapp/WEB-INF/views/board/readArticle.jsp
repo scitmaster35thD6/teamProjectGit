@@ -887,14 +887,48 @@ body.mobile-nav-active #mobile-nav-toggle {
 						</div>
 						<div class="row">
 							<!-- owl carousel넣기 -->
-							<div class="owl-carousel">
-								<c:if test="${countNum eq 0}">
+							<c:if test="${countNum eq 0}">
 									<div>댓글이 없습니다.</div>
+							</c:if>
+								<c:if test="${countNum gt 0 and countNum le 3}">
+								<c:forEach var="replys" items="${replyList}">
+								<div>
+											<div class="d-flex flex-row comment-row m-t-0">
+												<div class="comment-text w-100">
+													<div class="row">
+														<div class="col-8">
+															<h6 class="font-medium">${replys.memberId}</h6>
+														</div>
+														<div class="col-4">
+															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;
+															&nbsp; 4점
+														</div>
+
+													</div>
+													<span class="m-b-15 d-block">${replys.content}</span>
+													<div class="comment-footer">
+														<i class="fas fa-heart" style="color: #f77497;"></i>15 <span
+															class="text-muted float-right">${replys.updatedDate}</span>
+														<span class="action-icons"> <a
+															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
+															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
+														</span>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+								</c:forEach>
 								</c:if>
 
-								<c:if test="${countNum gt 0}">
+					
+				<!-- 부엉이 캐러솔은 이 경우만 사용 -->
+					<c:if test="${countNum gt 3}">
 									<!--  -->
 
+							<div class="owl-carousel">
 									<c:forEach var="replys" items="${replyList}">
 										<!-- 댓글한개 -->
 										<div>
@@ -926,10 +960,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 										</div>
 									</c:forEach>
-								</c:if>
-
 							</div>
 							<!-- 부엉이 캐러솔 -->
+								</c:if>
+
 						</div>
 
 					</div>
