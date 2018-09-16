@@ -49,7 +49,6 @@ public class MemberController {
 	public String login(Member searchMember, boolean saveid, HttpServletResponse response, HttpSession session,
 			Model model) {
 		logger.info("[/login]");
-		// logger.info(searchMember.toString());
 		Member loginMember = memberRepository.selectOneMember(searchMember.getMemberId());
 		if (loginMember != null) {
 			session.setAttribute("loginId", loginMember.getMemberId());
@@ -130,27 +129,45 @@ public class MemberController {
 	@RequestMapping(value = "/googleSignin", method = RequestMethod.POST)
 	public @ResponseBody Integer googleSignin(@RequestBody Member signinMember, HttpSession session) {
 		logger.info("[/googleSignin]");
-		// logger.info(signinMember.toString());
 		Member m = memberRepository.selectOneMember(signinMember.getMemberId());
+		if (m == null) {
+			return 0; // 회원정보 없음
+		}
 		session.setAttribute("loginId", signinMember.getMemberId());
 		session.setAttribute("loginName", signinMember.getMemberName());
-		if (m != null) {
-			return 0;
-		}
-		return memberRepository.registerGoogleMember(signinMember);
+		return 1; // 로그인 성공
 	}
 
 	@RequestMapping(value = "/facebookSignin", method = RequestMethod.POST)
 	public @ResponseBody Integer facebookSignin(@RequestBody Member signinMember, HttpSession session) {
 		logger.info("[/facebookSignin]");
-		// logger.info(signinMember.toString());
 		Member m = memberRepository.selectOneMember(signinMember.getMemberId());
+		if (m == null) {
+			return 0; // 회원정보 없음
+		}
 		session.setAttribute("loginId", signinMember.getMemberId());
 		session.setAttribute("loginName", signinMember.getMemberName());
+		return 1; // 로그인 성공
+	}
+
+	@RequestMapping(value = "/googleSignup", method = RequestMethod.POST)
+	public @ResponseBody Integer googleSignup(@RequestBody Member signupMember) {
+		logger.info("[/googleSignup]");
+		Member m = memberRepository.selectOneMember(signupMember.getMemberId());
 		if (m != null) {
-			return 0;
+			return 0; // 이미 회원가입 됨
 		}
-		return memberRepository.registerFacebookMember(signinMember);
+		return memberRepository.registerGoogleMember(signupMember); // 회원 등록
+	}
+
+	@RequestMapping(value = "/facebookSignup", method = RequestMethod.POST)
+	public @ResponseBody Integer facebookSignup(@RequestBody Member signupMember) {
+		logger.info("[/facebookSignup]");
+		Member m = memberRepository.selectOneMember(signupMember.getMemberId());
+		if (m != null) {
+			return 0; // 이미 회원가입 됨
+		}
+		return memberRepository.registerFacebookMember(signupMember); // 회원 등록
 	}
 
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
