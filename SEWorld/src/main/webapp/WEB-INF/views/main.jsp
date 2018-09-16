@@ -1732,7 +1732,7 @@ table {
 
 		<div class="container">
 			<div class="copyright">
-				&copy; Copyright <strong>SE WROLD</strong>.
+				&copy; Copyright <strong>SE WORLD</strong>.
 			</div>
 
 		</div>
