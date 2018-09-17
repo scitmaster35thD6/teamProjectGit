@@ -65,6 +65,30 @@ public class HomeController {
 		return "main";
 	}
 
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String main(Model model) {
+		// List<Exhibition> mapList = exhibitionRepository.getListForMap();
+		// model.addAttribute("mapList", mapList);
+		logger.info("[/main]");
+		List<Exhibition> recentExhibition = exhibitionRepository.getRecentExhibition();
+		List<Board> recentReviews = boardRepository.getRecentReviews();
+		List<BoardReply> replies = boardReplyRepository.getBoardRepliesList();
+		Map<String, Integer> replyListCount = new HashMap<>();
+		for (int i = 0; i < recentReviews.size(); i++) {
+			int counter = 0;
+			for (int j = 0; j < replies.size(); j++) {
+				if (recentReviews.get(i).getBoardId().equals(replies.get(j).getBoardId())) {
+					counter += 1;
+				}
+			}
+			replyListCount.put(recentReviews.get(i).getBoardId(), counter);
+		}
+		model.addAttribute("recentExhibition", recentExhibition);
+		model.addAttribute("recentReviews", recentReviews);
+		model.addAttribute("replyListCount", replyListCount);
+		return "main";
+	}
+
 	/* 예전 메인 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String newMainPage() {

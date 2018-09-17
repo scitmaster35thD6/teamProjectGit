@@ -21,12 +21,10 @@ import global.sesoc.seworld.dto.Followship;
 import global.sesoc.seworld.dto.Member;
 import global.sesoc.seworld.dto.MemberDetail;
 import global.sesoc.seworld.dto.Timeline;
-import global.sesoc.seworld.dto.Wishing;
 
 @Controller
 public class MemberDetailController {
-	// private static final Logger logger =
-	// LoggerFactory.getLogger(MemberDetailController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberDetailController.class);
 
 	@Autowired
 	FollowshipRepository followshipRepository;
@@ -42,6 +40,7 @@ public class MemberDetailController {
 
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String userprofile(HttpSession session, Model model) {
+		logger.info("[/profile]");
 		String memberId = (String) session.getAttribute("loginId");
 		Member member = memberRepository.selectOneMember(memberId);
 		MemberDetail memberDetail = memberDetailRepository.viewMemberDetail(memberId);
@@ -56,6 +55,7 @@ public class MemberDetailController {
 	public String userprofile(String mid, String ptype, HttpSession session, Model model) {
 		// mid : memberId
 		// ptype : profile type
+		logger.info("[/p?mid=" + mid + "&ptype=" + ptype + "]");
 		String loginId = (String) session.getAttribute("loginId");
 		Member member = memberRepository.selectOneMember(mid);
 		MemberDetail memberDetail = memberDetailRepository.viewMemberDetail(mid);
@@ -82,11 +82,13 @@ public class MemberDetailController {
 
 	@RequestMapping(value = "/getFollowshipCount", method = RequestMethod.POST)
 	public @ResponseBody MemberDetail getFollowshipCount(String mid) {
+		logger.info("[/getFollowshipCount]");
 		return memberDetailRepository.viewMemberDetail(mid);
 	}
 
 	@RequestMapping(value = "/getFollowshipButton", method = RequestMethod.POST)
 	public @ResponseBody Followship getFollowshipButton(String mid, HttpSession session) {
+		logger.info("[/getFollowshipButton]");
 		String loginId = (String) session.getAttribute("loginId");
 		Followship followship = new Followship();
 		followship.setFollower(loginId);
@@ -96,6 +98,7 @@ public class MemberDetailController {
 
 	@RequestMapping(value = "/follow", method = RequestMethod.POST)
 	public @ResponseBody Integer follow(String mid, HttpSession session) {
+		logger.info("[/follow]");
 		String loginId = (String) session.getAttribute("loginId");
 		Followship followship = new Followship();
 		followship.setFollower(loginId);
@@ -105,6 +108,7 @@ public class MemberDetailController {
 
 	@RequestMapping(value = "/unfollow", method = RequestMethod.POST)
 	public @ResponseBody Integer unfollow(String mid, HttpSession session) {
+		logger.info("[/unfollow]");
 		String loginId = (String) session.getAttribute("loginId");
 		Followship followship = new Followship();
 		followship.setFollower(loginId);
