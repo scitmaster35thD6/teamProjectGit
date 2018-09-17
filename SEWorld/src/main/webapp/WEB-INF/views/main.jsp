@@ -1033,10 +1033,10 @@ table {
 				<p class="section-description">최근 전시회들</p>
 			</div>
 			<div class="row">
-				<div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+				<div class="col-lg-4 col-md-4 wow fadeInUp" data-wow-delay="0.2s" style="height:400;">
 					<div class="card">
 						<div id="carouselExampleIndicators3" class="carousel slide"
-							data-ride="carousel">
+							data-ride="carousel" style="height:400;">
 							<ol class="carousel-indicators">
 								<li data-target="#carouselExampleIndicators3" data-slide-to="0"
 									class="active"></li>
@@ -1074,7 +1074,7 @@ table {
 					</div>
 					<!-- card -->
 				</div>
-				<div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+				<div class="col-lg-4 col-md-4 wow fadeInUp" data-wow-delay="0.4s">
 					<div class="card">
 						<div id="carouselExampleIndicators2" class="carousel slide"
 							data-ride="carousel">
@@ -1116,7 +1116,7 @@ table {
 				</div>
 
 
-				<div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+				<div class="col-lg-4 col-md-4 wow fadeInUp" data-wow-delay="0.6s">
 					<div class="card">
 						<div id="carouselExampleIndicators1" class="carousel slide"
 							data-ride="carousel">
@@ -1156,7 +1156,7 @@ table {
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+			<%-- 	<div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
 					<div class="card">
 						<div id="carouselExampleIndicators4" class="carousel slide"
 							data-ride="carousel">
@@ -1195,7 +1195,7 @@ table {
 
 						</div>
 					</div>
-				</div>
+				</div> --%>
 
 			</div>
 			<!-- row -->
