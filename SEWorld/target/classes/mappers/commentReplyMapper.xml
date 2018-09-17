@@ -46,7 +46,7 @@
 		VALUES
 		(
 		REPLACE('CR' || TO_CHAR(c6_comment_reply_seq.NEXTVAL, '000000'), ' ', '')
-		#{memberId}
+		,#{memberId}
 		,#{exhibitionId}
 		,#{content}
 		,SYSDATE

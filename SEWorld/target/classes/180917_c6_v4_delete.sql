@@ -1,6 +1,7 @@
--- 180907_c6_v4_delete.sql
+-- 180917_c6_v4_delete.sql
 
 
+DELETE FROM c6_calendar;
 DELETE FROM c6_board_reply;
 DELETE FROM c6_board_file;
 DELETE FROM c6_board;
