@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="resources/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="resources/assets/images/logo-icon.png">
     <title>SE World 전세계 기술 전시</title>
     <!-- Custom CSS -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">

@@ -15,7 +15,7 @@
 <!-- Favicon icon -->
 <link rel="icon" type="image/png" sizes="any"
 	href="resources/assets/images/logo2.png">
-<title>SE World 전세계 기술 전시</title>
+<title>SE World - Welcome</title>
 <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
 	rel="stylesheet">
 <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
@@ -51,9 +51,10 @@
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 <style>
 .back-to-top {
 	position: fixed;
@@ -602,8 +603,457 @@ body.mobile-nav-active #mobile-nav-toggle {
 	padding-bottom: 40px;
 	color: #999;
 }
-</style>
 
+/* 구글맵
+--------------------------------*/
+/* search box
+--------------------------------*/
+#description {
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+#infowindow-content .title {
+	font-weight: bold;
+}
+
+#infowindow-content {
+	display: none;
+}
+
+#map #infowindow-content {
+	display: inline;
+}
+
+.pac-card {
+	margin: 10px 10px 0 0;
+	border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	background-color: #fff;
+	font-family: Roboto;
+}
+
+#pac-container {
+	padding-bottom: 12px;
+	margin-right: 12px;
+}
+
+.pac-controls {
+	display: inline-block;
+	padding: 5px 11px;
+}
+
+.pac-controls label {
+	font-family: Roboto;
+	font-size: 13px;
+	font-weight: 300;
+}
+
+#pac-input {
+	background-color: #fff;
+	font-family: Roboto;
+	font-size: 25px;
+	font-weight: 300;
+	margin-left: 12px;
+	padding: 0 11px 0 13px;
+	text-overflow: ellipsis;
+	width: 300px;
+	border-radius: 10px;
+}
+
+#pac-input:focus {
+	border-color: #585858;
+}
+
+#title {
+	color: #fff;
+	background-color: #4d90fe;
+	font-size: 25px;
+	font-weight: 500;
+	padding: 6px 12px;
+}
+
+#target {
+	width: 345px;
+}
+
+/* 토글버튼
+--------------------------------*/
+input[type="checkbox"] {
+	position: absolute;
+	visibility: hidden;
+}
+
+label {
+	display: block;
+	position: absolute;
+	width: 60px;
+	height: 34px;
+	border-radius: 17px;
+	background-color: #ddd;
+	transition-duration: 0.2s;
+	margin: 1%;
+}
+
+label span {
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	z-index: 1;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background-color: #fff;
+	transition-duration: 0.2s;
+}
+
+label:before, label:after {
+	position: absolute;
+	top: 0;
+	width: 34px;
+	font-size: 11px;
+	line-height: 34px;
+	color: #fff;
+	text-align: center;
+}
+
+label:before {
+	left: 0;
+	content: 'ON';
+}
+
+label:after {
+	right: 0;
+	content: 'OFF';
+}
+
+input:checked+label {
+	background-color: red;
+}
+
+input:checked+label span {
+	transform: translateX(26px);
+}
+
+/* 전시회 검색
+--------------------------------*/
+table {
+	font-size: 12px;
+}
+
+#listing {
+	position: absolute;
+	width: 200px;
+	height: 470px;
+	overflow: auto;
+	left: 442px;
+	top: 0px;
+	cursor: pointer;
+	overflow-x: hidden;
+}
+
+#controls {
+	position: absolute;
+	width: 140px;
+	left: 300px;
+	top: 0px;
+	z-index: 5;
+	background-color: #fff;
+	font-size: 25px;
+	margin: 1%;
+}
+
+#autocomplete {
+	position: absolute;
+	width: 300px;
+	left: 108px;
+	top: 0px;
+	z-index: 5;
+	background-color: #fff;
+	font-size: 25px;
+	margin-top: 1%;
+	border-radius: 10px;
+}
+
+#country {
+	width: 100%;
+}
+
+.placeIcon {
+	width: 20px;
+	height: 34px;
+	margin: 4px;
+}
+
+.hotelIcon {
+	width: 24px;
+	height: 24px;
+}
+
+#resultsTable {
+	border-collapse: collapse;
+	width: 240px;
+}
+
+#rating {
+	font-size: 13px;
+	font-family: Arial Unicode MS;
+}
+
+.iw_table_row {
+	height: 18px;
+}
+
+.iw_attribute_name {
+	font-weight: bold;
+	text-align: right;
+}
+
+.iw_table_icon {
+	text-align: right;
+}
+</style>
+<!-- 메인화면 구글맵 javascript -->
+<script>
+	var map, places, infoWindow, autocomplete;
+	var markers = [];
+	var countryRestrict = {
+		'country' : 'us'
+	};
+	var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
+	var hostnameRegexp = new RegExp('^https?://.+?/');
+
+	var countries = {
+		'au' : {
+			center : {
+				lat : -25.3,
+				lng : 133.8
+			},
+			zoom : 4
+		},
+		'br' : {
+			center : {
+				lat : -14.2,
+				lng : -51.9
+			},
+			zoom : 3
+		},
+		'ca' : {
+			center : {
+				lat : 62,
+				lng : -110.0
+			},
+			zoom : 3
+		},
+		'fr' : {
+			center : {
+				lat : 46.2,
+				lng : 2.2
+			},
+			zoom : 5
+		},
+		'de' : {
+			center : {
+				lat : 51.2,
+				lng : 10.4
+			},
+			zoom : 5
+		},
+		'mx' : {
+			center : {
+				lat : 23.6,
+				lng : -102.5
+			},
+			zoom : 4
+		},
+		'nz' : {
+			center : {
+				lat : -40.9,
+				lng : 174.9
+			},
+			zoom : 5
+		},
+		'it' : {
+			center : {
+				lat : 41.9,
+				lng : 12.6
+			},
+			zoom : 5
+		},
+		'za' : {
+			center : {
+				lat : -30.6,
+				lng : 22.9
+			},
+			zoom : 5
+		},
+		'es' : {
+			center : {
+				lat : 40.5,
+				lng : -3.7
+			},
+			zoom : 5
+		},
+		'pt' : {
+			center : {
+				lat : 39.4,
+				lng : -8.2
+			},
+			zoom : 6
+		},
+		'us' : {
+			center : {
+				lat : 37.1,
+				lng : -95.7
+			},
+			zoom : 3
+		},
+		'uk' : {
+			center : {
+				lat : 54.8,
+				lng : -4.6
+			},
+			zoom : 5
+		}
+	};
+
+	//search 박스를 쓰기 위해서는  initMap()이 아닌, initAutocomplete()을 써야 한다.
+	function initAutocomplete() {
+
+		var options = {
+			zoom : 2.7, // 확대 비율!
+			center : new google.maps.LatLng(37.5130509, 127.0584479), // centered KOEX
+			mapTypeId : google.maps.MapTypeId.ROADMAP, // HYBRID, ROADMAP, SATELLITE, TERRAIN 4가지 종류가 있음
+			mapTypeControl : false,
+			fullscreenControl : false,
+			scaleControl : false,
+			rotateControl : true,
+			streetViewControl : false,
+			suppressInfoWindows : true,
+			gestureHandling : 'greedy' //지도 확대/축소 컨트롤 키 누르고 스크롤 기능 안하고 그냥 스크롤로 확대/축소
+
+		};
+
+		// init map
+		map = new google.maps.Map(document.getElementById('map'), options); // 맵 생성!
+
+		infoWindow = new google.maps.InfoWindow({
+			content : document.getElementById('info-content')
+		});
+
+		// search 박스를 생성하고, 지도 위에 옮기는 기능
+		var input = document.getElementById('pac-input');
+		var searchBox = new google.maps.places.SearchBox(input);
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+		// 토글버튼 생성하고, 지도 위에 옮기는 기능
+		var checkbox = document.getElementById('checkbox');
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(checkbox);
+		var checkbox2 = document.getElementById('checkbox2');
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(checkbox2);
+
+		// convention center 검색을 위한 검색창을 생성하고, 지도 위에 옮기는 기능
+		var autocomplete = document.getElementById('autocomplete');
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(autocomplete);
+		var controls = document.getElementById('controls');
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(controls);
+
+		//SearchBox 결과를 현재 맵의 뷰포트로 이동합니다.
+		map.addListener('bounds_changed', function() {
+			searchBox.setBounds(map.getBounds());
+		});
+
+		//사용자가 예측 및 검색을 선택할 때 발생하는 이벤트 청취
+		// 그 장소에 대한 자세한 정보
+		searchBox.addListener('places_changed', function() {
+			var places = searchBox.getPlaces();
+
+			if (places.length == 0) {
+				return;
+			}
+
+			// 이전 마커를 지웁니다.
+			markers.forEach(function(marker) {
+				marker.setMap(null);
+			});
+			markers = [];
+
+			// 각 위치에 대해 아이콘, 이름 및 위치를 가져옵니다.
+			var bounds = new google.maps.LatLngBounds();
+			places.forEach(function(place) {
+				if (!place.geometry) {
+					console.log("Returned place contains no geometry");
+					return;
+				}
+				var icon = {
+					url : "resources/image/icon/maps_icon6(50, 50).png",
+					size : new google.maps.Size(71, 71),
+					origin : new google.maps.Point(0, 0),
+					anchor : new google.maps.Point(17, 34),
+					scaledSize : new google.maps.Size(50, 50)
+				};
+
+				// 각 위치에 대한 마커를 만듭니다.
+				markers.push(new google.maps.Marker({
+					map : map,
+					icon : icon,
+					title : place.name,
+					position : place.geometry.location
+				}));
+
+				if (place.geometry.viewport) {
+					// 지오코드에만 뷰포트가 있습니다.
+					bounds.union(place.geometry.viewport);
+				} else {
+					bounds.extend(place.geometry.location);
+				}
+			});
+			map.fitBounds(bounds);
+		});
+
+		/* // koex and bigsight sample Lat / Lng
+		var koex = new google.maps.LatLng(37.5130509, 127.0584479); // 서울 코엑스 좌표 37.5130509, 127.0584479
+		var bigsight = new google.maps.LatLng(35.6298556, 139.7945055); // 도쿄 빅사이트 좌표 35.6298556, 139.7945055
+		// 마커 지정
+		placeMarker(koex);
+		placeMarker(bigsight); */
+
+	};
+
+	function placeMarker(location) {
+		// 마커 아이콘 변경
+		var myIcon = new google.maps.MarkerImage(
+				"resources/image/icon/maps_icon7(50, 50).png", null, null,
+				null, new google.maps.Size(50, 50)); // (가로, 세로)
+
+		var marker = new google.maps.Marker({
+			position : location,
+			// animation: google.maps.Animation.DROP 지도 실행시 마커 표시가 위에서 떨어지는 효과
+			icon : myIcon,
+			map : map,
+		// draggable: true, 마커 이동
+		});
+		map.setCenter(location);
+	};
+
+	function BtnOn(chkbox) {
+		if (chkbox.checked == true) {
+			setMapOnAll(map);
+		} else {
+			setMapOnAll(null);
+		}
+	}
+
+	function setMapOnAll(map) {
+		for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(map);
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -619,11 +1069,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- ============================================================== -->
 	<header id="header">
 		<div class="container">
+
 			<div id="logo" class="pull-left">
 				<a href="#hero"><img src="" alt="" title="" /></img></a>
 				<!-- Uncomment below if you prefer to use a text logo -->
 				<!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
 			</div>
+
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
 					<li class="menu-active"><a
@@ -665,12 +1117,28 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!--==========================
     Hero Section
   ============================-->
-
 	<section id="hero">
-		<div class="hero-container"
-			style="height: 92px; color: #c9b680; padding: 30px;"></div>
+		<div class="hero-container">
+			<h2>
+				WE &nbsp;<span class="typed"></span>
+			</h2>
+			<p>Welcome to SEWorld</p>
+
+			<div class="list-unstyled list-social">
+				<a href="#"><i class="fab fa-facebook"></i></a> <a href="#"><i
+					class="fab fa-twitter"></i></a> <a href="#"><i
+					class="fab fa-instagram"></i></a> <a href="#"><i
+					class="fab fa-google-plus"></i></a>
+			</div>
+		</div>
 	</section>
 	<!-- #hero -->
+
+
+
+
+
+
 
 	<!-- ============================================================== -->
 	<!-- End Topbar header -->
@@ -682,275 +1150,87 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- ============================================================== -->
 	<!-- End Left Sidebar - style you can find in sidebar.scss  -->
 	<!-- ============================================================== -->
-	<div class="newpage" style="background-color: #f7edd4" id="scroll">
-		<!-- ============================================================== -->
-		<!-- Bread crumb and right sidebar toggle -->
-		<!-- ============================================================== -->
-		<div class="page-breadcrumb">
-			<div class="row">
-				<div class="col-5 align-self-center">
-				<h3 class="title">&nbsp;</h3>
-					<h4 class="page-title">Profile</h4>
-					<div class="d-flex align-items-center">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Profile</li>
-							</ol>
-						</nav>
-					</div>
+	
+<div class="newpage" style="background-color: white">
+	<!-- 구글맵 -->
+	<section id="facts">
+
+		<div class="container-fluid wow fadeIn">
+
+			<span data-toggle="counter-up">6000</span> Exhibitions are available
+			<div class="section-header">
+				<h3 class="section-title" style="float: left;">Google Map</h3>
+			</div>
+			<br /> <br /> <input id="pac-input" class="controls" type="text"
+				placeholder="검색" style="margin: 1%;">
+
+			<div id="controls">
+				<select id="country">
+					<option value="all">All</option>
+					<option value="au">Australia</option>
+					<option value="br">Brazil</option>
+					<option value="ca">Canada</option>
+					<option value="fr">France</option>
+					<option value="de">Germany</option>
+					<option value="mx">Mexico</option>
+					<option value="nz">New Zealand</option>
+					<option value="it">Italy</option>
+					<option value="za">South Africa</option>
+					<option value="es">Spain</option>
+					<option value="pt">Portugal</option>
+					<option value="us" selected>U.S.A.</option>
+					<option value="uk">United Kingdom</option>
+				</select>
+			</div>
+
+			<input id="autocomplete"
+				placeholder="Enter a city for find hotels in" type="text" /> <input
+				type="checkbox" id="checkbox" checked onclick="BtnOn(this)">
+			<label for="checkbox" id="checkbox2"><span></span></label>
+			<div id="map" style="height: 700px; margin: auto;"></div>
+
+			<div id="listing">
+				<table id="resultsTable">
+					<tbody id="results"></tbody>
+				</table>
+			</div>
+
+			<div style="display: none">
+				<div id="info-content">
+					<table>
+						<tr id="iw-url-row" class="iw_table_row">
+							<td id="iw-icon" class="iw_table_icon"></td>
+							<td id="iw-url"></td>
+						</tr>
+						<tr id="iw-address-row" class="iw_table_row">
+							<td class="iw_attribute_name">Address:</td>
+							<td id="iw-address"></td>
+						</tr>
+						<tr id="iw-phone-row" class="iw_table_row">
+							<td class="iw_attribute_name">Telephone:</td>
+							<td id="iw-phone"></td>
+						</tr>
+						<tr id="iw-rating-row" class="iw_table_row">
+							<td class="iw_attribute_name">Rating:</td>
+							<td id="iw-rating"></td>
+						</tr>
+						<tr id="iw-website-row" class="iw_table_row">
+							<td class="iw_attribute_name">Website:</td>
+							<td id="iw-website"></td>
+						</tr>
+					</table>
 				</div>
 			</div>
+
 		</div>
 
-		<!-- 컨테이너 플루이드 -->
-		<div class="container-fluid">
-			<!-- ============================================================== -->
-			<!-- Start Page Content -->
-			<!-- ============================================================== -->
-			<!-- Row -->
-			<div class="row">
-				<!-- Column -->
-				<div class="col-lg-4 col-xlg-3 col-md-5">
-					<div class="card">
-						<div class="card-body">
-							<center class="m-t-30">
-								<img src="resources/assets/images/users/5.jpg"
-									class="rounded-circle" width="150" />
-								<h4 class="card-title m-t-10">${member.memberName}</h4>
-								<h6 id="memberId" class="card-subtitle">${member.memberId}</h6>
-								<input id="loginId" type="hidden"
-									value="${sessionScope.loginId}">
-								<div id="followshipCount"
-									class="row text-center justify-content-md-center"></div>
-								<c:if test="${sessionScope.loginId ne member.memberId}">
-									<div id="followshipButton"></div>
-								</c:if>
-							</center>
-						</div>
-						<div>
-							<hr>
-						</div>
-						<!-- <div class="card-body"> <small class="text-muted">Email address </small>
-              <h6>scit@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
-              <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
-              <h6>서울시 삼성동 coex</h6>
-              <small class="text-muted p-t-30 db">Social Profile</small>
-              <br/>
-              <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>
-              <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
-              <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
-            </div> -->
-						<div class="row text-center justify-content-md-center">
-							<div class="col-4">
-								<a href="p?mid=${member.memberId}&ptype=w" class="link"><i
-									class="icon-heart"></i><font class="font-medium">가고싶어요
-										${memberDetail.wishingCount}</font></a>
-							</div>
-							<div class="col-4">
-								<a href="p?mid=${member.memberId}&ptype=c" class="link"><i
-									class="icon-pencil"></i><font class="font-medium">코멘트
-										${memberDetail.commentCount}</font></a>
-							</div>
-							<div class="col-4">
-								<a href="p?mid=${member.memberId}&ptype=r" class="link"><i
-									class="icon-book-open"></i><font class="font-medium">리뷰
-										${memberDetail.reviewCount}</font></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Column -->
-				<!-- Column -->
-				<div class="col-lg-8 col-xlg-9 col-md-7">
-					<div class="card">
-						<!-- Tabs -->
-						<ul class="nav nav-pills custom-pills" id="pills-tab"
-							role="tablist">
-							<li class="nav-item"><a class="nav-link active"
-								id="pills-timeline-tab" data-toggle="pill" href="#current-month"
-								role="tab" aria-controls="pills-timeline" aria-selected="true">Timeline</a>
-							</li>
-						</ul>
-						<!-- Tabs -->
-						<div class="tab-content" id="pills-tabContent">
-							<div class="tab-pane fade show active" id="current-month"
-								role="tabpanel" aria-labelledby="pills-timeline-tab">
-								<div class="card-body">
-									<div class="profiletimeline m-t-0">
 
-										<!-- <div class="sl-item">
-                      <div class="sl-left"> <img src="resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" /> </div>
-                      <div class="sl-right">
-                        <div><a href="javascript:void(0)" class="link">하하호호히히후</a> <span class="sl-date">2018/09/02</span>
-                          <p>new activity : <a href="javascript:void(0)"> Uploaded new article</a></p>
-                          <div class="row">
-                            <div class="col-lg-3 col-md-6 m-b-20"><img src="resources/assets/images/big/img1.jpg" class="img-fluid rounded" /></div>
-                            <div class="col-md-9 col-xs-12">
-                              <p> 글 내용 글내용 </p> </div>
-                            </div>
-                          <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 4 likes</a> </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr> -->
 
-										<!-- Wishing -->
-										<c:if test="${not empty timelineList}">
-											<c:forEach var="timeline" items="${timelineList}">
-												<div class="sl-item">
-													<div class="sl-left">
-														<img src="resources/assets/images/users/1.jpg" alt="user"
-															class="rounded-circle" />
-													</div>
-													<div class="sl-right">
-														<c:if test="${timeline.wishingCreatedDate != null}">
-															<div>
-																<a href="javascript:void(0)" class="link">Wishing </a><span
-																	class="sl-date">${timeline.wishingCreatedDate}</span>
-																<div class="row">
-																	<div class="col-lg-3 col-md-6 m-b-20">
-																		<img src="resources/assets/images/big/img1.jpg"
-																			class="img-fluid rounded" />
-																	</div>
-																	<div class="col-md-9 col-xs-12">
-																		<table border="1">
-																			<tr>
-																				<td>전시회명</td>
-																				<td>${timeline.exhibitionTitleKor}</td>
-																			</tr>
-																			<tr>
-																				<td>개최기간</td>
-																				<td>${timeline.openingTerm}</td>
-																			</tr>
-																			<tr>
-																				<td>개최국가</td>
-																				<td>${timeline.openingCountry}</td>
-																			</tr>
-																			<tr>
-																				<td>개최도시</td>
-																				<td>${timeline.openingCity}</td>
-																			</tr>
-																		</table>
-																	</div>
-																</div>
-																<div class="like-comm">
-																	<a href="javascript:void(0)" class="link m-r-10"><i
-																		class="fa fa-heart text-danger"></i> Likes</a>
-																</div>
-															</div>
-														</c:if>
+	</section>
+	<!-- #facts -->
 
-														<!-- Comment -->
-														<c:if test="${timeline.commentCreatedDate != null}">
-															<div>
-																<a href="javascript:void(0)" class="link">Comment </a><span
-																	class="sl-date">${timeline.commentCreatedDate}</span>
-																<div class="row">
-																	<div class="col-lg-3 col-md-6 m-b-20">
-																		<img src="resources/assets/images/big/img1.jpg"
-																			class="img-fluid rounded" />
-																	</div>
-																	<div class="col-md-9 col-xs-12">
-																		<table border="1">
-																			<tr>
-																				<td>전시회명</td>
-																				<td>${timeline.exhibitionTitleKor}</td>
-																			</tr>
-																			<tr>
-																				<td>개최기간</td>
-																				<td>${timeline.openingTerm}</td>
-																			</tr>
-																			<tr>
-																				<td>개최국가</td>
-																				<td>${timeline.openingCountry}</td>
-																			</tr>
-																			<tr>
-																				<td>개최도시</td>
-																				<td>${timeline.openingCity}</td>
-																			</tr>
-																		</table>
-																	</div>
-																</div>
-																<div class="like-comm">별점:
-																	${timeline.commentRating}점</div>
-																<div class="like-comm">코멘트:
-																	${timeline.commentContent}</div>
-															</div>
-														</c:if>
 
-														<!-- Review -->
-														<c:if test="${timeline.boardCreatedDate != null}">
-															<div>
-																<a href="javascript:void(0)" class="link">Review </a><span
-																	class="sl-date">${timeline.boardCreatedDate}</span>
-																<div class="row">
-																	<div class="col-lg-3 col-md-6 m-b-20">
-																		<img src="resources/assets/images/big/img1.jpg"
-																			class="img-fluid rounded" />
-																	</div>
-																	<div class="col-md-9 col-xs-12">
-																		<table border="1">
-																			<tr>
-																				<td>전시회명</td>
-																				<td>${timeline.exhibitionTitleKor}</td>
-																			</tr>
-																			<tr>
-																				<td>개최기간</td>
-																				<td>${timeline.openingTerm}</td>
-																			</tr>
-																			<tr>
-																				<td>개최국가</td>
-																				<td>${timeline.openingCountry}</td>
-																			</tr>
-																			<tr>
-																				<td>개최도시</td>
-																				<td>${timeline.openingCity}</td>
-																			</tr>
-																		</table>
-																	</div>
-																</div>
-																<div class="like-comm">제목: ${timeline.boardTitle}</div>
-																<div class="like-comm">내용:
-																	${timeline.boardContent}</div>
-															</div>
-														</c:if>
-													</div>
-													<hr>
-												</div>
-											</c:forEach>
-										</c:if>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Column -->
-				<h3 class="title">&nbsp;</h3><br />
-			</div>
-			<!-- Row -->
-		</div>
-		<!-- 컨테이너 플루이드 -->
 	</div>
-	<!-- page wrapper -->
-
-	<!-- ============================================================== -->
-	<!-- Page wrapper  -->
-	<!-- ============================================================== -->
-
-	<!-- ============================================================== -->
-	<!-- Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
-
-	<!-- ============================================================== -->
-	<!-- End Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- Container fluid  -->
-	<!-- ============================================================== -->
-
-	<!-- ============================================================== -->
 	<!-- ============================================================== -->
 	<!-- End Container fluid  -->
 	<!-- ============================================================== -->
@@ -962,10 +1242,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 		<div class="footer-top">
 			<div class="container"></div>
 		</div>
+
 		<div class="container">
 			<div class="copyright">
 				&copy; Copyright <strong>SE WROLD</strong>.
 			</div>
+
 		</div>
 	</footer>
 	<!-- #footer -->
@@ -1026,6 +1308,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<script src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="resources/regna/lib/easing/easing.min.js"></script>
 	<script src="resources/regna/lib/wow/wow.min.js"></script>
+
 	<script src="resources/regna/lib/waypoints/waypoints.min.js"></script>
 	<script src="resources/regna/lib/counterup/counterup.min.js"></script>
 	<script src="resources/regna/lib/superfish/hoverIntent.js"></script>
@@ -1037,7 +1320,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 		jQuery(document)
 				.ready(
 						function($) {
+
 							// Header fixed and Back to top button
+
 							// Mobile Navigation
 							if ($('#nav-menu-container').length) {
 								var $mobile_nav = $('#nav-menu-container')
@@ -1116,69 +1401,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 							}
 							// Smoth scroll on page hash links
 
-							initFollowship();
+							/*타자 쳐지는 효과 만들기 */
+						
+
 						});
-		function initFollowship() {
-			initFollowshipCount();
-			initFollowshipButton();
-		}
-		function initFollowshipCount() {
-			var memberId = $('#memberId').html();
-			$.ajax({
-				method : 'POST',
-				url : 'getFollowshipCount',
-				data : 'mid=' + memberId,
-				success : printFollowshipCount
-			});
-		}
-		function printFollowshipCount(resp) {
-			var result = '';
-			result += '<div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로워 '
-					+ resp.followerCount + '</font></a></div>';
-			result += '<div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">팔로잉 '
-					+ resp.followingCount + '</font></a></div>';
-			$('#followshipCount').html(result);
-		}
-		function initFollowshipButton() {
-			var memberId = $('#memberId').html();
-			$.ajax({
-				method : 'POST',
-				url : 'getFollowshipButton',
-				data : 'mid=' + memberId,
-				success : printFollowshipButton
-			});
-		}
-		function printFollowshipButton(resp) {
-			var loginId = $('#loginId').val();
-			var memberId = $('#memberId').html();
-			var result = '';
-			if (resp.createdDate == null && loginId != memberId) {
-				result += '<button id="follow" type="button"><i class="fa fa-plus-square-o"></i><font class="font-medium">follow</font></button>';
-			} else if (resp.createdDate != null && loginId != memberId) {
-				result += '<button id="unfollow" type="button"><i id="unfollow" class="fa fa-minus-square-o"></i><font class="font-medium">unfollow</font></button>';
-			}
-			$('#followshipButton').html(result);
-			$('#follow').on('click', insertFollowship);
-			$('#unfollow').on('click', deleteFollowship);
-		}
-		function insertFollowship() {
-			var memberId = $('#memberId').html();
-			$.ajax({
-				method : 'POST',
-				url : 'follow',
-				data : 'mid=' + memberId,
-				success : initFollowship
-			});
-		}
-		function deleteFollowship() {
-			var memberId = $('#memberId').html();
-			$.ajax({
-				method : 'POST',
-				url : 'unfollow',
-				data : 'mid=' + memberId,
-				success : initFollowship
-			});
-		}
 	</script>
+	<!-- 구글맵 javascript -->
+	<script
+		src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+	<!-- <script async defer
+	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf0YT_ifom64iJnlKsQ7XYfONTzQcNGvg&callback=initMap"></script> -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf0YT_ifom64iJnlKsQ7XYfONTzQcNGvg&libraries=places&callback=initAutocomplete"
+		async defer></script>
 </body>
+
 </html>

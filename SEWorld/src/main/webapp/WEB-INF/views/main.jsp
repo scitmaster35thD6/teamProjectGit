@@ -817,242 +817,8 @@ table {
 	text-align: right;
 }
 </style>
-<!-- 메인화면 구글맵 javascript -->
 <script>
-	var map, places, infoWindow, autocomplete;
-	var markers = [];
-	var countryRestrict = {
-		'country' : 'us'
-	};
-	var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
-	var hostnameRegexp = new RegExp('^https?://.+?/');
-
-	var countries = {
-		'au' : {
-			center : {
-				lat : -25.3,
-				lng : 133.8
-			},
-			zoom : 4
-		},
-		'br' : {
-			center : {
-				lat : -14.2,
-				lng : -51.9
-			},
-			zoom : 3
-		},
-		'ca' : {
-			center : {
-				lat : 62,
-				lng : -110.0
-			},
-			zoom : 3
-		},
-		'fr' : {
-			center : {
-				lat : 46.2,
-				lng : 2.2
-			},
-			zoom : 5
-		},
-		'de' : {
-			center : {
-				lat : 51.2,
-				lng : 10.4
-			},
-			zoom : 5
-		},
-		'mx' : {
-			center : {
-				lat : 23.6,
-				lng : -102.5
-			},
-			zoom : 4
-		},
-		'nz' : {
-			center : {
-				lat : -40.9,
-				lng : 174.9
-			},
-			zoom : 5
-		},
-		'it' : {
-			center : {
-				lat : 41.9,
-				lng : 12.6
-			},
-			zoom : 5
-		},
-		'za' : {
-			center : {
-				lat : -30.6,
-				lng : 22.9
-			},
-			zoom : 5
-		},
-		'es' : {
-			center : {
-				lat : 40.5,
-				lng : -3.7
-			},
-			zoom : 5
-		},
-		'pt' : {
-			center : {
-				lat : 39.4,
-				lng : -8.2
-			},
-			zoom : 6
-		},
-		'us' : {
-			center : {
-				lat : 37.1,
-				lng : -95.7
-			},
-			zoom : 3
-		},
-		'uk' : {
-			center : {
-				lat : 54.8,
-				lng : -4.6
-			},
-			zoom : 5
-		}
-	};
-
-	//search 박스를 쓰기 위해서는  initMap()이 아닌, initAutocomplete()을 써야 한다.
-	function initAutocomplete() {
-
-		var options = {
-			zoom : 2.7, // 확대 비율!
-			center : new google.maps.LatLng(37.5130509, 127.0584479), // centered KOEX
-			mapTypeId : google.maps.MapTypeId.ROADMAP, // HYBRID, ROADMAP, SATELLITE, TERRAIN 4가지 종류가 있음
-			mapTypeControl : false,
-			fullscreenControl : false,
-			scaleControl : false,
-			rotateControl : true,
-			streetViewControl : false,
-			suppressInfoWindows : true,
-			gestureHandling : 'greedy' //지도 확대/축소 컨트롤 키 누르고 스크롤 기능 안하고 그냥 스크롤로 확대/축소
-
-		};
-
-		// init map
-		map = new google.maps.Map(document.getElementById('map'), options); // 맵 생성!
-
-		infoWindow = new google.maps.InfoWindow({
-			content : document.getElementById('info-content')
-		});
-
-		// search 박스를 생성하고, 지도 위에 옮기는 기능
-		var input = document.getElementById('pac-input');
-		var searchBox = new google.maps.places.SearchBox(input);
-		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-		// 토글버튼 생성하고, 지도 위에 옮기는 기능
-		var checkbox = document.getElementById('checkbox');
-		map.controls[google.maps.ControlPosition.TOP_LEFT].push(checkbox);
-		var checkbox2 = document.getElementById('checkbox2');
-		map.controls[google.maps.ControlPosition.TOP_LEFT].push(checkbox2);
-
-		// convention center 검색을 위한 검색창을 생성하고, 지도 위에 옮기는 기능
-		var autocomplete = document.getElementById('autocomplete');
-		map.controls[google.maps.ControlPosition.TOP_LEFT].push(autocomplete);
-		var controls = document.getElementById('controls');
-		map.controls[google.maps.ControlPosition.TOP_LEFT].push(controls);
-
-		//SearchBox 결과를 현재 맵의 뷰포트로 이동합니다.
-		map.addListener('bounds_changed', function() {
-			searchBox.setBounds(map.getBounds());
-		});
-
-		//사용자가 예측 및 검색을 선택할 때 발생하는 이벤트 청취
-		// 그 장소에 대한 자세한 정보
-		searchBox.addListener('places_changed', function() {
-			var places = searchBox.getPlaces();
-
-			if (places.length == 0) {
-				return;
-			}
-
-			// 이전 마커를 지웁니다.
-			markers.forEach(function(marker) {
-				marker.setMap(null);
-			});
-			markers = [];
-
-			// 각 위치에 대해 아이콘, 이름 및 위치를 가져옵니다.
-			var bounds = new google.maps.LatLngBounds();
-			places.forEach(function(place) {
-				if (!place.geometry) {
-					console.log("Returned place contains no geometry");
-					return;
-				}
-				var icon = {
-					url : "resources/image/icon/maps_icon6(50, 50).png",
-					size : new google.maps.Size(71, 71),
-					origin : new google.maps.Point(0, 0),
-					anchor : new google.maps.Point(17, 34),
-					scaledSize : new google.maps.Size(50, 50)
-				};
-
-				// 각 위치에 대한 마커를 만듭니다.
-				markers.push(new google.maps.Marker({
-					map : map,
-					icon : icon,
-					title : place.name,
-					position : place.geometry.location
-				}));
-
-				if (place.geometry.viewport) {
-					// 지오코드에만 뷰포트가 있습니다.
-					bounds.union(place.geometry.viewport);
-				} else {
-					bounds.extend(place.geometry.location);
-				}
-			});
-			map.fitBounds(bounds);
-		});
-
-		/* // koex and bigsight sample Lat / Lng
-		var koex = new google.maps.LatLng(37.5130509, 127.0584479); // 서울 코엑스 좌표 37.5130509, 127.0584479
-		var bigsight = new google.maps.LatLng(35.6298556, 139.7945055); // 도쿄 빅사이트 좌표 35.6298556, 139.7945055
-		// 마커 지정
-		placeMarker(koex);
-		placeMarker(bigsight); */
-
-	};
-
-	function placeMarker(location) {
-		// 마커 아이콘 변경
-		var myIcon = new google.maps.MarkerImage(
-				"resources/image/icon/maps_icon7(50, 50).png", null, null,
-				null, new google.maps.Size(50, 50)); // (가로, 세로)
-
-		var marker = new google.maps.Marker({
-			position : location,
-			// animation: google.maps.Animation.DROP 지도 실행시 마커 표시가 위에서 떨어지는 효과
-			icon : myIcon,
-			map : map,
-		// draggable: true, 마커 이동
-		});
-		map.setCenter(location);
-	};
-
-	function BtnOn(chkbox) {
-		if (chkbox.checked == true) {
-			setMapOnAll(map);
-		} else {
-			setMapOnAll(null);
-		}
-	}
-
-	function setMapOnAll(map) {
-		for (var i = 0; i < markers.length; i++) {
-			markers[i].setMap(map);
-		}
-	}
+	
 </script>
 </head>
 
@@ -1083,7 +849,7 @@ table {
 					<li class="menu-has-children"><a href="#services">Exhibition</a>
 						<ul>
 							<li><a href="exhibitionList">Exhibition List</a></li>
-							<li><a href="#facts">GoogleMap</a></li>
+							<li><a href="googleView">GoogleMap</a></li>
 							<li><a href="jvectorMap">VectorMap</a></li>
 						</ul>
 					<li class="menu-has-children"><a href="#portfolio">User's
@@ -1107,6 +873,8 @@ table {
 									<li><a href="calendar">calendar</a></li>
 								</ul>
 						</c:if>
+						
+						<li><a href="#">How to Use</a></li>
 				</ul>
 			</nav>
 			<!-- #nav-menu-container -->
@@ -1216,70 +984,41 @@ table {
 
 			<span data-toggle="counter-up">6000</span> Exhibitions are available
 			<div class="section-header">
-				<h3 class="section-title" style="float: left;">Google Map</h3>
+				<h3 class="section-title" style="float: left;">World Map</h3>
 			</div>
-			<br /> <br /> <input id="pac-input" class="controls" type="text"
-				placeholder="검색" style="margin: 1%;">
+			
+			<!-- <div class="container-fluid">
+ -->
+		<div class="row">
+			<div class="col-12">
+	<!-- 			<div class="card"> -->
+				<!-- 	<div class="card-body"> -->
+						<!-- 탭으로 구분하깅 -->
 
-			<div id="controls">
-				<select id="country">
-					<option value="all">All</option>
-					<option value="au">Australia</option>
-					<option value="br">Brazil</option>
-					<option value="ca">Canada</option>
-					<option value="fr">France</option>
-					<option value="de">Germany</option>
-					<option value="mx">Mexico</option>
-					<option value="nz">New Zealand</option>
-					<option value="it">Italy</option>
-					<option value="za">South Africa</option>
-					<option value="es">Spain</option>
-					<option value="pt">Portugal</option>
-					<option value="us" selected>U.S.A.</option>
-					<option value="uk">United Kingdom</option>
-				</select>
+
+						<!-- 월드 맵 -->
+
+						<div id="world-map-markers" style="height: 700px;"></div>
+
+
+
+
+
+				<!-- 	</div> -->
+					<!-- 카드 body -->
+
+				<!-- </div> -->
+				<!-- 카드 -->
+
 			</div>
-
-			<input id="autocomplete"
-				placeholder="Enter a city for find hotels in" type="text" /> <input
-				type="checkbox" id="checkbox" checked onclick="BtnOn(this)">
-			<label for="checkbox" id="checkbox2"><span></span></label>
-			<div id="map" style="height: 700px; margin: auto;"></div>
-
-			<div id="listing">
-				<table id="resultsTable">
-					<tbody id="results"></tbody>
-				</table>
-			</div>
-
-			<div style="display: none">
-				<div id="info-content">
-					<table>
-						<tr id="iw-url-row" class="iw_table_row">
-							<td id="iw-icon" class="iw_table_icon"></td>
-							<td id="iw-url"></td>
-						</tr>
-						<tr id="iw-address-row" class="iw_table_row">
-							<td class="iw_attribute_name">Address:</td>
-							<td id="iw-address"></td>
-						</tr>
-						<tr id="iw-phone-row" class="iw_table_row">
-							<td class="iw_attribute_name">Telephone:</td>
-							<td id="iw-phone"></td>
-						</tr>
-						<tr id="iw-rating-row" class="iw_table_row">
-							<td class="iw_attribute_name">Rating:</td>
-							<td id="iw-rating"></td>
-						</tr>
-						<tr id="iw-website-row" class="iw_table_row">
-							<td class="iw_attribute_name">Website:</td>
-							<td id="iw-website"></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-
 		</div>
+
+		
+	</div>
+			
+			
+
+		<!-- </div> -->
 
 
 
@@ -1306,7 +1045,7 @@ table {
 							</ol>
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[0].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[0].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img1.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[0].exhibitionTitleKor}</h3>
@@ -1314,7 +1053,7 @@ table {
 									</div>
 								</div>
 								<div class="carousel-item">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[1].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[1].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img2.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[1].exhibitionTitleKor}</h3>
@@ -1322,7 +1061,7 @@ table {
 									</div>
 								</div>
 								<div class="carousel-item">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[2].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[2].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img3.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[2].exhibitionTitleKor}</h3>
@@ -1347,7 +1086,7 @@ table {
 							</ol>
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[3].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[3].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img4.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[3].exhibitionTitleKor}</h3>
@@ -1355,7 +1094,7 @@ table {
 									</div>
 								</div>
 								<div class="carousel-item">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[4].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[4].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img5.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[4].exhibitionTitleKor}</h3>
@@ -1363,7 +1102,7 @@ table {
 									</div>
 								</div>
 								<div class="carousel-item">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[5].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[5].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img6.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[5].exhibitionTitleKor}</h3>
@@ -1389,7 +1128,7 @@ table {
 							</ol>
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[6].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[6].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img7.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[6].exhibitionTitleKor}</h3>
@@ -1397,7 +1136,7 @@ table {
 									</div>
 								</div>
 								<div class="carousel-item">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[7].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[7].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img8.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[7].exhibitionTitleKor}</h3>
@@ -1405,7 +1144,7 @@ table {
 									</div>
 								</div>
 								<div class="carousel-item">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[8].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[8].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img9.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[8].exhibitionTitleKor}</h3>
@@ -1429,7 +1168,7 @@ table {
 							</ol>
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[9].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[9].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img10.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[9].exhibitionTitleKor}</h3>
@@ -1437,7 +1176,7 @@ table {
 									</div>
 								</div>
 								<div class="carousel-item">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[10].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[10].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img11.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[10].exhibitionTitleKor}</h3>
@@ -1445,7 +1184,7 @@ table {
 									</div>
 								</div>
 								<div class="carousel-item">
-									<a href="exhibitionDetail?exhibitionId=${recentExhibition[11].exhibitionId}"><img class="img-fluid"
+									<a href="exhibitionDetail?exhibitionId=${recentExhibition[11].exhibitionId}"><img class="resources/regna/img-fluid"
 										src="resources/assets/images/big/img12.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[11].exhibitionTitleKor}</h3>
@@ -1638,7 +1377,7 @@ table {
 					<p class="cta-text">무료 회원가입.</p>
 				</div>
 				<div class="col-lg-3 cta-btn-container text-center">
-					<a class="cta-btn align-middle" href="resources/regna/#">Go</a>
+					<a class="cta-btn align-middle" href="signup">Go</a>
 				</div>
 			</div>
 
@@ -1646,82 +1385,88 @@ table {
 	</section>
 	<!-- #call-to-action -->
 
-	<!-- ============================================================== -->
-	<!-- Page wrapper  -->
-	<!-- ============================================================== -->
+	
+	<!--==========================
+      Contact Section
+    ============================-->
+    <section id="contact">
+      <div class="container wow fadeInUp">
+        <div class="section-header">
+          <h3 class="section-title">Contact</h3>
+          <p class="section-description">메일보내기</p>
+        </div>
+      </div>
 
-	<!-- ============================================================== -->
-	<!-- Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
+     
 
-	<!-- ============================================================== -->
-	<!-- End Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
+      <div class="container wow fadeInUp">
+        <div class="row justify-content-center">
+
+          <div class="col-lg-3 col-md-4">
+
+            <div class="info">
+              <div>
+                <i class="fa fa-map-marker"></i>
+                <p>ICT교육센터<br>코엑스 4층</p>
+              </div>
+
+              <div>
+                <i class="fa fa-envelope"></i>
+                <p>hello@sesoc.global</p>
+              </div>
+
+              <div>
+                <i class="fa fa-phone"></i>
+                <p>+82-2-6000-6260</p>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-5 col-md-8">
+            <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit">Send Message</button></div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #contact -->
+	
+	
+	
 	<!-- ============================================================== -->
 	<!-- Container fluid  -->
 	<!-- ============================================================== -->
-	<div class="container-fluid">
-
-
-
-		<!-- ============================================================== -->
-		<!-- Start Page Content -->
-		<!-- ============================================================== -->
-
-
-
-
-
-		<div class="row">
-			<div class="col-12">
-				<div class="card">
-					<div class="card-body">
-						<!-- 탭으로 구분하깅 -->
-
-
-						<!-- 월드 맵 -->
-
-						<div class="section-header">World Map</div>
-						<div id="world-map-markers" style="height: 700px;"></div>
-
-
-						<!-- 미국지도 -->
-						<h4 class="card-title">USA</h4>
-						<div id="usa" style="height: 700px;"></div>
-						<!-- 미국지도 -->
-
-
-
-						<h4 class="card-title">India</h4>
-						<div id="india" style="height: 450px;"></div>
-						<!-- 탭으로 구분하깅 -->
-
-
-
-					</div>
-					<!-- 카드 body -->
-
-				</div>
-				<!-- 카드 -->
-
-			</div>
-		</div>
-
-		<!-- ============================================================== -->
-		<!-- End PAge Content -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- Right sidebar -->
-		<!-- ============================================================== -->
-		<!-- .right-sidebar -->
-		<!-- ============================================================== -->
-		<!-- End Right sidebar -->
-		<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Container fluid  -->
-	<!-- ============================================================== -->
-	<!-- 페이지 레퍼 div있던 자리 -->
+	
 	<!-- ============================================================== -->
 	<!-- footer -->
 	<!-- ============================================================== -->

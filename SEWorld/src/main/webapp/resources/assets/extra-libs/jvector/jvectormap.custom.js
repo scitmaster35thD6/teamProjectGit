@@ -214,7 +214,7 @@ $(function() {
 			  series: {
 			    regions: [{
 			      values: exData,
-			      scale: ['#C8EEFF', '#0071A4'],
+			      scale: ['#a8f4d5', '#03b76c'],
 			      normalizeFunction: 'polynomial'
 			    }]
 			  },

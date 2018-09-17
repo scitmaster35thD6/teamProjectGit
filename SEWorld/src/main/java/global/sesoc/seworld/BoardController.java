@@ -288,5 +288,11 @@ public class BoardController {
 		result.put("replies", replies);
 		return result;
 	}
+	
+	@RequestMapping(value = "/googleView", method = RequestMethod.GET)
+	public String googleview() {
+		return "exhibition/googleView";
+	}
+
 
 }
