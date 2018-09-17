@@ -1,4 +1,4 @@
--- 180907_c6_v4_create_table.sql
+-- 180917_c6_v4_create_table.sql
 
 
 CREATE TABLE c6_exbtinfo (
@@ -343,14 +343,6 @@ COMMENT ON COLUMN c6_board_reply.createdDate IS '등록일';
 COMMENT ON COLUMN c6_board_reply.updatedDate IS '수정일';
 
 
-CREATE SEQUENCE c6_cities_seq START WITH 1360 INCREMENT BY 1 MAXVALUE 9999;
-CREATE SEQUENCE c6_exhibition_seq START WITH 15960 INCREMENT BY 1 MAXVALUE 99999;
-CREATE SEQUENCE c6_board_seq;
-CREATE SEQUENCE c6_board_file_seq;
-CREATE SEQUENCE c6_board_reply_seq;
-CREATE SEQUENCE c6_comment_reply_seq;
-
-
 -- 팔로우 관계
 CREATE TABLE c6_followship (
     follower VARCHAR2(40 BYTE) NOT NULL,
@@ -362,3 +354,36 @@ COMMENT ON TABLE c6_followship IS '팔로우 관계';
 COMMENT ON COLUMN c6_followship.follower IS '팔로워';
 COMMENT ON COLUMN c6_followship.following IS '팔로잉';
 COMMENT ON COLUMN c6_followship.createdDate IS '팔로우 날짜';
+
+
+-- 캘린더
+CREATE TABLE c6_calendar (
+    calendarId CHAR(10 BYTE) NOT NULL,
+    memberId VARCHAR2(40 BYTE) NOT NULL,
+    title VARCHAR2(100 BYTE),
+    bgType VARCHAR2(10 BYTE),
+    startDay DATE,
+    endDay DATE,
+    createdDate DATE DEFAULT SYSDATE NOT NULL,
+    updatedDate DATE DEFAULT SYSDATE NOT NULL,
+    CONSTRAINT c6_calendar_fk FOREIGN KEY(memberId)
+    REFERENCES c6_member(memberId)
+);
+COMMENT ON TABLE c6_calendar IS '캘린더';
+COMMENT ON COLUMN c6_calendar.calendarId IS '캘린더 ID';
+COMMENT ON COLUMN c6_calendar.memberId IS '회원 ID';
+COMMENT ON COLUMN c6_calendar.title IS '제목';
+COMMENT ON COLUMN c6_calendar.bgType IS '배경색';
+COMMENT ON COLUMN c6_calendar.startDay IS '시작일';
+COMMENT ON COLUMN c6_calendar.endDay IS '종료일';
+COMMENT ON COLUMN c6_calendar.createdDate IS '캘린더 생성일';
+COMMENT ON COLUMN c6_calendar.updatedDate IS '캘린더 수정일';
+
+
+CREATE SEQUENCE c6_cities_seq START WITH 1360 INCREMENT BY 1 MAXVALUE 9999;
+CREATE SEQUENCE c6_exhibition_seq START WITH 15960 INCREMENT BY 1 MAXVALUE 99999;
+CREATE SEQUENCE c6_board_seq;
+CREATE SEQUENCE c6_board_file_seq;
+CREATE SEQUENCE c6_board_reply_seq;
+CREATE SEQUENCE c6_comment_reply_seq;
+CREATE SEQUENCE c6_calendar_seq;
