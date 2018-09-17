@@ -1046,7 +1046,7 @@ table {
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
 									<a href="exhibitionDetail?exhibitionId=${recentExhibition[0].exhibitionId}"><img class="resources/regna/img-fluid"
-										src="resources/assets/images/big/img1.jpg" alt="First slide"></a>
+										src="resources/assets/images/big/img01.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[0].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[0].exhibitionTitleEng}</p>
@@ -1054,7 +1054,7 @@ table {
 								</div>
 								<div class="carousel-item">
 									<a href="exhibitionDetail?exhibitionId=${recentExhibition[1].exhibitionId}"><img class="resources/regna/img-fluid"
-										src="resources/assets/images/big/img2.jpg" alt="Second slide"></a>
+										src="resources/assets/images/big/img02.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[1].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[1].exhibitionTitleEng}</p>
@@ -1062,7 +1062,7 @@ table {
 								</div>
 								<div class="carousel-item">
 									<a href="exhibitionDetail?exhibitionId=${recentExhibition[2].exhibitionId}"><img class="resources/regna/img-fluid"
-										src="resources/assets/images/big/img3.jpg" alt="Third slide"></a>
+										src="resources/assets/images/big/img03.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[2].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[2].exhibitionTitleEng}</p>
@@ -1087,7 +1087,7 @@ table {
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
 									<a href="exhibitionDetail?exhibitionId=${recentExhibition[3].exhibitionId}"><img class="resources/regna/img-fluid"
-										src="resources/assets/images/big/img4.jpg" alt="First slide"></a>
+										src="resources/assets/images/big/img04.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[3].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[3].exhibitionTitleEng}</p>
@@ -1095,7 +1095,7 @@ table {
 								</div>
 								<div class="carousel-item">
 									<a href="exhibitionDetail?exhibitionId=${recentExhibition[4].exhibitionId}"><img class="resources/regna/img-fluid"
-										src="resources/assets/images/big/img5.jpg" alt="Second slide"></a>
+										src="resources/assets/images/big/img05.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[4].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[4].exhibitionTitleEng}</p>
@@ -1103,7 +1103,7 @@ table {
 								</div>
 								<div class="carousel-item">
 									<a href="exhibitionDetail?exhibitionId=${recentExhibition[5].exhibitionId}"><img class="resources/regna/img-fluid"
-										src="resources/assets/images/big/img6.jpg" alt="Third slide"></a>
+										src="resources/assets/images/big/img06.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[5].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[5].exhibitionTitleEng}</p>
@@ -1129,7 +1129,7 @@ table {
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
 									<a href="exhibitionDetail?exhibitionId=${recentExhibition[6].exhibitionId}"><img class="resources/regna/img-fluid"
-										src="resources/assets/images/big/img7.jpg" alt="First slide"></a>
+										src="resources/assets/images/big/img07.jpg" alt="First slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[6].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[6].exhibitionTitleEng}</p>
@@ -1137,7 +1137,7 @@ table {
 								</div>
 								<div class="carousel-item">
 									<a href="exhibitionDetail?exhibitionId=${recentExhibition[7].exhibitionId}"><img class="resources/regna/img-fluid"
-										src="resources/assets/images/big/img8.jpg" alt="Second slide"></a>
+										src="resources/assets/images/big/img08.jpg" alt="Second slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[7].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[7].exhibitionTitleEng}</p>
@@ -1145,7 +1145,7 @@ table {
 								</div>
 								<div class="carousel-item">
 									<a href="exhibitionDetail?exhibitionId=${recentExhibition[8].exhibitionId}"><img class="resources/regna/img-fluid"
-										src="resources/assets/images/big/img9.jpg" alt="Third slide"></a>
+										src="resources/assets/images/big/img09.jpg" alt="Third slide"></a>
 									<div class="carousel-caption d-none d-md-block">
 										<h3 class="text-white">${recentExhibition[8].exhibitionTitleKor}</h3>
 										<p>${recentExhibition[8].exhibitionTitleEng}</p>
