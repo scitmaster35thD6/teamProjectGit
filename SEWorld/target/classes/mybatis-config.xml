@@ -21,6 +21,7 @@
 		<typeAlias type="global.sesoc.seworld.dto.Timeline" alias="Timeline" />
 		<typeAlias type="global.sesoc.seworld.dto.Wishing" alias="Wishing" />
 		<typeAlias type="global.sesoc.seworld.dto.Counting" alias="Counting" />
+		<typeAlias type="global.sesoc.seworld.dto.Counting" alias="Calendar" />
 	</typeAliases>
 
 	<mappers>
@@ -40,6 +41,7 @@
 		<mapper resource="mappers/regionsMapper.xml" />
 		<mapper resource="mappers/timelineMapper.xml" />
 		<mapper resource="mappers/wishingMapper.xml" />
+		<mapper resource="mappers/calendarMapper.xml" />
 	</mappers>
 
 </configuration>

@@ -109,6 +109,7 @@ function toTimeObject(str) {
 
   /* on select */
   CalendarApp.prototype.onSelect = function(start, end, allDay) {
+	  
     var $this = this;
     $this.$modal.modal({
       backdrop: 'static'
@@ -116,9 +117,9 @@ function toTimeObject(str) {
     var form = $("<form></form>");
     form.append("<div class='row'></div>");
     form.find(".row")
-      .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' placeholder='Insert Event Name' type='text' name='title'/></div></div>")
-      .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Category</label><select class='form-control' name='category'></select></div></div>")
-      .find("select[name='category']")
+      .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' placeholder='Insert Event Name' type='text' id='title' name='title'/></div></div>")
+      .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Category</label><select class='form-control' id='category' name='category'></select></div></div>")
+      .find("select[id='category']")
       .append("<option value='bg-danger'>Danger</option>")
       .append("<option value='bg-success'>Success</option>")
       .append("<option value='bg-primary'>Primary</option>")
@@ -128,10 +129,124 @@ function toTimeObject(str) {
       form.submit();
     });
     $this.$modal.find('form').on('submit', function() {
-      var title = form.find("input[name='title']").val();
+      var title = form.find("input[id='title']").val();
       var beginning = form.find("input[name='beginning']").val();
       var ending = form.find("input[name='ending']").val();
-      var categoryClass = form.find("select[name='category'] option:checked").val();
+      var categoryClass = form.find("select[id='category'] option:checked").val();
+      var memberId = $("#logId").val();
+      //var startString = toGMTString(start);
+      var startDay   = start.toLocaleString();
+      var endDay = end.toLocaleString();
+      //alert(startDay);
+      /**스타트데이**/
+      var sMonth = startDay.substring(4, 7);
+      var sDay = startDay.substring(8,10);
+      var sYear = startDay.substring(11,15);
+      switch(sMonth){
+    	case 'Jan':
+    		sMonth='01';
+    	   break;
+    	   
+    	case 'Feb':
+    		sMonth='02';
+     	   break;
+     	   
+    	case 'Mar':
+    		sMonth='03';
+     	   break;
+    	case 'Apr':
+    		sMonth='04';
+     	   break;
+    	case 'May':
+    		sMonth='05';
+     	   break;
+    	case 'Jun':
+    		sMonth='06';
+        break;
+    	case 'Jul':
+    		sMonth='07';
+     	   break;
+    	case 'Aug':
+    		sMonth='08';
+     	   break;
+    	case 'Sep':
+    		sMonth='09';
+     	   break;
+    	case 'Oct':
+    		sMonth='10';
+     	   break;
+    	case 'Nov':
+    		sMonth='11';
+     	   break;
+    	case 'Dec':
+    		sMonth='12';
+     	   break;
+    	default:
+    		alert("오류");
+    		break;
+      }
+      startDay =  
+      sYear.concat(sMonth).concat(sDay);
+     // alert(startDay);
+      /**스타트데이**/
+      
+      
+      /**엔드데이**/
+      var eMonth = endDay.substring(4, 7);
+      var eDay = endDay.substring(8,10);
+      var eDay2 = parseInt(eDay)-1;
+      eDay = eDay2.toString();
+      var eYear = endDay.substring(11,15);
+      switch(eMonth){
+    	case 'Jan':
+    		eMonth='01';
+    	   break;
+    	   
+    	case 'Feb':
+    		eMonth='02';
+     	   break;
+     	   
+    	case 'Mar':
+    		eMonth='03';
+     	   break;
+    	case 'Apr':
+    		eMonth='04';
+     	   break;
+    	case 'May':
+    		eMonth='05';
+     	   break;
+    	case 'Jun':
+    		eMonth='06';
+        break;
+    	case 'Jul':
+    		eMonth='07';
+     	   break;
+    	case 'Aug':
+    		eMonth='08';
+     	   break;
+    	case 'Sep':
+    		eMonth='09';
+     	   break;
+    	case 'Oct':
+    		eMonth='10';
+     	   break;
+    	case 'Nov':
+    		eMonth='11';
+     	   break;
+    	case 'Dec':
+    		eMonth='12';
+     	   break;
+    	default:
+    		alert("오류");
+    		break;
+      }
+      endDay =  
+      eYear.concat(eMonth).concat(eDay);
+      
+      
+      /**엔드데이**/
+      
+      
       if (title !== null && title.length != 0) {
         $this.$calendarObj.fullCalendar('renderEvent', {
           title: title,
@@ -140,7 +255,29 @@ function toTimeObject(str) {
           allDay: false,
           className: categoryClass
         }, true);
+        
+        
+        /*요기에 인서트 하기*/
+        var insertData ={
+        	"memberId" : memberId,
+        	"title" : title,
+        	"startDay" : startDay,
+        	"endDay" : endDay,
+        	"bgType" : categoryClass
+        };
+        alert(startDay+endDay);
+        $.ajax({
+        	method : 'POST'
+            , url : 'insertcalendar'
+            , data :JSON.stringify(insertData)
+            , dataType : 'text'
+            , contentType : 'application/json; charset=UTF-8'
+            , success : function(resp){
+            	alert(resp);
+            }
+        });
         $this.$modal.modal('hide');
+        
       } else {
         alert('You have to give a title to your event');
       }

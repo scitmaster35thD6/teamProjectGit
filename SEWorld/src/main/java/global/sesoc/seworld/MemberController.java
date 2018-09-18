@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import global.sesoc.seworld.dao.CalendarRepository;
 import global.sesoc.seworld.dao.MemberRepository;
 import global.sesoc.seworld.dao.WishingRepository;
+import global.sesoc.seworld.dto.Calendar;
 import global.sesoc.seworld.dto.Exhibition;
 import global.sesoc.seworld.dto.Member;
 import global.sesoc.seworld.dto.Wishing;
@@ -40,6 +42,9 @@ public class MemberController {
 	@Autowired
 	WishingRepository wishingRepository;
 
+	@Autowired
+	CalendarRepository calendarRepository;
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "member/login";
@@ -175,7 +180,7 @@ public class MemberController {
 		logger.info("[/calendar]");
 		return "member/calendar";
 	}
-
+	//캘린더 리슷 띄우기
 	@RequestMapping(value = "/gocalendar", method = RequestMethod.POST)
 	public @ResponseBody List<Exhibition> calendar(@RequestBody Wishing wishing) {
 		logger.info("[/gocalendar]");
@@ -195,6 +200,14 @@ public class MemberController {
 	public @ResponseBody Integer insertcalendarTest(Wishing wishing) {
 		logger.info("[/calendarTest]");
 		int result = wishingRepository.insertOneWishing(wishing);
+		return result;
+	}
+	
+	@RequestMapping(value = "/insertcalendar", method = RequestMethod.POST)
+	public @ResponseBody Integer insertcalendar(@RequestBody Calendar calendar) {
+		System.out.println(calendar);
+		int result = calendarRepository.insertCalendar(calendar);
+		System.out.println("등록되나? "+result);
 		return result;
 	}
 }

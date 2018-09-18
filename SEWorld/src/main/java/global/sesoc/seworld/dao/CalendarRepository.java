@@ -20,7 +20,11 @@ public class CalendarRepository {
 
 	public int insertCalendar(Calendar calendar) {
 		CalendarMapper calendarMapper = sqlSession.getMapper(CalendarMapper.class);
+		int result = calendarMapper.insertCalendar(calendar);
+		System.out.println("캘린인서트 리ㅂ포지토리 테스트용"+result);
+		
 		return calendarMapper.insertCalendar(calendar);
+		
 	}
 
 	public int deleteCalendar(String calendarId) {

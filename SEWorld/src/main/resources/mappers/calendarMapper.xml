@@ -45,8 +45,8 @@
 		,#{memberId}
 		,#{title}
 		,#{bgType}
-		,#{startDay}
-		,#{endDay}
+		,TO_DATE(#{startDay}, 'YYYY-MM-DD')
+		,TO_DATE(#{endDay}, 'YYYY-MM-DD')
 		)
 	</insert>
 
