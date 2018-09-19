@@ -818,7 +818,389 @@ table {
 }
 </style>
 <script>
-	
+var map, places, infoWindow, autocomplete;
+var markers = [];
+var hostnameRegexp = new RegExp('^https?://.+?/');
+
+var countries = {
+        'au': {
+          center: {lat: -25.3, lng: 133.8},
+          zoom: 4
+        },
+        'br': {
+          center: {lat: -14.2, lng: -51.9},
+          zoom: 3
+        },
+        'ca': {
+          center: {lat: 62, lng: -110.0},
+          zoom: 3
+        },
+        'fr': {
+          center: {lat: 46.2, lng: 2.2},
+          zoom: 5
+        },
+        'de': {
+          center: {lat: 51.2, lng: 10.4},
+          zoom: 5
+        },
+        'mx': {
+          center: {lat: 23.6, lng: -102.5},
+          zoom: 4
+        },
+        'nz': {
+          center: {lat: -40.9, lng: 174.9},
+          zoom: 5
+        },
+        'it': {
+          center: {lat: 41.9, lng: 12.6},
+          zoom: 5
+        },
+        'za': {
+          center: {lat: -30.6, lng: 22.9},
+          zoom: 5
+        },
+        'es': {
+          center: {lat: 40.5, lng: -3.7},
+          zoom: 5
+        },
+        'pt': {
+          center: {lat: 39.4, lng: -8.2},
+          zoom: 6
+        },
+        'us': {
+          center: {lat: 37.1, lng: -95.7},
+          zoom: 3
+        },
+        'uk': {
+          center: {lat: 54.8, lng: -4.6},
+          zoom: 5
+        }
+      };
+      
+	//search 박스를 쓰기 위해서는  initMap()이 아닌, initAutocomplete()을 써야 한다.
+    function initAutocomplete() {
+        	
+            var options = {
+                zoom: 2.7,			// 확대 비율!
+                center: new google.maps.LatLng(37.5130509, 127.0584479), // centered KOEX
+                mapTypeId: google.maps.MapTypeId.ROADMAP,					// HYBRID, ROADMAP, SATELLITE, TERRAIN 4가지 종류가 있음
+                mapTypeControl: false,
+                fullscreenControl: false,
+                scaleControl: false,
+                rotateControl: true,
+                streetViewControl: false,
+                suppressInfoWindows: true,
+                gestureHandling: 'greedy'		//지도 확대/축소 컨트롤 키 누르고 스크롤 기능 안하고 그냥 스크롤로 확대/축소
+                
+            };
+            
+            // init map
+            map = new google.maps.Map(document.getElementById('map'), options);		// 맵 생성!
+            
+            infoWindow = new google.maps.InfoWindow({
+                content: document.getElementById('info-content')
+              });
+            
+            autocomplete = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */ (
+                        document.getElementById('autocomplete')), {
+                      types: ['(cities)'],
+                    });
+                places = new google.maps.places.PlacesService(map);
+
+                autocomplete.addListener('place_changed', onPlaceChanged);
+
+                // 사용자가 국가를 선택할 때 반응할  DOM 이벤트 리스너를 추가합니다.
+                document.getElementById('country').addEventListener(
+                    'change', setAutocompleteCountry);
+                                        
+            // search 박스를 생성하고, 지도 위에 옮기는 기능
+            var input = document.getElementById('pac-input');
+       		var searchBox = new google.maps.places.SearchBox(input);
+        	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        	
+        	// 토글버튼 생성하고, 지도 위에 옮기는 기능
+        	var checkbox = document.getElementById('checkbox');
+        	map.controls[google.maps.ControlPosition.TOP_LEFT].push(checkbox);
+        	var checkbox2 = document.getElementById('checkbox2');
+        	map.controls[google.maps.ControlPosition.TOP_LEFT].push(checkbox2);
+                    	
+        	// convention center 검색을 위한 검색창을 생성하고, 지도 위에 옮기는 기능
+        	var autocomplete_input = document.getElementById('autocomplete');
+        	map.controls[google.maps.ControlPosition.TOP_LEFT].push(autocomplete_input);
+        	var controls_input = document.getElementById('controls');
+        	map.controls[google.maps.ControlPosition.TOP_LEFT].push(controls_input);
+        	
+            //SearchBox 결과를 현재 맵의 뷰포트로 이동합니다.
+            map.addListener('bounds_changed', function() {
+          	 searchBox.setBounds(map.getBounds());
+        	});
+            
+            
+            
+            //사용자가 예측 및 검색을 선택할 때 발생하는 이벤트 청취
+            // 그 장소에 대한 자세한 정보
+            searchBox.addListener('places_changed', function() {
+            var places = searchBox.getPlaces();
+  
+            if (places.length == 0) {
+              return;
+            }
+           
+            // 이전 마커를 지웁니다.
+            markers.forEach(function(marker) {
+              marker.setMap(null);
+            });
+            markers = []; 
+            
+            // 각 위치에 대해 아이콘, 이름 및 위치를 가져옵니다.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+              if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+              }
+              var icon = {
+                url: "resources/image/icon/maps_icon6(50, 50).png",
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(50, 50)
+              };
+
+              // 각 위치에 대한 마커를 만듭니다.
+              markers.push(new google.maps.Marker({
+                map: map,
+                icon: icon,
+                title: place.name,
+                position: place.geometry.location
+              }));
+
+              if (place.geometry.viewport) {
+                // 지오코드에만 뷰포트가 있습니다.
+                bounds.union(place.geometry.viewport);
+              } else {
+                bounds.extend(place.geometry.location);
+              }
+            });
+            map.fitBounds(bounds);
+          });
+        
+            /* // koex and bigsight sample Lat / Lng
+            var koex = new google.maps.LatLng(37.5130509, 127.0584479); // 서울 코엑스 좌표 37.5130509, 127.0584479
+            var bigsight = new google.maps.LatLng(35.6298556, 139.7945055); // 도쿄 빅사이트 좌표 35.6298556, 139.7945055
+            // 마커 지정
+            placeMarker(koex);
+            placeMarker(bigsight); */
+                       
+    };
+    
+    function placeMarker(location) {
+       // 마커 아이콘 변경
+       var myIcon = new google.maps.MarkerImage("resources/image/icon/maps_icon7(50, 50).png", null, null, null, new google.maps.Size(50, 50)); // (가로, 세로)
+ 	   
+       var marker = new google.maps.Marker({
+ 	      position : location,
+ 	      // animation: google.maps.Animation.DROP 지도 실행시 마커 표시가 위에서 떨어지는 효과
+ 	      icon : myIcon,
+ 	      map : map,
+ 	  	  // draggable: true, 마커 이동
+ 		});
+ 	   map.setCenter(location);
+   };
+   
+   function BtnOn(chkbox){
+	   if (chkbox.checked == true)
+	   {
+		   setMapOnAll(map);
+	   }
+	   else
+	   {
+	   setMapOnAll(null);
+	   }
+   }
+   
+   function setMapOnAll(map) {
+       for (var i = 0; i < markers.length; i++) {
+         markers[i].setMap(map);
+       }
+     }
+   
+   // 사용자가 도시를 선택하면 해당 도시에 대한 장소 세부 정보를 확인하고 지도를 확대합니다.
+   function onPlaceChanged() {
+     var place = autocomplete.getPlace();
+     if (place.geometry) {
+       map.panTo(place.geometry.location);
+       map.setZoom(12);
+       search();
+     } else {
+       document.getElementById('autocomplete').placeholder = 'Enter a city';
+     }
+   }
+
+   // 지도의 뷰포트 내에서 선택한 도시에서 'convention center'을 검색합니다. 원래는 types에 lodging을 지원해줘 호텔이 검색되었으나, convention center는 type이 존재하지 않아 name(검색명)으로
+   // convention center를 찾는다.
+   // place types에 관한 정보는 https://developers.google.com/places/supported_types?csw=1
+   function search() {
+	var search = {
+       bounds: map.getBounds(),
+       name: ['convention center']
+     };
+
+     places.nearbySearch(search, function(results, status) {
+       if (status === google.maps.places.PlacesServiceStatus.OK) {
+         clearResults();
+         clearMarkers();
+         // 발견된 각 호텔마다 마커를 작성합니다.
+         // 각 마커 아이콘에 알파벳 문자를 할당합니다.
+         for (var i = 0; i < results.length; i++) {
+           var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
+           var markerIcon = new google.maps.MarkerImage("resources/image/icon/maps_icon7(50, 50).png", null, null, null, new google.maps.Size(50, 50)); // (가로, 세로)
+           // 마커 애니메이션을 사용하여 지도에 아이콘을 점진적으로 놓습니다.
+           markers[i] = new google.maps.Marker({
+             position: results[i].geometry.location,
+             animation: google.maps.Animation.DROP,
+             icon: markerIcon
+           });
+           // 사용자가 호텔 마커를 누르면 해당 호텔의 세부 정보가 표시됩니다.
+           // 정보 창에서.
+           markers[i].placeResult = results[i];
+           google.maps.event.addListener(markers[i], 'click', showInfoWindow);
+           setTimeout(dropMarker(i), i * 100);
+           addResult(results[i], i);
+         }
+       }
+     });
+   }
+
+   function clearMarkers() {
+     for (var i = 0; i < markers.length; i++) {
+       if (markers[i]) {
+         markers[i].setMap(null);
+       }
+     }
+     markers = [];
+   }
+
+   // 사용자 입력을 기준으로 국가 제한을 설정합니다.
+   // 또한 지정된 국가에서 지도를 중앙에 놓고 확대/축소합니다.
+   function setAutocompleteCountry() {
+     var country = document.getElementById('country').value;
+     if (country == 'all') {
+       autocomplete.setComponentRestrictions({'country': []});
+       map.setCenter({lat: 37.5130509, lng: 127.0584479});
+       map.setZoom(2.7);
+     } else {
+       autocomplete.setComponentRestrictions({'country': country});
+       map.setCenter(countries[country].center);
+       map.setZoom(countries[country].zoom);
+     }
+     clearResults();
+     clearMarkers();
+   }
+
+   function dropMarker(i) {
+     return function() {
+       markers[i].setMap(map);
+     };
+   }
+
+   function addResult(result, i) {
+     var results = document.getElementById('results');
+     var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
+     var markerIcon = new google.maps.MarkerImage("resources/image/icon/maps_icon7(50, 50).png", null, null, null, new google.maps.Size(50, 50)); // (가로, 세로)
+
+     var tr = document.createElement('tr');
+     tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
+     tr.onclick = function() {
+       google.maps.event.trigger(markers[i], 'click');
+     };
+
+     var iconTd = document.createElement('td');
+     var nameTd = document.createElement('td');
+     var icon = document.createElement('img');
+     icon.src = markerIcon;
+     icon.setAttribute('class', 'placeIcon');
+     icon.setAttribute('className', 'placeIcon');
+     var name = document.createTextNode(result.name);
+     iconTd.appendChild(icon);
+     nameTd.appendChild(name);
+     tr.appendChild(iconTd);
+     tr.appendChild(nameTd);
+     results.appendChild(tr);
+   }
+
+   function clearResults() {
+     var results = document.getElementById('results');
+     while (results.childNodes[0]) {
+       results.removeChild(results.childNodes[0]);
+     }
+   }
+
+   // 호텔에 대한 장소 세부 정보를 가져옵니다. 정보 창에 정보를 표시합니다.
+   // 사용자가 선택한 호텔의 마커에 고정됩니다.
+   function showInfoWindow() {
+     var marker = this;
+     places.getDetails({placeId: marker.placeResult.place_id},
+         function(place, status) {
+           if (status !== google.maps.places.PlacesServiceStatus.OK) {
+             return;
+           }
+           infoWindow.open(map, marker);
+           buildIWContent(place);
+         });
+   }
+
+   // 정보 창에서 사용하는 HTML 요소에 배치 정보를 로드합니다.
+   function buildIWContent(place) {
+     document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
+         'src="' + place.icon + '"/>';
+     document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
+         '">' + place.name + '</a></b>';
+     document.getElementById('iw-address').textContent = place.vicinity;
+
+     if (place.formatted_phone_number) {
+       document.getElementById('iw-phone-row').style.display = '';
+       document.getElementById('iw-phone').textContent =
+           place.formatted_phone_number;
+     } else {
+       document.getElementById('iw-phone-row').style.display = 'none';
+     }
+
+     // 블랙 스타('#10029;')를 사용하여 호텔에 5성 등급을 지정합니다.
+     // 호텔에서 획득한 등급과 화이트 스타('#10025;')를 나타냅니다.
+     // 평가점을 획득하지 못했습니다.
+     if (place.rating) {
+       var ratingHtml = '';
+       for (var i = 0; i < 5; i++) {
+         if (place.rating < (i + 0.5)) {
+           ratingHtml += '&#10025;';
+         } else {
+           ratingHtml += '&#10029;';
+         }
+       document.getElementById('iw-rating-row').style.display = '';
+       document.getElementById('iw-rating').innerHTML = ratingHtml;
+       }
+     } else {
+       document.getElementById('iw-rating-row').style.display = 'none';
+     }
+
+     // regexp는 URL의 첫 번째 부분(도메인 더하기 하위 도메인)을 분리합니다.
+     // 정보 창에 표시할 짧은 URL을 지정합니다.
+     if (place.website) {
+       var fullUrl = place.website;
+       var website = hostnameRegexp.exec(place.website);
+       if (website === null) {
+         website = 'http://' + place.website + '/';
+         fullUrl = website;
+       }
+       document.getElementById('iw-website-row').style.display = '';
+       document.getElementById('iw-website').textContent = website;
+     } else {
+       document.getElementById('iw-website-row').style.display = 'none';
+     }
+   }
+
 </script>
 </head>
 
@@ -977,48 +1359,77 @@ table {
 	</section>
 	<!-- #about -->
 
-	<!-- 구글맵 -->
-	<section id="facts">
-
-		<div class="container-fluid wow fadeIn">
-
-			<span data-toggle="counter-up">6000</span> Exhibitions are available
-			<div class="section-header">
-				<h3 class="section-title" style="float: left;">World Map</h3>
-			</div>
-			
-			<!-- <div class="container-fluid">
- -->
-		<div class="row">
-			<div class="col-12">
-	<!-- 			<div class="card"> -->
-				<!-- 	<div class="card-body"> -->
-						<!-- 탭으로 구분하깅 -->
-
-
-						<!-- 월드 맵 -->
-
-						<div id="world-map-markers" style="height: 700px;"></div>
-
-
-
-
-
-				<!-- 	</div> -->
-					<!-- 카드 body -->
-
-				<!-- </div> -->
-				<!-- 카드 -->
-
-			</div>
-		</div>
-
-		
-	</div>
-			
-			
-
-		<!-- </div> -->
+	<!-- 구글맵 --> 
+      <section id="facts">
+      
+      <div class="container-fluid wow fadeIn">
+    
+     <span data-toggle="counter-up">6000</span> Exhibitions are available
+        <div class="section-header">
+          <h3 class="section-title" style="float:left;">Google Map</h3> 
+        </div>
+        <br/><br/>
+        <input id="pac-input" class="controls" type="text" placeholder="검색" style="margin: 1%;">
+        
+        <div id="controls">
+	      <select id="country">
+	        <option value="all" selected>All</option>
+	        <option value="au">Australia</option>
+	        <option value="br">Brazil</option>
+	        <option value="ca">Canada</option>
+	        <option value="fr">France</option>
+	        <option value="de">Germany</option>
+	        <option value="mx">Mexico</option>
+	        <option value="nz">New Zealand</option>
+	        <option value="it">Italy</option>
+	        <option value="za">South Africa</option>
+	        <option value="es">Spain</option>
+	        <option value="pt">Portugal</option>
+	        <option value="us">U.S.A.</option>
+	        <option value="uk">United Kingdom</option>
+	      </select>
+	    </div>
+	    
+	    <input id="autocomplete" placeholder="도시명으로 전시장 검색" type="text" />
+	    
+        <input type="checkbox" id="checkbox" checked onclick="BtnOn(this)">
+		<label for="checkbox" id="checkbox2"><span></span></label>
+        <div id="map" style="height: 700px; margin:auto;"></div>
+        
+        <div id="listing">
+	      <table id="resultsTable">
+	        <tbody id="results"></tbody>
+	      </table>
+	    </div>
+	
+	    <div style="display: none">
+	      <div id="info-content">
+	        <table>
+	          <tr id="iw-url-row" class="iw_table_row">
+	            <td id="iw-icon" class="iw_table_icon"></td>
+	            <td id="iw-url"></td>
+	          </tr>
+	          <tr id="iw-address-row" class="iw_table_row">
+	            <td class="iw_attribute_name">Address:</td>
+	            <td id="iw-address"></td>
+	          </tr>
+	          <tr id="iw-phone-row" class="iw_table_row">
+	            <td class="iw_attribute_name">Telephone:</td>
+	            <td id="iw-phone"></td>
+	          </tr>
+	          <tr id="iw-rating-row" class="iw_table_row">
+	            <td class="iw_attribute_name">Rating:</td>
+	            <td id="iw-rating"></td>
+	          </tr>
+	          <tr id="iw-website-row" class="iw_table_row">
+	            <td class="iw_attribute_name">Website:</td>
+	            <td id="iw-website"></td>
+	          </tr>
+	        </table>
+	      </div>
+	    </div>
+	    
+     </div>
 
 
 
