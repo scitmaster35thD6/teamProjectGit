@@ -1,3 +1,25 @@
+function init3(strDate,endDate,timezone,callback){
+	//사용자가 등록한 일정 불러오기
+	var memberId = $("#logId").val();
+	
+	  var data = {
+	    "memberId" : memberId
+	  };
+	  $.ajax({
+	    method : 'post'
+	    , url : 'selectallcalendar'
+	    , data : JSON.stringify(data)
+	    , dataType : 'json'
+	    , contentType : 'application/json; charset=UTF-8'
+	    , success: function(response) {
+	      var result = output2(response);
+	        //alert(JSON.stringify(response));
+	        callback(result2);
+	    }
+	  });//ajax
+	
+};
+
 
 function init2(strDate,endDate,timezone,callback){
   //ajax로 전체 데이터를 끌어옴
@@ -38,6 +60,32 @@ function output(resp) {
   };
   return result;
 };
+
+function output2(resp) {
+	  //alert(JSON.stringify(resp));
+	  var date2 = new Date();
+	  var result2 = [];
+	  for (var i in resp) {
+	    var ttl = resp[i].title;
+	    var startD = resp[i].startDay;
+	    var endD = resp[i].endDay;
+	    var classN = resp[i].bgType;
+	    var calendarId = resp[i].calendarId;
+	    //alert(calendarId);
+	    //alert(date+"데이트");
+	    //alert(ttl+"타이즐");
+	    var items = {
+	      title : ttl,
+	      start : startD,
+	      className: classN,
+	      "calendarId" : calendarId
+	    }; 
+	    result2.push(items);
+	  };
+	  return result2;
+	};
+
+
 
 function toTimeObject(str) {
   //alert("str"+str);
@@ -93,6 +141,7 @@ function toTimeObject(str) {
     $this.$modal.modal({
       backdrop: 'static'
     });
+    //삭제했을 경우
     $this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function() {
       $this.$calendarObj.fullCalendar('removeEvents', function(ev) {
         return (ev._id == calEvent._id);
@@ -194,8 +243,8 @@ function toTimeObject(str) {
       /**엔드데이**/
       var eMonth = endDay.substring(4, 7);
       var eDay = endDay.substring(8,10);
-      var eDay2 = parseInt(eDay)-1;
-      eDay = eDay2.toString();
+    //  var eDay2 = parseInt(eDay)-1;
+     // eDay = eDay2.toString();
       var eYear = endDay.substring(11,15);
       switch(eMonth){
     	case 'Jan':
@@ -341,7 +390,7 @@ function toTimeObject(str) {
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-      events: init2,
+      events: init2, init3,
       locale: 'ko',
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar !!!
@@ -369,6 +418,6 @@ function toTimeObject(str) {
 
 //initializing CalendarApp
 $(window).on('load', function() {
-  init2();
+  init2(); init3();
   $.CalendarApp.init()
 });

@@ -210,4 +210,14 @@ public class MemberController {
 		System.out.println("등록되나? "+result);
 		return result;
 	}
+	
+	@RequestMapping(value = "/selectallcalendar", method = RequestMethod.POST)
+	public @ResponseBody List<Calendar> selectallcanlendar(@RequestBody Calendar calendar) {
+		List<Calendar> listCalendar;
+		System.out.println("멤버 보깅보깅"+calendar);
+		listCalendar = calendarRepository.selectAllCalendars(calendar);
+		System.out.println("사용자가 등록한 캘린더 보깅보깅"+listCalendar);
+		//System.out.println("등록되나? "+result);
+		return listCalendar;
+	}
 }

@@ -37,9 +37,11 @@ public class CalendarRepository {
 		return calendarMapper.updateCalendar(calendarId);
 	}
 
-	public List<Calendar> selectAllCalendars(String memberId) {
+	public List<Calendar> selectAllCalendars(Calendar calendar) {
 		CalendarMapper calendarMapper = sqlSession.getMapper(CalendarMapper.class);
-		return calendarMapper.selectAllCalendars(memberId);
+		System.out.println("멤버는??"+calendar);
+		System.out.println("캘더 잘 끌고왔니?"+calendarMapper.selectAllCalendars(calendar));
+		return calendarMapper.selectAllCalendars(calendar);
 	}
 
 }

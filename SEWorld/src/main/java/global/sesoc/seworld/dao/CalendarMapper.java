@@ -13,5 +13,5 @@ public interface CalendarMapper {
 
 	public abstract int updateCalendar(String calendarId);
 
-	public abstract List<Calendar> selectAllCalendars(String memberId);
+	public abstract List<Calendar> selectAllCalendars(Calendar calendar);
 }

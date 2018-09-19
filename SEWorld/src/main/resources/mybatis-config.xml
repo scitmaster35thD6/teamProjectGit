@@ -21,7 +21,7 @@
 		<typeAlias type="global.sesoc.seworld.dto.Timeline" alias="Timeline" />
 		<typeAlias type="global.sesoc.seworld.dto.Wishing" alias="Wishing" />
 		<typeAlias type="global.sesoc.seworld.dto.Counting" alias="Counting" />
-		<typeAlias type="global.sesoc.seworld.dto.Counting" alias="Calendar" />
+		<typeAlias type="global.sesoc.seworld.dto.Calendar" alias="Calendar" />
 	</typeAliases>
 
 	<mappers>

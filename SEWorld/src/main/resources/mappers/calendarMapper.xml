@@ -65,7 +65,7 @@
 		WHERE calendarId = #{calendarId}
 	</update>
 
-	<select id="selectAllCalendars" parameterType="String" resultType="Calendar">
+	<select id="selectAllCalendars" parameterType="Calendar" resultType="Calendar">
 		SELECT
 		calendarId
 		,memberId
