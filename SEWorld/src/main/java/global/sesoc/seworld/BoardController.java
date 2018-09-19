@@ -284,8 +284,11 @@ public class BoardController {
 	public @ResponseBody Map<String, Object> insertComment(@RequestBody BoardReply boardReply) {
 		boardReplyRepository.insertOneBoardReply(boardReply);
 		List<BoardReply> replies = boardReplyRepository.boardReplyOfOneboard(boardReply.getBoardId());
+		int repliesCount = boardReplyRepository.countBoardReply(boardReply.getBoardId());
+		
 		Map<String, Object> result = new HashMap<>();
 		result.put("replies", replies);
+		result.put("repliesCount", repliesCount);
 		return result;
 	}
 	
