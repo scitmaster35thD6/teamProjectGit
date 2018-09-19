@@ -14,41 +14,26 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="any"
-	href="resources/assets/images/logo2.png">
+<link rel="icon" type="image/png" sizes="any" href="resources/assets/images/logo2.png">
 <title>SE World 전세계 기술 전시</title>
-<link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
-	rel="stylesheet">
-<link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
-	rel="stylesheet">
+<link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css" rel="stylesheet">
+<link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css" rel="stylesheet">
 <!-- Custom CSS -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
 <!-- 벡터맵 css지도 -->
-<link
-	href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css"
-	rel="stylesheet" />
+<link href="resources/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
 <!-- Custom CSS 새로 -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
-
 <!-- 메인 스타일 -->
 <!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
-	rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
 <!-- Bootstrap CSS File -->
-<link href="resources/regna/lib/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
+<link href="resources/regna/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Libraries CSS Files -->
-<link href="resources/regna/lib/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet">
-<link href="resources/regna/lib/animate/animate.min.css"
-	rel="stylesheet">
-
+<link href="resources/regna/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="resources/regna/lib/animate/animate.min.css" rel="stylesheet">
 <!-- Main Stylesheet File -->
 <link href="resources/regna/css/style.css" rel="stylesheet">
-
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -59,8 +44,8 @@
 <link href="resources/dist/owls/owl.carousel.min.css" rel="stylesheet">
 <link href="resources/dist/owls/owl.theme.default.css" rel="stylesheet">
 <!-- 별점 -->
-<link href="resources/assets/libs/raty-js/lib/jquery.raty.css"
-	rel="stylesheet">
+<link href="resources/assets/libs/raty-js/lib/jquery.raty.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 .back-to-top {
 	position: fixed;
@@ -614,11 +599,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 	font-color: gray;
 }
 </style>
-<!-- 구글맵 -->
+
 <script>
+/* Google Map */
 var map, infowindow;
 var exhibitionhall = "${exhibitionDetail.exhibitionHall}";   //전시회장 이름 불러옴
-
 function initMap() {
    // 마커 아이콘 변경
    var options = {
@@ -665,6 +650,83 @@ function geocodeAddress(geocoder, resultsMap) {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
+}
+
+
+/* user */
+$(function() {
+  initExbtDetail();
+});
+
+function initExbtDetail() {
+  var exhibitionId = $('#exhibitionId').val();
+  $.ajax({
+    method : 'POST',
+    url : 'getExbtDetail',
+    data : 'exhibitionId=' + exhibitionId,
+    success : printExbtDetail
+  });
+}
+
+function printExbtDetail(resp) {
+  /* 가고싶어요 */
+  var wishResult = '';
+  if (resp.wishing == null || resp.wishing == 'N') {
+    wishResult += '<button id="wish_n" type="button" class="btn btn-outline-danger btn-xs" style="width: 100%; height:50px; padding-top: 10px;"><h4>가고싶어요</h4></button>';
+  } else {
+    wishResult += '<button id="wish_y" type="button" class="btn btn-danger btn-xs" style="width: 100%; height:50px; padding-top: 10px;"><h4>가고싶어요</h4></button>';
+  }
+  $('#wishBtn').html(wishResult);
+  $('#wish_n').on('click', insertWishing);
+  $('#wish_y').on('click', deleteWishing);
+
+  /* 좋아요 */
+  var likeResult = '';
+  if (resp.liking == null || resp.liking == 'N') {
+    likeResult += '<button id="like_n" type="button" class="btn btn-outline-warning btn-xs" style="width: 100%; height:50px; padding-top: 10px;"><h4>좋아요</h4></button>';
+  } else {
+    likeResult += '<button id="like_y" type="button" class="btn btn-warning btn-xs" style="width: 100%; height:50px; padding-top: 10px;"><h4>좋아요</h4></button>';
+  }
+  $('#likeBtn').html(likeResult);
+  $('#like_n').on('click', insertLiking);
+  $('#like_y').on('click', deleteLiking);
+  
+}
+function insertWishing() {
+  var exhibitionId = $('#exhibitionId').val();
+  $.ajax({
+    method : 'POST',
+    url : 'insertWishing',
+    data : 'exhibitionId=' + exhibitionId,
+    success : initExbtDetail
+  });
+}
+function deleteWishing() {
+  var exhibitionId = $('#exhibitionId').val();
+  $.ajax({
+    method : 'POST',
+    url : 'deleteWishing',
+    data : 'exhibitionId=' + exhibitionId,
+    success : initExbtDetail
+  });
+}
+function insertLiking() {
+  var exhibitionId = $('#exhibitionId').val();
+  $.ajax({
+    method : 'POST',
+    url : 'insertLiking',
+    data : 'exhibitionId=' + exhibitionId,
+    success : initExbtDetail
+  });
+}
+function deleteLiking() {
+  var exhibitionId = $('#exhibitionId').val();
+  $.ajax({
+    method : 'POST',
+    url : 'deleteLiking',
+    data : 'exhibitionId=' + exhibitionId,
+    success : initExbtDetail
+  });
 }
 </script>
 </head>
@@ -827,6 +889,7 @@ function geocodeAddress(geocoder, resultsMap) {
 				<div class="table-responsive" style="overflow: hidden;">
 					<div class="row">
 						<div class="col-lg-6">
+							<input id="exhibitionId" type="hidden" value="${exhibitionDetail.exhibitionId}" /> 
 								<table id="alt_pagination"
 									class="table table-striped table-bordered display"
 									style="width: 100%">
@@ -863,13 +926,9 @@ function geocodeAddress(geocoder, resultsMap) {
 						</div>
      				</div>
 						<div class="row">
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-outline-warning btn-xs" style="width: 100%; height:50px; padding-top: 10px;"><h4>가고싶어요</h4>
-									</button>
+								<div id="wishBtn" class="col-lg-3">
 								</div>
-								<div class="col-lg-3">
-									<button type="button" class="btn btn-outline-warning btn-xs" style="width: 100%; height:50px; padding-top: 10px;"><h4>좋아요</h4>
-									</button>	
+								<div id="likeBtn" class="col-lg-3">
 								</div>
 						</div>			 
 				</div>

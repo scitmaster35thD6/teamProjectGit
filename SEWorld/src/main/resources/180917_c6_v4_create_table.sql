@@ -161,7 +161,7 @@ COMMENT ON COLUMN c6_member_profile.updatedDate IS '수정일';
 
 -- 가고싶어요
 CREATE TABLE c6_wishing (
-    memberId VARCHAR2(20 BYTE) NOT NULL,
+    memberId VARCHAR2(40 BYTE) NOT NULL,
     exhibitionId CHAR(13 BYTE) NOT NULL,
     wished CHAR(1 BYTE) DEFAULT 'Y' NOT NULL,
     createdDate DATE DEFAULT SYSDATE NOT NULL,
@@ -178,6 +178,27 @@ COMMENT ON COLUMN c6_wishing.exhibitionId IS '전시정보 ID';
 COMMENT ON COLUMN c6_wishing.wished IS '클릭 여부';
 COMMENT ON COLUMN c6_wishing.createdDate IS '등록일';
 COMMENT ON COLUMN c6_wishing.updatedDate IS '수정일';
+
+
+-- 좋아요
+CREATE TABLE c6_liking (
+    memberId VARCHAR2(40 BYTE) NOT NULL,
+    exhibitionId CHAR(13 BYTE) NOT NULL,
+    liked CHAR(1 BYTE) DEFAULT 'Y' NOT NULL,
+    createdDate DATE DEFAULT SYSDATE NOT NULL,
+    updatedDate DATE DEFAULT SYSDATE NOT NULL,
+    CONSTRAINT c6_liking_fk1 FOREIGN KEY(memberId)
+    REFERENCES c6_member(memberId),
+    CONSTRAINT c6_liking_fk2 FOREIGN KEY(exhibitionId)
+    REFERENCES c6_exhibition(exhibitionId),
+    CONSTRAINT c6_liking_pk PRIMARY KEY(memberId, exhibitionId)
+);
+COMMENT ON TABLE c6_liking IS '좋아요';
+COMMENT ON COLUMN c6_liking.memberId IS '회원 ID';
+COMMENT ON COLUMN c6_liking.exhibitionId IS '전시정보 ID';
+COMMENT ON COLUMN c6_liking.liked IS '좋아요 여부';
+COMMENT ON COLUMN c6_liking.createdDate IS '등록일';
+COMMENT ON COLUMN c6_liking.updatedDate IS '수정일';
 
 
 -- 평가하기

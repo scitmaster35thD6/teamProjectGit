@@ -14,9 +14,9 @@
 		<typeAlias type="global.sesoc.seworld.dto.Exhibition" alias="Exhibition" />
 		<typeAlias type="global.sesoc.seworld.dto.ExhibitionDetail" alias="ExhibitionDetail" />
 		<typeAlias type="global.sesoc.seworld.dto.Followship" alias="Followship" />
+		<typeAlias type="global.sesoc.seworld.dto.Liking" alias="Liking" />
 		<typeAlias type="global.sesoc.seworld.dto.Member" alias="Member" />
 		<typeAlias type="global.sesoc.seworld.dto.MemberDetail" alias="MemberDetail" />
-		<typeAlias type="global.sesoc.seworld.dto.Participating" alias="Participating" />
 		<typeAlias type="global.sesoc.seworld.dto.Regions" alias="Regions" />
 		<typeAlias type="global.sesoc.seworld.dto.Timeline" alias="Timeline" />
 		<typeAlias type="global.sesoc.seworld.dto.Wishing" alias="Wishing" />
@@ -35,9 +35,9 @@
 		<mapper resource="mappers/exhibitionMapper.xml" />
 		<mapper resource="mappers/exhibitionDetailMapper.xml" />
 		<mapper resource="mappers/followshipMapper.xml" />
+		<mapper resource="mappers/likingMapper.xml" />
 		<mapper resource="mappers/memberMapper.xml" />
 		<mapper resource="mappers/memberDetailMapper.xml" />
-		<mapper resource="mappers/participatingMapper.xml" />
 		<mapper resource="mappers/regionsMapper.xml" />
 		<mapper resource="mappers/timelineMapper.xml" />
 		<mapper resource="mappers/wishingMapper.xml" />
