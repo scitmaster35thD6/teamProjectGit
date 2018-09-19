@@ -4,16 +4,21 @@ public class ExhibitionDetail {
 	public String exhibitionId;
 	public String memberId;
 	public String wishing;
+	public String liking;
+	public int likesCount;
 	public String rating;
 	public String content;
 	public ExhibitionDetail() {
 		super();
 	}
-	public ExhibitionDetail(String exhibitionId, String memberId, String wishing, String rating, String content) {
+	public ExhibitionDetail(String exhibitionId, String memberId, String wishing, String liking, int likesCount,
+			String rating, String content) {
 		super();
 		this.exhibitionId = exhibitionId;
 		this.memberId = memberId;
 		this.wishing = wishing;
+		this.liking = liking;
+		this.likesCount = likesCount;
 		this.rating = rating;
 		this.content = content;
 	}
@@ -35,6 +40,18 @@ public class ExhibitionDetail {
 	public void setWishing(String wishing) {
 		this.wishing = wishing;
 	}
+	public String getLiking() {
+		return liking;
+	}
+	public void setLiking(String liking) {
+		this.liking = liking;
+	}
+	public int getLikesCount() {
+		return likesCount;
+	}
+	public void setLikesCount(int likesCount) {
+		this.likesCount = likesCount;
+	}
 	public String getRating() {
 		return rating;
 	}
@@ -50,6 +67,7 @@ public class ExhibitionDetail {
 	@Override
 	public String toString() {
 		return "ExhibitionDetail [exhibitionId=" + exhibitionId + ", memberId=" + memberId + ", wishing=" + wishing
-				+ ", rating=" + rating + ", content=" + content + "]";
+				+ ", liking=" + liking + ", likesCount=" + likesCount + ", rating=" + rating + ", content=" + content
+				+ "]";
 	}
 }

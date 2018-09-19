@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import global.sesoc.seworld.dao.CommentRepository;
 import global.sesoc.seworld.dao.ExhibitionDetailRepository;
+import global.sesoc.seworld.dao.LikingRepository;
 import global.sesoc.seworld.dao.WishingRepository;
 import global.sesoc.seworld.dto.Comment;
 import global.sesoc.seworld.dto.ExhibitionDetail;
+import global.sesoc.seworld.dto.Liking;
 import global.sesoc.seworld.dto.Wishing;
 
 @Controller
@@ -27,6 +29,9 @@ public class ExhibitionDetailController {
 
 	@Autowired
 	CommentRepository commentRepository;
+
+	@Autowired
+	LikingRepository likingRepository;
 
 	@Autowired
 	WishingRepository wishingRepository;
@@ -62,6 +67,29 @@ public class ExhibitionDetailController {
 		wishing.setExhibitionId(exhibitionId);
 		wishing.setMemberId(loginId);
 		return wishingRepository.updateWishingDeleted(wishing);
+	}
+
+	@RequestMapping(value = "/insertLiking", method = RequestMethod.POST)
+	public @ResponseBody Integer insertLiking(String exhibitionId, HttpSession session) {
+		logger.info("[/insertLiking]");
+		String loginId = (String) session.getAttribute("loginId");
+		Liking liking = new Liking();
+		liking.setExhibitionId(exhibitionId);
+		liking.setMemberId(loginId);
+		if (likingRepository.selectOneLiking(liking) != null) {
+			return likingRepository.updateLikingInserted(liking);
+		}
+		return likingRepository.insertOneLiking(liking);
+	}
+
+	@RequestMapping(value = "/deleteLiking", method = RequestMethod.POST)
+	public @ResponseBody Integer deleteLiking(String exhibitionId, HttpSession session) {
+		logger.info("[/deleteLiking]");
+		String loginId = (String) session.getAttribute("loginId");
+		Liking liking = new Liking();
+		liking.setExhibitionId(exhibitionId);
+		liking.setMemberId(loginId);
+		return likingRepository.updateLikingDeleted(liking);
 	}
 
 	@RequestMapping(value = "/insertComment", method = RequestMethod.POST)
