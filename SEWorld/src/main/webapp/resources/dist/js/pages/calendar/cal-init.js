@@ -1,3 +1,5 @@
+var  defaultEvent = [];
+
 function init3(strDate,endDate,timezone,callback){
 	//사용자가 등록한 일정 불러오기
 	var memberId = $("#logId").val();
@@ -12,7 +14,7 @@ function init3(strDate,endDate,timezone,callback){
 	    , dataType : 'json'
 	    , contentType : 'application/json; charset=UTF-8'
 	    , success: function(response) {
-	      var result = output2(response);
+	      var result2 = output2(response);
 	        //alert(JSON.stringify(response));
 	        callback(result2);
 	    }
@@ -36,6 +38,7 @@ function init2(strDate,endDate,timezone,callback){
     , success: function(response) {
       var result = output(response);
         //alert(JSON.stringify(response));
+      //alert("result1"+result);
         callback(result);
     }
   });//ajax
@@ -57,8 +60,10 @@ function output(resp) {
       className: 'bg-success'
     }; 
     result.push(items);
+    defaultEvent.push(items);
   };
-  return result;
+  //return result;
+  return defaultEvent;
 };
 
 function output2(resp) {
@@ -77,12 +82,14 @@ function output2(resp) {
 	    var items = {
 	      title : ttl,
 	      start : startD,
-	      className: className,
+	      className: classN,
 	      "calendarId" : calendarId
 	    }; 
-	    result2.push(items);
+	   result2.push(items);
+	   defaultEvent.push(items);
 	  };
-	  return result2;
+	 //return result2;
+	  return defaultEvent;
 	};
 
 
@@ -138,12 +145,14 @@ function toTimeObject(str) {
     var form = $("<form></form>");
     form.append("<label>Change event name</label>");
     form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
+    
     $this.$modal.modal({
       backdrop: 'static'
     });
     //삭제했을 경우
     $this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function() {
       $this.$calendarObj.fullCalendar('removeEvents', function(ev) {
+    	//여기 삭제 삽입  
         return (ev._id == calEvent._id);
       });
       $this.$modal.modal('hide');
@@ -314,7 +323,7 @@ function toTimeObject(str) {
         	"endDay" : endDay,
         	"bgType" : categoryClass
         };
-        alert(startDay+endDay);
+      //  alert(startDay+endDay);
         $.ajax({
         	method : 'POST'
             , url : 'insertcalendar'
@@ -326,11 +335,17 @@ function toTimeObject(str) {
             }
         });
         $this.$modal.modal('hide');
+        init();
+        
+       
+        
+        
         
       } else {
         alert('You have to give a title to your event');
       }
-      return false;
+      //트루로 고치기
+      return true;
     });
     $this.$calendarObj.fullCalendar('unselect');
   },
@@ -376,6 +391,8 @@ function toTimeObject(str) {
       end: today,
       className: 'bg-danger'
     }];
+    
+    
 
     var $this = this;
     $this.$calendarObj = $this.$calendar.fullCalendar({
@@ -390,7 +407,7 @@ function toTimeObject(str) {
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-      events: init2, init3,
+      events: init3, init2,
       locale: 'ko',
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar !!!
@@ -400,7 +417,10 @@ function toTimeObject(str) {
       select: function(start, end, allDay) { $this.onSelect(start, end, allDay); },
       eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }
     });
-
+    while(defaultEvent.length>0){
+    	
+    	defaultEvent.pop();
+    }
     //on new event
     this.$saveCategoryBtn.on('click', function() {
       var categoryName = $this.$categoryForm.find("input[name='category-name']").val();
@@ -418,6 +438,13 @@ function toTimeObject(str) {
 
 //initializing CalendarApp
 $(window).on('load', function() {
-  init2(); init3();
+  init2(); 
+  //init3();
+  while(defaultEvent.length>0){
+  	
+  	defaultEvent.pop();
+  }
   $.CalendarApp.init()
+  
+  
 });
