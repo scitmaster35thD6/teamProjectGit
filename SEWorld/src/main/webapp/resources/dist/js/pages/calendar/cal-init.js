@@ -77,7 +77,7 @@ function output2(resp) {
 	    var items = {
 	      title : ttl,
 	      start : startD,
-	      className: classN,
+	      className: className,
 	      "calendarId" : calendarId
 	    }; 
 	    result2.push(items);
