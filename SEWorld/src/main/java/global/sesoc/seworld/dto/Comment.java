@@ -3,7 +3,7 @@ package global.sesoc.seworld.dto;
 public class Comment {
 	private String memberId;
 	private String exhibitionId;
-	private double rating;
+	private int rating;
 	private String content;
 	private String createdDate;
 	private String updatedDate;
@@ -11,7 +11,7 @@ public class Comment {
 	public Comment() {
 		super();
 	}
-	public Comment(String memberId, String exhibitionId, double rating, String content, String createdDate,
+	public Comment(String memberId, String exhibitionId, int rating, String content, String createdDate,
 			String updatedDate, int likes) {
 		super();
 		this.memberId = memberId;
@@ -34,10 +34,10 @@ public class Comment {
 	public void setExhibitionId(String exhibitionId) {
 		this.exhibitionId = exhibitionId;
 	}
-	public double getRating() {
+	public int getRating() {
 		return rating;
 	}
-	public void setRating(double rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 	public String getContent() {

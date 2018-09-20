@@ -28,18 +28,13 @@ public class CommentRepository {
 		return commentMapper.insertComment(comment);
 	}
 
-	public int updateRatingDeleted(Comment comment) {
+	public int deleteComment(Comment comment) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.updateRatingDeleted(comment);
+		return commentMapper.deleteComment(comment);
 	}
 
-	public int updateCommentDeleted(Comment comment) {
+	public int updateComment(Comment comment) {
 		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.updateCommentDeleted(comment);
-	}
-
-	public int updateCommentInserted(Comment comment) {
-		CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
-		return commentMapper.updateCommentInserted(comment);
+		return commentMapper.updateComment(comment);
 	}
 }

@@ -7,15 +7,18 @@
 
 	<select id="selectAllCommentsFromExhibition" parameterType="String" resultType="Comment">
 		SELECT
-		memberId
-		,exhibitionId
-		,rating
-		,content
-		,createdDate
-		,updatedDate
-		,likes
-		FROM c6_comment
+		m.memberName memberId
+		,c.exhibitionID exhibitionId
+		,c.rating rating
+		,c.content content
+		,TO_CHAR(c.createdDate, 'YYYY-MM-DD') createdDate
+		,TO_CHAR(c.updatedDate, 'YYYY-MM-DD') updatedDate
+		,c.likes likes
+		FROM c6_comment c
+		JOIN c6_member m
+		  ON c.memberId = m.memberId
 		WHERE exhibitionId = #{exhibitionId}
+		ORDER BY createdDate DESC
 	</select>
 
 	<select id="selectOneComment" parameterType="String" resultType="Comment">
@@ -57,36 +60,21 @@
 		)
 	</insert>
 
-	<delete id="updateRatingDeleted" parameterType="Comment">
-		UPDATE c6_comment
-		SET
-		updatedDate = SYSDATE
-		,rating = 0
+	<delete id="deleteComment" parameterType="Comment">
+		DELETE
+		FROM c6_comment
 		WHERE memberId = #{memberId}
 		  AND exhibitionId = #{exhibitionId}
 	</delete>
 
-	<delete id="updateCommentDeleted" parameterType="Comment">
+	<delete id="updateComment" parameterType="Comment">
 		UPDATE c6_comment
 		SET
 		updatedDate = SYSDATE
-		,content = ''
-		WHERE memberId = #{memberId}
-		  AND exhibitionId = #{exhibitionId}
-	</delete>
-
-	<update id="updateCommentInserted" parameterType="Comment">
-		UPDATE c6_comment
-		SET
-		updatedDate = SYSDATE
-		<if test="content != null">
-		,content = #{content}
-		</if>
-		<if test="rating != 0">
 		,rating = #{rating}
-		</if>
+		,content = #{content}
 		WHERE memberId = #{memberId}
 		  AND exhibitionId = #{exhibitionId}
-	</update>
+	</delete>
 
 </mapper>
