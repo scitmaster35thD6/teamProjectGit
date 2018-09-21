@@ -687,7 +687,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 		<div class="card gredient-success-bg m-t-0 m-b-0"
 			style="background-color: #f7e9c3;">
 			<div class="card-body" id="upperbody">
-				<h4 class="card-title text">&nbsp;&nbsp;Exhibition Overview</h4>
+				<h4 class="card-title text">&nbsp;&nbsp;Exhibition Review</h4>
 				<div class="row m-t-30 m-b-20">
 					<!-- col -->
 					<div class="col-sm-12 col-lg-4">
@@ -895,6 +895,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 									<div>댓글이 없습니다.</div>
 								</c:if>
 								<c:if test="${countNum gt 0 and countNum le 3}">
+								<!-- 임시 부엉이 -->
+								<div class="owl-carousel">
 									<c:forEach var="replys" items="${replyList}">
 										<div>
 											<div class="d-flex flex-row comment-row m-t-0">
@@ -922,6 +924,124 @@ body.mobile-nav-active #mobile-nav-toggle {
 											</div>
 										</div>
 									</c:forEach>
+									<!-- 임시 추가 삭제예정 -->
+										<div>
+											<div class="d-flex flex-row comment-row m-t-0">
+												<div class="comment-text w-100">
+													<div class="row">
+														<div class="col-8">
+															<h6 class="font-medium">Robin</h6>
+														</div>
+														<div class="col-4">
+															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
+															3점
+														</div>
+													</div>
+													<span class="m-b-15 d-block">잘 읽었습니다.</span>
+													<div class="comment-footer">
+														<i class="fas fa-heart" style="color: #f77497;"></i>4 <span
+															class="text-muted float-right">2018-09-21 13:40:33</span>
+														<span class="action-icons"> <a
+															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
+															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										
+										
+										
+										<div>
+											<div class="d-flex flex-row comment-row m-t-0">
+												<div class="comment-text w-100">
+													<div class="row">
+														<div class="col-8">
+															<h6 class="font-medium">Upendo</h6>
+														</div>
+														<div class="col-4">
+															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
+															2점
+														</div>
+													</div>
+													<span class="m-b-15 d-block">mmh</span>
+													<div class="comment-footer">
+														<i class="fas fa-heart" style="color: #f77497;"></i>${numofHeart} <span
+															class="text-muted float-right">2018-09-21 13:39:52</span>
+														<span class="action-icons"> <a
+															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
+															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										
+										
+										
+										<div>
+											<div class="d-flex flex-row comment-row m-t-0">
+												<div class="comment-text w-100">
+													<div class="row">
+														<div class="col-8">
+															<h6 class="font-medium">green</h6>
+														</div>
+														<div class="col-4">
+															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
+															4점
+														</div>
+													</div>
+													<span class="m-b-15 d-block">Good review!</span>
+													<div class="comment-footer">
+														<i class="fas fa-heart" style="color: #f77497;"></i>0 <span
+															class="text-muted float-right">2018-09-21 13:39:40</span>
+														<span class="action-icons"> <a
+															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
+															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										
+										
+										<div>
+											<div class="d-flex flex-row comment-row m-t-0">
+												<div class="comment-text w-100">
+													<div class="row">
+														<div class="col-8">
+															<h6 class="font-medium">Kelly</h6>
+														</div>
+														<div class="col-4">
+															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
+															5점
+														</div>
+													</div>
+													<span class="m-b-15 d-block">Want to read more about this.</span>
+													<div class="comment-footer">
+														<i class="fas fa-heart" style="color: #f77497;"></i>2 <span
+															class="text-muted float-right">2018-09-21 13:38:11</span>
+														<span class="action-icons"> <a
+															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
+															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<!-- 임시 추가 삭제예정 -->
+									
+									
+									
+									</div><!-- 임시 부엉이 -->
 								</c:if>
 
 								<!-- 부엉이 캐러솔은 이 경우만 사용 -->
