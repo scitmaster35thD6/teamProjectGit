@@ -97,21 +97,7 @@ public class ExhibitionDetailController {
 		logger.info("[/insertComment]");
 		String loginId = (String) session.getAttribute("loginId");
 		comment.setMemberId(loginId);
-		if (commentRepository.selectOneComment(comment) != null) {
-			System.out.println(comment.toString());
-			return commentRepository.updateCommentInserted(comment);
-		}
 		return commentRepository.insertComment(comment);
-	}
-
-	@RequestMapping(value = "/deleteRating", method = RequestMethod.POST)
-	public @ResponseBody Integer deleteRating(String exhibitionId, HttpSession session) {
-		logger.info("[/deleteRating]");
-		String loginId = (String) session.getAttribute("loginId");
-		Comment comment = new Comment();
-		comment.setExhibitionId(exhibitionId);
-		comment.setMemberId(loginId);
-		return commentRepository.updateRatingDeleted(comment);
 	}
 
 	@RequestMapping(value = "/deleteComment", method = RequestMethod.POST)
@@ -121,6 +107,14 @@ public class ExhibitionDetailController {
 		Comment comment = new Comment();
 		comment.setExhibitionId(exhibitionId);
 		comment.setMemberId(loginId);
-		return commentRepository.updateCommentDeleted(comment);
+		return commentRepository.deleteComment(comment);
+	}
+
+	@RequestMapping(value = "/updateComment", method = RequestMethod.POST)
+	public @ResponseBody Integer updateComment(@RequestBody Comment comment, HttpSession session) {
+		logger.info("[/updateComment]");
+		String loginId = (String) session.getAttribute("loginId");
+		comment.setMemberId(loginId);
+		return commentRepository.updateComment(comment);
 	}
 }

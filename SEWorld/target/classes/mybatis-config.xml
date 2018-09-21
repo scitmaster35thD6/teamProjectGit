@@ -13,6 +13,7 @@
 		<typeAlias type="global.sesoc.seworld.dto.ExbtInfo" alias="ExbtInfo" />
 		<typeAlias type="global.sesoc.seworld.dto.Exhibition" alias="Exhibition" />
 		<typeAlias type="global.sesoc.seworld.dto.ExhibitionDetail" alias="ExhibitionDetail" />
+		<typeAlias type="global.sesoc.seworld.dto.ExbtWLCCount" alias="ExbtWLCCount" />
 		<typeAlias type="global.sesoc.seworld.dto.Followship" alias="Followship" />
 		<typeAlias type="global.sesoc.seworld.dto.Liking" alias="Liking" />
 		<typeAlias type="global.sesoc.seworld.dto.Member" alias="Member" />
@@ -34,6 +35,7 @@
 		<mapper resource="mappers/exbtInfoMapper.xml" />
 		<mapper resource="mappers/exhibitionMapper.xml" />
 		<mapper resource="mappers/exhibitionDetailMapper.xml" />
+		<mapper resource="mappers/exbtWLCCountMapper.xml" />
 		<mapper resource="mappers/followshipMapper.xml" />
 		<mapper resource="mappers/likingMapper.xml" />
 		<mapper resource="mappers/memberMapper.xml" />
