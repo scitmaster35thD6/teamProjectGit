@@ -155,6 +155,11 @@ public class BoardController {
 				replyCount += 1;
 			}
 		}
+		
+		int numofHeart=0;
+		numofHeart = (int)(Math.random()*5)+1;
+		
+		model.addAttribute("numofHeart", numofHeart);
 		model.addAttribute("articleAuthor", articleAuthor);
 		model.addAttribute("articleDetail", articleDetail);
 		model.addAttribute("exbhibitionForArticle", exbhibitionForArticle);

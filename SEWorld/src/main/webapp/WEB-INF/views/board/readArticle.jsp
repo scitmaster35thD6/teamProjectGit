@@ -759,7 +759,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 						</div>
 						<!-- 타이틀 콜롬 -->
 						<div class="col-sm-12 col-lg-6">
-							<img src="resources/assets/images/users/5.jpg"
+							<img src="resources/assets/images/users/4.jpg"
 								class="rounded-circle" width="60" />
 
 							<!-- 팔로우 버튼 -->
@@ -796,7 +796,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 				<hr>
 			</div>
 			<div class="card-body">
+				<div class="card">
+				<div class="card-body">
 				<div class="contents">${articleDetail.content}</div>
+				</div>
+				</div>
 			</div>
 
 			<!--첨부파일-->
@@ -906,7 +910,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 													</div>
 													<span class="m-b-15 d-block">${replys.content}</span>
 													<div class="comment-footer">
-														<i class="fas fa-heart" style="color: #f77497;"></i>15 <span
+														<i class="fas fa-heart" style="color: #f77497;"></i>${numofHeart} <span
 															class="text-muted float-right">${replys.updatedDate}</span>
 														<span class="action-icons"> <a
 															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
@@ -939,7 +943,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 														</div>
 														<span class="m-b-15 d-block">${replys.content}</span>
 														<div class="comment-footer">
-															<i class="fas fa-heart" style="color: #f77497;"></i>15 <span
+															<i class="fas fa-heart" style="color: #f77497;"></i>${numofHeart} <span
 																class="text-muted float-right">${replys.updatedDate}</span>
 															<span class="action-icons"> <a
 																href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
@@ -1162,6 +1166,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 		jQuery(document)
 				.ready(
 						function($) {
+						
 							// Header fixed and Back to top button
 							// Mobile Navigation
 							if ($('#nav-menu-container').length) {
