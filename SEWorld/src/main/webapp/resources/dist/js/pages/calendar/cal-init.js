@@ -88,8 +88,8 @@ function output2(resp) {
 	   result2.push(items);
 	   defaultEvent.push(items);
 	  };
-	 //return result2;
-	  return defaultEvent;
+	 return result2;
+	  //return defaultEvent;
 	};
 
 
@@ -178,11 +178,10 @@ function toTimeObject(str) {
       .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' placeholder='Insert Event Name' type='text' id='title' name='title'/></div></div>")
       .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Category</label><select class='form-control' id='category' name='category'></select></div></div>")
       .find("select[id='category']")
-      .append("<option value='bg-danger'>Danger</option>")
-      .append("<option value='bg-success'>Success</option>")
-      .append("<option value='bg-primary'>Primary</option>")
-      .append("<option value='bg-info'>Info</option>")
-      .append("<option value='bg-warning'>Warning</option></div></div>");
+      .append("<option value='bg-info'>기본 일정</option>")
+      .append("<option value='bg-danger'>긴급 일정</option>")
+      .append("<option value='bg-success'>전시 일정</option>")
+      .append("<option value='bg-warning'>중요 일정</option></div></div>");
     $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function() {
       form.submit();
     });
@@ -310,7 +309,7 @@ function toTimeObject(str) {
           title: title,
           start: start,
           end: end,
-          allDay: false,
+          allDay: true,
           className: categoryClass
         }, true);
         
@@ -402,13 +401,14 @@ function toTimeObject(str) {
       maxTime: '19:00:00',
       defaultView: 'month',
       handleWindowResize: true,
+      columnHeader : false,
       header: {
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-      events: init3, init2,
-      locale: 'ko',
+      events: init3,
+      locale: 'en',
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar !!!
       eventLimit: true, // allow "more" link when too many events
