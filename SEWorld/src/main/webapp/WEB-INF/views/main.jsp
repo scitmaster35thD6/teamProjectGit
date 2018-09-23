@@ -771,15 +771,18 @@ body.mobile-nav-active #mobile-nav-toggle {
 	</section>
 	<!-- #about -->
 
-	<!-- 구글맵 --> 
+	<!-- 백터맵--> 
       <section id="facts">
       
       <div class="container-fluid wow fadeIn">
     
-     <span data-toggle="counter-up">6000</span> Exhibitions are available
-        
+     <span data-toggle="counter-up">5955</span> Exhibitions are available
+        <div class="section-header">
+				<h3 class="section-title" style="float: left;">World Map</h3>
+			</div>
+			<div id="world-map-markers" style="height: 700px;"></div>
        
-     </div>
+     </div><!-- wow fadeIn -->
 
 
 
