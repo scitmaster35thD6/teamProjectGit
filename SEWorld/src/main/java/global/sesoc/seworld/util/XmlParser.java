@@ -24,20 +24,20 @@ import global.sesoc.seworld.dto.ExbtInfo;
 
 public class XmlParser {
 	private List<ExbtInfo> exbtInfoList = new ArrayList<ExbtInfo>();
-	private final int TOTAL_PAGE_COUNT = 273;
+	private final int TOTAL_PAGE_COUNT = 225;
 	
 	public List<ExbtInfo> parse() {
-		for (int pageNo = 1; pageNo <= TOTAL_PAGE_COUNT; pageNo++) {
+		for (int pageNo = 1; pageNo <= 1; pageNo++) {
 			String addr = "http://www.gep.or.kr/rest/overseasExhibition?serviceKey=";
 			String serviceKey = "FsLyT%2F7neLBzi2BSryIlrXTpjg68D44fUqCcl2PO%2B3R%2B8%2FCnikXdveIici4eMl7YiBOm5Is1JnEWJteh9ux0BA%3D%3D";
 			String parameter = "";
-			parameter = parameter + "&" + "from=20180101";
-			parameter = parameter + "&" + "to=20181231";
+			parameter = parameter + "&" + "from=20190101";
+			parameter = parameter + "&" + "to=20190831";
 			parameter = parameter + "&" + "numOfRows=10";
 			parameter = parameter + "&" + "pageNo=" + pageNo;
 			parameter = parameter + "&" + "type=xml";
 			addr = addr + serviceKey + parameter;
-			
+
 			BufferedReader br = null;
 			DocumentBuilder builder = null;
 			Document doc = null;

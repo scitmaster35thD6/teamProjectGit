@@ -1054,6 +1054,10 @@ function modifyComment() {
         </div>
         <div class="row" id="replysRefrain">
         
+        <c:if test="${empty commentList}">
+        *등록된 코멘트가 없습니다.
+        </c:if>
+        <c:if test="${not empty commentList}">
         <c:forEach var="comment" items="${commentList}">
         <div>
           <div class="d-flex flex-row comment-row m-t-0">
@@ -1063,24 +1067,24 @@ function modifyComment() {
                   <h6 class="font-medium">${comment.memberId}</h6>
                 </div>
                 <div class="col-4">
-                  <i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;${comment.rating}점
+                  <i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;${comment.rating}점
                 </div>
               </div>
               <span class="m-b-15 d-block">${comment.content}</span>
               <div class="comment-footer">
-                <i class="fas fa-heart" style="color: #f77497;"></i>${comment.likes}
+                <a href="javascript:void(0)"><i class="fas fa-heart" style="color: #f77497;"></i>${comment.likes}</a>
+                <!-- <span class="action-icons"> -->
+                &nbsp;
+                <a href="javascript:void(0)"><i class="ti-pencil-alt"></i>댓글달기</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="text-muted float-right">${comment.createdDate}</span>
-                <span class="action-icons">
-                  <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
-                  <a href="javascript:void(0)"><i class="ti-trash"></i></a>
-                  <a href="javascript:void(0)"><i class="ti-heart"></i></a>
-                </span>
               </div>
             </div>
           </div>
         </div>
         <hr>
         </c:forEach>
+        </c:if>
         </div>
       </div>
     </div>
