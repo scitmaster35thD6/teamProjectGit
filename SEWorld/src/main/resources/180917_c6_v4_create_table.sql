@@ -134,7 +134,7 @@ COMMENT ON TABLE c6_member IS '회원';
 COMMENT ON COLUMN c6_member.memberId IS '회원 계정';
 COMMENT ON COLUMN c6_member.memberPwd IS '회원 비밀번호';
 COMMENT ON COLUMN c6_member.memberName IS '회원 이름';
-COMMENT ON COLUMN c6_member.memberType IS '계정종류(Email,Google,Facebook)';
+COMMENT ON COLUMN c6_member.memberType IS '계정종류';
 COMMENT ON COLUMN c6_member.verified IS '회원 인증여부';
 COMMENT ON COLUMN c6_member.regDate IS '회원 등록일';
 
@@ -205,7 +205,7 @@ COMMENT ON COLUMN c6_liking.updatedDate IS '수정일';
 CREATE TABLE c6_comment (
     memberId VARCHAR2(20 BYTE) NOT NULL,
     exhibitionId CHAR(13 BYTE) NOT NULL,
-    rating NUMBER(2, 1) NOT NULL,
+    rating NUMBER(1, 0) NOT NULL,
     content VARCHAR2(2000 BYTE),
     createdDate DATE DEFAULT SYSDATE NOT NULL,
     updatedDate DATE DEFAULT SYSDATE NOT NULL,
@@ -263,8 +263,8 @@ CREATE TABLE c6_comment_reply (
 COMMENT ON TABLE c6_comment_reply IS '평가하기 댓글';
 COMMENT ON COLUMN c6_comment_reply.commentReplyId IS '평가하기 댓글 ID';
 COMMENT ON COLUMN c6_comment_reply.writerId IS '댓글회원 ID';
-COMMENT ON COLUMN c6_comment_reply.memberId IS '코멘트 회원 ID';
-COMMENT ON COLUMN c6_comment_reply.exhibitionId IS '코멘트 전시정보 ID';
+COMMENT ON COLUMN c6_comment_reply.memberId IS '회원 ID';
+COMMENT ON COLUMN c6_comment_reply.exhibitionId IS '전시정보 ID';
 COMMENT ON COLUMN c6_comment_reply.content IS '댓글 내용';
 COMMENT ON COLUMN c6_comment_reply.createdDate IS '등록일';
 COMMENT ON COLUMN c6_comment_reply.updatedDate IS '수정일';
@@ -305,18 +305,18 @@ CREATE TABLE c6_board (
     CONSTRAINT c6_board_fk2 FOREIGN KEY(exhibitionId)
     REFERENCES c6_exhibition(exhibitionId)
 );
-COMMENT ON TABLE c6_board IS '게시판';
-COMMENT ON COLUMN c6_board.boardId IS '게시판 ID';
+COMMENT ON TABLE c6_board IS '게시글';
+COMMENT ON COLUMN c6_board.boardId IS '게시글 ID';
 COMMENT ON COLUMN c6_board.memberId IS '회원 ID';
-COMMENT ON COLUMN c6_board.category IS '게시판 범주';
+COMMENT ON COLUMN c6_board.category IS '게시글 범주';
 COMMENT ON COLUMN c6_board.title IS '제목';
 COMMENT ON COLUMN c6_board.content IS '내용';
 COMMENT ON COLUMN c6_board.createdDate IS '등록일';
 COMMENT ON COLUMN c6_board.updatedDate IS '수정일';
-COMMENT ON COLUMN c6_board.exhibitionId IS '전시회 ID';
+COMMENT ON COLUMN c6_board.exhibitionId IS '전시정보 ID';
 
 
--- 게시판 첨부파일
+-- 게시글 첨부파일
 CREATE TABLE c6_board_file (
     boardFileId CHAR(16 BYTE) PRIMARY KEY,
     -- boardId(10 BYTE) + '-F'(2 BYTE) + c6_board_file_seq(4 BYTE)
@@ -330,9 +330,9 @@ CREATE TABLE c6_board_file (
     CONSTRAINT c6_board_file_fk FOREIGN KEY(boardId)
     REFERENCES c6_board(boardId)
 );
-COMMENT ON TABLE c6_board_file IS '게시판 첨부파일';
-COMMENT ON COLUMN c6_board_file.boardFileId IS '게시판 첨부파일 ID';
-COMMENT ON COLUMN c6_board_file.boardId IS '게시판 ID';
+COMMENT ON TABLE c6_board_file IS '게시글 첨부파일';
+COMMENT ON COLUMN c6_board_file.boardFileId IS '게시글 첨부파일 ID';
+COMMENT ON COLUMN c6_board_file.boardId IS '게시글 ID';
 COMMENT ON COLUMN c6_board_file.ogFilename IS '원본 파일이름';
 COMMENT ON COLUMN c6_board_file.svFilename IS '저장된 파일이름';
 COMMENT ON COLUMN c6_board_file.fileSize IS '파일 크기';
@@ -340,7 +340,7 @@ COMMENT ON COLUMN c6_board_file.createdDate IS '등록일';
 COMMENT ON COLUMN c6_board_file.updatedDate IS '수정일';
 
 
--- 게시판 댓글
+-- 게시글 댓글
 CREATE TABLE c6_board_reply (
     boardReplyId CHAR(16 BYTE) PRIMARY KEY,
     -- boardId(10 BYTE) + '-R'(2 BYTE) + c6_board_reply_seq(4 BYTE)
@@ -355,9 +355,9 @@ CREATE TABLE c6_board_reply (
     CONSTRAINT c6_board_reply_fk2 FOREIGN KEY(memberId)
     REFERENCES c6_member(memberId)
 );
-COMMENT ON TABLE c6_board_reply IS '게시판 댓글';
-COMMENT ON COLUMN c6_board_reply.boardReplyId IS '게시판 댓글 ID';
-COMMENT ON COLUMN c6_board_reply.boardId IS '게시판 ID';
+COMMENT ON TABLE c6_board_reply IS '게시글 댓글';
+COMMENT ON COLUMN c6_board_reply.boardReplyId IS '게시글 댓글 ID';
+COMMENT ON COLUMN c6_board_reply.boardId IS '게시글 ID';
 COMMENT ON COLUMN c6_board_reply.memberId IS '회원 ID';
 COMMENT ON COLUMN c6_board_reply.content IS '내용';
 COMMENT ON COLUMN c6_board_reply.createdDate IS '등록일';
@@ -379,7 +379,7 @@ COMMENT ON COLUMN c6_followship.createdDate IS '팔로우 날짜';
 
 -- 캘린더
 CREATE TABLE c6_calendar (
-    calendarId CHAR(10 BYTE) NOT NULL,
+    calendarId CHAR(10 BYTE) PRIMARY KEY,
     memberId VARCHAR2(40 BYTE) NOT NULL,
     title VARCHAR2(100 BYTE),
     bgType VARCHAR2(10 BYTE),

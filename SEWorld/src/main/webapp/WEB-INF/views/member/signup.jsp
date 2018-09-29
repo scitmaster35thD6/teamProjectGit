@@ -58,7 +58,11 @@ function checkLoginGoogle() {
 }
 
 function gauthSignUp() {
-  checkLoginGoogle();
+  gauth.signIn({
+    scope : 'https://www.googleapis.com/auth/calendar'
+  }).then(function(){
+    checkLoginGoogle();
+  });
 }
 
 
