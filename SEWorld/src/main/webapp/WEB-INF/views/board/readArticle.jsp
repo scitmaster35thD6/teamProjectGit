@@ -622,49 +622,55 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- ============================================================== -->
 	<header id="header">
 		<div class="container">
+
+			<div id="logo" class="pull-left">
+				<a href="#hero"><img src="" alt="" title="" /></img></a>
+				<!-- Uncomment below if you prefer to use a text logo -->
+				<!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
+			</div>
+
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
 					<li class="menu-active"><a
 						href="${pageContext.servletContext.contextPath}">Home</a></li>
-					<li class="menu-has-children"><a href="#services">Exhibition</a>
+					<li class="menu-has-children"><a href="./#exhibitions">Exhibition</a>
 						<ul>
 							<li><a href="exhibitionList">Exhibition List</a></li>
-							<li><a href="#facts">GoogleMap</a></li>
-						</ul></li>
-					<li class="menu-has-children"><a href="#portfolio">User's
-							Voice</a>
-						<ul>
-							<li><a href="reviews">Review</a></li>
-							<li><a href="questions">Question</a></li>
-							<li><a href="writeArticle">Write Article</a></li>
-						</ul></li>
-					<c:if test="${empty sessionScope.loginId}">
-						<li class="menu-has-children"><a href="profile">Member</a>
-							<ul>
-								<li><a href="login">Log in</a></li>
-								<li><a href="#">Sign up</a></li>
-							</ul></li>
-					</c:if>
-					<c:if test="${not empty sessionScope.loginId}">
-						<li class="menu-has-children"><a href="#">${sessionScope.loginId}
-								님</a>
-							<ul>
-								<li><a href="logout">Log out</a></li>
-								<li><a href="profile">Profile</a></li>
-								<li><a href="calendar">calendar</a></li>
-							</ul></li>
-					</c:if>
-				</ul>
-			</nav>
-			<!-- #nav-menu-container -->
-		</div>
-	</header>
-	<!-- #header -->
-
-	<!--==========================  Hero Section  ============================-->
+							<li><a href="googleView">GoogleMap</a></li>
+							<li><a href="jvectorMap">VectorMap</a></li>
+						</ul> <li class="menu-has-children"><a href="./#reviews">User's Voice</a>
+			<ul>
+				<li><a href="reviews">Review</a></li>
+				<li><a href="questions">Question</a></li>
+				<li><a href="writeArticle">Write Article</a></li>
+			</ul> <c:if test="${empty sessionScope.loginId}">
+				<li class="menu-has-children"><a href="profile">Member</a>
+					<ul>
+						<li><a href="login">Log in</a></li>
+						<li><a href="signup">Sign up</a></li>
+					</ul>
+			
+						</c:if> <c:if test="${not empty sessionScope.loginId}">
+				<li class="menu-has-children"><a href="profile">${sessionScope.loginId}
+						님</a>
+					<ul>
+						<li><a href="logout">Log out</a></li>
+						<li><a href="profile">Profile</a></li>
+						<li><a href="calendar">calendar</a></li>
+					</ul>
+			
+						</c:if>
+		
+					<li><a href="howtouse">How to Use</a></li>
+	</ul>
+	</nav>
+	<!-- #nav-menu-container -->
+</div>
+</header>
+<!-- #header --> <!--==========================  Hero Section  ============================-->
 	<section id="hero">
 		<div class="hero-container"
-			style="height: 92px; color: #c9b680; padding: 30px;"></div>
+								style="height: 92px; color: #c9b680; padding: 30px;"></div>
 	</section>
 	<!-- #hero -->
 
@@ -685,7 +691,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 		<!-- 새로운 페이지 -->
 		<div class="card gredient-success-bg m-t-0 m-b-0"
-			style="background-color: #f7e9c3;">
+								style="background-color: #f7e9c3;">
 			<div class="card-body" id="upperbody">
 				<h4 class="card-title text">&nbsp;&nbsp;Exhibition Review</h4>
 				<div class="row m-t-30 m-b-20">
@@ -695,7 +701,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 							<div class="m-l-10">
 								<h3 class="m-b-0 text">${exbhibitionForArticle.exhibitionTitleKor}</h3>
 								<small class="text op-5">URL : <a
-									href="exhibitionDetail?exhibitionId='${articleDetail.exhibitionId}'">Click
+														href="exhibitionDetail?exhibitionId='${articleDetail.exhibitionId}'">Click
 										here to see Exhibition Detail</a>
 								</small>
 							</div>
@@ -760,7 +766,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 						<!-- 타이틀 콜롬 -->
 						<div class="col-sm-12 col-lg-6">
 							<img src="resources/assets/images/users/4.jpg"
-								class="rounded-circle" width="60" />
+													class="rounded-circle" width="60" />
 
 							<!-- 팔로우 버튼 -->
 							<h6>&nbsp;</h6>
@@ -769,9 +775,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 								<c:if test="${sessionScope.loginId ne articleAuthor.memberId}">
 									<div class="btn-group">
 										<button type="button"
-											class="btn btn-outline-secondary dropdown-toggle"
-											data-toggle="dropdown" aria-haspopup="true"
-											aria-expanded="false">
+																class="btn btn-outline-secondary dropdown-toggle"
+																data-toggle="dropdown" aria-haspopup="true"
+																aria-expanded="false">
 											<i class="fas fa-user"></i>
 										</button>
 										<div id="dropdown" class="dropdown-menu animated flipInY">
@@ -812,15 +818,15 @@ body.mobile-nav-active #mobile-nav-toggle {
         </c:if>
 				<c:if test="${not empty articleAttachement}">
           &nbsp;<a
-						href="downloadFile?boardId=${articleAttachement.boardId}">${articleAttachement.ogFilename}</a>
+											href="downloadFile?boardId=${articleAttachement.boardId}">${articleAttachement.ogFilename}</a>
 				</c:if>
 			</div>
 			<c:if test="${articleDetail.memberId == sessionScope.loginId}">
 				<div class="ml-auto d-flex no-block align-items-center">
 					<a href="updateArticle?boardId=${articleDetail.boardId}"><i
-						class="far fa-sun"></i>&nbsp;수정</a>&nbsp;&nbsp; <a
-						href="javascript:areYouSure('${articleDetail.boardId}')"><i
-						class="far fa-trash-alt"></i>&nbsp;삭제&nbsp;&nbsp;&nbsp;&nbsp;</a>
+											class="far fa-sun"></i>&nbsp;수정</a>&nbsp;&nbsp; <a
+											href="javascript:areYouSure('${articleDetail.boardId}')"><i
+											class="far fa-trash-alt"></i>&nbsp;삭제&nbsp;&nbsp;&nbsp;&nbsp;</a>
 				</div>
 				<p></p>
 			</c:if>
@@ -852,14 +858,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 								</div>
 								<div class="col-lg-9">
 									<input type="hidden" id="memberId"
-										value="${sessionScope.loginId}"> <input type="hidden"
-										id="boardId" value="${articleDetail.boardId}">
+															value="${sessionScope.loginId}"> <input
+															type="hidden" id="boardId"
+															value="${articleDetail.boardId}">
 									<textarea class="form-control rounded-0" id="comentContent"
-										rows="5" name="content"></textarea>
+															rows="5" name="content"></textarea>
 									<hr>
 									<button type="button"
-										class="btn btn-success waves-effect text-left float-right"
-										id="commentSave">Save</button>
+															class="btn btn-success waves-effect text-left float-right"
+															id="commentSave">Save</button>
 								</div>
 							</div>
 							<!-- row -->
@@ -913,9 +920,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 													<span class="m-b-15 d-block">${replys.content}</span>
 													<div class="comment-footer">
 														<i class="fas fa-heart" style="color: #f77497;"></i>${numofHeart} <span
-															class="text-muted float-right">${replys.updatedDate}</span>
+																					class="text-muted float-right">${replys.updatedDate}</span>
 														<span class="action-icons"> <a
-															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+																					href="javascript:void(0)"><i
+																						class="ti-pencil-alt"></i></a>
 															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
 															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
 														</span>
@@ -940,9 +948,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 													<span class="m-b-15 d-block">잘 읽었습니다.</span>
 													<div class="comment-footer">
 														<i class="fas fa-heart" style="color: #f77497;"></i>4 <span
-															class="text-muted float-right">2018-09-21 13:40:33</span>
+																				class="text-muted float-right">2018-09-21 13:40:33</span>
 														<span class="action-icons"> <a
-															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+																				href="javascript:void(0)"><i
+																					class="ti-pencil-alt"></i></a>
 															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
 															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
 														</span>
@@ -969,9 +978,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 													<span class="m-b-15 d-block">mmh</span>
 													<div class="comment-footer">
 														<i class="fas fa-heart" style="color: #f77497;"></i>${numofHeart} <span
-															class="text-muted float-right">2018-09-21 13:39:52</span>
+																				class="text-muted float-right">2018-09-21 13:39:52</span>
 														<span class="action-icons"> <a
-															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+																				href="javascript:void(0)"><i
+																					class="ti-pencil-alt"></i></a>
 															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
 															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
 														</span>
@@ -998,9 +1008,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 													<span class="m-b-15 d-block">Good review!</span>
 													<div class="comment-footer">
 														<i class="fas fa-heart" style="color: #f77497;"></i>0 <span
-															class="text-muted float-right">2018-09-21 13:39:40</span>
+																				class="text-muted float-right">2018-09-21 13:39:40</span>
 														<span class="action-icons"> <a
-															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+																				href="javascript:void(0)"><i
+																					class="ti-pencil-alt"></i></a>
 															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
 															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
 														</span>
@@ -1026,9 +1037,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 													<span class="m-b-15 d-block">Want to read more about this.</span>
 													<div class="comment-footer">
 														<i class="fas fa-heart" style="color: #f77497;"></i>2 <span
-															class="text-muted float-right">2018-09-21 13:38:11</span>
+																				class="text-muted float-right">2018-09-21 13:38:11</span>
 														<span class="action-icons"> <a
-															href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+																				href="javascript:void(0)"><i
+																					class="ti-pencil-alt"></i></a>
 															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
 															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
 														</span>
@@ -1041,7 +1053,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 									
 									
 									
-									</div><!-- 임시 부엉이 -->
+									</div>
+														<!-- 임시 부엉이 -->
 								</c:if>
 
 								<!-- 부엉이 캐러솔은 이 경우만 사용 -->
@@ -1064,9 +1077,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 														<span class="m-b-15 d-block">${replys.content}</span>
 														<div class="comment-footer">
 															<i class="fas fa-heart" style="color: #f77497;"></i>${numofHeart} <span
-																class="text-muted float-right">${replys.updatedDate}</span>
+																					class="text-muted float-right">${replys.updatedDate}</span>
 															<span class="action-icons"> <a
-																href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+																					href="javascript:void(0)"><i
+																						class="ti-pencil-alt"></i></a>
 																<a href="javascript:void(0)"><i class="ti-trash"></i></a>
 																<a href="javascript:void(0)"><i class="ti-heart"></i></a>
 															</span>
@@ -1105,22 +1119,22 @@ body.mobile-nav-active #mobile-nav-toggle {
 								<div class="row">
 									<c:if test="${not empty RelatedArticles[2]}">
 										<div class="col-lg-4 col-md-6 wow fadeInUp"
-											data-wow-delay="0.2s">
+																data-wow-delay="0.2s">
 											<div class="card">
 												<div class="card-body">
 													<div class="d-flex no-block align-items-center m-b-15">
 														<span><i class="ti-calendar"></i>&nbsp;&nbsp;${RelatedArticles[2].updatedDate}</span>
 														<div class="ml-auto">
 															<a href="javascript:void(0)" class="link"><i
-																class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[2].boardId]}
+																					class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[2].boardId]}
 																Comments</a>
 														</div>
 													</div>
 													<h3 class="font-normal">${RelatedArticles[2].title}</h3>
 													<p class="m-b-0 m-t-10">${fn:substring(RelatedArticles[2].content, 0, 10)}</p>
 													<button
-														class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
-														onclick="location.href='readArticle?boardId=${RelatedArticles[2].boardId}'">Read
+																			class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
+																			onclick="location.href='readArticle?boardId=${RelatedArticles[2].boardId}'">Read
 														more</button>
 												</div>
 											</div>
@@ -1128,22 +1142,22 @@ body.mobile-nav-active #mobile-nav-toggle {
 									</c:if>
 									<c:if test="${not empty RelatedArticles[1]}">
 										<div class="col-lg-4 col-md-6 wow fadeInUp"
-											data-wow-delay="0.4s">
+																data-wow-delay="0.4s">
 											<div class="card">
 												<div class="card-body">
 													<div class="d-flex no-block align-items-center m-b-15">
 														<span><i class="ti-calendar"></i>&nbsp;&nbsp;${RelatedArticles[1].updatedDate}</span>
 														<div class="ml-auto">
 															<a href="javascript:void(0)" class="link"><i
-																class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[1].boardId]}
+																					class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[1].boardId]}
 																Comments</a>
 														</div>
 													</div>
 													<h3 class="font-normal">${RelatedArticles[1].title}</h3>
 													<p class="m-b-0 m-t-10">${fn:substring(RelatedArticles[1].content, 0, 10)}</p>
 													<button
-														class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
-														onclick="location.href='readArticle?boardId=${RelatedArticles[1].boardId}'">Read
+																			class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
+																			onclick="location.href='readArticle?boardId=${RelatedArticles[1].boardId}'">Read
 														more</button>
 												</div>
 											</div>
@@ -1151,22 +1165,22 @@ body.mobile-nav-active #mobile-nav-toggle {
 									</c:if>
 									<c:if test="${not empty RelatedArticles[0]}">
 										<div class="col-lg-4 col-md-6 wow fadeInUp"
-											data-wow-delay="0.6s">
+																data-wow-delay="0.6s">
 											<div class="card">
 												<div class="card-body">
 													<div class="d-flex no-block align-items-center m-b-15">
 														<span><i class="ti-calendar"></i>&nbsp;&nbsp;${RelatedArticles[0].updatedDate}</span>
 														<div class="ml-auto">
 															<a href="javascript:void(0)" class="link"><i
-																class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[0].boardId]}
+																					class="ti-comments"></i>&nbsp;&nbsp;${replyListCount[RelatedArticles[0].boardId]}
 																Comments</a>
 														</div>
 													</div>
 													<h3 class="font-normal">${RelatedArticles[0].title}</h3>
 													<p class="m-b-0 m-t-10">${fn:substring(RelatedArticles[0].content, 0, 10)}</p>
 													<button
-														class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
-														onclick="location.href='readArticle?boardId=${RelatedArticles[0].boardId}'">Read
+																			class="btn btn-success btn-rounded waves-effect waves-light m-t-20"
+																			onclick="location.href='readArticle?boardId=${RelatedArticles[0].boardId}'">Read
 														more</button>
 												</div>
 											</div>
@@ -1254,7 +1268,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<script src="resources/dist/js/app-style-switcher.js"></script>
 	<!-- slimscrollbar scrollbar JavaScript -->
 	<script
-		src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+							src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
 	<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
 	<!--Wave Effects -->
 	<script src="resources/dist/js/waves.js"></script>
@@ -1286,7 +1300,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 		jQuery(document)
 				.ready(
 						function($) {
-						
+
 							// Header fixed and Back to top button
 							// Mobile Navigation
 							if ($('#nav-menu-container').length) {
@@ -1414,5 +1428,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 			}
 		}
 	</script>
-</body>
+
+					</body>
 </html>

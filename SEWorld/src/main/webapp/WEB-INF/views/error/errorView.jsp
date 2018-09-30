@@ -15,7 +15,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="resources/assets/images/logo-icon.png">
-    <title>SE World 전세계 기술 전시</title>
+    <title>SE World - Error!</title>
     <!-- Custom CSS -->
     <link href="resources/dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

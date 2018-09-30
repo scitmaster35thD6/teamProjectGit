@@ -627,54 +627,51 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- ============================================================== -->
 	<!-- Topbar header - style you can find in pages.scss -->
 	<!-- ============================================================== -->
-	<header id="header">
-		<div class="container">
+<header id="header">
+<div class="container">
 
-			<div id="logo" class="pull-left">
-				<a href="#hero"><img src="" alt="" title="" /></img></a>
-				<!-- Uncomment below if you prefer to use a text logo -->
-				<!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
-			</div>
+	<div id="logo" class="pull-left">
+		<a href="#hero"><img src="" alt="" title="" /></img></a>
+		<!-- Uncomment below if you prefer to use a text logo -->
+		<!--<h1><a href="resources/regna/#hero">Regna</a></h1>-->
+	</div>
 
-			<nav id="nav-menu-container">
-				<ul class="nav-menu">
-					<li class="menu-active"><a
-						href="${pageContext.servletContext.contextPath}">Home</a></li>
-					<li class="menu-has-children"><a href="#services">Exhibition</a>
-						<ul>
-							<li><a href="exhibitionList">Exhibition List</a></li>
-							<li><a href="googleView">GoogleMap</a></li>
-							<li><a href="jvectorMap">VectorMap</a></li>
-						</ul>
-					<li class="menu-has-children"><a href="#portfolio">User's
-							Voice</a>
-						<ul>
-							<li><a href="reviews">Review</a></li>
-							<li><a href="questions">Question</a></li>
-							<li><a href="writeArticle">Write Article</a></li>
-						</ul> <c:if test="${empty sessionScope.loginId}">
-							<li class="menu-has-children"><a href="profile">Member</a>
-								<ul>
-									<li><a href="login">Log in</a></li>
-									<li><a href="signup">Sign up</a></li>
-								</ul>
-						</c:if> <c:if test="${not empty sessionScope.loginId}">
-							<li class="menu-has-children"><a href="#">${sessionScope.loginId}
-									님</a>
-								<ul>
-									<li><a href="logout">Log out</a></li>
-									<li><a href="profile">Profile</a></li>
-									<li><a href="calendar">calendar</a></li>
-								</ul>
-						</c:if>
-						
-						<li><a href="#">How to Use</a></li>
-				</ul>
-			</nav>
-			<!-- #nav-menu-container -->
-		</div>
-	</header>
-	<!-- #header -->
+	<nav id="nav-menu-container">
+	<ul class="nav-menu">
+		<li class="menu-active"><a
+			href="${pageContext.servletContext.contextPath}">Home</a></li>
+		<li class="menu-has-children"><a href="./#exhibitions">Exhibition</a>
+			<ul>
+				<li><a href="exhibitionList">Exhibition List</a></li>
+				<li><a href="googleView">GoogleMap</a></li>
+				<li><a href="jvectorMap">VectorMap</a></li>
+			</ul>
+		<li class="menu-has-children"><a href="./#reviews">User's Voice</a>
+			<ul>
+				<li><a href="reviews">Review</a></li>
+				<li><a href="questions">Question</a></li>
+				<li><a href="writeArticle">Write Article</a></li>
+			</ul> <c:if test="${empty sessionScope.loginId}">
+				<li class="menu-has-children"><a href="profile">Member</a>
+					<ul>
+						<li><a href="login">Log in</a></li>
+						<li><a href="signup">Sign up</a></li>
+					</ul>
+			</c:if> <c:if test="${not empty sessionScope.loginId}">
+				<li class="menu-has-children"><a href="profile">${sessionScope.loginId}
+						님</a>
+					<ul>
+						<li><a href="logout">Log out</a></li>
+						<li><a href="profile">Profile</a></li>
+						<li><a href="calendar">calendar</a></li>
+					</ul>
+			</c:if>
+		<li><a href="howtouse">How to Use</a></li>
+	</ul>
+	</nav>
+	<!-- #nav-menu-container -->
+</div>
+</header>	<!-- #header -->
 
 	<!--==========================
     Hero Section
@@ -718,21 +715,16 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 				<div class="col-lg-6 content order-lg-1 order-2">
 					<h2 class="title">Few Words About Us</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-						enim ad minim veniam, quis nostrud exercitation ullamco laboris
-						nisi ut aliquip ex ea commodo consequat.</p>
+					<p>We can handle a variety of languages including Oracle database, Java, and JavaScript. As you can see on this page, we can build web applications using bootstrap and JavaScript libraries, plug-ins and external APIs.</p>
 
 					<div class="icon-box wow fadeInUp">
 						<div class="icon">
 							<i class="fa fa-shopping-bag"></i>
 						</div>
 						<h4 class="title">
-							<a href="resources/regna/">Eiusmod Tempor</a>
+							<a href="resources/regna/">Optimize Your Business</a>
 						</h4>
-						<p class="description">Et harum quidem rerum facilis est et
-							expedita distinctio. Nam libero tempore, cum soluta nobis est
-							eligendi</p>
+						<p class="description">We have the skills to build a web site that's right for various tasks easily and quickly. It also focuses on a more user-friendly architecture.</p>
 					</div>
 
 					<div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
@@ -740,11 +732,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 							<i class="fa fa-photo"></i>
 						</div>
 						<h4 class="title">
-							<a href="resources/regna/">Magni Dolores</a>
+							<a href="resources/regna/">Multi-device affinity</a>
 						</h4>
-						<p class="description">Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est
-							laborum</p>
+						<p class="description">You can expect to build a responsive website suitable for the latest trends and for a wide variety of devices.</p>
 					</div>
 
 					<div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
@@ -752,11 +742,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 							<i class="fa fa-bar-chart"></i>
 						</div>
 						<h4 class="title">
-							<a href="resources/regna/">Dolor Sitema</a>
+							<a href="resources/regna/">Feature Optimization</a>
 						</h4>
-						<p class="description">Minim veniam, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat tarad
-							limino ata</p>
+						<p class="description">You can tailor features such as bulletin boards and door forms for information delivery and exchange to suit your needs.</p>
 					</div>
 
 				</div>
@@ -790,7 +778,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- #facts -->
 
 	<!-- 전시회목록 -->
-	<section id="services">
+	<section id="exhibitions">
 		<div class="container wow fadeIn">
 			<div class="section-header">
 				<h3 class="section-title">Lively Updated Exhibitions</h3>
@@ -972,7 +960,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	<!-- 전시회목록 end-->
 
 
-	<section id="portfolio">
+	<section id="reviews">
 		<div class="container wow fadeIn">
 			<div class="section-header">
 				<h3 class="section-title">Recent reviews</h3>
@@ -1138,7 +1126,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 			<div class="row">
 				<div class="col-lg-9 text-center text-lg-left">
 					<h3 class="cta-title">Free Register</h3>
-					<p class="cta-text">무료 회원가입.</p>
+					<p class="cta-text">무료 회원등록을 통해 전체 서비스를 이용 수 있습니다. 지금 간단하게 등록하세요.</p>
 				</div>
 				<div class="col-lg-3 cta-btn-container text-center">
 					<a class="cta-btn align-middle" href="signup">Go</a>

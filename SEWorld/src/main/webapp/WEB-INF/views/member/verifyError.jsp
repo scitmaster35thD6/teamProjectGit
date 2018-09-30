@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>인증메일 전송에 실패하였습니다.</h1>
+	<h1>Authentication mail transfer failed.</h1>
 </body>
 </html>

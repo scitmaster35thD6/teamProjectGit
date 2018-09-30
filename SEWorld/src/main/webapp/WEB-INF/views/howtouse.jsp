@@ -2,10 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-
+<html dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,26 +13,31 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="any"
-	href="resources/assets/images/logo2.png">
-<title>SE World - User Questions</title>
+<link rel="icon" type="image/png" sizes="16x16"
+	href="resources/assets/images/logo-icon.png">
+<title>SE World - How to use</title>
+<!-- Custom CSS -->
+<link href="resources/dist/css/style.min.css" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 <link href="resources/assets/libs/jsgrid/dist/jsgrid-theme.min.css"
 	rel="stylesheet">
 <link href="resources/assets/libs/jsgrid/dist/jsgrid.min.css"
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
-<!-- 벡터맵 css지도 -->
+\
 <!-- Custom CSS 새로 -->
 <link href="resources/dist/css/style.min.css" rel="stylesheet">
-<link href="resources/custom/exhibitionList.css" rel="stylesheet">
-
 <!-- 메인 스타일 -->
 <!-- Google Fonts -->
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
 	rel="stylesheet">
-
 <!-- Bootstrap CSS File -->
 <link href="resources/regna/lib/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -43,27 +47,8 @@
 	rel="stylesheet">
 <link href="resources/regna/lib/animate/animate.min.css"
 	rel="stylesheet">
-
 <!-- Main Stylesheet File -->
 <link href="resources/regna/css/style.css" rel="stylesheet">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-<!-- 테이블 용 -->
-<link href="resources/custom/exhibitionList.css" rel="stylesheet">
-<link
-	href="resources/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"
-	rel="stylesheet">
-<!-- This Select CSS -->
-<link rel="stylesheet" type="text/css"
-	href="resources/assets/libs/select2/dist/css/select2.min.css">
-
-
-
 <style>
 .back-to-top {
 	position: fixed;
@@ -230,7 +215,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
 	width: 100%;
 	height: 100vh;
-	background: url(resources/assets/images/owl.jpg) top center;
+	background: url(resources/assets/images/land1.jpg) top center;
 	background-size: cover;
 	position: relative;
 }
@@ -613,24 +598,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 	color: #999;
 }
 
-#upperbody:hover {
-	font-color: gray;
-}
+/* 구글맵 추가 하지 마세요
+--------------------------------*/
+/* search box
+--------------------------------*/
 </style>
-
 </head>
-
-<body>
-	<!-- ============================================================== -->
-	<!-- Preloader - style you can find in spinners.css -->
-	<!-- ============================================================== -->
-
-	<!-- ============================================================== -->
-	<!-- Main wrapper - style you can find in pages.scss -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- Topbar header - style you can find in pages.scss -->
-	<!-- ============================================================== -->
 <header id="header">
 <div class="container">
 
@@ -675,326 +648,91 @@ body.mobile-nav-active #mobile-nav-toggle {
 	</nav>
 	<!-- #nav-menu-container -->
 </div>
-</header>	<!-- #header -->
-
-
-	<!--==========================
-    Hero Section
-  ============================-->
-
-	<section id="hero">
-		<div class="hero-container"
-			style="height: 92px; color: #c9b680; padding: 30px;"></div>
-	</section>
-	<!-- #hero -->
-
-	<!-- ============================================================== -->
-	<!-- End Topbar header -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- Left Sidebar - style you can find in sidebar.scss  -->
-	<!-- ============================================================== -->
-
-	<!-- ============================================================== -->
-	<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-	<!-- ============================================================== -->
-	<div class="newpage" style="background-color: #f7e9c3;" id="scroll">
+</header>
+<body>
+	<div class="main-wrapper">
 		<!-- ============================================================== -->
-		<!-- Bread crumb and right sidebar toggle -->
+		<!-- Preloader - style you can find in spinners.css -->
 		<!-- ============================================================== -->
-
-		<!-- 새로운 페이지 -->
-
-		<!-- 브레드 크럼 -->
-		<div class="page-breadcrumb">
-			<div class="row">
-				<div class="col-5 align-self-center">
-					<h4 class="card-title text">Question List</h4>
-					<div class="d-flex align-items-center">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="./">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Question
-									List</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-
-
-
+		<div class="preloader">
+			<div class="lds-ripple">
+				<div class="lds-pos"></div>
+				<div class="lds-pos"></div>
 			</div>
 		</div>
-
-		<!-- 브레드 크럼 -->
-
 		<!-- ============================================================== -->
-		<!-- Container fluid  -->
+		<!-- Preloader - style you can find in spinners.css -->
 		<!-- ============================================================== -->
-		<div class="container-fluid">
-			<!-- 코멘트 쓰는 창 -->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="card">
-						<div class="card-body">
-							<div class="d-md-flex align-items-center">
-								<div>
-									<h4 class="card-title">Question</h4>
-								</div>
-								<div class="ml-auto d-flex no-block align-items-center">
-									<div class="dl">
-										<a href="#"><i class="ti-list"></i>&nbsp;Google Map보기</a>
-									</div>
-								</div>
-							</div>
-							<!--카드 바디 시작-->
-							<!-- 테이블 들어가는 곳  -->
+		<section id="hero">
+		<div class="hero-container"></div>
+		</section>
+		<section id="about">
+		<div class="container" id="scroll">
+			<div class="row about-container">
 
+				<div class="col-lg-6 content order-lg-1 order-2">
+					<h2 class="title">How to use</h2>
+					<p>SE World는 다양한 전시회 관련 정보를 제공하고, 사용자들이 전시회에 관한 의견을 자유롭게 나눌 수 있는 공간을 목표로 하여 제작되었습니다.
+					사이트 내의 모든 정보와 기능은 무료 회원가입을 통해 자유롭게 접근할 수 있습니다. 지금 등록하세요.</p>
 
-							<div class="table-responsive">
-								<table id="alt_pagination" class="table table-striped table-bordered display" style="width: 100%">
-									<thead>
-										<tr>
-											<th>번호</th>
-											<th>제목</th>
-											<th>글쓴이</th>
-											<th>날짜</th>
-										</tr>
-									</thead>
-									<tfoot>
-										<tr>
-											<th>Number</th>
-											<th>Title</th>
-											<th>User</th>
-											<th>Date</th>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-
-
-							<!-- 테이블 들어가는 곳  -->
-
-
-
-
-
-
+					<div class="icon-box wow fadeInUp">
+						<div class="icon">
+							<i class="fa fa-shopping-bag"></i>
 						</div>
-						<!-- 카드 바디 끝-->
+						<h4 class="title">
+							<a href="resources/regna/">Exhibition Info</a>
+						</h4>
+						<p class="description">최근까지 수집된 각종 전시회 정보를 게시판 형태로 제공하고 있습니다. 목록에서는 상세보기 메뉴를 통해 전시회에 관한 더욱 상세한 정보를 얻거나 나만의 즐겨찾기에 저장할 수 있고, 한줄평 기능을 통해 전시회를 평가할 수 있습니다. 지금 내가 관심을 가진 전시회에 누가 어떤 평을 남겼는지 알아보세요.</p>
 					</div>
-					<!-- 카드 -->
-				</div>
-				<!-- 코롬 -->
-				<h3 class="title">&nbsp;</h3><br />
-			</div>
-			<!-- row -->
 
+					<div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+						<div class="icon">
+							<i class="fa fa-photo"></i>
+						</div>
+						<h4 class="title">
+							<a href="resources/regna/">User's Voice</a>
+						</h4>
+						<p class="description">유저 게시판에서는 특정 전시회를 주제로 리뷰를 남기거나 유저 상호간에 질답이 가능합니다. 또한 게시물을 남긴 유저를 친구로 추가하거나 게시물에 대한 평가를 별점으로 남길 수 있죠. 나와 같은 관심사를 가진 친구를 찾아볼까요?</p>
+					</div>
+
+					<div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+						<div class="icon">
+							<i class="fa fa-bar-chart"></i>
+						</div>
+						<h4 class="title">
+							<a href="resources/regna/">User Menu</a>
+						</h4>
+						<p class="description">유저 메뉴에서는 내가 쓴 게시물이나 즐겨찾기에 추가한 전시회를 모아볼 수 있습니다. 캘린더를 통해 전시회 일정에 대한 정보를 기록할 수도 있죠. 관심이 가는 전시회가 언제부터였는지 캘린더에 추가해볼까요?</p>
+					</div>
+
+				</div>
+
+				<div class="col-lg-6 background order-lg-2 order-1 wow fadeInRight">
+					<video autoplay loop muted playsinline
+						src="https://youtu.be/Db7M5tTv9b8"></video>
+				</div>
+			</div>
 
 		</div>
-		<!-- 컨테이너 플루이드 -->
-
-
-
+		</section>
 
 
 	</div>
-	<!--  wrapper-->
-
-
+	<!-- 여기까지 wrapper -->
 	<!-- ============================================================== -->
-	<!-- Page wrapper  -->
+	<!-- All Required js -->
 	<!-- ============================================================== -->
-
-	<!-- ============================================================== -->
-	<!-- Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
-
-	<!-- ============================================================== -->
-	<!-- End Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- Container fluid  -->
-	<!-- ============================================================== -->
-
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- End Container fluid  -->
-	<!-- ============================================================== -->
-	<!-- 페이지 레퍼 div있던 자리 -->
-	<!-- ============================================================== -->
-	<!-- footer -->
-	<!-- ============================================================== -->
-	<footer id="footer">
-		<div class="footer-top">
-			<div class="container"></div>
-		</div>
-
-		<div class="container">
-			<div class="copyright">
-				&copy; Copyright <strong>SE WORLD</strong>.
-			</div>
-
-		</div>
-	</footer>
-	<!-- #footer -->
-
-	<a href="#" class="back-to-top"><i class="fas fa-angle-double-up"></i></a>
-	<!-- ============================================================== -->
-	<!-- End footer -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- End Page wrapper  -->
-	<!-- ============================================================== -->
-	<!-- 메인 레퍼 자꾸 엉켜서  지웠음..; -->
-	<!-- ============================================================== -->
-	<!-- End Wrapper -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- customizer Panel -->
-	<!-- ============================================================== -->
-	<!-- aside -->
-	<div class="chat-windows"></div>
-	<!-- ============================================================== -->
-	<!-- All Jquery -->
-	<!-- ============================================================== -->
-	<script src="resources/jquery-3.3.1.min.js"></script>
+	<script src="resources/assets/libs/jquery/dist/jquery.min.js"></script>
 	<script src="resources/custom/autoScroll.js"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
 	<script src="resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- apps -->
-	<script src="resources/dist/js/app.min.js"></script>
-	<script src="resources/dist/js/app.init.iconbar.js"></script>
-	<script src="resources/dist/js/app-style-switcher.js"></script>
-	<!-- slimscrollbar scrollbar JavaScript -->
-	<script
-		src="resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-	<script src="resources/assets/extra-libs/sparkline/sparkline.js"></script>
-	<!--Wave Effects -->
-	<script src="resources/dist/js/waves.js"></script>
-	<!--Menu sidebar -->
-	<script src="resources/dist/js/sidebarmenu.js"></script>
-	<!--Custom JavaScript -->
-	<script src="resources/dist/js/custom.min.js"></script>
-	<!-- This Page JS -->
-	<!-- carousel -->
-	<!-- 메인용 javascript -->
-	<script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
-	<script src="resources/regna/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="resources/regna/lib/easing/easing.min.js"></script>
-	<script src="resources/regna/lib/wow/wow.min.js"></script>
-
-	<script src="resources/regna/lib/waypoints/waypoints.min.js"></script>
-	<script src="resources/regna/lib/counterup/counterup.min.js"></script>
-	<script src="resources/regna/lib/superfish/hoverIntent.js"></script>
-	<script src="resources/regna/lib/superfish/superfish.min.js"></script>
-	<script src="resources/dist/typed.js"></script>
-	<script src="resources/regna/js/main.js"></script>
-	<!-- carousel -->
-	<!-- This Page JS -->
-	<script src="resources/assets/extra-libs/DataTables/datatables.min.js"></script>
-	<script src="resources/custom/boardListShow2.js"></script>
-	<!-- This Page JS -->
+	<!-- ============================================================== -->
+	<!-- This page plugin js -->
+	<!-- ============================================================== -->
 	<script>
-		jQuery(document)
-				.ready(
-						function($) {
-
-							// Header fixed and Back to top button
-
-							// Mobile Navigation
-							if ($('#nav-menu-container').length) {
-								var $mobile_nav = $('#nav-menu-container')
-										.clone().prop({
-											id : 'mobile-nav'
-										});
-								$mobile_nav.find('> ul').attr({
-									'class' : '',
-									'id' : ''
-								});
-								$('body').append($mobile_nav);
-								$('body')
-										.prepend(
-												'<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
-								$('body').append(
-										'<div id="mobile-body-overly"></div>');
-								$('#mobile-nav')
-										.find('.menu-has-children')
-										.prepend(
-												'<i class="fa fa-chevron-down"></i>');
-
-								$(document)
-										.on(
-												'click',
-												'.menu-has-children i',
-												function(e) {
-													$(this).next().toggleClass(
-															'menu-item-active');
-													$(this).nextAll('ul').eq(0)
-															.slideToggle();
-													$(this)
-															.toggleClass(
-																	"fa-chevron-up fa-chevron-down");
-												});
-
-								$(document)
-										.on(
-												'click',
-												'#mobile-nav-toggle',
-												function(e) {
-													$('body')
-															.toggleClass(
-																	'mobile-nav-active');
-													$('#mobile-nav-toggle i')
-															.toggleClass(
-																	'fa-times fa-bars');
-													$('#mobile-body-overly')
-															.toggle();
-												});
-
-								$(document)
-										.click(
-												function(e) {
-													var container = $("#mobile-nav, #mobile-nav-toggle");
-													if (!container.is(e.target)
-															&& container
-																	.has(e.target).length === 0) {
-														if ($('body')
-																.hasClass(
-																		'mobile-nav-active')) {
-															$('body')
-																	.removeClass(
-																			'mobile-nav-active');
-															$(
-																	'#mobile-nav-toggle i')
-																	.toggleClass(
-																			'fa-times fa-bars');
-															$(
-																	'#mobile-body-overly')
-																	.fadeOut();
-														}
-													}
-												});
-							} else if ($("#mobile-nav, #mobile-nav-toggle").length) {
-								$("#mobile-nav, #mobile-nav-toggle").hide();
-							}
-							// Smoth scroll on page hash links
-
-							/*타자 쳐지는 효과 만들기 */
-							var typed = $(".typed");
-
-							$(function() {
-								typed.typed({
-									strings : [ " ARE GLOBALLY UNLIMITED.",
-											"SHOW YOU TONS OF EXHIBITIONS.",
-											"PROVIDE USER-FRIENDLY MAPS." ],
-									typeSpeed : 100,
-									loop : true,
-								});
-							});
-
-						});
+		$('[data-toggle="tooltip"]').tooltip();
+		$(".preloader").fadeOut();
 	</script>
 </body>
 

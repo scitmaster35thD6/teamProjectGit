@@ -100,5 +100,10 @@ public class HomeController {
 	public String articlereading() {
 		return "board/readArticle3";
 	}
+	
+	@RequestMapping(value = "/howtouse", method = RequestMethod.GET)
+	public String howtouse() {
+		return "howtouse";
+	}
 
 }

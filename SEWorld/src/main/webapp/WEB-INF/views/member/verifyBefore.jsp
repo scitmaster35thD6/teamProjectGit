@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SE World - Mail sent</title>
+<title>SE World - Mail Sent</title>
 </head>
 <body>
 	<h1>인증메일을 전송하였습니다.</h1>
+	<h1>Authentication mail has been sent.</h1>
 </body>
 </html>

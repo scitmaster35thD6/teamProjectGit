@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SE World - Signed up</title>
+<title>SE World - Signed Up</title>
 </head>
 <body>
-	<h1>SE World 회원가입이 완료되었습니다.</h1>
+	<h1>SE World 회원 가입이 완료되었습니다.</h1>
+	<h1>Welcome to SE World.</h1>
 </body>
 </html>
