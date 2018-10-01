@@ -407,7 +407,7 @@ function toTimeObject(str) {
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-      events: init3,
+      events: init2,
       locale: 'en',
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar !!!
