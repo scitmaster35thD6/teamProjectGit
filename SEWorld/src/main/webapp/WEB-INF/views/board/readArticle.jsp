@@ -843,7 +843,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 						<div class="card-body">
 							<div class="d-md-flex align-items-center">
 								<div>
-									<h4 class="card-title">Write Your Comment</h4>
+									
 								</div>
 								<div class="ml-auto d-flex no-block align-items-center">
 									<div class="dl">
@@ -853,8 +853,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 							</div>
 							<div class="row">
 								<div class="col-lg-3">
-									<h6 class="font-medium">Rating</h6>
-									<div id="score-rating"></div>
+									<h4 class="card-title">Write Your Comment</h4>
 								</div>
 								<div class="col-lg-9">
 									<input type="hidden" id="memberId"
@@ -913,13 +912,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 															<h6 class="font-medium">${replys.memberId}</h6>
 														</div>
 														<div class="col-4">
-															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
-															4점
+															<!-- <i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
+															4점 -->
 														</div>
 													</div>
 													<span class="m-b-15 d-block">${replys.content}</span>
 													<div class="comment-footer">
-														<i class="fas fa-heart" style="color: #f77497;"></i>${numofHeart} <span
+														<i class="fas fa-heart" style="color: #f77497;"></i> <span
 																					class="text-muted float-right">${replys.updatedDate}</span>
 														<span class="action-icons"> <a
 																					href="javascript:void(0)"><i
@@ -933,121 +932,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 										</div>
 									</c:forEach>
 									<!-- 임시 추가 삭제예정 -->
-										<div>
-											<div class="d-flex flex-row comment-row m-t-0">
-												<div class="comment-text w-100">
-													<div class="row">
-														<div class="col-8">
-															<h6 class="font-medium">Robin</h6>
-														</div>
-														<div class="col-4">
-															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
-															3점
-														</div>
-													</div>
-													<span class="m-b-15 d-block">잘 읽었습니다.</span>
-													<div class="comment-footer">
-														<i class="fas fa-heart" style="color: #f77497;"></i>4 <span
-																				class="text-muted float-right">2018-09-21 13:40:33</span>
-														<span class="action-icons"> <a
-																				href="javascript:void(0)"><i
-																					class="ti-pencil-alt"></i></a>
-															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
-															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										
-										
-										
-										<div>
-											<div class="d-flex flex-row comment-row m-t-0">
-												<div class="comment-text w-100">
-													<div class="row">
-														<div class="col-8">
-															<h6 class="font-medium">Upendo</h6>
-														</div>
-														<div class="col-4">
-															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
-															2점
-														</div>
-													</div>
-													<span class="m-b-15 d-block">mmh</span>
-													<div class="comment-footer">
-														<i class="fas fa-heart" style="color: #f77497;"></i>${numofHeart} <span
-																				class="text-muted float-right">2018-09-21 13:39:52</span>
-														<span class="action-icons"> <a
-																				href="javascript:void(0)"><i
-																					class="ti-pencil-alt"></i></a>
-															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
-															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										
-										
-										
-										<div>
-											<div class="d-flex flex-row comment-row m-t-0">
-												<div class="comment-text w-100">
-													<div class="row">
-														<div class="col-8">
-															<h6 class="font-medium">green</h6>
-														</div>
-														<div class="col-4">
-															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
-															4점
-														</div>
-													</div>
-													<span class="m-b-15 d-block">Good review!</span>
-													<div class="comment-footer">
-														<i class="fas fa-heart" style="color: #f77497;"></i>0 <span
-																				class="text-muted float-right">2018-09-21 13:39:40</span>
-														<span class="action-icons"> <a
-																				href="javascript:void(0)"><i
-																					class="ti-pencil-alt"></i></a>
-															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
-															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										
-										
-										<div>
-											<div class="d-flex flex-row comment-row m-t-0">
-												<div class="comment-text w-100">
-													<div class="row">
-														<div class="col-8">
-															<h6 class="font-medium">Kelly</h6>
-														</div>
-														<div class="col-4">
-															<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
-															5점
-														</div>
-													</div>
-													<span class="m-b-15 d-block">Want to read more about this.</span>
-													<div class="comment-footer">
-														<i class="fas fa-heart" style="color: #f77497;"></i>2 <span
-																				class="text-muted float-right">2018-09-21 13:38:11</span>
-														<span class="action-icons"> <a
-																				href="javascript:void(0)"><i
-																					class="ti-pencil-alt"></i></a>
-															<a href="javascript:void(0)"><i class="ti-trash"></i></a>
-															<a href="javascript:void(0)"><i class="ti-heart"></i></a>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
+										<!-- 삭제 완료 -->
 										
 										<!-- 임시 추가 삭제예정 -->
 									
@@ -1070,13 +955,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 																<h6 class="font-medium">${replys.memberId}</h6>
 															</div>
 															<div class="col-4">
-																<i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
-																4점
+																<!-- <i class="fa fa-spin fa-star" style="color: #ffe83f;"></i>&nbsp;&nbsp;
+																4점 -->
 															</div>
 														</div>
 														<span class="m-b-15 d-block">${replys.content}</span>
 														<div class="comment-footer">
-															<i class="fas fa-heart" style="color: #f77497;"></i>${numofHeart} <span
+															<i class="fas fa-heart" style="color: #f77497;"></i> <span
 																					class="text-muted float-right">${replys.updatedDate}</span>
 															<span class="action-icons"> <a
 																					href="javascript:void(0)"><i
