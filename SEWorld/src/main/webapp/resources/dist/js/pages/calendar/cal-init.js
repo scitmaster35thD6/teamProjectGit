@@ -64,6 +64,7 @@ function toTimeObject(str){
 	var month2 = parseInt(month)-1;
 	
 	month = month2.toString();
+	
 	/*if(month2<10){
 		 month = month2.toString();
 		month = zero.concat(month);

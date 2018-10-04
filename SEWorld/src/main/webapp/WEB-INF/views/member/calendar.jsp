@@ -871,7 +871,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     <script src="resources/assets/libs/moment/min/moment.min.js"></script>
     <script src="resources/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="resources/dist/js/pages/calendar/cal-init.js"></script>
-    <script src='resources/calendar/locale-all.js'></script>
+<!--     <script src='resources/calendar/locale-all.js'></script> -->
     
     <!-- 메인용 javascript -->
 <script src="resources/regna/lib/jquery/jquery-migrate.min.js"></script>
