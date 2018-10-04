@@ -2,19 +2,19 @@
     
     function init2(strDate,endDate,timezone,callback){
 		//ajax로 전체 데이터를 끌어옴
-    	var memberId = $("#logId").val();
-    	alert(memberId);
-    	var data = {
-				"memberId" : memberId
-		};
+//    	var memberId = $("#logId").val();
+//    	alert(memberId);
+//    	var data = {
+//				"memberId" : memberId
+//		};
     	
 		$.ajax({
 			method : 'post'
 			, url : 'gocalendar'
-			, data : JSON.stringify(data)
+//			, data : JSON.stringify(data)
 			, dataType : 'json'
-		    , contentType : 'application/json; charset=UTF-8'
-		    	,success: function(response){
+//		    , contentType : 'application/json; charset=UTF-8'
+		    ,success: function(response){
 		    		var result = output(response);
 		    		//alert(JSON.stringify(response));
 					callback(result);
@@ -57,9 +57,19 @@
     
 function toTimeObject(str){
 	//alert("str"+str);
+	var zero = '0';
 	var year = str.substring(0, 4);
 	var month = str.substring(4, 6);
 	var day  = str.substring(6, 8);
+	var month2 = parseInt(month)-1;
+	
+	month = month2.toString();
+	/*if(month2<10){
+		 month = month2.toString();
+		month = zero.concat(month);
+	}else{
+		month = month2.toString();
+	}*/
 	/*alert(year+"이얼");
 	alert(month+"먼스");
 	alert(day+"데이");*/

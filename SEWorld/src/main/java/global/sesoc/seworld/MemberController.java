@@ -182,9 +182,12 @@ public class MemberController {
 	}
 	//캘린더 리슷 띄우기
 	@RequestMapping(value = "/gocalendar", method = RequestMethod.POST)
-	public @ResponseBody List<Exhibition> calendar(@RequestBody Wishing wishing) {
+	public @ResponseBody List<Exhibition> calendar(HttpSession session) {
 		logger.info("[/gocalendar]");
 		List<Exhibition> list;
+		Wishing wishing = new Wishing();
+		String loginId = (String) session.getAttribute("loginId");
+		wishing.setMemberId(loginId);
 		System.out.println("wishing:" + wishing);
 		list = wishingRepository.selectAllWishing(wishing);
 		System.out.println(list + "리슷");
